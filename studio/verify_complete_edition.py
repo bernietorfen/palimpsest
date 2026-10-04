@@ -21,12 +21,19 @@ def page_images(page):
     objects = resources.get('/XObject', {})
     if hasattr(objects, 'get_object'):
         objects = objects.get_object()
+    def signature(image):
+        mask = image.get('/SMask')
+        return (int(image['/Width']), int(image['/Height']), str(image.get('/ColorSpace')),
+                str(image.get('/Filter')), int(image.get('/BitsPerComponent', 0)),
+                hashlib.sha256(image._data).hexdigest(),
+                signature(mask.get_object()) if mask is not None else None)
     result = []
     for obj in objects.values():
         image = obj.get_object()
         if image.get('/Subtype') == '/Image':
-            result.append((int(image['/Width']), int(image['/Height']),
-                           hashlib.sha256(image.get_data()).hexdigest()))
+            # Identical encoded streams and decoding parameters establish exact
+            # image identity without inflating the 48-megapixel poster twice.
+            result.append(signature(image))
     return sorted(result)
 
 

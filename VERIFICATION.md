@@ -49,3 +49,7 @@ The pressure explorer's failure checks reject a deliberately truncated display f
 All 71 spatial-study files pass digest and record reconstruction. A separate NumPy calculation reproduces every pairwise and cross-grid distance, nearest-history label and reported count. Maximum candidate-distance disagreement is 4.440892098500626e-16 Hz. Direct evaluation of the analytic shifted patterns checks the registered fractional echo location, independently of the generator's array-roll construction.
 
 The study includes 720 nominal trajectories across three grids and two timesteps. All 7,140 pairs remain distinct in each condition. All six spatial and three timestep comparisons identify 120 of 120 histories by their nearest own response. These finite comparisons do not prove continuum convergence, global stability, human audibility or physical realism. `research/SPATIAL-RESULTS.md` gives the complete numerical table and scope.
+
+## Complete notebook
+
+The six new spreads were rendered and visually inspected at 1200 × 900. All 24 pages pass a text-bounds check. The continuation archive was fully streamed and hashed, restored to a new directory, and used with the curated source to rebuild the complete book. Every page's extracted text, drawing commands and encoded image streams matched the publication candidate, including image decoding parameters and soft masks. PDF container timestamps and identifiers are outside that comparison.
