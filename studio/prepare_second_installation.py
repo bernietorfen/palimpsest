@@ -16,6 +16,8 @@ EXTRAS={
     'a-choir-of-absences-notebook.pdf':'artwork/masters/a-choir-of-absences-notebook.pdf',
     'received-histories-companion.pdf':'artwork/received-history-art-001/received-histories-companion.pdf',
     'received-histories-print.pdf':'artwork/received-history-art-001/received-histories-print.pdf',
+    'the-observer-companion.pdf':'artwork/observer-art-002/the-observer-companion.pdf',
+    'the-origin-moves-print.pdf':'artwork/observer-art-002/the-origin-moves-print.pdf',
 }
 REPLACEMENTS={
     BASE+'v1.0.0/palimpsest-viewing-1080p.mp4':'/assets/generated/palimpsest-viewing.mp4',
@@ -25,6 +27,8 @@ REPLACEMENTS={
     BASE+'v2.0.0/a-choir-of-absences-notebook.pdf':'/assets/generated/a-choir-of-absences-notebook.pdf',
     BASE+'v2.0.0/received-histories-companion.pdf':'/assets/generated/received-histories-companion.pdf',
     BASE+'v2.0.0/received-histories-print.pdf':'/assets/generated/received-histories-print.pdf',
+    BASE+'v2.1.0/the-observer-companion.pdf':'/assets/generated/the-observer-companion.pdf',
+    BASE+'v2.1.0/the-origin-moves-print.pdf':'/assets/generated/the-origin-moves-print.pdf',
 }
 
 
@@ -76,7 +80,8 @@ Opening the HTML directly as file: is unsupported by browser origin rules.
 SECOND ACT / A choir of absences
 The complete 4:48 film; the seven-body playable choir; The witness, a matched
 before/after listening piece; three turnable sculptures; an eighteen-page
-artist's notebook; the received-history print and four-page research companion.
+artist's notebook; the received-history print and four-page research companion;
+the observer print and its three-page companion.
 Use a deliberate click to start sound. The live material
 can be saved to a JSON file and restored later; tab recovery is bounded.
 
@@ -114,7 +119,7 @@ Typeface license: site/assets/generated/font-license.txt.
                 archive.write(source,name,compress_type=zipfile.ZIP_STORED if compressed else zipfile.ZIP_DEFLATED,compresslevel=None if compressed else 6)
                 after=source.stat();assert (before.st_size,before.st_mtime_ns)==(after.st_size,after.st_mtime_ns)
             records.append({'path':name,'bytes':size,'sha256':digest})
-        content={'source_commit':args.source_commit,'files':records,'portable_changes':'Both films, three notebooks, the received-history companion and two print PDFs are local. Second-act glTF download uses the included browser mesh. Optional external catalog entries are marked Online. Range server binds only to loopback; Vercel configuration is omitted.'}
+        content={'source_commit':args.source_commit,'files':records,'portable_changes':'Both films, three notebooks, both research companions and three print PDFs are local. Second-act glTF download uses the included browser mesh. Optional external catalog entries are marked Online. Range server binds only to loopback; Vercel configuration is omitted.'}
         raw=(json.dumps(content,indent=2)+'\n').encode();archive.writestr('installation-content.json',raw,compress_type=zipfile.ZIP_DEFLATED,compresslevel=6)
     (out/'installation-content.json').write_bytes(raw);(out/'START-HERE.txt').write_bytes(start)
     manifest={'created_utc':datetime.now(timezone.utc).isoformat(),'source_commit':args.source_commit,'files':[{'name':p.name,'bytes':p.stat().st_size,'sha256':sha256(p)} for p in sorted(out.iterdir()) if p.is_file()],'installation_files':len(records)+1,'uncompressed_bytes':sum(r['bytes'] for r in records)}
@@ -122,4 +127,4 @@ Typeface license: site/assets/generated/font-license.txt.
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--output',default='artwork/two-acts-installation-001');p.add_argument('--source-commit',required=True);main(p.parse_args())
+    p=argparse.ArgumentParser();p.add_argument('--output',default='artwork/two-acts-installation-002');p.add_argument('--source-commit',required=True);main(p.parse_args())

@@ -1,0 +1,18 @@
+{
+  "engine": "chromium",
+  "realTouch": true,
+  "errors": [],
+  "spaceActivatesPause": true,
+  "touch": {
+    "hit": {
+      "dx": 0,
+      "dy": 28
+    },
+    "memory": 0.24871671
+  },
+  "storageFailureExplained": true,
+  "corruptImportAtomic": true,
+  "demonstrationEndsSeparated": true,
+  "undoRestoresPriorEncounterExactly": true,
+  "overflow": 0
+}

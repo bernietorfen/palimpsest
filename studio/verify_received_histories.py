@@ -26,7 +26,9 @@ def main(args):
         assert path.stat().st_size==item['bytes'] and sha256(path)==item['sha256'],path;count+=1
     protocol=json.loads((root/'protocol.json').read_text());summary=json.loads((root/'summary.json').read_text())
     orders=[''.join(p) for p in itertools.permutations('ABCD')];conditions=['connected','inscription-erased','wear-erased','both-erased']
-    assert protocol['orders']==orders and protocol['conditions']==conditions and protocol['rates']==[96,192] and protocol['batch_size']==1
+    rates=tuple(protocol['rates']);assert rates in ((96,192),(192,384))
+    assert protocol['orders']==orders and protocol['conditions']==conditions and protocol['batch_size']==1
+    if rates!=(96,192):assert protocol['follow_up_plan']=='research/OBSERVER-REFINEMENT-PLAN.md'
     assert summary['orders']==orders
     admission=np.load(root/'admission.npz');admission_report=json.loads((root/'admission.json').read_text())
     reference_path=root.parent/'received-histories-001/admission.npz';assert sha256(reference_path)==admission_report['reference_sha256'];reference=np.load(reference_path)
@@ -36,7 +38,7 @@ def main(args):
     assert np.array_equal(admission['pitch_reference'],reference['pitch_single'])
     pitch_error=float(np.max(np.abs(admission['pitch_reference'].astype(float)-admission['pitch_serial'])));assert pitch_error<=1e-4 and admission_report['passed'];check_number(pitch_error,admission_report['pitch_max_error_hz'])
     arrays={};reconstructed={};maximum_matrix_error=0.;erased_error=0.;interventions=0
-    for rate in (96,192):
+    for rate in rates:
         directory=root/f'rate-{rate:03d}';data=np.load(directory/'readouts.npz');pitches=data['pitch_hz'];fresh=data['fresh_pitch_hz']
         assert data['orders'].tolist()==orders and data['conditions'].tolist()==conditions
         assert pitches.shape==(24,4,2,289,12) and fresh.shape==(289,12)
@@ -81,15 +83,24 @@ def main(args):
                 reconstructed[str(rate)][condition][str(receiver+1)]={k:report[k] for k in ('minimum_hz','median_hz','maximum_hz','closest_pair')}
     cross=[]
     for receiver in range(2):
-        matrix=np.array([[distance(arrays[192][a,0,receiver],arrays[96][b,0,receiver]) for b in range(24)] for a in range(24)])
+        matrix=np.array([[distance(arrays[rates[1]][a,0,receiver],arrays[rates[0]][b,0,receiver]) for b in range(24)] for a in range(24)])
         saved=np.load(root/f'cross-rate-receiver-{receiver+1}.npz')['rms_hz'];maximum_matrix_error=max(maximum_matrix_error,float(np.max(np.abs(matrix-saved))))
         chosen=np.argmin(matrix,axis=1);unique=bool(np.all((matrix==matrix.min(axis=1)[:,None]).sum(axis=1)==1));own=int(np.sum(chosen==np.arange(24)));report=summary['cross_rate'][receiver]
         assert report['receiver']==receiver+1 and report['own_nearest']==own and report['all_unique']==unique and report['predicted_orders']==[orders[i] for i in chosen]
         for name,values in [('own_distances_hz',np.diag(matrix)),('nearest_distances_hz',matrix[np.arange(24),chosen]),('nearest_margin_hz',np.sort(matrix,axis=1)[:,1]-np.sort(matrix,axis=1)[:,0])]:assert np.max(np.abs(values-report[name]))<=1e-10
         cross.append({'receiver':receiver+1,'own_nearest':own,'all_unique':unique,'misidentified':[{'actual':orders[i],'predicted':orders[chosen[i]]} for i in range(24) if chosen[i]!=i]})
-    gate=all(reconstructed[str(rate)]['connected']['2']['minimum_hz']>.001 for rate in (96,192)) and cross[1]['own_nearest']==24 and cross[1]['all_unique'] and erased_error<=1e-6
+    repeated=None
+    if protocol.get('reference_study'):
+        reference=Path(protocol['reference_study']);repeated=json.loads((root/'repeated-rate-admission.json').read_text());assert sha256(reference/'manifest.json')==repeated['reference_manifest_sha256']
+        previous={item['path']:item for item in json.loads((reference/'manifest.json').read_text())['files']};checked=0
+        for path in sorted((root/f'rate-{rates[0]:03d}').rglob('*.npz')):
+            relative=str(path.relative_to(root));old=reference/relative;item=previous[relative];assert old.stat().st_size==item['bytes'] and sha256(old)==item['sha256']
+            current,saved=np.load(path),np.load(old);assert set(current.files)==set(saved.files)
+            for key in current.files:assert np.array_equal(current[key],saved[key]);checked+=1
+        assert checked==repeated['arrays_checked'] and repeated['every_array_identical']
+    gate=all(reconstructed[str(rate)]['connected']['2']['minimum_hz']>.001 for rate in rates) and cross[1]['own_nearest']==24 and cross[1]['all_unique'] and erased_error<=1e-6
     assert gate==summary['distant_receiver_gate_passed'] and maximum_matrix_error<1e-10
-    result={'verified_utc':datetime.now(timezone.utc).isoformat(),'study_manifest_sha256':sha256(root/'manifest.json'),'verified_files':count,'orders':24,'pairwise_cases_per_receiver_and_condition':276,'checked_retained_field_interventions':interventions,
+    result={'verified_utc':datetime.now(timezone.utc).isoformat(),'study_manifest_sha256':sha256(root/'manifest.json'),'verified_files':count,'rates':list(rates),'repeated_rate_admission':repeated,'orders':24,'pairwise_cases_per_receiver_and_condition':276,'checked_retained_field_interventions':interventions,
         'maximum_distance_reconstruction_error_hz':maximum_matrix_error,'both_erased_max_error_hz':erased_error,'field_interventions_exact':True,'distant_receiver_gate_passed':gate,'reconstructed':reconstructed,'cross_rate':cross,
         'scope':'Independent NumPy analysis of every saved trajectory and exact reconstruction of all initial field interventions. No independent reimplementation of the dynamics, audibility claim or continuum proof.'}
     output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2),flush=True)

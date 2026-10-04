@@ -1,0 +1,204 @@
+{
+  "verified_utc": "2026-10-04T11:48:25.852453+00:00",
+  "study_manifest_sha256": "583b144ba4df996c502ae588fad67db619d26e0b7ef673db85864ec2b3e237d5",
+  "verified_files": 166,
+  "rates": [
+    192,
+    384
+  ],
+  "repeated_rate_admission": {
+    "rate": 192,
+    "reference": "artifacts/studies/received-histories-002",
+    "reference_manifest_sha256": "76dcdfcc10e5a7f6728f3b6e15f5b6a95cd34267e895f4adc396f026bb5054ce",
+    "arrays_checked": 488,
+    "every_array_identical": true
+  },
+  "orders": 24,
+  "pairwise_cases_per_receiver_and_condition": 276,
+  "checked_retained_field_interventions": 768,
+  "maximum_distance_reconstruction_error_hz": 0.0,
+  "both_erased_max_error_hz": 0.0,
+  "field_interventions_exact": true,
+  "distant_receiver_gate_passed": true,
+  "reconstructed": {
+    "192": {
+      "connected": {
+        "1": {
+          "minimum_hz": 0.004685737984134365,
+          "median_hz": 0.19355751831522888,
+          "maximum_hz": 0.3379357317554475,
+          "closest_pair": [
+            "BDCA",
+            "DBCA"
+          ]
+        },
+        "2": {
+          "minimum_hz": 0.0021215307510176096,
+          "median_hz": 0.13584671074458388,
+          "maximum_hz": 0.25132200011982675,
+          "closest_pair": [
+            "CBDA",
+            "CDBA"
+          ]
+        }
+      },
+      "inscription-erased": {
+        "1": {
+          "minimum_hz": 0.0009423411770318297,
+          "median_hz": 0.17112854959874294,
+          "maximum_hz": 0.30790092035111205,
+          "closest_pair": [
+            "ABDC",
+            "BADC"
+          ]
+        },
+        "2": {
+          "minimum_hz": 0.00040069003726363823,
+          "median_hz": 0.05627851932525496,
+          "maximum_hz": 0.15046612333957735,
+          "closest_pair": [
+            "BDAC",
+            "DABC"
+          ]
+        }
+      },
+      "wear-erased": {
+        "1": {
+          "minimum_hz": 0.004217125058048427,
+          "median_hz": 0.09978734012371415,
+          "maximum_hz": 0.1633613336303941,
+          "closest_pair": [
+            "ABDC",
+            "ADBC"
+          ]
+        },
+        "2": {
+          "minimum_hz": 0.001981075079085022,
+          "median_hz": 0.09273795227931173,
+          "maximum_hz": 0.20912835374347083,
+          "closest_pair": [
+            "CBDA",
+            "CDBA"
+          ]
+        }
+      },
+      "both-erased": {
+        "1": {
+          "minimum_hz": 0.0,
+          "median_hz": 0.0,
+          "maximum_hz": 0.0,
+          "closest_pair": [
+            "ABCD",
+            "ABDC"
+          ]
+        },
+        "2": {
+          "minimum_hz": 0.0,
+          "median_hz": 0.0,
+          "maximum_hz": 0.0,
+          "closest_pair": [
+            "ABCD",
+            "ABDC"
+          ]
+        }
+      }
+    },
+    "384": {
+      "connected": {
+        "1": {
+          "minimum_hz": 0.004679307190756213,
+          "median_hz": 0.19294118275450134,
+          "maximum_hz": 0.3374025526335736,
+          "closest_pair": [
+            "BDCA",
+            "DBCA"
+          ]
+        },
+        "2": {
+          "minimum_hz": 0.0021288704592364207,
+          "median_hz": 0.1355419122732175,
+          "maximum_hz": 0.25114539242410006,
+          "closest_pair": [
+            "CBDA",
+            "CDBA"
+          ]
+        }
+      },
+      "inscription-erased": {
+        "1": {
+          "minimum_hz": 0.0009508477355866762,
+          "median_hz": 0.17081726359741134,
+          "maximum_hz": 0.30749346198217953,
+          "closest_pair": [
+            "ACBD",
+            "BCDA"
+          ]
+        },
+        "2": {
+          "minimum_hz": 0.00038885892989586984,
+          "median_hz": 0.05618381619000402,
+          "maximum_hz": 0.15023752718951336,
+          "closest_pair": [
+            "BDAC",
+            "DABC"
+          ]
+        }
+      },
+      "wear-erased": {
+        "1": {
+          "minimum_hz": 0.004220303847243084,
+          "median_hz": 0.09943216779753145,
+          "maximum_hz": 0.16302956307512725,
+          "closest_pair": [
+            "ABDC",
+            "ADBC"
+          ]
+        },
+        "2": {
+          "minimum_hz": 0.001978580159434009,
+          "median_hz": 0.092813485154255,
+          "maximum_hz": 0.2087940487296341,
+          "closest_pair": [
+            "CBDA",
+            "CDBA"
+          ]
+        }
+      },
+      "both-erased": {
+        "1": {
+          "minimum_hz": 0.0,
+          "median_hz": 0.0,
+          "maximum_hz": 0.0,
+          "closest_pair": [
+            "ABCD",
+            "ABDC"
+          ]
+        },
+        "2": {
+          "minimum_hz": 0.0,
+          "median_hz": 0.0,
+          "maximum_hz": 0.0,
+          "closest_pair": [
+            "ABCD",
+            "ABDC"
+          ]
+        }
+      }
+    }
+  },
+  "cross_rate": [
+    {
+      "receiver": 1,
+      "own_nearest": 24,
+      "all_unique": true,
+      "misidentified": []
+    },
+    {
+      "receiver": 2,
+      "own_nearest": 24,
+      "all_unique": true,
+      "misidentified": []
+    }
+  ],
+  "scope": "Independent NumPy analysis of every saved trajectory and exact reconstruction of all initial field interventions. No independent reimplementation of the dynamics, audibility claim or continuum proof."
+}

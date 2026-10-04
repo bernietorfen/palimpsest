@@ -1,0 +1,26 @@
+{
+  "verified_utc": "2026-10-04T11:48:26.238360+00:00",
+  "diagnostic_manifest_sha256": "90233b4ffb275bc40117cd08958969f1a11748a1e8fd1398059b5487365a76e1",
+  "rates": [
+    192,
+    384
+  ],
+  "files_hashed": 4,
+  "maximum_matrix_error_hz": 1.1102230246251565e-16,
+  "maximum_contrast_identity_error_squared_hz": 0.0,
+  "receivers": [
+    {
+      "receiver": 1,
+      "raw_own_matches": 24,
+      "translated_own_matches": 24,
+      "common_fraction": 0.989350546066034
+    },
+    {
+      "receiver": 2,
+      "raw_own_matches": 24,
+      "translated_own_matches": 24,
+      "common_fraction": 0.9644449193128243
+    }
+  ],
+  "scope": "Separate per-pair Euclidean norm reconstruction of all diagnostic distances, labels, margins, common/residual components and wrong-match contrasts. The full balanced collection defines the translation; original raw-reader results remain unchanged."
+}

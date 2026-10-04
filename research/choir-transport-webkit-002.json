@@ -1,0 +1,24 @@
+{
+  "engine": "webkit",
+  "base": "http://127.0.0.1:8766",
+  "errors": [],
+  "delayedFrame": {
+    "running": "false",
+    "button": "Resume",
+    "materialRunning": "true"
+  },
+  "openedWhilePlaying": {
+    "audioState": "suspended",
+    "running": "false",
+    "materialRunning": "false",
+    "time": "3.135417"
+  },
+  "soundPreferenceWhilePaused": {
+    "audioState": "suspended",
+    "running": "false"
+  },
+  "soundResumesWithMaterial": true,
+  "pauseIntentSurvivesOldFrame": true,
+  "importSuspendsSound": true,
+  "pausedSoundPreferenceStaysSuspended": true
+}

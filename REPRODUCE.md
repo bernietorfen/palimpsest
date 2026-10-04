@@ -263,3 +263,43 @@ own producing snapshot. The separate
 research companion preserves the eighteen-page second-act notebook unchanged.
 Both PDFs and the received-history print are included in the two-act portable
 installation, alongside the first-act notebooks and three-grid print.
+
+## The observer and third timestep
+
+The v2.1.0 observer archive is self-contained for the original 24-order study,
+its rejected packing admission, the declared 192/384-step follow-up, both offset
+diagnostics and the observer artwork. Its producing snapshots retain the exact
+code used in each run. The earlier full-performance archive remains in v2.0.0.
+
+On the restored observer record, use new verification output paths:
+
+```sh
+python -m studio.verify_received_histories \
+  --study artifacts/studies/received-refinement-001 \
+  --output research/refinement-rechecked.json
+python -m studio.verify_observer_offset \
+  --study artifacts/studies/observer-offset-001 \
+  --output research/offset-first-rechecked.json
+python -m studio.verify_observer_offset \
+  --study artifacts/studies/observer-offset-002 \
+  --output research/offset-second-rechecked.json
+python -m studio.observer_offset_art --output artwork/observer-art-rebuilt
+```
+
+For new generation into an empty study path, `studio.received_histories` accepts
+`--rates 192 384 --follow-up-plan research/OBSERVER-REFINEMENT-PLAN.md
+--reference-study artifacts/studies/received-histories-002`. It repeats all
+192-step arrays and requires their exact agreement with the preserved reference
+before beginning 384 steps. The default 96/192 experiment is unchanged. A
+nondefault rate pair requires the declared plan and a reference study.
+
+The offset diagnostic uses the complete balanced collection to establish a
+common origin. It does not replace the original raw reader or provide a test
+of one unknown history. The geometric print uses exact own/rival projections;
+its companion explicitly preserves the original six mistaken matches.
+
+The v2.1.0 portable installation also includes the observer companion and print.
+Its choir keeps the user's transport intent separate from delayed worker frames,
+and importing a saved encounter suspends active sound. Changing the sound
+preference while paused leaves the audio context suspended until Resume. The material equations
+and saved-state format are unchanged.

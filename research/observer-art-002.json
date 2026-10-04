@@ -1,0 +1,120 @@
+{
+  "created_utc": "2026-10-04T11:57:33.863026+00:00",
+  "input_sha256": {
+    "artifacts/studies/observer-offset-001/report.json": "8ff75185d9298903e31eff0ec571ae63cbc9e14357109eb51a9b2ed8aa952c8f",
+    "artifacts/studies/observer-offset-002/report.json": "450763514a2e373f25869b981f0299454f49b0b136ff476b909470a6d552cda8",
+    "artifacts/studies/received-refinement-001/summary.json": "0d85f18ea48c4483c537218a57e4d85a3f4d341e7d9467e1adf33af50557f44e"
+  },
+  "source_sha256": {
+    "studio/observer_offset_art.py": "510251af15c708d27bdbd575f5f2c145a01ae066f2642961514be9a1892379bd",
+    "studio/observer_offset.py": "17a68d6acd38d961fa7f7b9437252b3e4d54325d26c1a960f3c8327dc9b63582",
+    "studio/verify_observer_offset.py": "b1c3fa76957cc525f6a0124a957b84bff6cabf26c6d0458b448dc6d7ec2b12c1",
+    "studio/notebook.py": "0d834cab36920bc72efc7c754785239dada0d1596a6d93d420229cee3fb798ec",
+    "studio/received_history_art.py": "87caa15112adb53461cd59e46c3c5e5654d18aa7b00c6af34fc3da124a4e6b6b",
+    "research/OBSERVER-REFINEMENT-PLAN.md": "a2c456da1b7a0789108305516599339464066dde8bf335dd14b2a78a1598207f",
+    "research/OBSERVER-REFINEMENT-RESULTS.md": "1deb851f6472486c856cd1eb4cdcf4f91ce073641415f256946369affdd2583d"
+  },
+  "exact_pair_projections": [
+    {
+      "own": "BACD",
+      "rival": "ABCD",
+      "raw_projection": 0.6491151029934112,
+      "aligned_projection": 0.020046696114180043,
+      "unit_hz": 0.009302229036173573
+    },
+    {
+      "own": "BADC",
+      "rival": "ABDC",
+      "raw_projection": 0.6974252496539702,
+      "aligned_projection": 0.08567531797327435,
+      "unit_hz": 0.006647033931039294
+    },
+    {
+      "own": "BDAC",
+      "rival": "DBAC",
+      "raw_projection": 0.7487949814781234,
+      "aligned_projection": 0.049489310641255904,
+      "unit_hz": 0.01063703027909888
+    },
+    {
+      "own": "BDCA",
+      "rival": "DBCA",
+      "raw_projection": 0.7197680020173303,
+      "aligned_projection": 0.023824660623627116,
+      "unit_hz": 0.004690257617942541
+    },
+    {
+      "own": "DABC",
+      "rival": "BDAC",
+      "raw_projection": 0.5353234114821094,
+      "aligned_projection": 0.043662472787416425,
+      "unit_hz": 0.016005385845746223
+    },
+    {
+      "own": "DCBA",
+      "rival": "BCDA",
+      "raw_projection": 0.560568057233391,
+      "aligned_projection": -0.06573972226876189,
+      "unit_hz": 0.009828991912447939
+    }
+  ],
+  "companion": {
+    "pages": 3,
+    "pdf_sha256": "50eb4e6fc4884ea0b6780da15e691d3c86a614e0e8cdf68971bbb9383a51a605",
+    "embedded_image_sha256": {
+      "artwork/observer-art-002/six-comparisons.png": "6a883dc91adb99768b68d64a430a6e22ca3159033f73447c229cf1349be66c2d"
+    },
+    "page_inventory": [
+      {
+        "page": 1,
+        "label": "After the first result",
+        "images": [
+          "artwork/observer-art-002/six-comparisons.png"
+        ]
+      },
+      {
+        "page": 2,
+        "label": "One encounter, three clocks",
+        "images": []
+      },
+      {
+        "page": 3,
+        "label": "The observation",
+        "images": []
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "six-comparisons.pdf",
+      "bytes": 23515,
+      "sha256": "93bdb087c06fbef653a9ca16691b93007ec9d121e19b808b07c1bd734bd9a834"
+    },
+    {
+      "path": "six-comparisons.png",
+      "bytes": 101480,
+      "sha256": "6a883dc91adb99768b68d64a430a6e22ca3159033f73447c229cf1349be66c2d"
+    },
+    {
+      "path": "the-observer-companion.pdf",
+      "bytes": 170791,
+      "sha256": "50eb4e6fc4884ea0b6780da15e691d3c86a614e0e8cdf68971bbb9383a51a605"
+    },
+    {
+      "path": "the-origin-moves-6000x4500.png",
+      "bytes": 422339,
+      "sha256": "28bc7fe29f87b2e24f0118023d853cee7c610a23d6a95c27ef23f6ad12662bd1"
+    },
+    {
+      "path": "the-origin-moves-print.pdf",
+      "bytes": 66315,
+      "sha256": "b22168bf7f7df203b3d0c67c1fc5d628c10e2b250cf137c883b31f67bf35e45e"
+    },
+    {
+      "path": "the-origin-moves.jpg",
+      "bytes": 148551,
+      "sha256": "e9617832c3dbf8e9f0551049e90fd20459c7faacf92aa4d4896a58d90b34f524"
+    }
+  ],
+  "scope": "Original vector artwork from exact pair-decision projections, with an explicitly post-result observer analysis and fixed third-timestep follow-up. Raw-reader outcomes are preserved."
+}

@@ -2,16 +2,17 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {chromium,webkit} from '../.tools/browser/node_modules/playwright/index.mjs';
+import {screenshotEvidence} from './browser_screenshot.mjs';
 const browserName=process.argv[2]??'chromium',output=process.argv[3]??'output/playwright/choir-browser-001',base=process.argv[4]??'http://127.0.0.1:8765';
 if(fs.existsSync(output))throw new Error('Use a new evidence directory');fs.mkdirSync(output,{recursive:true});
 const browser=await (browserName==='webkit'?webkit:chromium).launch({headless:true,args:browserName==='chromium'?['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']:[]});
 const context=await browser.newContext({viewport:{width:1440,height:1080},deviceScaleFactor:1,reducedMotion:'reduce',acceptDownloads:true});
-const page=await context.newPage(),errors=[],consoleErrors=[];page.setDefaultTimeout(45000);page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text());});
-const result={browser:browserName,errors,consoleErrors};
+const page=await context.newPage(),errors=[],consoleErrors=[];page.setDefaultTimeout(45000);page.on('pageerror',e=>errors.push(e.message));const evidence=screenshotEvidence(page,browserName,consoleErrors),capture=evidence.capture;
+const result={browser:browserName,base,errors,consoleErrors,screenshotInstrumentationWarnings:evidence.warnings};
 try{
  await page.goto(base+'/choir.html');
  await page.waitForFunction(()=>document.body.dataset.ready==='true'&&document.querySelector('#choir-clock').dataset.time!==undefined);
- await page.screenshot({path:output+'/entry.jpg',type:'jpeg',quality:76});
+ await capture(page,{path:output+'/entry.jpg',type:'jpeg',quality:76});
  await page.locator('#enter-sound').click();await page.waitForFunction(()=>document.body.dataset.running==='true');
  await page.locator('.choir-voice[data-body="1"]').click();await page.keyboard.down('Space');
  await page.waitForFunction(()=>Number(document.querySelector('#choir-clock').dataset.time)>10);
@@ -20,12 +21,12 @@ try{
  result.audioPeak=await page.evaluate(()=>Number(document.body.dataset.audioPeak));
  assert(result.written[1].memory>.1,'The touched body did not retain a trace');assert(result.written[0].memory>.001,'Its untouched neighbour did not retain a trace');assert(result.audioPeak>.0001,'The worklet did not synthesize a signal');
  await page.locator('#connections').click();await page.waitForFunction(()=>document.querySelector('#connections').textContent==='Rejoin the circle');
- await page.locator('#pause').click();await page.waitForFunction(()=>document.body.dataset.running==='false');
+ result.beforePause=await page.locator('body').evaluate(b=>({running:b.dataset.running,materialRunning:b.dataset.materialRunning,hidden:document.hidden}));if(result.beforePause.running==='true')await page.locator('#pause').click();await page.waitForFunction(()=>document.body.dataset.running==='false'&&document.body.dataset.materialRunning==='false');
  await page.locator('#settle').click();await page.waitForFunction(()=>document.querySelector('#scene-caption').textContent==='Motion cleared; inscriptions remain');
  await page.waitForTimeout(250);result.pausedTime=await page.locator('#choir-clock').getAttribute('data-time');await page.waitForTimeout(300);assert.equal(await page.locator('#choir-clock').getAttribute('data-time'),result.pausedTime);
  const download=async(id,path)=>{const [d]=await Promise.all([page.waitForEvent('download'),page.locator(id).click()]);await d.saveAs(path);return JSON.parse(fs.readFileSync(path,'utf8'));};
  const state=await download('#save',output+'/saved.json');assert(state.gates.every(v=>v===0));assert(state.bodies.every(b=>b.v.every(v=>v===0)));
- await page.screenshot({path:output+'/written.jpg',type:'jpeg',quality:79});
+ await capture(page,{path:output+'/written.jpg',type:'jpeg',quality:79});
  await page.locator('#new').click();await page.waitForFunction(()=>Number(document.querySelector('#choir-clock').dataset.time)===0);assert((await page.locator('.choir-voice').evaluateAll(b=>b.map(x=>Number(x.dataset.memory)))).every(v=>v===0));
  await page.locator('#open').setInputFiles(output+'/saved.json');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Encounter opened'));
  const restored=await download('#save',output+'/restored.json');assert.deepEqual(restored,state);result.exactFileRoundtrip=true;
@@ -37,4 +38,4 @@ try{
  const scene=JSON.parse(fs.readFileSync('site/choir-scene.json','utf8'));assert(scene.connections.every((e,i)=>isolated.gates[i]===(e.first[0]===1||e.second[0]===1?0:1)));result.isolation=true;
  result.overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);assert.equal(result.overflow,0);assert.deepEqual(errors,[]);assert.deepEqual(consoleErrors,[]);
  console.log(JSON.stringify(result,null,2));fs.writeFileSync(output+'/report.json',JSON.stringify(result,null,2)+'\n');
-}catch(error){result.failure=error.message;result.visibleError=await page.locator('#preparing').textContent().catch(()=>null);await page.screenshot({path:output+'/failure.jpg',type:'jpeg',quality:72}).catch(()=>{});console.log(JSON.stringify(result,null,2));throw error;}finally{await browser.close();}
+}catch(error){result.failure=error.message;result.visibleError=await page.locator('#preparing').textContent().catch(()=>null);await capture(page,{path:output+'/failure.jpg',type:'jpeg',quality:72}).catch(()=>{});console.log(JSON.stringify(result,null,2));throw error;}finally{await browser.close();}

@@ -84,13 +84,16 @@ def summarize(distance,labels):
 
 
 def main(args):
+    rates=tuple(args.rates)
+    if len(rates)!=2 or rates[0]<96 or rates[1]!=2*rates[0] or any(r%24 for r in rates):raise ValueError('Use two halving timesteps at integral 24 Hz readouts')
+    if rates!=(96,192) and (not args.follow_up_plan or not args.reference_study):raise ValueError('A changed rate pair requires its declared plan and preserved reference')
     torch.set_num_threads(2);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False;torch.set_float32_matmul_precision('highest')
     out=Path(args.output);out.mkdir(parents=True,exist_ok=False);hashes={}
-    for relative in SOURCES:
+    for relative in (*SOURCES,*([args.follow_up_plan] if args.follow_up_plan else [])):
         target=out/'source'/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(relative,target);hashes[relative]=sha256(Path(relative))
-    labels=[label(o) for o in ORDERS];protocol={'created_utc':datetime.now(timezone.utc).isoformat(),'plan':'research/RECEIVED-HISTORIES-PROTOCOL.md','execution_revision':'research/RECEIVED-HISTORIES-REVISION-001.md','source_sha256':hashes,'rates':[96,192],'size':64,'write_seconds':30,'probe_seconds':12,'probe_hz':24,'orders':labels,'tokens':TOKENS,'onsets':ONSETS,'conditions':CONDITIONS,'batch_size':1}
+    labels=[label(o) for o in ORDERS];protocol={'created_utc':datetime.now(timezone.utc).isoformat(),'plan':'research/RECEIVED-HISTORIES-PROTOCOL.md','execution_revision':'research/RECEIVED-HISTORIES-REVISION-001.md','follow_up_plan':args.follow_up_plan,'reference_study':args.reference_study,'source_sha256':hashes,'rates':list(rates),'size':64,'write_seconds':30,'probe_seconds':12,'probe_hz':24,'orders':labels,'tokens':TOKENS,'onsets':ONSETS,'conditions':CONDITIONS,'batch_size':1}
     (out/'protocol.json').write_text(json.dumps(protocol,indent=2)+'\n');began=time.monotonic();admission(out);rate_data={};rate_reports={}
-    for rate in (96,192):
+    for rate in rates:
         root=out/f'rate-{rate:03d}';root.mkdir();cfg=MaterialConfig(size=64,dt=1/rate,feedback=.08)
         all_pitches=np.empty((24,4,2,289,12),dtype=np.float32);fresh=None;controls=[]
         for start in range(24):
@@ -130,19 +133,27 @@ def main(args):
         np.savez_compressed(root/'distances.npz',rms_hz=distances,orders=np.array(labels),conditions=np.array(CONDITIONS))
         report={'rate':rate,'observations':{condition:{str(receiver+1):summarize(distances[c,receiver],labels) for receiver in range(2)} for c,condition in enumerate(CONDITIONS)},'controls':controls,'erasure_controls_pass':all(r['both_erased_max_error_hz']<=1e-6 for r in controls)}
         (root/'report.json').write_text(json.dumps(report,indent=2)+'\n');rate_data[rate]=all_pitches;rate_reports[str(rate)]=report
+        if rate==rates[0] and args.reference_study:
+            reference=Path(args.reference_study);reference_manifest=json.loads((reference/'manifest.json').read_text());expected={item['path']:item for item in reference_manifest['files']};checked=0
+            for path in sorted(root.rglob('*.npz')):
+                relative=str(path.relative_to(out));old=reference/relative;item=expected[relative];assert old.stat().st_size==item['bytes'] and sha256(old)==item['sha256']
+                current,saved=np.load(path),np.load(old);assert set(current.files)==set(saved.files)
+                for key in current.files:assert np.array_equal(current[key],saved[key]),(relative,key);checked+=1
+            (out/'repeated-rate-admission.json').write_text(json.dumps({'rate':rate,'reference':str(reference),'reference_manifest_sha256':sha256(reference/'manifest.json'),'arrays_checked':checked,'every_array_identical':True},indent=2)+'\n')
+            print(json.dumps({'repeated_rate_admission':True,'rate':rate,'arrays_checked':checked}),flush=True)
     cross=[]
     for receiver in range(2):
-        fine=rate_data[192][:,0,receiver].astype(np.float64);coarse=rate_data[96][:,0,receiver].astype(np.float64)
+        fine=rate_data[rates[1]][:,0,receiver].astype(np.float64);coarse=rate_data[rates[0]][:,0,receiver].astype(np.float64)
         distances=np.sqrt(np.mean((fine[:,None]-coarse[None,:])**2,axis=(-2,-1)));nearest=distances.argmin(axis=1);ties=(distances==distances.min(axis=1)[:,None]).sum(axis=1)
         np.savez_compressed(out/f'cross-rate-receiver-{receiver+1}.npz',rms_hz=distances,orders=np.array(labels))
         cross.append({'receiver':receiver+1,'own_nearest':int((nearest==np.arange(24)).sum()),'all_unique':bool((ties==1).all()),'predicted_orders':[labels[i] for i in nearest],
             'own_distances_hz':np.diag(distances).tolist(),'nearest_distances_hz':distances[np.arange(24),nearest].tolist(),'nearest_margin_hz':(np.sort(distances,axis=1)[:,1]-np.sort(distances,axis=1)[:,0]).tolist()})
     summary={'finished_utc':datetime.now(timezone.utc).isoformat(),'seconds':time.monotonic()-began,'orders':labels,'rates':rate_reports,'cross_rate':cross,
-        'distant_receiver_gate_passed':all(rate_reports[str(rate)]['observations']['connected']['2']['minimum_hz']>.001 and rate_reports[str(rate)]['erasure_controls_pass'] for rate in (96,192)) and cross[1]['own_nearest']==24 and cross[1]['all_unique'],
+        'distant_receiver_gate_passed':all(rate_reports[str(rate)]['observations']['connected']['2']['minimum_hz']>.001 and rate_reports[str(rate)]['erasure_controls_pass'] for rate in rates) and cross[1]['own_nearest']==24 and cross[1]['all_unique'],
         'scope':'The complete selected four-token order universe in an invented finite material. All outcomes and erasures retained. Timestep consistency is not continuum convergence, human audibility, physical capacity or infinite-time rank.'}
     (out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');members=[{'path':str(p.relative_to(out)),'bytes':p.stat().st_size,'sha256':sha256(p)} for p in sorted(out.rglob('*')) if p.is_file()]
     (out/'manifest.json').write_text(json.dumps({'source_sha256':hashes,'files':members},indent=2)+'\n');print(json.dumps(summary,indent=2),flush=True)
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--output',default='artifacts/studies/received-histories-002');main(p.parse_args())
+    p=argparse.ArgumentParser();p.add_argument('--output',default='artifacts/studies/received-histories-002');p.add_argument('--rates',nargs=2,type=int,default=[96,192]);p.add_argument('--follow-up-plan');p.add_argument('--reference-study');main(p.parse_args())

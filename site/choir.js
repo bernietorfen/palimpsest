@@ -39,8 +39,9 @@ async function start(withSound){
   }catch(error){say(`${error.message}. You can enter silently.`);}finally{starting=false;controls();}
 }
 function requestRecovery(force=false){if(!started||failed||recovering||pendingRecovery||!worker||(!force&&performance.now()-lastRecovery<5000))return;pendingRecovery=++snapshotRequest;lastRecovery=performance.now();send({type:'snapshot',request:pendingRecovery});}
+function quietSound(){voiceNode?.port.postMessage({type:'quiet'});audio?.suspend().catch(()=>{});}
 function pause(message='Paused. The choir keeps its history.'){
-  if(!started)return;running=false;spaceHeld=false;send({type:'pause'});voiceNode?.port.postMessage({type:'quiet'});audio?.suspend().catch(()=>{});say(message);controls();requestRecovery(true);
+  if(!started)return;running=false;spaceHeld=false;send({type:'pause'});quietSound();say(message);controls();requestRecovery(true);
 }
 function touch(hit,event){
   if(!running)return;selected=hit.body;demo=false;controls();const pen=event?.pointerType==='pen'&&event.pressure>0?event.pressure:1;
@@ -56,7 +57,9 @@ function updateLabels(matrix){
 function frame(data){
   const newGeneration=latest&&latest.generation!==data.generation;
   document.body.dataset.materialRunning=String(data.running);
-  latest={...data,fields:null};running=data.running;demo=data.demo;selected=data.selected;connected=data.gates.some(g=>g>.005);renderer.update(data);
+  // A queued frame describes past worker state; transport intent belongs to
+  // the most recent user action. The separate dataset records its actual ack.
+  latest={...data,fields:null};demo=data.demo;selected=data.selected;connected=data.gates.some(g=>g>.005);renderer.update(data);
   send({type:'recycle',fields:data.fields},[data.fields.buffer]);
   $('#choir-clock').textContent=timeLabel(data.diagnostics.time);$('#choir-clock').dataset.time=data.diagnostics.time.toFixed(6);$('#scene-caption').textContent=data.phase;
   data.diagnostics.bodies.forEach((body,i)=>{const button=voiceButtons[i];button.dataset.memory=body.memory_rms.toFixed(8);button.querySelector('small').textContent=body.memory_rms<.0001?'unwritten':'inscribed';const bars=button.querySelectorAll('rect');data.readout[i].amplitude.forEach((a,m)=>{const height=Math.max(.4,Math.min(21,Math.sqrt(Math.max(0,a))*23));bars[m].setAttribute('y',String(22-height));bars[m].setAttribute('height',String(height));});});
@@ -69,7 +72,7 @@ function onMessage({data}){
   }else if(data.type==='snapshot'){
     if(saving.delete(data.request)){download(JSON.stringify(data.state),'palimpsest-encounter.json','application/json');say('Encounter saved: bodies, connections, motion and history.');}
     if(data.request===pendingRecovery){pendingRecovery=0;try{sessionStorage.setItem(RECOVERY,JSON.stringify(data.state));$('#recovery').textContent=`A recovery copy at ${timeLabel(data.state.bodies[0].steps*data.state.bodies[0].config.dt)} stays in this tab. Save a file to keep it.`;$('#recovery').dataset.saved='true';}catch{$('#recovery').textContent='This tab could not keep a recovery copy. Save a file to keep the encounter.';$('#recovery').dataset.saved='false';}}
-  }else if(data.type==='restored'){recovering=false;started=true;running=false;failed=false;$('#choir-entry').hidden=true;say(data.source==='recovery'?'Recovered the recent encounter. Resume when you are ready.':'Encounter opened. Resume when you are ready.');controls();requestRecovery(true);}
+  }else if(data.type==='restored'){recovering=false;started=true;running=false;spaceHeld=false;failed=false;quietSound();$('#choir-entry').hidden=true;say(data.source==='recovery'?'Recovered the recent encounter. Resume when you are ready.':'Encounter opened. Resume when you are ready.');controls();requestRecovery(true);}
   else if(data.type==='undo'){$('#undo').hidden=!data.available;}
   else if(data.type==='demo-ended'){demo=false;say('The connections have gone. Touch a voice and hear what it has kept.');controls();}
   else if(data.type==='error'||data.type==='fault'){if(data.type==='fault'){failed=true;pause();}recovering=false;if(data.request===pendingRecovery)pendingRecovery=0;saving.delete(data.request);say(data.message);controls();}
@@ -88,7 +91,7 @@ async function initialize(){
 }
 $('#enter-sound').addEventListener('click',()=>start(true));$('#enter-silent').addEventListener('click',()=>start(false));
 $('#pause').addEventListener('click',()=>running?pause():start(soundEnabled));
-$('#sound').addEventListener('click',async()=>{if(soundEnabled){soundEnabled=false;voiceNode?.port.postMessage({type:'quiet'});await audio?.suspend();}else{try{await prepareAudio();soundEnabled=true;audioControl();}catch(error){say(error.message);}}controls();});
+$('#sound').addEventListener('click',async()=>{if(soundEnabled){soundEnabled=false;voiceNode?.port.postMessage({type:'quiet'});await audio?.suspend();}else{try{if(running)await prepareAudio();soundEnabled=true;audioControl();}catch(error){say(error.message);}}controls();});
 $('#volume').addEventListener('input',()=>{if(gain)gain.gain.setTargetAtTime(Number($('#volume').value)/100,audio.currentTime,.04);});
 $('#view-home').addEventListener('click',()=>renderer?.reset());
 for(const mode of ['touch','turn'])$('#mode-'+mode).addEventListener('click',()=>{renderer.mode=mode;release();$('#mode-touch').setAttribute('aria-pressed',String(mode==='touch'));$('#mode-turn').setAttribute('aria-pressed',String(mode==='turn'));$('#touch-hint').textContent=mode==='touch'?'Touch a vessel · Drag the space to turn':'Drag to turn · Scroll or pinch to approach';});

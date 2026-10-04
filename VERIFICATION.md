@@ -158,3 +158,41 @@ scale, and an explicit harmonic projection recorded in its manifest. Its four-
 page companion includes the failed admission and six nearer-receiver matching
 errors. All five PDF pages pass extracted-word margin checks; the print and all
 four companion pages are rendered for visual inspection.
+
+## The observer and final transport checks
+
+The declared third-timestep run repeats all 488 arrays from the earlier
+192-step calculation exactly before starting any 384-step histories. The
+independent study verifier checks all fields, erasures, distances and choices.
+Both receivers now return 24 of 24 own matches under the original unadjusted
+192/384 reader; the distant numerical gate remains satisfied. The original
+96/192 raw count of 18 near and 24 distant remains in the earlier record.
+
+Separate per-pair norm analysis verifies both offset diagnostics to a maximum
+matrix discrepancy of 1.11e-16 Hz. For the original near receiver, a common shift
+accounts for 99.1753% of mean squared timestep discrepancy; removing it changes
+all six wrong pair comparisons to the correct side of their exact equal-distance
+boundaries. This is explicitly a post-result diagnostic of the whole collection.
+It is not a held-out reader of one unknown response or an audibility result.
+
+The new print and all three observer companion pages pass PDF margin checks
+and rendered inspection. An overlapping plot title was corrected in artwork
+revision 002; the first rendering and proof remain in the private production
+record.
+
+A real delayed worker-frame regression reproduced two live-interface defects:
+the old frame could overwrite a user's visible Pause intent, and importing a
+file while playing left its AudioContext running. Both now pass in Chromium
+and WebKit: Pause remains Resume when the old frame arrives, and successful
+import suspends sound while preserving the restored material state.
+A separate failing reproduction also showed that toggling sound while paused
+resumed the audio context. The corrected behavior keeps it suspended until
+Resume; the expanded transport regression passes in both engines. A full
+72-second demonstration, touch writing, corrupt-import rejection and exact
+Undo also pass after the transport-intent change.
+
+Production checks exercise the deployed CSP. Playwright's WebKit screenshot
+hook injects a literal `body {}` stylesheet to synchronize animations, which
+that CSP correctly blocks. A separate diagnostic identifies this test-only
+source; evidence helpers record its warning per screenshot while still failing
+on application console errors. The deployed policy has not been weakened.
