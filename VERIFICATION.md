@@ -296,3 +296,19 @@ observer section. All 27 current catalog destinations returned HTTP 200.
 Receipts: `origin-production-chromium-003.json`,
 `origin-production-webkit-001.json`, `moving-origin-gallery-001.json` and
 `exhibition-links-010.json`.
+
+## An explicit frozen-mechanics clock
+
+The analytical afterword derives a full finite-grid stiffness bound from the
+actual RMS port normalization and bead-chain mass. Exact rational arithmetic
+certifies the conservatively rounded one-percent statements at 60 and 30
+seconds. Independent chain-matrix checks, 36 full-grid perturbations and 26
+nonlinear modified-energy checks pass; the largest normalized derivative
+identity error is 1.980e-16. These computational checks support the written
+proof and are not a proof-assistant certificate. The one-page vector figure
+was rendered from its PDF and visually inspected with no text overlap.
+
+The general method is established damped-gradient analysis. The result applies
+to the frozen, unforced, continuous-time finite model about each retained
+history's own equilibrium. The active artwork and its finite-step update lie
+outside those assumptions.

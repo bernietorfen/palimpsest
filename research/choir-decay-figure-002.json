@@ -1,0 +1,17 @@
+{
+  "verified_utc": "2026-10-04T14:39:43.388063+00:00",
+  "pages": 1,
+  "page_points": [
+    842.4,
+    597.6
+  ],
+  "words": 110,
+  "all_word_bounds_on_page": true,
+  "pdf_sha256": "5ef2109cc46a826846db394aae307b940c76322327be7d6634c8b9fe7d198b02",
+  "svg_sha256": "6c18ed783b413d89fe2cfc4ab7ceb07fdd439c121891a5169cc28d37d06d5651",
+  "render_sha256": "243b34c33104171baeb0cce465881ed9d8745b3b3c072b3eb3b2b5ecef15949e",
+  "figure_manifest_sha256": "8bf3986a22ba98ef16e0935a4abe025c260d3ca01ff961a31964030334c7ec06",
+  "rendered_pdf_visually_inspected": true,
+  "visible_overlap_found": false,
+  "scope": "One-page print rendered with Poppler and visually inspected; text bounds independently checked. The plotted lines are analytical ceilings."
+}

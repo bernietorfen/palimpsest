@@ -82,3 +82,18 @@ The work claims an original construction and composition. It does not claim to b
 The final continuation follows the same mark through 128, 256 and 512 samples per side. Every one of the 120 histories retains its nearest own label across all tested spatial comparisons. [The three-grid record](research/SPATIAL-RESULTS.md) reports the fixed echo registration, measured differences and limits. The [complete notebook edition](https://github.com/bernietorfen/palimpsest/releases/tag/v1.3.0) brings the film, playable instrument, pressure study and spatial follow-up together in 24 illustrated pages, alongside a new 27-megapixel print and reproducible records. The original 18-page notebook remains in the first edition.
 
 The [portable installation](https://github.com/bernietorfen/palimpsest/releases/tag/v1.4.0) gathers the complete 1080p film, all interactive works, example files, fonts and complete notebook into one ZIP. Extract it and use the included loopback-server instructions. The viewing and playing experience works without an external connection; optional links marked Online lead to the larger masters and records.
+
+## A clock for the quiet choir
+
+The analytical afterword asks how quickly the unforced mechanics can settle
+while their retained fields stay fixed. A full finite-grid argument gives
+conservative one-percent excess-energy ceilings of 60 seconds with all twelve
+bridges held at full strength and 30 seconds for separate bodies. Each history
+has its own equilibrium. These bounds do not compare actual trajectories or
+apply to the active, driven artwork.
+
+[Read the proof](research/CHOIR-DECAY.md), inspect the
+[exact certificates and numerical checks](research/CHOIR-DECAY-RESULTS.md), or
+[download the vector print and compact reconstruction record](https://github.com/bernietorfen/palimpsest/releases/tag/v2.3.0).
+The [complete playable installation](https://github.com/bernietorfen/palimpsest/releases/tag/v2.2.0)
+remains the entrance to both acts.

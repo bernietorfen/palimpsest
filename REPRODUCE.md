@@ -328,3 +328,22 @@ source hashes. The supplied specimen is an actual export at the fourth crossing.
 
 The complete two-act portable ZIP includes this work, its fonts and coefficients.
 Earlier frozen editions retain their own source identities and files.
+
+## Quiet-choir analytical afterword
+
+The v2.3.0 analytical supplement includes `quiet-choir-record.tar.gz` and its
+complete file-hash manifest. Extract it into a new directory. Its two existing
+NPZ inputs, scene, proof and source are sufficient for the declared checks;
+no earlier large scientific archive is required. With the project's prepared
+Python scientific runtime, run from that directory:
+
+```sh
+python -m studio.choir_decay_bound --output research/rebuilt-decay.json
+python -m studio.choir_decay_figure --output artwork/rebuilt-decay
+```
+
+The stored report is `research/choir-decay-bound-003.json`; the figure defaults
+to those certified bounds. The first command recomputes all exact certificates,
+full-grid checks and nonlinear derivative checks. The second draws analytical
+ceilings, not sampled trajectories. Scope and assumptions are in
+`research/CHOIR-DECAY.md`.
