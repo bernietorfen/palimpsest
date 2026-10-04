@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.tools/
+.env
+artifacts/
+artwork/
+output/
+tmp/
+backups/
+site/assets/generated/

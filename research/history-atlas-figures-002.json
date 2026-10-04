@@ -1,0 +1,152 @@
+{
+  "created_utc": "2026-10-03T23:24:43.483968+00:00",
+  "source_sha256": {
+    "studio/__init__.py": "5303a656f3cd1835c9d6e5acdc7d9346f657e1ee71d9f98083422c8d03095515",
+    "studio/analyze_performance.py": "f66b3eeea479f5c3c45038e093560960fc46fcb1c5a6e1202d4ad5ec6258a609",
+    "studio/assay.py": "b346c7b88ba7fd8e1a1c0197655b348c56a8782913c1872c6a18f968f9dd7065",
+    "studio/atlas_compare.py": "fe98aff0754df59095dba0b57c53c51a745b0b6085cc1a54e1a8b3a18f7bb76e",
+    "studio/atlas_figures.py": "2ff91bd47c2a8340cb7782d8ba31f923cb6cf72d75d6b630a1f387e60e7c542b",
+    "studio/browser-webkit.config.json": "188fbb491c8b4f34fbf9322f4dae99e90f5150dd2b1ea0ec881e418a4755c1d3",
+    "studio/browser.config.json": "8e6f872c3067997aed380bb53dc99babe923287ab2f532779284efff7446dd3d",
+    "studio/buckling_study.py": "ed248966325c1e49054a2212ab9f73dff5f9fb307cc8e4341c5092e35b04d2cf",
+    "studio/cinematography.py": "2fa06f83f0fd62fa151c746d24ba151789b7743862a8bee52595a83eb366f60f",
+    "studio/deploy_site.py": "d5b9509014b5077b27ceecfc29cbb33972bbfd49bd913d4338bfd0bb3303d50d",
+    "studio/export_sculpture.py": "96241a10323e59865ba771992cedbf50d1f3c7b4de5447bf45bf374734e2333f",
+    "studio/film.py": "a545dd493344e479d75554ab43c0c334bdb8c54380d86a28800e590f1a44bc77",
+    "studio/folio_study.py": "ec16aea1e1df845f481c26954542c72b97795421c7d98bf466070bf7d4cb672e",
+    "studio/history_atlas.py": "3aa40d5ffe62a7e861328ce741f024b32f9612b4a32f1ac9b4d61c3891984eb8",
+    "studio/lighting_study.py": "4eaf1622bc8932f258f5e0f9637760bf99d15303a5d49df5c84e483553c1e47c",
+    "studio/look_direction.py": "f536be85a53c18650def2ec6c1ca3acb0225177502d775403741d9f712890d0b",
+    "studio/master_sound.py": "f25c2a56e43b930d97a4a349fcbb0dc027e0a840b36eef30234d6e082c6d1f91",
+    "studio/material.py": "e971aada7818487a369da0b967b708b51bb3979857c92000a60ebb9fa3c15b5e",
+    "studio/mesh_geometry.py": "3ddb6395c12e735e317867b8095dccdf2b37a2720ec1ba773d7eeabcc164684e",
+    "studio/mesh_render.py": "557e36615e790349b317f74dd540fee03c6a8c95f0f09159f402c6525f0a5623",
+    "studio/mesh_study.py": "793da99ba4896d30ac0930e21a122c6a1b069934e57533927f5e450256726ee9",
+    "studio/notebook.py": "a8181b296691a85a02685bbd673188ecfcab0e356c3260836ec13bdf6545397f",
+    "studio/notebook_figures.py": "2b951cc95b2de1a403b2fd0df050bf1d20782304c347dac34c6a51e8873b74c1",
+    "studio/numerical_assay.py": "2bbf74268edf4735fa321c570f728ad9ec2a8740f2a239901ecb12141ccd1c5d",
+    "studio/plates.py": "57ee89ac3dc84584ed8da2f8c538b122750618edc18298146d7ac1effe6d2788",
+    "studio/preserve.py": "deb4b13722ca605511602138fbcd40301753041bebd12d79da77eec072c887c5",
+    "studio/reconstruction.py": "4c59da8fc5b724d37b3dde71a50b2988106ab0745233c990f968e25d79dd8f23",
+    "studio/render.py": "1f89440c84e084017702e8bff13f316f9a566a5360154bf17f303e58949285d5",
+    "studio/render_buckling.py": "8e4649b611fb530ca32abcc4424577b7dba436f6d9dda91defeaad802b228ee0",
+    "studio/render_diagnostics.py": "9ea76075b93950beddcd3a9a55d7811d66a8e5c2511d0a962768f7b2ce95aab7",
+    "studio/requirements.txt": "9dce1650ed1a1dc73d6bcf957d7de1f9a6fb0fd60650530ebefff2b287a2bbe1",
+    "studio/score.py": "17dfa2d960f23f947461aec5ddaa13c35d074f5af4fc765cd0fb264b7f8658fa",
+    "studio/shaders/fullscreen.vert": "d9801dec3d81bd6bd763e18bd55050329b835165db02f556146593aa2b0e00a6",
+    "studio/shaders/sculpture.frag": "587d607f61790ecbc3ea47588c16023467889c5ff0b548904ed99e070ce78692",
+    "studio/shaders/sheet.frag": "1d386c26bd4f42593dfa4165c9831f5cf20ee9f2eed75196bcde76c0e82522dc",
+    "studio/shaders/sheet.vert": "33f3e52a79fcf55622726f6a9e0fa838622c8975022890aa9f8318f49bab9528",
+    "studio/shaders/sheet_composite.frag": "a8e7940efff9a766d267715a6b4234c4182dd220d67d4a7d8729dc66ed77c2e8",
+    "studio/shaders/sheet_depth.frag": "e5b1c54a86fcb6f0299dd584cb48069b3e5bdda25405b0e6814cb67e2c966831",
+    "studio/shaders/sheet_depth.vert": "806b92787e610296ff2524b68dac352a05e38d8805514a8a45a9a2a93f2ae267",
+    "studio/sheet_direction.py": "3cc9260ce2a982dbfc427f3f1d9e7f23c07bdcd0b70254f1196005fc9c8c439c",
+    "studio/simulate.py": "457c872340ba5bd0f55ab489e5dcec4d6f9bda0c6c0f547974a512b5a5a1d76a",
+    "studio/skin_study.py": "03dd31110f7182eb3e40264004fc9b693eb82bea1d83b9b200df2e541a99a376",
+    "studio/sound.py": "ac886195ba6716685c1c6815cffd92adcb6f2137cdd9a9862ff144e561ff1198",
+    "studio/stage_site.py": "5cd0ba14e28123e7c528ede42aaa66849d34df6b625ec820d77986f3204d95de",
+    "studio/studies.py": "1908164a7d0405cfeafd3d80cb351fd54bfcbbea469a30fe9d51dc6a13dc4909",
+    "studio/surface_quality.py": "96339f48f2802b3e68af39bab75eead7f49107c03699815f972ca352e2736496",
+    "studio/tests/conftest.py": "b1ccb972b09f6d332c606ffb7c8681ee9395fc324766658925bd7287d21a951c",
+    "studio/tests/test_cinematography.py": "ad7a4495c329a443fbe4880053639017b5e711a4028556403053694e1f99a887",
+    "studio/tests/test_material.py": "74756ed0b60d491cd4774a5fe5ba2829096740c85b327cbfe94265038c629ad2",
+    "studio/tests/test_mesh_geometry.py": "d543aa62a6123690392c9268eed569a83c562d6dfb13f3b9ce42310483baef73",
+    "studio/tests/test_mesh_render.py": "216c10884ce8415360016c643c8b6c7698ea844a3cbb600b14292d72c59b26a9",
+    "studio/tests/test_preserve.py": "9d77d54c1b28ca24d6fe2ce8f1da547e063ec7f5af5b707f630fa3a1b5e27612",
+    "studio/tests/test_reconstruction.py": "4f94ac0a7d2216fbb02311f6196480acef9eed6c51c9bf5a3765cb35c24b0315",
+    "studio/title_study.py": "78906d9f3aef89321879fe6d49de8718bf93f1c54d8168c59075185932775315",
+    "studio/upload_release.py": "c4a2d41e975dc630d7b4789afff0db8c7453d9c3d23300d58e9d03b468752878",
+    "studio/viewing_assets.py": "4b4991c2f3f23d75c75c81121c516e62710049dce632d82c1fefa8fff2227951"
+  },
+  "atlas_sha256": "28f135212e9b3a7098ccff2c7c4019167d89465632aa5de3d67ed6a9bda7bcc0",
+  "case_report_sha256": "f97c5ef393874c128d66d7a6c8435518b744006f3d60624cb79935c7e37572df",
+  "conditional_order_comparisons": {
+    "0": {
+      "shared_final_gestures": 0,
+      "pair_count": 7140,
+      "minimum_rms_hz": 0.17144422691932665,
+      "median_rms_hz": 1.3314808575182888,
+      "maximum_rms_hz": 3.0943758273270654,
+      "minimum_pair": [
+        "ACBED",
+        "ACDEB"
+      ],
+      "maximum_pair": [
+        "BEDCA",
+        "DEABC"
+      ]
+    },
+    "1": {
+      "shared_final_gestures": 1,
+      "pair_count": 1380,
+      "minimum_rms_hz": 0.2984460567120679,
+      "median_rms_hz": 1.1867820094814303,
+      "maximum_rms_hz": 2.681403128047094,
+      "minimum_pair": [
+        "ACBDE",
+        "CABDE"
+      ],
+      "maximum_pair": [
+        "BEDCA",
+        "DCBEA"
+      ]
+    },
+    "2": {
+      "shared_final_gestures": 2,
+      "pair_count": 300,
+      "minimum_rms_hz": 0.2984460567120679,
+      "median_rms_hz": 0.9123624103058361,
+      "maximum_rms_hz": 2.408826941012374,
+      "minimum_pair": [
+        "ACBDE",
+        "CABDE"
+      ],
+      "maximum_pair": [
+        "BEDCA",
+        "DEBCA"
+      ]
+    },
+    "3": {
+      "shared_final_gestures": 3,
+      "pair_count": 60,
+      "minimum_rms_hz": 0.2984460567120679,
+      "median_rms_hz": 0.6483358061457349,
+      "maximum_rms_hz": 0.9741740847878336,
+      "minimum_pair": [
+        "ACBDE",
+        "CABDE"
+      ],
+      "maximum_pair": [
+        "DEBCA",
+        "EDBCA"
+      ]
+    }
+  },
+  "glyph_definition": {
+    "times_seconds": [
+      0,
+      4,
+      8,
+      12
+    ],
+    "voice_axes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "maximum_abs_deviation_hz": 5.766098785400402,
+    "radius_rule": "0.27 + 0.21*ring_index + 0.18*(pitch - same-time ensemble mean)/maximum_abs_deviation_hz",
+    "interpolation": "Periodic cubic spline between the twelve voice axes; glyph construction is an authored visual mapping."
+  },
+  "study_feedback_override": 0.08,
+  "scope": "The study reuses numerical_assay.record, which applies feedback=0.08 during writing and probing, overriding the MaterialConfig default. Shared-tail groups test earlier order while fixing the specified final gestures. The counts describe finite pairs, not independent statistical samples."
+}

@@ -1,0 +1,16 @@
+{
+  "browser": {
+    "browserName": "chromium",
+    "launchOptions": {
+      "channel": "chromium",
+      "headless": true,
+      "args": ["--no-sandbox", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"]
+    },
+    "contextOptions": {
+      "viewport": {"width": 1440, "height": 1080},
+      "deviceScaleFactor": 1,
+      "reducedMotion": "reduce"
+    }
+  },
+  "outputDir": "output/playwright"
+}

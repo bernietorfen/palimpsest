@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ede8da">
+  <meta name="description" content="Five gestures, all 120 orders, one identical later question. Explore the recorded memory of PALIMPSEST, an original instrument by Codex.">
+  <title>120 possible pasts — PALIMPSEST</title>
+  <link rel="icon" href="/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/exhibition.css">
+  <link rel="stylesheet" href="/atlas.css">
+  <script type="module" src="/atlas.js"></script>
+</head>
+<body>
+  <a class="skip" href="#instrument">Skip to the comparison</a>
+  <header class="topline"><a class="wordmark" href="/" aria-label="Return to PALIMPSEST">P / 26</a><span class="edition">A study of remembered order</span><nav aria-label="Study"><a href="/">The film</a><a href="#all-histories">All 120 histories</a><a href="#reading">How to read</a></nav></header>
+  <main class="atlas-main">
+    <section class="atlas-opening" aria-labelledby="atlas-title">
+      <p class="eyebrow">PALIMPSEST / Study II</p>
+      <h1 id="atlas-title">120 possible<br><em>pasts.</em></h1>
+      <div class="atlas-introduction"><p>Five gestures.<br>Every possible order.<br>One identical question.</p><p>Change the order in which an instrument is written into. Then hear its answer to the same later phrase. These are the actual recorded responses of the material in the film.</p><p class="small">Two histories play together. Switch the one you hear. Every answer uses the same synthesizer, volume setting and room.</p></div>
+    </section>
+
+    <section id="instrument" class="atlas-instrument section-rule" aria-label="Compare two histories">
+      <p id="atlas-status" role="status">Opening the recorded atlas…</p>
+      <div class="history-pair">
+        <article class="history-panel" data-history-panel="0">
+          <div class="history-heading"><h2>First history</h2><span class="history-number">I</span></div>
+          <svg id="glyph-0" class="large-glyph" viewBox="0 0 240 240" role="img" aria-label="Four rings showing the first history’s twelve voice readings"></svg>
+          <fieldset id="order-0" class="writing-order" disabled><legend>Order of writing</legend></fieldset>
+          <p class="history-caption">Five equally strong gestures, four seconds apart.</p>
+        </article>
+        <article class="history-panel" data-history-panel="1">
+          <div class="history-heading"><h2>Second history</h2><span class="history-number">II</span></div>
+          <svg id="glyph-1" class="large-glyph" viewBox="0 0 240 240" role="img" aria-label="Four rings showing the second history’s twelve voice readings"></svg>
+          <fieldset id="order-1" class="writing-order" disabled><legend>Order of writing</legend></fieldset>
+          <p class="history-caption">Then the same later question, for fourteen seconds.</p>
+        </article>
+      </div>
+      <p class="order-instruction">Choose a letter to swap it with another position in the writing order.</p>
+      <div class="probe-transport">
+        <button id="probe-play" class="probe-play" disabled aria-pressed="false">Hear the question <span aria-hidden="true">▶</span></button>
+        <label class="probe-scrub"><span class="sr-only">Probe position, in seconds</span><input id="probe-time" type="range" min="0" max="13.958333" step="0.05" value="0" disabled><output id="probe-clock" for="probe-time" aria-live="off">00:00</output></label>
+        <div class="listen-switch" role="group" aria-label="History to hear"><button data-hear="0" aria-pressed="true" disabled>Hear first</button><button data-hear="1" aria-pressed="false" disabled>Hear second</button></div>
+      </div>
+      <div class="pair-footnote"><p id="pair-distance">The same input. Two retained histories.</p><a id="share-pair" href="#ABCDE-EDCBA">Link to this pair ↗</a></div>
+      <div class="pair-suggestions" role="group" aria-label="Choose a comparison for the first history"><span>Compare the first history with</span><button data-suggestion="reverse" disabled>Its reverse</button><button data-suggestion="nearest" disabled>The closest answer</button><button data-suggestion="farthest" disabled>The furthest answer</button><button data-suggestion="earlier" disabled>The same last three gestures</button></div>
+      <audio id="probe-0" preload="none"></audio><audio id="probe-1" preload="none"></audio>
+    </section>
+
+    <section id="all-histories" class="all-histories section-rule" aria-labelledby="all-title">
+      <div class="atlas-section-heading"><p class="eyebrow">The complete finite atlas</p><h2 id="all-title">Every order leaves<br><em>an answer.</em></h2><p>Choose any glyph to bring that history into the comparison. The ring directions, times and scale stay fixed throughout the atlas.</p></div>
+      <div class="atlas-grid-tools"><div class="listen-switch" role="group" aria-label="History to replace"><button data-slot="0" aria-pressed="true">Choose first history</button><button data-slot="1" aria-pressed="false">Choose second</button></div><label>Ending in <select id="ending"><option value="">Any gesture</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label><output id="history-count">120 histories</output></div>
+      <div id="history-grid" class="history-grid" role="group" aria-label="Recorded histories. Use arrow keys to move between glyphs, Enter to choose."></div>
+      <p class="grid-hint">Keyboard: arrow keys move through the atlas; Enter chooses a history.</p>
+    </section>
+
+    <section id="reading" class="atlas-reading section-rule" aria-labelledby="reading-title">
+      <div><p class="eyebrow">Reading the marks</p><h2 id="reading-title">Four moments.<br>Twelve directions.</h2><p>The directions around each glyph correspond to the instrument’s twelve voices. From the inside outward, the rings show the start of the probe, then 4, 8 and 12 seconds.</p><p>A ring moves outward where that voice’s pitch is higher than the average of all 120 histories at the same moment. It moves inward where the pitch is lower. All glyphs use one scale. The smooth curves are an authored way of drawing those measurements.</p></div>
+      <div class="atlas-evidence"><p class="eyebrow">What the experiment establishes</p><p>All 120 writing orders leave different numerical pitch trajectories. Swapping only the first two gestures still changes the later answer, even with the same last three gestures.</p><p>The result survives halving the simulation timestep: each finer-step answer is closest to its own history among the 120 coarser-step records. Erasing both retained fields restores the fresh answer exactly.</p><p class="small">These are measurements of this invented instrument. Numeric differences do not establish that every pair can be distinguished by ear. The comparison metric includes all twelve voices, including voices not being directly excited. The audio comes from the 1/96-second run.</p><a class="arrow-link" href="/assets/generated/palimpsest-notebook.pdf" target="_blank" rel="noopener">Read the experiment and its limits <span>Illustrated notebook ↗</span></a></div>
+    </section>
+  </main>
+  <footer><a class="footer-title" href="/">PALIMPSEST</a><p>Conceived and authored by Codex<br>3—4 October 2026</p><p>An invented material. An original composition.<br><a href="/credits.html">Authorship &amp; acknowledgments</a></p><a href="#atlas-title" class="back-top" aria-label="Back to top">↑</a></footer>
+  <noscript><p class="noscript">This recorded atlas uses JavaScript for choosing and hearing histories. The <a href="/assets/generated/palimpsest-notebook.pdf">illustrated notebook</a> includes the complete print and experiment.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,173 @@
+{
+  "film_sha256": "7b7a6a6bcfab31f96a566223214fde66ec66f416bbf7a1de392b52bfaa75ebe4",
+  "bytes": 175157119,
+  "duration_seconds": 432,
+  "frames": 10368,
+  "resolution": [
+    3840,
+    2160
+  ],
+  "fps": 24,
+  "bit_depth": 10,
+  "codec": "HEVC Main 10",
+  "color": "limited range BT.709",
+  "complete_ffmpeg_decode_exit_code": 0,
+  "decode_log_bytes": 0,
+  "unchanged_interior_frames": 0,
+  "maximum_noncut_change_0_255": 2.037797451019287,
+  "largest_frame_changes": [
+    {
+      "time": 72.0,
+      "mean": 65.49665069580078,
+      "std": 72.6839828491211,
+      "frame_change": 70.32931518554688
+    },
+    {
+      "time": 100.0,
+      "mean": 57.28569030761719,
+      "std": 47.45897674560547,
+      "frame_change": 52.853485107421875
+    },
+    {
+      "time": 180.0,
+      "mean": 42.812252044677734,
+      "std": 44.18878936767578,
+      "frame_change": 44.91816329956055
+    },
+    {
+      "time": 43.0,
+      "mean": 74.79851531982422,
+      "std": 66.956787109375,
+      "frame_change": 43.83620834350586
+    },
+    {
+      "time": 216.0,
+      "mean": 56.20463180541992,
+      "std": 48.19110107421875,
+      "frame_change": 43.70334243774414
+    },
+    {
+      "time": 320.0,
+      "mean": 55.83238983154297,
+      "std": 61.748321533203125,
+      "frame_change": 42.97322463989258
+    },
+    {
+      "time": 345.0,
+      "mean": 31.480167388916016,
+      "std": 46.115230560302734,
+      "frame_change": 42.92854690551758
+    },
+    {
+      "time": 240.0,
+      "mean": 36.136512756347656,
+      "std": 43.35598373413086,
+      "frame_change": 42.64750671386719
+    },
+    {
+      "time": 424.0,
+      "mean": 30.29359245300293,
+      "std": 38.30497741699219,
+      "frame_change": 40.44161605834961
+    },
+    {
+      "time": 150.0,
+      "mean": 55.50139617919922,
+      "std": 42.475341796875,
+      "frame_change": 37.519622802734375
+    },
+    {
+      "time": 395.0,
+      "mean": 52.02809143066406,
+      "std": 56.84272766113281,
+      "frame_change": 37.49954605102539
+    },
+    {
+      "time": 126.0,
+      "mean": 33.797157287597656,
+      "std": 36.58429718017578,
+      "frame_change": 34.61693572998047
+    },
+    {
+      "time": 272.0,
+      "mean": 46.237823486328125,
+      "std": 51.5628662109375,
+      "frame_change": 33.36701965332031
+    },
+    {
+      "time": 296.0,
+      "mean": 30.08543586730957,
+      "std": 41.25821304321289,
+      "frame_change": 31.30793571472168
+    },
+    {
+      "time": 238.08333333333334,
+      "mean": 60.05338668823242,
+      "std": 50.249267578125,
+      "frame_change": 2.037797451019287
+    },
+    {
+      "time": 238.04166666666666,
+      "mean": 60.128902435302734,
+      "std": 50.20159149169922,
+      "frame_change": 2.015761375427246
+    },
+    {
+      "time": 239.95833333333334,
+      "mean": 60.134395599365234,
+      "std": 52.867855072021484,
+      "frame_change": 1.9849847555160522
+    },
+    {
+      "time": 237.95833333333334,
+      "mean": 60.07920837402344,
+      "std": 50.147918701171875,
+      "frame_change": 1.9481576681137085
+    },
+    {
+      "time": 238.25,
+      "mean": 59.888912200927734,
+      "std": 50.465213775634766,
+      "frame_change": 1.9455572366714478
+    },
+    {
+      "time": 239.79166666666666,
+      "mean": 59.71584701538086,
+      "std": 52.308448791503906,
+      "frame_change": 1.9449594020843506
+    }
+  ],
+  "video_audio_start_and_duration": [
+    {
+      "codec_type": "video",
+      "start_time": "0.000000",
+      "duration": "432.000000"
+    },
+    {
+      "codec_type": "audio",
+      "start_time": "0.000000",
+      "duration": "432.000000"
+    }
+  ],
+  "scope": "Complete file decoding and encoded stream properties; rendered-frame statistics are sampled before encoding. No claim of perceptual audio audition.",
+  "effective_shot_boundaries_seconds": [
+    0,
+    16,
+    43,
+    72,
+    100,
+    126,
+    150,
+    180,
+    216,
+    240,
+    272,
+    296,
+    320,
+    345,
+    368,
+    395,
+    424
+  ],
+  "quality_revision_note": "The first analysis omitted the repeated-camera cut at 395 seconds from its noncut exclusion. This revision includes both repeated shots at 368 and 395 seconds. The film is unchanged."
+}
