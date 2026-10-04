@@ -256,3 +256,43 @@ Receipts: `origin-chromium-003.json`, `origin-webkit-001.json` and
 `observer-interaction-verified-001.json`. The original failed screenshot attempt
 and native-SVG probe remain in the private production evidence; the successful
 review renders the exported SVG as an image in an ordinary document.
+
+### Frozen moving-observer edition
+
+The published v2.2.0 record restored all 199 scientific files; its portable
+installation restored all 225 entries. A warm restoration rebuilt the
+coefficient data byte for byte and independently checked 20,160 candidate
+distances at 35 positions, with maximum squared-distance error
+8.75e-16 Hz². Every one of the eleven public assets was then downloaded
+anonymously and checked against its full recorded byte count and SHA-256.
+The corresponding receipts are `moving-origin-edition-verification-002.json`,
+`moving-origin-public-cold-restore-001.json` and
+`moving-origin-public-downloads-complete-001.json` under `research/`.
+
+The extracted installation was exercised with external connectivity blocked.
+Both films, both live instruments, listening comparison, sculptures, notebooks,
+the original pressure drawing and the new moving-observer export worked from
+the loopback server. The moving observer reached the first exact tie and the
+fully aligned endpoint; its exported endpoint drawing contained both fonts
+and the measured 24/24 reading. `two-acts-offline-004.json` records this check.
+These are software, numerical and delivery checks; sound has not been
+perceptually auditioned by the authoring assistant.
+
+The first production Chromium moving-observer checks caught a test-originated
+policy report: parsing the exported SVG inside the exhibition page applied
+that page's stylesheet policy to the drawing's embedded style. An isolated
+reproducer identified the exact stylesheet digest. The check now inspects the
+standalone download in a separate document and still fails on application or
+export errors. The delivered policy and artwork remain unchanged; the failed
+checks and attribution evidence are retained.
+
+Production deployment 010 passed the complete moving-observer flow in both
+Chromium and WebKit, including the six exact ties, frozen-position SVG export,
+keyboard operation, full timed passage, mobile layout and corrupt-data retry.
+Neither run reported an application error or accessibility violation; automated
+color-contrast checking remains incomplete. The WebKit gallery check exercised
+all three sculptures, graphics-context recovery and the revised mobile
+observer section. All 27 current catalog destinations returned HTTP 200.
+Receipts: `origin-production-chromium-003.json`,
+`origin-production-webkit-001.json`, `moving-origin-gallery-001.json` and
+`exhibition-links-010.json`.

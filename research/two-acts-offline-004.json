@@ -1,0 +1,162 @@
+{
+  "origin": "http://127.0.0.1:8090",
+  "errors": [],
+  "externalDependencies": [],
+  "secondBookBytes": 2035676,
+  "receivedPdfs": [
+    {
+      "name": "received-histories-companion.pdf",
+      "bytes": 1114949
+    },
+    {
+      "name": "received-histories-print.pdf",
+      "bytes": 954925
+    }
+  ],
+  "observerPdfs": [
+    {
+      "name": "the-observer-companion.pdf",
+      "bytes": 170791
+    },
+    {
+      "name": "the-origin-moves-print.pdf",
+      "bytes": 66315
+    }
+  ],
+  "secondFilm": {
+    "time": 248.708311,
+    "duration": 288,
+    "width": 1920,
+    "height": 1080,
+    "src": "http://127.0.0.1:8090/assets/generated/choir-viewing.mp4"
+  },
+  "secondSculptures": 3,
+  "choir": {
+    "memory": [
+      0.17752066,
+      0.2955694,
+      0.01111522,
+      0,
+      0,
+      0,
+      0.01082059
+    ],
+    "audioPeak": 0.035475,
+    "exactRecovery": true
+  },
+  "witness": {
+    "listener": "G",
+    "time": 2.069,
+    "difference": "4.694 Hz"
+  },
+  "movingObserver": {
+    "alpha": 1,
+    "own": 24,
+    "ties": 0,
+    "fonts": 2
+  },
+  "firstFilm": {
+    "time": 370.721873,
+    "duration": 432,
+    "width": 1920,
+    "height": 1080,
+    "src": "http://127.0.0.1:8090/assets/generated/palimpsest-viewing.mp4"
+  },
+  "firstBookBytes": 10477076,
+  "atlas": {
+    "time": 1.498462,
+    "duration": 13.958,
+    "source": "http://127.0.0.1:8090/assets/generated/probe-ABCDE.m4a"
+  },
+  "pressureExport": true,
+  "firstInstrument": {
+    "state": "ready",
+    "time": "4.01042",
+    "memory": "0.21927174",
+    "wear": "0.04510028",
+    "audioPeak": "0.133165",
+    "generation": "0",
+    "materialRunning": "true",
+    "exactSummaryRecovery": true
+  },
+  "mobileOverflow": 0,
+  "externalConnectivityBlocked": true,
+  "localRequests": [
+    "/",
+    "/assets/generated/choir-after.glb",
+    "/assets/generated/choir-after.jpg",
+    "/assets/generated/choir-encounter.glb",
+    "/assets/generated/choir-encounter.jpg",
+    "/assets/generated/choir-source.glb",
+    "/assets/generated/choir-source.jpg",
+    "/assets/generated/choir-viewing.mp4",
+    "/assets/generated/choir-witness/E-after.jpg",
+    "/assets/generated/choir-witness/E-before.jpg",
+    "/assets/generated/choir-witness/G-after.jpg",
+    "/assets/generated/choir-witness/G-before.jpg",
+    "/assets/generated/choir-witness/after-G.m4a",
+    "/assets/generated/choir-witness/before.m4a",
+    "/assets/generated/choir-witness/witness.json",
+    "/assets/generated/film-poster.jpg",
+    "/assets/generated/first-poster.jpg",
+    "/assets/generated/font-license.txt",
+    "/assets/generated/histories.json",
+    "/assets/generated/live-material.jpg",
+    "/assets/generated/observer-origin-v1.json",
+    "/assets/generated/palimpsest-viewing.mp4",
+    "/assets/generated/pressure-glyphs-v1.bin",
+    "/assets/generated/pressure-study-v1.json",
+    "/assets/generated/probe-ABCDE.m4a",
+    "/assets/generated/probe-EDCBA.m4a",
+    "/assets/generated/received-histories.jpg",
+    "/assets/generated/return-poster.jpg",
+    "/assets/generated/sans.woff2",
+    "/assets/generated/serif.woff2",
+    "/assets/generated/state-000.jpg",
+    "/assets/generated/state-165.jpg",
+    "/assets/generated/state-358.jpg",
+    "/assets/generated/the-origin-moves.jpg",
+    "/atlas.css",
+    "/atlas.html",
+    "/atlas.js",
+    "/choir-edition.json",
+    "/choir-material.js",
+    "/choir-math.js",
+    "/choir-renderer.js",
+    "/choir-scene.json",
+    "/choir-worker.js",
+    "/choir.css",
+    "/choir.html",
+    "/choir.js",
+    "/edition.json",
+    "/exhibition.css",
+    "/exhibition.js",
+    "/first-act.html",
+    "/instrument.css",
+    "/instrument.html",
+    "/instrument.js",
+    "/live-geometry.js",
+    "/live-glyph.js",
+    "/live-material.js",
+    "/live-recovery.js",
+    "/live-renderer.js",
+    "/live-score.js",
+    "/live-sound.js",
+    "/live-worker.js",
+    "/observer.css",
+    "/observer.html",
+    "/observer.js",
+    "/pressure.css",
+    "/pressure.html",
+    "/pressure.js",
+    "/sculpture.js",
+    "/second-act.css",
+    "/second-act.js",
+    "/shaders/choir.frag",
+    "/shaders/choir.vert",
+    "/witness.css",
+    "/witness.html",
+    "/witness.js"
+  ],
+  "scope": "Extracted installation, dead external proxy and loopback-only server. Actual films, recorded listening, live synthesis, state recovery, sculpture viewing and drawing export. No perceptual audition or physical-device claim."
+}

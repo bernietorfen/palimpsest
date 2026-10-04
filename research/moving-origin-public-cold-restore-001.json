@@ -1,0 +1,52 @@
+{
+  "verified_utc": "2026-10-04T13:23:18.021721+00:00",
+  "repository": "bernietorfen/palimpsest",
+  "release": "v2.2.0",
+  "source_commit": "f64ab1cf442ae44cd1e1a93783ca30eb2cc637d1",
+  "receipt_sha256": "d1cb5c00d99b6e057f3cd23688ea469b80dec2c52f33d5d7709e3e7a38ce9c60",
+  "public_downloads": [
+    {
+      "name": "palimpsest-moving-observer-edition.json",
+      "bytes": 2162,
+      "sha256": "253a798fcd092a195077459aebca0d748268c07a788429c284fa9420ac4ec9fd"
+    },
+    {
+      "name": "palimpsest-checksums.sha256",
+      "bytes": 937,
+      "sha256": "93d8de0b32e0a8b1f5db380a137d27e68f518dde512fa57460ddfea658f1cff7"
+    },
+    {
+      "name": "moving-observer-record-manifest.json",
+      "bytes": 41037,
+      "sha256": "494f15269990d7cea12e6d1cda7e40f779773413a44e2b4c4f03854a1638a7e7"
+    },
+    {
+      "name": "installation-content.json",
+      "bytes": 38668,
+      "sha256": "2bf66c63737e9d58d4a0d435d8fd46a0a9fb4fd91f04b727273f42b94d3b3a77"
+    },
+    {
+      "name": "moving-observer-record.tar.gz",
+      "bytes": 17835811,
+      "sha256": "6b8dbf8dc29dedf9713c778ac18266a1575f4a0c1bfb987c78c1069b79cdb2bb"
+    },
+    {
+      "name": "palimpsest-two-acts.zip",
+      "bytes": 150374573,
+      "sha256": "98568af2983afb918f116c302d13456ed69a37de25af256cd9ddf7b3e319ffde"
+    }
+  ],
+  "scientific_record": {
+    "files": 199,
+    "bytes": 18400015,
+    "every_file_restored_and_hashed": true
+  },
+  "portable_installation": {
+    "files": 225,
+    "bytes": 151436701,
+    "every_file_restored_and_hashed": true
+  },
+  "temporary_files_removed": true,
+  "execution_host": "RunPod",
+  "scope": "Unauthenticated public delivery, complete byte hashes, fresh extraction and every member hash. Independent analyses and browser checks have separate receipts."
+}

@@ -1,0 +1,33 @@
+{
+  "base": "https://site-inky-eight-42.vercel.app",
+  "consoleErrors": [
+    {
+      "phase": "parse-export-inside-exhibition",
+      "text": "Applying inline style violates the following Content Security Policy directive 'style-src 'self''. Either the 'unsafe-inline' keyword, a hash ('sha256-0Uow1cS5juu2dXrAv7kng1WmkyA5kOXRorzNJiZxV00='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+      "location": {
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      "color-contrast"
+    ]
+  },
+  "embeddedStyleSha256Base64": "0Uow1cS5juu2dXrAv7kng1WmkyA5kOXRorzNJiZxV00=",
+  "policy": [
+    {
+      "phase": "parse-export-inside-exhibition",
+      "directive": "style-src-elem",
+      "source": "",
+      "line": 1,
+      "sample": ""
+    }
+  ],
+  "insertedStyles": []
+}

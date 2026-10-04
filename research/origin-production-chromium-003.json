@@ -1,0 +1,66 @@
+{
+  "engine": "chromium",
+  "base": "https://site-inky-eight-42.vercel.app",
+  "errors": [],
+  "consoleErrors": [],
+  "screenshotInstrumentationWarnings": [],
+  "consoleLocations": [],
+  "crossings": [
+    {
+      "alpha": 0.07184506374634762,
+      "own": 18,
+      "tied": 1,
+      "history": "DABC"
+    },
+    {
+      "alpha": 0.09670653824791368,
+      "own": 19,
+      "tied": 1,
+      "history": "DCBA"
+    },
+    {
+      "alpha": 0.23704115699143416,
+      "own": 20,
+      "tied": 1,
+      "history": "BACD"
+    },
+    {
+      "alpha": 0.3157843303410602,
+      "own": 21,
+      "tied": 1,
+      "history": "BDCA"
+    },
+    {
+      "alpha": 0.3227221441800121,
+      "own": 22,
+      "tied": 1,
+      "history": "BADC"
+    },
+    {
+      "alpha": 0.3557742942086933,
+      "own": 23,
+      "tied": 1,
+      "history": "BDAC"
+    }
+  ],
+  "keyboard": true,
+  "export": {
+    "metadataAlpha": 0.3157843303410602,
+    "own": 21,
+    "ties": 1,
+    "dataSha256": "e8010a136443c2bd0b3854965aade4dd7def03d612d1b3f2dab529c962e8e886",
+    "pointError": 0,
+    "embeddedFonts": 2,
+    "licensePresent": true
+  },
+  "pauseExact": true,
+  "completePassage": true,
+  "mobileOverflow": 0,
+  "accessibility": {
+    "violations": [],
+    "incomplete": [
+      "color-contrast"
+    ]
+  },
+  "changedDataRejectedAndRetryRecovered": true
+}

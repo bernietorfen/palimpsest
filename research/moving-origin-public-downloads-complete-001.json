@@ -1,0 +1,38 @@
+{
+  "verified_utc": "2026-10-04T13:23:20.461325+00:00",
+  "tag": "v2.2.0",
+  "receipt_sha256": "d1cb5c00d99b6e057f3cd23688ea469b80dec2c52f33d5d7709e3e7a38ce9c60",
+  "prior_cold_receipt_sha256": "94c218756ea119cda9bc77b893adb4e733af35a119767112d5b71d19679168b9",
+  "previously_verified_assets": 6,
+  "new_public_downloads": [
+    {
+      "name": "DejaVu-LICENSE.txt",
+      "bytes": 3859,
+      "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+    },
+    {
+      "name": "START-HERE.txt",
+      "bytes": 2266,
+      "sha256": "bde55712648ad55ccab6a169d524fd66b7104b11d871ec022552a4e6d64bc9a7"
+    },
+    {
+      "name": "moving-observer-results.md",
+      "bytes": 2545,
+      "sha256": "e41e4dd69e37bcb2a46664399539d3fd1af96e70e0103743602edc0ff3c43394"
+    },
+    {
+      "name": "observer-origin-v1.json",
+      "bytes": 38267,
+      "sha256": "e8010a136443c2bd0b3854965aade4dd7def03d612d1b3f2dab529c962e8e886"
+    },
+    {
+      "name": "the-origin-moves-at-a-crossing.svg",
+      "bytes": 555547,
+      "sha256": "a7a6bca83d2e31337a7c0f1f40da2d724600ab58485d946c1079d0325ba4f30f"
+    }
+  ],
+  "total_public_assets_verified": 11,
+  "all_release_assets_covered": true,
+  "temporary_media_files": 0,
+  "scope": "Unauthenticated streamed verification of the remaining assets, combined with the exact earlier cold-restore receipt. Already verified downloads are not repeated."
+}
