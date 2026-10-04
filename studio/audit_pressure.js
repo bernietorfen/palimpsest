@@ -8,7 +8,7 @@ async (page) => {
     window.pressurePolicyViolations = [];
     document.addEventListener('securitypolicyviolation', (event) => window.pressurePolicyViolations.push(event.effectiveDirective));
   });
-  await page.goto(origin + '/pressure.html');
+  await page.goto(origin + `/pressure.html?audit=core-${Date.now()}`);
   await page.waitForFunction(() => document.body.dataset.pressureReady === 'true');
   const data = await (await page.request.get(origin + '/assets/generated/pressure-study-v1.json')).json();
   const browser = page.context().browser().browserType().name();
@@ -39,6 +39,18 @@ async (page) => {
     levels.push({ percent: data.levels[index].percent, nearestCount, correctedCount });
     await page.getByRole('button', { name: 'Allow for pressure', exact: true }).click();
   }
+  const map = page.locator('#pressure-map');
+  const bounds = await map.boundingBox();
+  const [xmin, xmax, ymin, ymax] = data.extent;
+  const scale = Math.min((bounds.width - 38) / (xmax - xmin), (bounds.height - 48) / (ymax - ymin));
+  let outlier = 0;
+  data.levels[2].points.forEach((point, index, points) => {
+    if (point[0] ** 2 + point[1] ** 2 > points[outlier][0] ** 2 + points[outlier][1] ** 2) outlier = index;
+  });
+  const position = data.levels[2].points[outlier];
+  await map.click({ position: { x: bounds.width / 2 + (position[0] - (xmin + xmax) / 2) * scale,
+    y: bounds.height / 2 - (position[1] - (ymin + ymax) / 2) * scale - 7 } });
+  check(await map.getAttribute('data-case') === String(outlier), 'Selecting a measured plot point did not open its case');
   await page.locator('#written-order').selectOption('EDCBA');
   await page.getByRole('button', { name: 'Pressure realization 8', exact: true }).click();
   const last = await actual();
@@ -72,6 +84,6 @@ async (page) => {
   const compact = ({ paths, ...state }) => ({ ...state, measuredRingCount: paths.length });
   return { origin, browser, viewport: page.viewportSize(), before: compact(before), corrected: compact(corrected), levels, last: compact(last),
     selected: compact(selected), restored: compact(restored), measuredReplyUnchangedAcrossReaders: true, exactSharedCaseRestoration: true,
-    exportPath, suggestedFilename: download.suggestedFilename(), overflow,
+    selectedPlotPoint: outlier, exportPath, suggestedFilename: download.suggestedFilename(), overflow,
     errors, failures, policy, scope: 'Real controls, unchanged measured reply across readers, actual cases/counts, final record, misread navigation, SVG download, shared URL reload, keyboard focus and responsive layout.' };
 }
