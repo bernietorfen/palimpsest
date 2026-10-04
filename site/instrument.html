@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" class="instrument-root">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ede8da">
+  <meta name="description" content="Play PALIMPSEST. Your gestures write into an invented material, and its history changes the voice that answers.">
+  <title>Write into the instrument — PALIMPSEST</title>
+  <link rel="icon" href="/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/exhibition.css">
+  <link rel="stylesheet" href="/instrument.css">
+  <script type="module" src="/instrument.js"></script>
+</head>
+<body class="instrument-page">
+  <a class="skip" href="#playing">Skip to the instrument</a>
+  <header class="topline"><a class="wordmark" href="/" aria-label="Palimpsest exhibition">P / 26</a><span class="edition">A material with memory</span><nav aria-label="Exhibition"><a href="/">The film</a><a href="/atlas.html">120 pasts</a><a href="/credits.html">About the work</a></nav></header>
+  <main>
+    <div class="instrument-heading"><div><p class="eyebrow">PALIMPSEST / Live edition</p><h1>Write into the instrument.</h1></div><p>Hold a voice. Leave an inscription.<br>Ask again, and hear what has changed.</p></div>
+    <section id="playing" aria-label="Playable material">
+      <div class="live-stage">
+        <canvas id="live-sculpture" tabindex="0" aria-label="Live material sculpture. Drag or use arrow keys to turn. Plus and minus zoom. Home resets the view."></canvas>
+        <div class="stage-label"><span id="material-name">Unwritten</span><output id="material-clock" aria-label="Material time">00:00</output></div>
+        <div class="stage-maps" role="group" aria-label="Retained fields"><figure><canvas id="inscription-map" width="64" height="64" aria-label="The retained inscription"></canvas><figcaption>Inscription</figcaption></figure><figure><canvas id="wear-map" width="64" height="64" aria-label="The accumulated wear"></canvas><figcaption>Wear</figcaption></figure></div>
+        <p class="turn-hint">Drag to turn <span aria-hidden="true">↔</span></p>
+        <div class="begin-panel" id="begin-panel"><p class="eyebrow">A fresh material, waiting</p><button id="begin-sound" class="begin-primary">Begin with sound <span aria-hidden="true">↗</span></button><button id="begin-silent" class="begin-silent">Begin silently</button></div>
+      </div>
+      <div class="live-toolbar"><div class="transport"><button id="pause-material" disabled>Pause</button><button id="sound-toggle" aria-pressed="false" disabled>Sound off</button><label class="volume-label">Volume <input id="live-volume" type="range" min="0" max="100" value="65" aria-label="Sound volume"></label></div><p id="live-status" role="status">The instrument begins when you do.</p><button id="view-reset">Reset view</button></div>
+      <div class="playing-header"><p>Hold a key, or press and slide along the voices.</p><label>Pressure <input id="pressure" type="range" min="15" max="60" value="36"><output id="pressure-value" for="pressure">36%</output></label></div>
+      <div id="voice-keys" class="voice-keys" role="group" aria-label="Twelve voices. Hold to write." aria-describedby="keys-help"></div>
+      <p id="keys-help" class="keys-help">Keyboard: Q W E R T Y U I O P A S · The numbers are the current tuning, in hertz.</p>
+      <div class="phrase-controls"><div><p class="eyebrow">The returning question</p><p>Keep a phrase. Ask it again.</p></div><div class="phrase-buttons"><button id="record-phrase" disabled>Record a phrase <span aria-hidden="true">●</span></button><button id="replay-phrase" disabled>Ask again <span aria-hidden="true">↻</span></button></div><output id="phrase-clock" aria-live="off">Up to 24 seconds</output></div>
+      <p id="phrase-status" class="phrase-status" role="status">Recording keeps the timing and pressure of your gestures. A repeat starts from the material you have now.</p>
+      <section id="reply-comparison" class="reply-comparison" hidden aria-labelledby="reply-title"><div class="reply-glyphs"><figure><svg id="earlier-reply" viewBox="0 0 280 280" role="img" aria-label="Earlier reply, four rings of voice tuning"></svg><figcaption>Earlier reply</figcaption></figure><figure><svg id="current-reply" viewBox="0 0 280 280" role="img" aria-label="Most recent reply, four rings of voice tuning"></svg><figcaption>Most recent reply</figcaption></figure></div><div><p class="eyebrow">Your material’s answers</p><h2 id="reply-title">The same gestures.<br>Another answer.</h2><p id="reply-measure"></p><p class="reply-explanation">Time runs from the inner ring to the outer. The faint circles mark the original tuning; both drawings use the same scale. The comparison includes the material’s motion and retained fields at the start of each reply.</p><button id="save-reply" class="save-reply">Save the paired drawing ↓</button></div></section>
+      <div class="material-actions"><button id="fade-material" aria-pressed="false" disabled>Let the inscription fade</button><div><button id="save-material" disabled>Save material ↓</button><label class="open-material" for="open-material">Open material ↑<input id="open-material" type="file" accept=".json,application/json"></label><button id="export-sculpture" disabled>Save sculpture ↓</button><button id="fresh-material" disabled>New material</button></div></div>
+      <button id="undo-material" class="undo-material" hidden>Undo new material</button>
+      <p class="material-caption">The surface carries two kinds of history. Its inscription can fade; its wear recovers much more slowly. Both change its tuning. Each voice returns a delayed force to the material that shaped it.</p>
+    </section>
+    <details class="instrument-notes"><summary>Inside this live edition <span aria-hidden="true">+</span></summary><div><p>This is the numerical instrument, running as you play. Twelve authored force patterns write into a 64 × 64 periodic material. The integration step remains 1/96 second. A slower device slows the material’s clock; changing the frame rate does not change its equations.</p><p>The rolled surface is an interpretation of those fields. Inscription changes its shape and pigment; wear opens windows. The openings are an authored image of wear, not a fracture simulation. The film uses a finer material grid and a separate studio renderer.</p><p>The live voices use original additive synthesis with causal smoothing and a shorter synthetic room. They are a playable interpretation of the recorded instrument. Saved files preserve the material, including its delayed feedback, rather than an audio recording. Everything stays in this tab unless you choose to save a file.</p><p>The instrument pauses when you leave this tab. <a href="/atlas.html">Compare the recorded histories</a> or <a href="https://github.com/bernietorfen/palimpsest" target="_blank" rel="noopener">read the source</a>.</p></div></details>
+    <p class="portable-edition"><a href="https://github.com/bernietorfen/palimpsest/releases/download/v1.1.0/palimpsest-live-instrument.zip">Keep the standalone instrument ↓</a><span>Source, a saved material, its drawing and its sculpture · ZIP</span></p>
+  </main>
+  <footer><a class="footer-title" href="/">PALIMPSEST</a><p>Conceived and authored by Codex<br>3—4 October 2026</p><p>An invented material. An original composition.<br><a href="/credits.html">Authorship &amp; acknowledgments</a></p><a href="/" class="back-top" aria-label="Return to the exhibition">↗</a></footer>
+  <noscript><p class="noscript">The live instrument needs JavaScript. The <a href="/assets/generated/palimpsest-viewing.mp4">recorded film</a> remains available.</p></noscript>
+</body>
+</html>

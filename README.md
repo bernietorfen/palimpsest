@@ -6,13 +6,15 @@ A phrase presses into an invented material. The impression it leaves changes the
 
 Conceived, coded and composed by Codex, 3–4 October 2026.
 
-[Enter the exhibition](https://site-inky-eight-42.vercel.app) · [Explore 120 possible pasts](https://site-inky-eight-42.vercel.app/atlas.html) · [Download the edition](https://github.com/bernietorfen/palimpsest/releases/tag/v1.0.0)
+[Enter the exhibition](https://site-inky-eight-42.vercel.app) · [Play the material](https://site-inky-eight-42.vercel.app/instrument.html) · [Explore 120 possible pasts](https://site-inky-eight-42.vercel.app/atlas.html) · [Download the film edition](https://github.com/bernietorfen/palimpsest/releases/tag/v1.0.0)
 
 ## The work
 
 The edition includes a seven-minute, twelve-second 4K film and original stereo soundtrack; three 8000 × 10000 prints; a matched first/return diptych; three textured glTF/STL sculptures; an 18-page illustrated notebook; and an audible atlas of all 120 orders of five writing gestures.
 
 The exhibition lets you compare the first and returning phrase, turn the actual sculptures in an original WebGL viewer, and choose two histories from the exhaustive atlas. Its media loads on request.
+
+The live edition lets you write your own phrase into the material and ask it again. Its original JavaScript solver, WebGL surface and AudioWorklet voices run in the browser. Keep the timing and pressure of a phrase, compare its changing replies, export a measured vector drawing, save the complete material state, or take a closed STL sculpture from your performance. [Download the standalone instrument](https://github.com/bernietorfen/palimpsest/releases/tag/v1.1.0), or read [the live edition record](research/LIVE-EDITION.md) for its equations, checks and limits.
 
 The material coupling, score, synthesis, sculpture geometry, shaders, camera sequence, glyph system and experiments are authored here. The project does not import an artificial-life system, procedural presets, meshes, photographs, sampled music or trained-model output. Established ingredients and neighboring artistic practices are acknowledged in [the provenance record](research/ORIGINALITY.md).
 

@@ -21,3 +21,11 @@ The numerical and geometry suite covers retained state, finite evolution, reprod
 The notebook and selected print proofs were visually inspected. Large outputs stayed on the GPU host; small review images were removed from the authoring laptop after inspection. Backup archives were streamed directly to GitHub and independently checked against persisted size, state and SHA-256 metadata. A real production archive was restored and every contained file digest verified.
 
 No perceptual audition or audience study is claimed. The evidence concerns this authored finite-grid instrument and these artifacts; it does not establish a physical material model, a new general theory of memory, or worldwide artistic priority.
+
+## Playable edition
+
+The live 64-grid solver is checked against the same-grid double-precision studio equations, with maximum tested errors below 3 × 10⁻¹³. Three 600-second stress trajectories stay finite and within retained-field bounds. Captured force envelopes replay exactly; a fresh-state replay reproduces its complete material state and readouts. The actual browser JSON save/open/save cycle preserves all fields, delay, phase and clock values exactly.
+
+Chromium and iPhone-sized WebKit checks cover live gestures, synthesized signal generation, pause, download/import, continuation, pointer capture and sliding. The corrected mobile accessibility scan reports no automated WCAG 2 A/AA or 2.1 AA violations or incomplete rules in the checked playing state. This supplements rendered review and is not complete conformance certification or a physical-device test.
+
+Four JavaScript-generated STL states independently reopen as watertight meshes with consistent winding. The browser-downloaded sculpture also matches the exported material state exactly and reopens as a closed mesh. A paired SVG drawing opens independently and retains the compared trajectories as metadata. These checks concern actual exports; no physical fabrication or perceptual audio audition is claimed.

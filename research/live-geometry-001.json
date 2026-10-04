@@ -1,0 +1,66 @@
+{
+  "created_utc": "2026-10-04T01:28:48.050397+00:00",
+  "cases": [
+    {
+      "name": "fresh",
+      "time": 0,
+      "triangles": 73724,
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 1,
+      "minimum_face_area_mm2": 1.1299846688195478,
+      "maximum_extent_mm": 200.0,
+      "bytes": 3686284,
+      "sha256": "a4bc028082994dbdd2af319a7821498509cb2641284a4022fe6dbd1df1f863d7",
+      "build_ms": 186.979285,
+      "studio_coordinate_max_error": 5.7878804637923054e-08,
+      "studio_window_max_error": 2.3841861818141297e-09
+    },
+    {
+      "name": "inscribed",
+      "time": 8,
+      "triangles": 67284,
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 2,
+      "minimum_face_area_mm2": 3.170408257963092e-09,
+      "maximum_extent_mm": 200.0,
+      "bytes": 3364284,
+      "sha256": "ffb5ac93c7c20a26ae04f17502dedba8afd8c3c1299f267e295ca757e7da7c9b",
+      "build_ms": 127.569568,
+      "studio_coordinate_max_error": 5.6787782698464184e-08,
+      "studio_window_max_error": 5.211148959571865e-08
+    },
+    {
+      "name": "worn",
+      "time": 96,
+      "triangles": 9156,
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 62,
+      "minimum_face_area_mm2": 2.768194701599876e-06,
+      "maximum_extent_mm": 200.0,
+      "bytes": 457884,
+      "sha256": "38ff9172048b3785e20898d14a73294b6f62d7d4a2faef81459d734136e38098",
+      "build_ms": 47.427120000000286,
+      "studio_coordinate_max_error": 7.008877389580448e-08,
+      "studio_window_max_error": 7.220676978558771e-08
+    },
+    {
+      "name": "faded",
+      "time": 112,
+      "triangles": 10716,
+      "watertight": true,
+      "winding_consistent": true,
+      "components": 63,
+      "minimum_face_area_mm2": 6.44259547014303e-06,
+      "maximum_extent_mm": 200.0,
+      "bytes": 535884,
+      "sha256": "5a71e4400b654831e218c2bdae18f831182a8de5b8da60d3af5a665988104e4a",
+      "build_ms": 28.31152900000052,
+      "studio_coordinate_max_error": 5.7685033416632336e-08,
+      "studio_window_max_error": 6.119410200788877e-08
+    }
+  ],
+  "scope": "Four actual JavaScript live-material states, independently reopened with trimesh. Coordinates checked against the original studio chart using the same raw 64-grid fields. No self-intersection or physical-printability claim."
+}

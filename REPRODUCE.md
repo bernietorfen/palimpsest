@@ -88,3 +88,11 @@ ffmpeg -hide_banner -nostdin -v error -threads 6 -i artwork/masters/palimpsest-f
 ```
 
 The source includes numerical, reconstruction, geometry, preservation and rendering tests. Browser audit functions are supplied for Playwright CLI. Their checks concern visible state, input behavior and media properties; they are not perceptual listening tests.
+
+## Playable edition
+
+The live instrument has no Python or GPU-server dependency at runtime. It uses a fixed-step JavaScript worker, WebGL2 and Web Audio. Its standalone archive includes the original source and the licensed type files; serve that archive over a loopback HTTP server on an authorized computer. Opening the HTML directly as a `file:` URL will not provide the worker and audio-module origin required by browsers.
+
+The film edition and live edition are separate frozen releases. Extract each archive into its own empty directory. Do not unpack an older viewing-room archive over a newer source checkout: it contains the HTML of its own edition.
+
+Node 24 runs the JavaScript equation, phrase-replay, stress and geometry checks. The independent PyTorch and trimesh comparisons run in the studio environment. Complete commands, numeric results and interpretation limits are in [the live edition record](research/LIVE-EDITION.md).

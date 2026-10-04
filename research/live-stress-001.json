@@ -1,0 +1,75 @@
+{
+  "created_utc": "2026-10-04T01:24:51.412Z",
+  "cases": [
+    {
+      "protocol": "maximum_chord",
+      "duration_seconds": 600,
+      "steps": 57600,
+      "wall_seconds": 44.400203037,
+      "finite": true,
+      "retained_bounds": true,
+      "peak_displacement": 3.4799755569508215,
+      "peak_velocity": 3.6440625433644516,
+      "max_memory_rms": 0.7456223022062196,
+      "max_fatigue_mean": 0.8699651301968273,
+      "pitch_range_hz": [
+        85.51085906342888,
+        441.9982513952498
+      ],
+      "final": {
+        "time": 600,
+        "memory_rms": 0.7456240971919209,
+        "fatigue_mean": 0.8699873690319264,
+        "max_displacement": 3.0715996069845186,
+        "finite": true
+      }
+    },
+    {
+      "protocol": "alternating_writing_and_forgetting",
+      "duration_seconds": 600,
+      "steps": 57600,
+      "wall_seconds": 50.129995519,
+      "finite": true,
+      "retained_bounds": true,
+      "peak_displacement": 2.545645489449439,
+      "peak_velocity": 2.301757376461493,
+      "max_memory_rms": 0.7011190788750087,
+      "max_fatigue_mean": 0.9770957678353412,
+      "pitch_range_hz": [
+        69.71607192501364,
+        440
+      ],
+      "final": {
+        "time": 600,
+        "memory_rms": 0.19517573347556172,
+        "fatigue_mean": 0.9674716378712412,
+        "max_displacement": 0.31182724050260785,
+        "finite": true
+      }
+    },
+    {
+      "protocol": "seeded_gestures",
+      "duration_seconds": 600,
+      "steps": 57600,
+      "wall_seconds": 46.672422164000004,
+      "finite": true,
+      "retained_bounds": true,
+      "peak_displacement": 3.342427442378651,
+      "peak_velocity": 4.3543803660206875,
+      "max_memory_rms": 0.7210760191894232,
+      "max_fatigue_mean": 0.9914845286574777,
+      "pitch_range_hz": [
+        76.84406878421191,
+        440
+      ],
+      "final": {
+        "time": 600,
+        "memory_rms": 0.7067936129562925,
+        "fatigue_mean": 0.9902648879960078,
+        "max_displacement": 2.640983130820983,
+        "finite": true
+      }
+    }
+  ],
+  "scope": "Three 600-second deterministic stress trajectories at the UI pressure limit. This checks these trajectories, not all possible gestures or a formal stability bound."
+}

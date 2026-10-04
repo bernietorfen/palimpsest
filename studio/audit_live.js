@@ -1,0 +1,47 @@
+async (page) => {
+  const check=(ok,message)=>{if(!ok)throw new Error(message);};
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('http://127.0.0.1:8083/instrument.html');
+  await page.waitForFunction(()=>document.querySelector('#live-sculpture').dataset.state==='ready'&&document.querySelector('#live-sculpture').dataset.time!==undefined);
+  const state=()=>page.locator('#live-sculpture').evaluate(e=>({...e.dataset}));
+  const initial=await state();
+  check(Number(initial.time)===0&&Number(initial.memory)===0,'Initial material is not fresh');
+  await page.getByRole('button',{name:'Begin with sound'}).click();
+  await page.waitForFunction(()=>document.body.dataset.running==='true');
+  await page.keyboard.down('q');
+  await page.waitForFunction(()=>Number(document.querySelector('#live-sculpture').dataset.time)>4);
+  const held=await page.locator('.voice-key').first().getAttribute('aria-pressed');
+  await page.keyboard.up('q');
+  const written=await state();
+  check(held==='true'&&Number(written.memory)>.1&&Number(written.audioPeak)>.005,'A held voice did not write and synthesize');
+  await page.getByRole('button',{name:'Pause',exact:true}).click();
+  await page.waitForFunction(()=>document.body.dataset.running==='false'&&document.querySelector('#live-sculpture').dataset.materialRunning==='false');
+  const paused=await state();
+  await page.waitForTimeout(350);
+  check((await state()).time===paused.time,'Paused simulation advanced');
+  const [download]=await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:'Save material ↓',exact:true}).click()]);
+  await download.saveAs('output/playwright/live-saved-material.json');
+  await page.getByRole('button',{name:'New material',exact:true}).click();
+  await page.waitForFunction(()=>Number(document.querySelector('#live-sculpture').dataset.memory)===0);
+  const fresh=await state();
+  check(Number(fresh.time)===0&&Number(fresh.wear)===0,'Fresh material retained old fields');
+  await page.locator('#open-material').setInputFiles('output/playwright/live-saved-material.json');
+  await page.waitForFunction(()=>document.querySelector('#live-status').textContent.startsWith('Material opened'));
+  const restored=await state();
+  check(restored.memory===paused.memory&&restored.time===paused.time&&restored.wear===paused.wear,'File restore did not recover the exact displayed state');
+  const [restoredDownload]=await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:'Save material ↓',exact:true}).click()]);
+  await restoredDownload.saveAs('output/playwright/live-restored-material.json');
+  await page.getByRole('button',{name:'Resume',exact:true}).click();
+  await page.waitForFunction(()=>document.body.dataset.running==='true');
+  await page.getByRole('button',{name:'Let the inscription fade',exact:true}).click();
+  check(await page.getByRole('button',{name:'Keep what remains',exact:true}).getAttribute('aria-pressed')==='true','Forgetting control did not activate');
+  await page.waitForFunction(t=>Number(document.querySelector('#live-sculpture').dataset.time)>t+3,Number(restored.time));
+  await page.getByRole('button',{name:'Pause',exact:true}).click();
+  await page.waitForFunction(()=>document.querySelector('#live-sculpture').dataset.materialRunning==='false');
+  const final=await state();
+  check(Number.isFinite(Number(final.memory))&&Number(final.time)>Number(restored.time),'Restored material did not continue');
+  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
+  check(overflow===0&&errors.length===0,'Layout overflow or browser errors');
+  return {browser:page.context().browser().browserType().name(),viewport:page.viewportSize(),initial,written,paused,fresh,restored,final,overflow,errors,
+    scope:'Live browser gestures, synthesis meter, pause, actual file download/import and continuation. No perceptual listening claim.'};
+}

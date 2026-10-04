@@ -1,0 +1,14 @@
+{
+  "created_utc": "2026-10-04T01:20:27.330Z",
+  "duration_seconds": 7.208333333333333,
+  "gesture_events": 7,
+  "force_envelopes_identical": true,
+  "fresh_replay_state_identical": true,
+  "fresh_replay_readouts_identical": true,
+  "invalid_phrases_rejected": 4,
+  "repeated_on_changed_material": {
+    "rms_hz": 3.605929044438895,
+    "samples": 173
+  },
+  "scope": "Actual JavaScript solver and score: captured input force envelopes replay exactly; fresh-state repetition is exact; changed-state repetition has a different answer. This is a deterministic implementation check, not a perceptual claim."
+}

@@ -1,0 +1,41 @@
+async(page)=>{
+  const check=(ok,message)=>{if(!ok)throw new Error(message);};
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('http://127.0.0.1:8083/instrument.html');
+  await page.waitForFunction(()=>document.querySelector('#live-sculpture').dataset.time!==undefined);
+  await page.getByRole('button',{name:'Begin silently',exact:true}).click();
+  await page.waitForFunction(()=>document.body.dataset.running==='true');
+  await page.getByRole('button',{name:'Record a phrase'}).click();
+  await page.waitForFunction(()=>document.body.dataset.phrase==='recording');
+  const start=await page.locator('#live-sculpture').evaluate(e=>Number(e.dataset.time));
+  await page.keyboard.down('q');
+  await page.waitForFunction(t=>Number(document.querySelector('#live-sculpture').dataset.time)>t+2,start);
+  await page.keyboard.up('q');await page.keyboard.down('e');
+  await page.waitForFunction(t=>Number(document.querySelector('#live-sculpture').dataset.time)>t+4,start);
+  await page.keyboard.up('e');
+  await page.getByRole('button',{name:'Finish phrase'}).click();
+  await page.waitForFunction(()=>document.body.dataset.phrase==='idle');
+  const kept=await page.locator('#phrase-clock').textContent();
+  await page.getByRole('button',{name:'Ask again'}).click();
+  await page.waitForFunction(()=>document.body.dataset.phrase==='replaying');
+  const locked=await page.locator('.voice-key').first().isDisabled();
+  await page.waitForFunction(()=>document.body.dataset.phrase==='idle');
+  await page.locator('#reply-comparison').waitFor({state:'visible'});
+  const comparison=await page.locator('#reply-comparison').evaluate(e=>({rms:Number(e.dataset.rmsHz),paths:e.querySelectorAll('path').length,scales:[...e.querySelectorAll('svg')].map(x=>x.dataset.scaleHz)}));
+  check(locked&&comparison.rms>.001&&comparison.paths===8&&comparison.scales[0]===comparison.scales[1],'Recorded phrase did not create a valid paired reply');
+  await page.getByRole('button',{name:'Pause',exact:true}).click();
+  await page.waitForFunction(()=>document.querySelector('#live-sculpture').dataset.materialRunning==='false');
+  const before=await page.locator('#live-sculpture').evaluate(e=>({...e.dataset}));
+  await page.getByRole('button',{name:'New material',exact:true}).click();
+  await page.waitForFunction(()=>document.querySelector('#live-sculpture').dataset.time==='0.00000');
+  await page.getByRole('button',{name:'Undo new material',exact:true}).click();
+  await page.waitForFunction(t=>document.querySelector('#live-sculpture').dataset.time===t,before.time);
+  const after=await page.locator('#live-sculpture').evaluate(e=>({...e.dataset}));
+  check(after.memory===before.memory&&after.wear===before.wear,'Undo new material did not restore the retained fields');
+  const [download]=await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:'Save material ↓',exact:true}).click()]);
+  await download.saveAs('output/playwright/live-saved-phrase.json');
+  await page.screenshot({path:'output/playwright/live-score-001.jpg',type:'jpeg',quality:76,fullPage:true});
+  check(errors.length===0,'Live phrase browser error: '+errors.join('; '));
+  return{browser:page.context().browser().browserType().name(),kept,locked,comparison,undo:{before,after},errors,
+    scope:'Actual browser recording, repeat, paired glyphs, retained-state undo and saved phrase file.'};
+}

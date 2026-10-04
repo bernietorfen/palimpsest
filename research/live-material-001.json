@@ -1,0 +1,219 @@
+{
+  "created_utc": "2026-10-04T01:05:10.403965+00:00",
+  "cases": [
+    {
+      "size": 64,
+      "dt": 0.010416666666666666,
+      "duration": 24,
+      "configuration": {
+        "size": 64,
+        "dt": 0.010416666666666666,
+        "stiffness": 2.4,
+        "tension": 1.2,
+        "bending": 0.08,
+        "buckling": 0.0,
+        "damping": 0.38,
+        "cubic": 0.7,
+        "yield_strain": 0.095,
+        "write_rate": 0.32,
+        "memory_limit": 0.8,
+        "memory_diffusion": 0.035,
+        "forgetting": 0.0008,
+        "fatigue_rate": 0.26,
+        "fatigue_recovery": 0.001,
+        "feedback": 0.2,
+        "feedback_delay": 0.79,
+        "memory_tuning": 0.65,
+        "echo_twist": 0.018,
+        "force_scale": 1.6,
+        "device": "cpu",
+        "dtype": "float64"
+      },
+      "field_errors": {
+        "u": {
+          "max_abs": 9.076073226310655e-15,
+          "rms": 2.9566474257279826e-15
+        },
+        "v": {
+          "max_abs": 1.144223604754302e-14,
+          "rms": 3.3312340126706878e-15
+        },
+        "p": {
+          "max_abs": 3.2751579226442118e-15,
+          "rms": 8.474133052474191e-16
+        },
+        "z": {
+          "max_abs": 5.495603971894525e-15,
+          "rms": 1.2098032337335843e-15
+        },
+        "delay": {
+          "max_abs": 1.2325210296815214e-15,
+          "rms": 5.843014301179817e-16
+        },
+        "echo_phase": {
+          "max_abs": 1.0658141036401503e-13,
+          "rms": 6.633084733785735e-14
+        }
+      },
+      "javascript_ms": 2019.3971000000001,
+      "javascript_steps_per_second": 1140.9345888433731,
+      "python_ms": 1949.3915671482682,
+      "javascript_invariants": {
+        "checkpoint_exact": true,
+        "invalid_import_atomic": true,
+        "silence_exact": true
+      },
+      "diagnostics": {
+        "time": 24.0,
+        "energy_proxy": 0.0103351374394104,
+        "max_displacement": 0.4923963193739831,
+        "memory_rms": 0.16529823301489652,
+        "fatigue_mean": 0.1888493468625249,
+        "finite": true
+      }
+    },
+    {
+      "size": 64,
+      "dt": 0.005208333333333333,
+      "duration": 24,
+      "configuration": {
+        "size": 64,
+        "dt": 0.005208333333333333,
+        "stiffness": 2.4,
+        "tension": 1.2,
+        "bending": 0.08,
+        "buckling": 0.0,
+        "damping": 0.38,
+        "cubic": 0.7,
+        "yield_strain": 0.095,
+        "write_rate": 0.32,
+        "memory_limit": 0.8,
+        "memory_diffusion": 0.035,
+        "forgetting": 0.0008,
+        "fatigue_rate": 0.26,
+        "fatigue_recovery": 0.001,
+        "feedback": 0.2,
+        "feedback_delay": 0.79,
+        "memory_tuning": 0.65,
+        "echo_twist": 0.018,
+        "force_scale": 1.6,
+        "device": "cpu",
+        "dtype": "float64"
+      },
+      "field_errors": {
+        "u": {
+          "max_abs": 1.697253448895708e-14,
+          "rms": 5.394895067865708e-15
+        },
+        "v": {
+          "max_abs": 2.2816817879522944e-14,
+          "rms": 7.864701593868992e-15
+        },
+        "p": {
+          "max_abs": 6.661338147750939e-15,
+          "rms": 1.7497255479526931e-15
+        },
+        "z": {
+          "max_abs": 7.105427357601002e-15,
+          "rms": 1.8096889883508747e-15
+        },
+        "delay": {
+          "max_abs": 2.1293730667615307e-15,
+          "rms": 1.0174646925083328e-15
+        },
+        "echo_phase": {
+          "max_abs": 2.886579864025407e-13,
+          "rms": 1.1419455622127296e-13
+        }
+      },
+      "javascript_ms": 4068.0710289999997,
+      "javascript_steps_per_second": 1132.723584999135,
+      "python_ms": 3937.6018580514938,
+      "javascript_invariants": {
+        "checkpoint_exact": true,
+        "invalid_import_atomic": true,
+        "silence_exact": true
+      },
+      "diagnostics": {
+        "time": 24.0,
+        "energy_proxy": 0.010359420020953147,
+        "max_displacement": 0.49283078420289655,
+        "memory_rms": 0.16507407562052542,
+        "fatigue_mean": 0.18860707492321926,
+        "finite": true
+      }
+    },
+    {
+      "size": 128,
+      "dt": 0.010416666666666666,
+      "duration": 24,
+      "configuration": {
+        "size": 128,
+        "dt": 0.010416666666666666,
+        "stiffness": 2.4,
+        "tension": 1.2,
+        "bending": 0.08,
+        "buckling": 0.0,
+        "damping": 0.38,
+        "cubic": 0.7,
+        "yield_strain": 0.095,
+        "write_rate": 0.32,
+        "memory_limit": 0.8,
+        "memory_diffusion": 0.035,
+        "forgetting": 0.0008,
+        "fatigue_rate": 0.26,
+        "fatigue_recovery": 0.001,
+        "feedback": 0.2,
+        "feedback_delay": 0.79,
+        "memory_tuning": 0.65,
+        "echo_twist": 0.018,
+        "force_scale": 1.6,
+        "device": "cpu",
+        "dtype": "float64"
+      },
+      "field_errors": {
+        "u": {
+          "max_abs": 1.8290924330699454e-14,
+          "rms": 4.802876181122056e-15
+        },
+        "v": {
+          "max_abs": 2.7644553313166398e-14,
+          "rms": 8.227767202896287e-15
+        },
+        "p": {
+          "max_abs": 6.630113125183357e-15,
+          "rms": 1.5396553242328445e-15
+        },
+        "z": {
+          "max_abs": 8.992806499463768e-15,
+          "rms": 1.958913936175729e-15
+        },
+        "delay": {
+          "max_abs": 3.847833510151055e-15,
+          "rms": 1.3392313084849956e-15
+        },
+        "echo_phase": {
+          "max_abs": 2.0472512574087887e-13,
+          "rms": 9.289298698949407e-14
+        }
+      },
+      "javascript_ms": 7691.629093,
+      "javascript_steps_per_second": 299.54642535959323,
+      "python_ms": 3528.8508331868798,
+      "javascript_invariants": {
+        "checkpoint_exact": true,
+        "invalid_import_atomic": true,
+        "silence_exact": true
+      },
+      "diagnostics": {
+        "time": 24.0,
+        "energy_proxy": 0.007610428353430001,
+        "max_displacement": 0.4870860031850566,
+        "memory_rms": 0.16448007240052082,
+        "fatigue_mean": 0.18536743000730507,
+        "finite": true
+      }
+    }
+  ],
+  "scope": "Same grid and equations, double-precision reference, 24-second forcing and forgetting. This is not a continuum or perceptual equivalence claim."
+}
