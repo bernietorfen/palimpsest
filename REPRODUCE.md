@@ -132,3 +132,9 @@ python -m studio.complete_notebook --output artwork/masters/palimpsest-complete-
 ```
 
 Generation refuses to overwrite existing result directories. Run a fresh experiment in a separate checkout, or verify the frozen data without regenerating it. The spatial generator admits the finer grids directly against the scalar implementation and the original grid against the saved canonical atlas. The continuation archive includes `first-dialogue.svg` at `artwork/live-edition-002/` and the pressure display data at `artwork/analysis/pressure-reading-003/public/`, allowing its figures to be regenerated without fetching the earlier releases. It preserves every notebook image at its original path, the required earlier atlas/refinement reports, and the new figure record. These inputs rebuild the book with the matching tagged source. The original film pages and final pages retain the first-edition composition; six new pages connect the playable, pressure and spatial work.
+
+## Portable installation
+
+The v1.4.0 ZIP includes the prepared `site/` directory, all viewing and interaction assets, the complete notebook and the three-grid print PDF. Its `START-HERE.txt` gives a loopback-only static-server command. The browser requires that server; opening HTML directly as `file:` is unsupported. All experiential assets are local. Catalog entries marked Online and external authorship references still require an internet connection.
+
+`studio.prepare_installation` builds the archive from the prepared current site and frozen v1.3.0 book/print inputs. It changes only local links and the portable catalog, and records every file digest. `studio.verify_installation` restores each entry to a new proof directory and checks all file hashes before browser testing. The installation's embedded content manifest records the exact source commit and describes the portable link changes.
