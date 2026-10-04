@@ -1,14 +1,33 @@
 # PALIMPSEST
 
-**Two original acts for a material with memory.**
+**Three original movements about time, memory and returning form.**
 
-A phrase presses into an invented material and changes its later answer. In the second act, a voice enters a circle of sculptural instruments, writes through their connections, and leaves. Its listeners carry an encounter that did not touch them directly.
+In *A River Twice*, a copper stitch returns inside a changed architecture. A voice offers a phrase, gives it to other voices, and leaves. The phrase comes back. Its first voice does not.
 
-Conceived, coded and composed by Codex, 3–4 October 2026.
+Conceived, coded and composed by Codex, 3–5 October 2026.
 
-![Seven suspended material voices connected during the encounter](https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/choir-encounter-view.jpg)
+![Folded copper, ivory and blue-green bands surrounding an open space](https://github.com/bernietorfen/palimpsest/releases/download/a-river-twice-1/river-poster.jpg)
 
-[Enter the exhibition](https://site-inky-eight-42.vercel.app) · [Play the choir](https://site-inky-eight-42.vercel.app/choir.html) · [Choose the witness](https://site-inky-eight-42.vercel.app/witness.html) · [Enter the first act](https://site-inky-eight-42.vercel.app/first-act.html) · [Download the complete installation](https://github.com/bernietorfen/palimpsest/releases/tag/v2.2.0)
+[Watch A River Twice](https://site-inky-eight-42.vercel.app) · [Change the observer](https://site-inky-eight-42.vercel.app/#observation) · [Read the companion](https://github.com/bernietorfen/palimpsest/releases/download/a-river-twice-1/river-companion.pdf) · [Keep the film and score](https://github.com/bernietorfen/palimpsest/releases/tag/a-river-twice-1) · [Explore the earlier movements](https://site-inky-eight-42.vercel.app/movements.html)
+
+## A River Twice
+
+Four minutes, 32 original folded bands, six synthesized instrument roles and a returning five-note question. The camera moves from one copper stitch into the surrounding weave, through its folds, into a dark and silent interval, and back into a warmer world. The source voice remains absent while other voices carry its phrase.
+
+The film is a reading of loss and recognition. Its underlying phase clock makes a precise, narrower distinction: an observer can see a fragment return while the complete state remains different. The browser experiment lets the viewer hold the moment and reveal three relations that the limited view omitted. Changing the view changes the available information, without changing the clock.
+
+Four compact studies extend that question. They examine when selected observations certify a full return, when finite resolution makes different times compatible with one report, what one snapshot can distinguish, and how a small surrounding system changes the prediction of an isolated clock. The last study retains both separable and product controls: entanglement is not required to disrupt the recorded return.
+
+- [The artistic construction and its meaning](research/RIVER-EDITION.md)
+- [Observation graph: protocol and results](research/RELATIONAL-CLOCK-RESULTS.md)
+- [Local sensitivity and distant ambiguity](research/TIME-AMBIGUITY-RESULTS.md)
+- [An exact near-return witness and the single-copy question](research/OPERATIONAL-TIME-RESULTS.md)
+- [The boundary of isolation](research/CLOCK-ENVIRONMENT-RESULTS.md)
+- [Reproduce the new movement](research/RIVER-REPRODUCTION.md)
+
+The geometry, score, synthesis, camera and visual mappings are authored here. Blender Cycles and numerical libraries supply general tools; no imported sculpture, footage, music, sound sample or trained-model output supplies the artistic assets. The film's musical absence and blackout are composed choices. Its finite unitary model does not erase its state, prove a physical arrow of time or establish a theory of human memory.
+
+The earlier works below use a different, history-dependent material model. They remain available as completed movements and frozen research editions.
 
 ## A choir of absences
 
@@ -77,7 +96,7 @@ The implementation is organized under `studio/`; the static exhibition and origi
 
 The 4 October publication revision edits prose and selected PDF passages. Numerical arrays, audio, video and rendered artwork retain their original bytes. Current release inventories describe the revised files; historical generation and test receipts refer to the original production. Each repackaged archive includes `PUBLICATION-REVISION.json` with the changed member identities. The [source revision map](PUBLICATION-REVISION.json) resolves original public commit identifiers to the corresponding revised source.
 
-Production used an NVIDIA RTX 4090 on RunPod. No simulation, rendering, synthesis, model execution or browser testing ran on the authoring laptop.
+The earlier movements used an NVIDIA RTX 4090 on RunPod; *A River Twice* uses an RTX 5090. Production simulation, rendering, synthesis and browser tests run on the compute host.
 
 The work claims an original construction and composition. It does not claim to be the first artwork about hysteresis, feedback, memory or sound sculpture. Sound was measured for duration, loudness, peak and signal structure; a supported perceptual audition path was unavailable to the authoring assistant.
 

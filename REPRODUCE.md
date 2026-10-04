@@ -1,6 +1,8 @@
 # Reproducing PALIMPSEST
 
-Use an authorized Linux GPU host. Production used Python 3.12.3, PyTorch 2.8.0 with CUDA 12.8, an RTX 4090 and NVIDIA's EGL/OpenGL renderer. GPU simulations can vary with hardware and library versions; compare numeric results at stated tolerances rather than assuming universal binary identity.
+For **A River Twice**, follow the [new movement's reproduction guide](research/RIVER-REPRODUCTION.md). Its finite phase model, four scientific studies, numerical synthesis and Blender/Cycles film use a separate production path. The film was rendered on an RTX 5090; its small scientific calculations run on the CPU.
+
+The remainder of this guide covers the earlier material works. Use an authorized Linux GPU host. Those productions used Python 3.12.3, PyTorch 2.8.0 with CUDA 12.8, an RTX 4090 and NVIDIA's EGL/OpenGL renderer. GPU simulations can vary with hardware and library versions; compare numeric results at stated tolerances rather than assuming universal binary identity.
 
 The release contains the actual scientific record and finished media. Its JSON manifest lists sizes and SHA-256 digests. Verify downloads before extracting the archive into an empty directory. The viewing-room archive expands into `site/`; the scientific record preserves the relative `artifacts/` and `artwork/analysis/` paths used by the production tools.
 

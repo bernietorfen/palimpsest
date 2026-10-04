@@ -1,5 +1,6 @@
 {
   "redirects": [
+    {"source":"/assets/generated/river-viewing.mp4","destination":"https://github.com/bernietorfen/palimpsest/releases/download/a-river-twice-1/river-viewing.mp4","permanent":true},
     {"source":"/assets/generated/palimpsest-viewing.mp4","destination":"https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-viewing-1080p.mp4","permanent":true},
     {"source":"/assets/generated/palimpsest-notebook.pdf","destination":"https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-notebook.pdf","permanent":true}
   ],
