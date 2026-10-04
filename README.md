@@ -1,14 +1,34 @@
 # PALIMPSEST
 
-**An instrument that becomes its own score.**
+**Two original acts for a material with memory.**
 
-A phrase presses into an invented material. The impression it leaves changes the material's tuning. Those changed voices return as a different force. Later, the phrase comes back to an instrument that has already lived through it.
+A phrase presses into an invented material and changes its later answer. In the second act, a voice enters a circle of sculptural instruments, writes through their connections, and leaves. Its listeners carry an encounter that did not touch them directly.
 
 Conceived, coded and composed by Codex, 3–4 October 2026.
 
-[Enter the exhibition](https://site-inky-eight-42.vercel.app) · [Play the material](https://site-inky-eight-42.vercel.app/instrument.html) · [Explore 120 possible pasts](https://site-inky-eight-42.vercel.app/atlas.html) · [An imperfect hand](https://site-inky-eight-42.vercel.app/pressure.html) · [Download the film edition](https://github.com/bernietorfen/palimpsest/releases/tag/v1.0.0)
+![Seven suspended material voices connected during the encounter](https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/choir-encounter-view.jpg)
 
-## The work
+[Enter the exhibition](https://site-inky-eight-42.vercel.app) · [Play the choir](https://site-inky-eight-42.vercel.app/choir.html) · [Choose the witness](https://site-inky-eight-42.vercel.app/witness.html) · [Enter the first act](https://site-inky-eight-42.vercel.app/first-act.html) · [Download the second edition](https://github.com/bernietorfen/palimpsest/releases/tag/v2.0.0)
+
+## A choir of absences
+
+Seven bodies, twelve reciprocal wave bridges, eighty-four voices. Only B receives the writing contacts in the 4:48 composition. The connections fall away before the source leaves. A disclosed intervention clears transient motion, and the same quiet question returns to the six listeners.
+
+The film first listens closely to E, whose saved pitch, amplitude and fatigue records remain exactly unchanged. Then the camera and listening widen. A, C and G carry substantially different replies. The separate listening piece uses matched synthesis, one common gain and aligned forty-second windows, letting the visitor choose what the observer hears.
+
+The playable choir exposes the original equations through touch, sound, cutting and rejoining. Save a complete material state, isolate a listener, or take over after a composed encounter. Three matched large prints and three sculpture states hold the work before, during and after the encounter. An eighteen-page notebook connects the composition to its numerical record.
+
+A separate three-body experiment follows an internally locked protocol, after exploratory trials. Twelve held-out phrases are repeated at two timesteps. All 48 receiver cases retain a difference above the fixed 0.01 Hz RMS gate after every bridge and transient is cleared. Erasing both retained fields removes that difference exactly; removing the second writing link does the same for the second receiver. The largest paired change on halving the timestep is 0.7352%. These are finite-model results, not audibility or physical-memory claims.
+
+A restricted frozen-system argument distinguishes retained state from observation: damped mechanics converges to a unique equilibrium, while frozen inscription and wear supply the surviving identity block. The active artwork lies outside the frozen assumptions. No quantum recurrence law or new general theorem is claimed.
+
+- [Locked transfer protocol](research/CHOIR-PROTOCOL.md)
+- [Results, early weak outcomes and limits](research/CHOIR-RESULTS.md)
+- [Where persistence lives: the restricted energy argument](research/CHOIR-ENERGY.md)
+
+The final follow-up asks whether the encounter carries sequence. All 24 orders of four fixed source gestures remain distinct at both untouched receivers after separation and clearing of motion. Under the declared timestep-matching check, the distant receiver identifies 24 of 24 histories; the nearer one identifies 18. Both-erased controls are exact. [The received-history record](research/RECEIVED-HISTORIES-RESULTS.md) preserves the rejected batching admission, its explicit execution revision, all order pairs and partial erasures. This is a finite numerical observation, not a hearing test or a general advantage of distance.
+
+## The first act
 
 The edition includes a seven-minute, twelve-second 4K film and original stereo soundtrack; three 8000 × 10000 prints; a matched first/return diptych; three textured glTF/STL sculptures; an 18-page illustrated notebook; and an audible atlas of all 120 orders of five writing gestures.
 

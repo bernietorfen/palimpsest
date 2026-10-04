@@ -10,3 +10,5 @@ pytest>=8,<10
 matplotlib>=3.9,<4
 trimesh>=4.5,<6
 pypdf>=5,<7
+fonttools>=4,<5
+brotli>=1.1,<2

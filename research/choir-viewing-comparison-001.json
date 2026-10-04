@@ -1,0 +1,14 @@
+{
+  "verified_utc": "2026-10-04T10:54:01.572758+00:00",
+  "frames_compared": 6912,
+  "master_sha256": "db084ef4aa337553bf7b80a622458eae7c9c21a7af29ef409cec6409f08b09b3",
+  "viewing_sha256": "c261130975da742b56214764beda182012f1a3ab2d172a733a9f5450c00aebfc",
+  "ssim": {
+    "Y": 0.992631,
+    "U": 0.989882,
+    "V": 0.991457,
+    "all": 0.991977
+  },
+  "reference": "Full decoded 4K master, Lanczos downscale to 1920x1080 and yuv420p; same frame times.",
+  "scope": "Compression comparison only; not a claim of perceptual equivalence or listening quality."
+}

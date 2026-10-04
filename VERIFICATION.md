@@ -59,3 +59,102 @@ The six new spreads were rendered and visually inspected at 1200 × 900. All 24 
 The extracted installation was exercised in Chromium behind an unavailable external proxy with a loopback exception. The complete 1080p film played; the 120-history atlas played its actual recorded audio; the pressure explorer exported a measured SVG; the live material accumulated inscription and fatigue while producing a nonzero synthesis meter; and a paused state returned exactly after reload. No experience requested an external dependency. A separate external fetch failed as expected. These are playback and signal checks, not a claim of perceptual listening.
 
 The first composite harness pressed its voice key before asynchronous audio startup finished. Its readiness condition was corrected; the fresh-session rerun passed. The application itself did not change for that correction.
+
+## Second act: numerical material and observation
+
+The locked transfer study contains 48 receiver cases: twelve phrases, two
+receivers and two timesteps. Every case exceeds its fixed 0.01 Hz RMS gate after
+connections and transients are removed. Both-field erasure and the disconnected
+second receiver match the isolated controls exactly. The independent verifier
+checks 104 files and reconstructs every saved intervention and reported metric;
+its largest analysis discrepancy is 4.45e-16 Hz. The largest paired timestep
+change is 0.735157%, with the spatial grid held fixed.
+
+The reciprocal bridge tests check potential gradients, instantaneous power,
+zero-connection agreement, old-state force order and exact continuation. A
+separate automatic-differentiation test reconstructs the full frozen body and
+bridge potential and compares its gradient with the implemented acceleration.
+The saved Galerkin matrices independently reproduce the continuous energy
+identity with residual 1.4211e-14. The declared 566-dimensional mechanical state
+has largest generator real part -0.1200000547 per second and 1/96-second step
+spectral radius 0.9987523383. These checks do not prove passivity or global
+stability of the driven plastic work.
+
+A 24-second seven-body, twelve-bridge cross-language run matches all six
+float32 field packets between Python and JavaScript; bridge disagreement is
+below 3.61e-14 and pitch disagreement below 5.69e-14 Hz. One declared ten-minute
+live stress trajectory remains finite through maximum UI pressure, moving
+contact, repeated cuts/rejoins and motion resets. Saved continuation is exact;
+four malformed-state interventions leave the valid state unchanged. This is
+neither an exhaustive stability test nor a browser frame-rate benchmark.
+
+In the separate matched listening piece, E's pitch, amplitude and fatigue
+controls and synthesized PCM agree exactly. Its two choices intentionally use
+one encoded file. A, C and G use actual independent before/after synthesis with
+common phase, filter and gain. Chromium and WebKit decode and play all four
+listener choices, preserve the common clock across switching, seek to 31 seconds,
+finish at 40 seconds and replay from zero. The checked layouts have no horizontal
+overflow at 393 pixels. Automated accessibility checks supplement visual review.
+
+The playable choir passes actual browser save/open/save and paused reload
+recovery, pointer picking and orbit, graphics loss/recovery and audio signal
+checks. The touch follow-up uses real dispatched mobile touch events, not an
+emulated mouse click. It checks that Space activates the focused Pause control,
+that unavailable tab storage is explained while ordinary file saving remains
+available, that malformed import is atomic, and that the complete 72-second
+encounter can be undone to the exact previous paused state.
+
+The three new sculpture masters reopen with their expected triangle counts and
+bounds. Their STL components are closed with consistent winding. The large
+prints use common cameras and light; the source is absent only from the final
+visible installation. The notebook's eighteen pages were rendered, checked for
+text bounds and visually reviewed. A fresh rebuild reproduces its complete PDF
+bytes. Source images and generating code accompany its record.
+
+## Second-act film delivery
+
+The 4K master contains 6,912 frames at 24 fps, HEVC Main 10 and limited-range
+BT.709. Both streams begin at zero and last exactly 288 seconds. The complete
+4K and H.264 viewing encodings decode without errors. The viewing version is
+1920 by 1080, 19,871,266 bytes; comparison of every frame with the downscaled
+master gives SSIM 0.991977. This is a compression measure, not perceptual parity.
+
+The final rendered-frame record has no unchanged sampled interior frames.
+The largest sampled difference outside the authored cuts is 3.283344 on a
+0-255 scale, during the final widening. A decoded sequence review covers entry,
+writing, the circle, disconnection, source departure and the return. The original
+camera-description overstatement is retained with an explicit correction:
+matched close-camera intervals are [5,28) and [248,271), twenty-three seconds.
+
+Master SHA-256: `db084ef4aa337553bf7b80a622458eae7c9c21a7af29ef409cec6409f08b09b3`.
+
+A delayed-network interaction check reproduced a disabled playback control when
+a visitor sought during initial audio loading. The corrected listening piece
+resumes at the chosen time and clears its loading state in both Chromium and
+WebKit. A separate graphics-loss check exposed obsolete resource deletion after
+WebKit restored a context; the viewer now discards invalidated handles at loss,
+and both browser engines pass restoration without console errors.
+
+## Received-history follow-up
+
+The locked four-token question and declared execution revision accompany the
+complete data. The first packed-chain admission failed its bridge-velocity
+limit and stopped before evaluating any order; the revised individual writing
+histories match its saved single-chain reference exactly. Both attempts remain
+in the scientific record.
+
+A separate NumPy verifier hashes all 164 study files, reconstructs 768 retained-
+field interventions, verifies transient resets and recomputes every within-rate
+and cross-rate distance matrix with zero matrix discrepancy. Both-field erasure
+matches the fresh isolated reply exactly in every case. All 24 orders separate
+at both rates for each receiver. Fine-to-coarse nearest-history matching gives
+18 of 24 own matches at the near receiver and 24 of 24 at the distant receiver.
+The distant minimum pair separation is 0.002101487 / 0.002121531 Hz at 96 / 192
+steps per second, above the declared 0.001 Hz gate. This is a finite numerical
+reader result, not a hearing, continuum or physical capacity claim.
+
+The vector print uses the distant recorded pitches, one common centering and
+scale, and an explicit harmonic projection recorded in its manifest. Its four-
+page companion includes the failed admission and six nearer-receiver matching
+errors. All five PDF pages pass extracted-word margin checks; the print and all
+four companion pages are rendered for visual inspection.

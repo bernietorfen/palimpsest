@@ -1,0 +1,143 @@
+{
+  "created_utc": "2026-10-04T11:09:02.360323+00:00",
+  "source_sha256": {
+    "studio/received_history_art.py": "87caa15112adb53461cd59e46c3c5e5654d18aa7b00c6af34fc3da124a4e6b6b",
+    "studio/notebook.py": "0d834cab36920bc72efc7c754785239dada0d1596a6d93d420229cee3fb798ec",
+    "research/RECEIVED-HISTORIES-PROTOCOL.md": "6be045e745f379cadb4434e811965ca69dac55168c9be81ed9ae55d07359a0ac",
+    "research/RECEIVED-HISTORIES-REVISION-001.md": "40257fa0281442064f1c01530538ea9cc5ec09e9f5851833d2c660302798a730",
+    "research/RECEIVED-HISTORIES-RESULTS.md": "f5ac0de0bcb72b18c40dd4e0d727f5a057e2391ce43449df15784fb12d696286",
+    "studio/verify_received_histories.py": "e21f6ebc2f3e255dfad05b4ef9e09590fc2d60d3fdaf05a121a0dcc9db04c12c"
+  },
+  "study_manifest_sha256": "76dcdfcc10e5a7f6728f3b6e15f5b6a95cd34267e895f4adc396f026bb5054ce",
+  "glyph": {
+    "receiver": 2,
+    "rate": 96,
+    "centering": "Mean of all 24 connected received trajectories at each time and mode",
+    "sample_indices": [
+      0,
+      26,
+      52,
+      79,
+      105,
+      131,
+      157,
+      183,
+      209,
+      236,
+      262,
+      288
+    ],
+    "times_seconds": [
+      0.0,
+      1.0833333333333333,
+      2.1666666666666665,
+      3.2916666666666665,
+      4.375,
+      5.458333333333333,
+      6.541666666666667,
+      7.625,
+      8.708333333333334,
+      9.833333333333334,
+      10.916666666666666,
+      12.0
+    ],
+    "harmonic_frequencies": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "phase_rule": "mode_index * pi * (sqrt(5)-1)",
+    "normalization_maximum": 1.0028634096836173,
+    "common_scale": true,
+    "scope": "Authored projection, not the classification metric or evidence of perceptual separability."
+  },
+  "companion": {
+    "pages": 4,
+    "pdf_sha256": "14675c9cd913568b59c15e4385e2dbe64fe1560628b9beee410029189bbfad78",
+    "embedded_image_sha256": {
+      "artwork/received-history-art-001/received-histories.jpg": "bfe62296e1b141ee461f1d83b00b1485385752a9e8ef0066c83260f057b63452",
+      "artwork/received-history-art-001/who-recognizes-the-order.png": "bbe6f97af9f49f84a49e94aea515cbb202cf5c882f7adcdc9fd0efa4c6a78b00",
+      "artwork/received-history-art-001/the-smallest-difference.png": "c5724cc14ab49d13b2a6da8e0e56c73399bd78a43b37e4f2f7dcf3ba45001656"
+    },
+    "page_inventory": [
+      {
+        "page": 1,
+        "label": "The received order",
+        "images": [
+          "artwork/received-history-art-001/received-histories.jpg"
+        ]
+      },
+      {
+        "page": 2,
+        "label": "Two observers",
+        "images": [
+          "artwork/received-history-art-001/who-recognizes-the-order.png"
+        ]
+      },
+      {
+        "page": 3,
+        "label": "A small retained difference",
+        "images": [
+          "artwork/received-history-art-001/the-smallest-difference.png"
+        ]
+      },
+      {
+        "page": 4,
+        "label": "A reproducible boundary",
+        "images": []
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "received-histories-6000x7500.png",
+      "bytes": 4078657,
+      "sha256": "e21a80624e6952ba469cf49c6bd535f516b6d3f58c75d80107498d600edfed60"
+    },
+    {
+      "path": "received-histories-companion.pdf",
+      "bytes": 1114949,
+      "sha256": "14675c9cd913568b59c15e4385e2dbe64fe1560628b9beee410029189bbfad78"
+    },
+    {
+      "path": "received-histories-print.pdf",
+      "bytes": 954925,
+      "sha256": "dc0684c6fe4ec4bf667b8376b0340d6eb09d97e8eaae7507ee53bcfe476d3496"
+    },
+    {
+      "path": "received-histories.jpg",
+      "bytes": 415896,
+      "sha256": "bfe62296e1b141ee461f1d83b00b1485385752a9e8ef0066c83260f057b63452"
+    },
+    {
+      "path": "the-smallest-difference.pdf",
+      "bytes": 23902,
+      "sha256": "e9adb65b83e197c9ab744d4efef2ff3ecec1a26bca05891fcab2d1608fce6e54"
+    },
+    {
+      "path": "the-smallest-difference.png",
+      "bytes": 232254,
+      "sha256": "c5724cc14ab49d13b2a6da8e0e56c73399bd78a43b37e4f2f7dcf3ba45001656"
+    },
+    {
+      "path": "who-recognizes-the-order.pdf",
+      "bytes": 23919,
+      "sha256": "b1b4dc5b1d2f280bf3601970c4914c73bd4b6e63a1e6660ec25734133dfcb722"
+    },
+    {
+      "path": "who-recognizes-the-order.png",
+      "bytes": 232691,
+      "sha256": "bbe6f97af9f49f84a49e94aea515cbb202cf5c882f7adcdc9fd0efa4c6a78b00"
+    }
+  ],
+  "scope": "Original data-derived engraving and measured research companion. The drawing is an authored projection; classification uses every full-precision pitch trajectory. No perceptual discrimination claim."
+}

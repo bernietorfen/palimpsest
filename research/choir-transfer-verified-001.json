@@ -1,0 +1,38 @@
+{
+  "verified_utc": "2026-10-04T08:34:06.572391+00:00",
+  "files_hashed": 104,
+  "receiver_cases": 48,
+  "maximum_report_discrepancy_hz": 4.440892098500626e-16,
+  "exact_negative_controls": true,
+  "field_interventions_exact": true,
+  "all_cases_admitted": true,
+  "failures": [],
+  "primary_ranges_hz": {
+    "96": [
+      {
+        "minimum": 1.447101810504562,
+        "median": 1.7045903462291445,
+        "maximum": 2.107749839105558
+      },
+      {
+        "minimum": 0.2500349646233861,
+        "median": 0.4240341140820516,
+        "maximum": 0.6222293329708245
+      }
+    ],
+    "192": [
+      {
+        "minimum": 1.4411321755465842,
+        "median": 1.6964671105027265,
+        "maximum": 2.0987911363875713
+      },
+      {
+        "minimum": 0.2482102301898285,
+        "median": 0.422228501286264,
+        "maximum": 0.6197783306096107
+      }
+    ]
+  },
+  "maximum_relative_timestep_discrepancy": 0.0073515681934706555,
+  "scope": "Independent analysis of frozen arrays and exact field interventions. Does not independently reimplement the generating dynamics or establish a continuum result."
+}

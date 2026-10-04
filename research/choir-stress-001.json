@@ -1,0 +1,568 @@
+{
+  "created_utc": "2026-10-04T09:37:36.957Z",
+  "simulation_seconds": 600,
+  "size": 32,
+  "rate": 96,
+  "wall_seconds": 86.69433589599998,
+  "peakU": 2.908004535581821,
+  "peakV": 3.3041139314656824,
+  "peakBridge": 1.3947899082629553,
+  "peakBridgeV": 0.7477242923025486,
+  "all_finite": true,
+  "retained_bounds": true,
+  "exact_continuation": true,
+  "atomic_rejections": 4,
+  "records": [
+    {
+      "time": 60,
+      "bodies": [
+        {
+          "time": 60,
+          "memory_rms": 0.45610691301399464,
+          "fatigue_mean": 0.3229499051212161,
+          "max_displacement": 1.051469747233968,
+          "finite": true
+        },
+        {
+          "time": 60,
+          "memory_rms": 0.3370739103437396,
+          "fatigue_mean": 0.27159015357015337,
+          "max_displacement": 2.3981425204982805,
+          "finite": true
+        },
+        {
+          "time": 60,
+          "memory_rms": 0.35893823321365115,
+          "fatigue_mean": 0.1866197143515551,
+          "max_displacement": 0.8080679047875984,
+          "finite": true
+        },
+        {
+          "time": 60,
+          "memory_rms": 0.3187040561422448,
+          "fatigue_mean": 0.14434373108454862,
+          "max_displacement": 0.722403750964865,
+          "finite": true
+        },
+        {
+          "time": 60,
+          "memory_rms": 0.3335210500589417,
+          "fatigue_mean": 0.15874896094906557,
+          "max_displacement": 0.8115325790412281,
+          "finite": true
+        },
+        {
+          "time": 60,
+          "memory_rms": 0.4252876708770628,
+          "fatigue_mean": 0.2038491081408963,
+          "max_displacement": 0.8469941523261418,
+          "finite": true
+        },
+        {
+          "time": 60,
+          "memory_rms": 0.32144262076632585,
+          "fatigue_mean": 0.17590755335097844,
+          "max_displacement": 0.9898565727157214,
+          "finite": true
+        }
+      ],
+      "finite": true
+    },
+    {
+      "time": 120,
+      "bodies": [
+        {
+          "time": 120,
+          "memory_rms": 0.5320878527559144,
+          "fatigue_mean": 0.46181404517853547,
+          "max_displacement": 1.3247088858622689,
+          "finite": true
+        },
+        {
+          "time": 120,
+          "memory_rms": 0.5212234846185484,
+          "fatigue_mean": 0.4690225412231854,
+          "max_displacement": 0.816172563904742,
+          "finite": true
+        },
+        {
+          "time": 120,
+          "memory_rms": 0.5573316476023289,
+          "fatigue_mean": 0.45590567848163993,
+          "max_displacement": 1.2963304019939423,
+          "finite": true
+        },
+        {
+          "time": 120,
+          "memory_rms": 0.4902326864394727,
+          "fatigue_mean": 0.3295163516129802,
+          "max_displacement": 1.6212499052614138,
+          "finite": true
+        },
+        {
+          "time": 120,
+          "memory_rms": 0.4299251587559035,
+          "fatigue_mean": 0.2897724445850395,
+          "max_displacement": 0.7487113556217777,
+          "finite": true
+        },
+        {
+          "time": 120,
+          "memory_rms": 0.4794353161799236,
+          "fatigue_mean": 0.34990248504861254,
+          "max_displacement": 0.8643818223464709,
+          "finite": true
+        },
+        {
+          "time": 120,
+          "memory_rms": 0.4033146366113791,
+          "fatigue_mean": 0.32280236255504446,
+          "max_displacement": 0.7532725531085117,
+          "finite": true
+        }
+      ],
+      "finite": true
+    },
+    {
+      "time": 180,
+      "bodies": [
+        {
+          "time": 180,
+          "memory_rms": 0.5480255217760439,
+          "fatigue_mean": 0.5534008137505756,
+          "max_displacement": 0.8317715932526122,
+          "finite": true
+        },
+        {
+          "time": 180,
+          "memory_rms": 0.5681784115450278,
+          "fatigue_mean": 0.5944361611233798,
+          "max_displacement": 0.8403797399185584,
+          "finite": true
+        },
+        {
+          "time": 180,
+          "memory_rms": 0.5264734162003789,
+          "fatigue_mean": 0.5566166000274673,
+          "max_displacement": 0.9154375415129202,
+          "finite": true
+        },
+        {
+          "time": 180,
+          "memory_rms": 0.5831284382983114,
+          "fatigue_mean": 0.5467233280091353,
+          "max_displacement": 1.2636977049001106,
+          "finite": true
+        },
+        {
+          "time": 180,
+          "memory_rms": 0.5818915861726397,
+          "fatigue_mean": 0.561353909154225,
+          "max_displacement": 2.2398526394566614,
+          "finite": true
+        },
+        {
+          "time": 180,
+          "memory_rms": 0.5239827639096185,
+          "fatigue_mean": 0.45593960530531086,
+          "max_displacement": 0.7813262922839038,
+          "finite": true
+        },
+        {
+          "time": 180,
+          "memory_rms": 0.5365709584107622,
+          "fatigue_mean": 0.49760962964352795,
+          "max_displacement": 0.7782705235847224,
+          "finite": true
+        }
+      ],
+      "finite": true
+    },
+    {
+      "time": 240,
+      "bodies": [
+        {
+          "time": 240,
+          "memory_rms": 0.5692675065116515,
+          "fatigue_mean": 0.6454524299970853,
+          "max_displacement": 0.9037266766933998,
+          "finite": true
+        },
+        {
+          "time": 240,
+          "memory_rms": 0.6078633559095933,
+          "fatigue_mean": 0.6866188474478502,
+          "max_displacement": 0.8944523821406981,
+          "finite": true
+        },
+        {
+          "time": 240,
+          "memory_rms": 0.609724332489556,
+          "fatigue_mean": 0.7179416919481306,
+          "max_displacement": 0.8245412499148013,
+          "finite": true
+        },
+        {
+          "time": 240,
+          "memory_rms": 0.6168722110706228,
+          "fatigue_mean": 0.6412072232048824,
+          "max_displacement": 0.8423124507141232,
+          "finite": true
+        },
+        {
+          "time": 240,
+          "memory_rms": 0.6106975795052801,
+          "fatigue_mean": 0.6977002541040419,
+          "max_displacement": 0.8495495135095895,
+          "finite": true
+        },
+        {
+          "time": 240,
+          "memory_rms": 0.6113633146276811,
+          "fatigue_mean": 0.5969522270131565,
+          "max_displacement": 0.7979610296629804,
+          "finite": true
+        },
+        {
+          "time": 240,
+          "memory_rms": 0.5727253173993706,
+          "fatigue_mean": 0.650919713474639,
+          "max_displacement": 2.1736809330369007,
+          "finite": true
+        }
+      ],
+      "finite": true
+    },
+    {
+      "time": 300,
+      "bodies": [
+        {
+          "time": 300,
+          "memory_rms": 0.5426343238694972,
+          "fatigue_mean": 0.7337143322672829,
+          "max_displacement": 2.0338965179232535,
+          "finite": true
+        },
+        {
+          "time": 300,
+          "memory_rms": 0.6077487137355135,
+          "fatigue_mean": 0.6982764656519986,
+          "max_displacement": 0.8051190642089263,
+          "finite": true
+        },
+        {
+          "time": 300,
+          "memory_rms": 0.558949425369875,
+          "fatigue_mean": 0.72176955557052,
+          "max_displacement": 0.8139386543568597,
+          "finite": true
+        },
+        {
+          "time": 300,
+          "memory_rms": 0.4854477333753625,
+          "fatigue_mean": 0.6803005155727331,
+          "max_displacement": 0.7490578159425308,
+          "finite": true
+        },
+        {
+          "time": 300,
+          "memory_rms": 0.6193111661967702,
+          "fatigue_mean": 0.7132824683540292,
+          "max_displacement": 0.8107903753443902,
+          "finite": true
+        },
+        {
+          "time": 300,
+          "memory_rms": 0.544282398766592,
+          "fatigue_mean": 0.6790832559110501,
+          "max_displacement": 1.2656422443388164,
+          "finite": true
+        },
+        {
+          "time": 300,
+          "memory_rms": 0.6118378115913983,
+          "fatigue_mean": 0.7197835057335262,
+          "max_displacement": 1.028945070398513,
+          "finite": true
+        }
+      ],
+      "finite": true
+    },
+    {
+      "time": 360,
+      "bodies": [
+        {
+          "time": 360,
+          "memory_rms": 0.5762907324363955,
+          "fatigue_mean": 0.760715798233033,
+          "max_displacement": 1.7052273256659114,
+          "finite": true
+        },
+        {
+          "time": 360,
+          "memory_rms": 0.5563240917128419,
+          "fatigue_mean": 0.7724939145919799,
+          "max_displacement": 0.7370097695734151,
+          "finite": true
+        },
+        {
+          "time": 360,
+          "memory_rms": 0.5917697236405796,
+          "fatigue_mean": 0.7494564957020242,
+          "max_displacement": 1.980617809632507,
+          "finite": true
+        },
+        {
+          "time": 360,
+          "memory_rms": 0.5116933708570921,
+          "fatigue_mean": 0.7266671134799014,
+          "max_displacement": 0.9273933214661969,
+          "finite": true
+        },
+        {
+          "time": 360,
+          "memory_rms": 0.611669018947977,
+          "fatigue_mean": 0.7195290789300071,
+          "max_displacement": 0.7908457307979478,
+          "finite": true
+        },
+        {
+          "time": 360,
+          "memory_rms": 0.48102465369283137,
+          "fatigue_mean": 0.7212886899783112,
+          "max_displacement": 0.8150020598845966,
+          "finite": true
+        },
+        {
+          "time": 360,
+          "memory_rms": 0.5072961804612889,
+          "fatigue_mean": 0.7531026585651409,
+          "max_displacement": 0.822620259385375,
+          "finite": true
+        }
+      ],
+      "finite": true
+    },
+    {
+      "time": 420,
+      "bodies": [
+        {
+          "time": 420,
+          "memory_rms": 0.5018141201942691,
+          "fatigue_mean": 0.7580031614164041,
+          "max_displacement": 0.8266767814311791,
+          "finite": true
+        },
+        {
+          "time": 420,
+          "memory_rms": 0.5439035819843898,
+          "fatigue_mean": 0.7858845741281953,
+          "max_displacement": 1.0318946099860624,
+          "finite": true
+        },
+        {
+          "time": 420,
+          "memory_rms": 0.5699232872394002,
+          "fatigue_mean": 0.7910768249464052,
+          "max_displacement": 0.8982165256403756,
+          "finite": true
+        },
+        {
+          "time": 420,
+          "memory_rms": 0.5467476695486785,
+          "fatigue_mean": 0.7703401645845481,
+          "max_displacement": 2.554339456753612,
+          "finite": true
+        },
+        {
+          "time": 420,
+          "memory_rms": 0.5412713929614552,
+          "fatigue_mean": 0.7553604770751705,
+          "max_displacement": 0.8180731223762113,
+          "finite": true
+        },
+        {
+          "time": 420,
+          "memory_rms": 0.5434293351438798,
+          "fatigue_mean": 0.7175196168940189,
+          "max_displacement": 0.8247299746436195,
+          "finite": true
+        },
+        {
+          "time": 420,
+          "memory_rms": 0.5200433430485815,
+          "fatigue_mean": 0.7764585573014753,
+          "max_displacement": 0.7824267273218266,
+          "finite": true
+        }
+      ],
+      "finite": true
+    },
+    {
+      "time": 480,
+      "bodies": [
+        {
+          "time": 480,
+          "memory_rms": 0.5416904716327098,
+          "fatigue_mean": 0.7801351068450819,
+          "max_displacement": 0.8681142192524157,
+          "finite": true
+        },
+        {
+          "time": 480,
+          "memory_rms": 0.5636942557268929,
+          "fatigue_mean": 0.786965222545582,
+          "max_displacement": 0.8300110770614239,
+          "finite": true
+        },
+        {
+          "time": 480,
+          "memory_rms": 0.5590484300260014,
+          "fatigue_mean": 0.81664486496642,
+          "max_displacement": 0.8635337011661424,
+          "finite": true
+        },
+        {
+          "time": 480,
+          "memory_rms": 0.5824728535282039,
+          "fatigue_mean": 0.7791038240834842,
+          "max_displacement": 0.9141952225985195,
+          "finite": true
+        },
+        {
+          "time": 480,
+          "memory_rms": 0.5501191062740456,
+          "fatigue_mean": 0.8243380984538498,
+          "max_displacement": 1.38039223208889,
+          "finite": true
+        },
+        {
+          "time": 480,
+          "memory_rms": 0.4692983598965738,
+          "fatigue_mean": 0.7115911696309307,
+          "max_displacement": 1.9796266252184103,
+          "finite": true
+        },
+        {
+          "time": 480,
+          "memory_rms": 0.5109903117168677,
+          "fatigue_mean": 0.7765773170234286,
+          "max_displacement": 0.8606990425136282,
+          "finite": true
+        }
+      ],
+      "finite": true
+    },
+    {
+      "time": 540,
+      "bodies": [
+        {
+          "time": 540,
+          "memory_rms": 0.5418095148465752,
+          "fatigue_mean": 0.8023589346311485,
+          "max_displacement": 1.7028304755210355,
+          "finite": true
+        },
+        {
+          "time": 540,
+          "memory_rms": 0.5689005462491785,
+          "fatigue_mean": 0.7788926810705719,
+          "max_displacement": 0.7669269129124978,
+          "finite": true
+        },
+        {
+          "time": 540,
+          "memory_rms": 0.5099638101197724,
+          "fatigue_mean": 0.8227347074166957,
+          "max_displacement": 0.8710258083087377,
+          "finite": true
+        },
+        {
+          "time": 540,
+          "memory_rms": 0.4740908437584818,
+          "fatigue_mean": 0.7799684356553415,
+          "max_displacement": 0.7475581188281204,
+          "finite": true
+        },
+        {
+          "time": 540,
+          "memory_rms": 0.5932313140748751,
+          "fatigue_mean": 0.8179752553502598,
+          "max_displacement": 0.7530678598325854,
+          "finite": true
+        },
+        {
+          "time": 540,
+          "memory_rms": 0.5172541445560468,
+          "fatigue_mean": 0.7493909999454149,
+          "max_displacement": 0.7244643203709789,
+          "finite": true
+        },
+        {
+          "time": 540,
+          "memory_rms": 0.5993878001520433,
+          "fatigue_mean": 0.8198304687673831,
+          "max_displacement": 1.383728746847621,
+          "finite": true
+        }
+      ],
+      "finite": true
+    },
+    {
+      "time": 600,
+      "bodies": [
+        {
+          "time": 600,
+          "memory_rms": 0.5525156079140467,
+          "fatigue_mean": 0.8253994347506441,
+          "max_displacement": 0.9729401399477038,
+          "finite": true
+        },
+        {
+          "time": 600,
+          "memory_rms": 0.4676052844509138,
+          "fatigue_mean": 0.8246135410109446,
+          "max_displacement": 2.390466708519349,
+          "finite": true
+        },
+        {
+          "time": 600,
+          "memory_rms": 0.5557349370550297,
+          "fatigue_mean": 0.8074906403041558,
+          "max_displacement": 0.8280825370544457,
+          "finite": true
+        },
+        {
+          "time": 600,
+          "memory_rms": 0.5012731821055585,
+          "fatigue_mean": 0.7932288527444203,
+          "max_displacement": 0.7695636527033966,
+          "finite": true
+        },
+        {
+          "time": 600,
+          "memory_rms": 0.5761190266959814,
+          "fatigue_mean": 0.8148678484821821,
+          "max_displacement": 0.7808338349174682,
+          "finite": true
+        },
+        {
+          "time": 600,
+          "memory_rms": 0.5142532381829172,
+          "fatigue_mean": 0.7732134350733691,
+          "max_displacement": 0.9648225457977,
+          "finite": true
+        },
+        {
+          "time": 600,
+          "memory_rms": 0.477129481113089,
+          "fatigue_mean": 0.8174822288644354,
+          "max_displacement": 0.7686648502195407,
+          "finite": true
+        }
+      ],
+      "finite": true
+    }
+  ],
+  "scope": "One deterministic ten-minute stress trajectory: alternating maximum UI pressure, moving contact, repeated cuts/rejoins and motion resets. This does not prove global stability or measure browser rendering performance."
+}

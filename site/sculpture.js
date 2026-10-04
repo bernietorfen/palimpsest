@@ -127,8 +127,11 @@ function parseGLB(buffer) {
 }
 
 export class SculptureViewer {
-  constructor(canvas) {
+  constructor(canvas, {background=[11/255,16/255,19/255],distance=4.25,responsiveFit=false}={}) {
     this.canvas = canvas;
+    this.background = background;
+    this.defaultDistance = distance;
+    this.responsiveFit = responsiveFit;
     this.gl = canvas.getContext('webgl2', { alpha:false, antialias:true, powerPreference:'low-power', preserveDrawingBuffer:false });
     if (!this.gl) throw new Error('WebGL2 unavailable');
     this.resources = [];
@@ -261,7 +264,7 @@ export class SculptureViewer {
     gl.bindFramebuffer(gl.FRAMEBUFFER,null);
   }
 
-  reset() { this.yaw=.61; this.pitch=.22; this.distance=4.25; this.requestDraw(); }
+  reset() { this.yaw=.61; this.pitch=.22; this.distance=this.defaultDistance; this.requestDraw(); }
 
   requestDraw() {
     if (this.disposed || this.frame || document.hidden) return;
@@ -278,10 +281,11 @@ export class SculptureViewer {
     if (canvas.width !== w || canvas.height !== h) { canvas.width=w; canvas.height=h; }
     gl.bindFramebuffer(gl.FRAMEBUFFER,null);
     gl.viewport(0,0,w,h);
-    gl.clearColor(11/255,16/255,19/255,1);
+    gl.clearColor(...this.background,1);
     gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
     this.use(this.program);
-    const eye = [this.distance*Math.cos(this.pitch)*Math.sin(this.yaw),this.distance*Math.sin(this.pitch),this.distance*Math.cos(this.pitch)*Math.cos(this.yaw)];
+    const distance=this.distance*(this.responsiveFit?Math.max(1,1.25*h/w):1);
+    const eye = [distance*Math.cos(this.pitch)*Math.sin(this.yaw),distance*Math.sin(this.pitch),distance*Math.cos(this.pitch)*Math.cos(this.yaw)];
     gl.uniformMatrix4fv(gl.getUniformLocation(this.program,'viewProjection'),false,multiply(perspective(w/h),lookAt(eye)));
     gl.uniform3fv(gl.getUniformLocation(this.program,'eye'),eye);
     gl.activeTexture(gl.TEXTURE0);
@@ -318,7 +322,7 @@ export class SculptureViewer {
       if (actions[event.key]) { event.preventDefault(); actions[event.key](); limit(); }
     },options);
     document.addEventListener('visibilitychange',()=>this.requestDraw(),options);
-    canvas.addEventListener('webglcontextlost',(event)=>{ event.preventDefault(); this.loaded=false; canvas.dataset.state='context-lost'; },options);
+    canvas.addEventListener('webglcontextlost',(event)=>{ event.preventDefault(); this.loaded=false; this.resources=[]; canvas.dataset.state='context-lost'; },options);
   }
 
   dispose() {

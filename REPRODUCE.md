@@ -138,3 +138,128 @@ Generation refuses to overwrite existing result directories. Run a fresh experim
 The v1.4.0 ZIP includes the prepared `site/` directory, all viewing and interaction assets, the complete notebook and the three-grid print PDF. Its `START-HERE.txt` gives a loopback-only static-server command. The browser requires that server; opening HTML directly as `file:` is unsupported. All experiential assets are local. Catalog entries marked Online and external authorship references still require an internet connection.
 
 `studio.prepare_installation` builds the archive from the prepared current site and frozen v1.3.0 book/print inputs. It changes only local links and the portable catalog, and records every file digest. `studio.verify_installation` restores each entry to a new proof directory and checks all file hashes before browser testing. The installation's embedded content manifest records the exact source commit and describes the portable link changes.
+
+## Second act: A choir of absences
+
+The v2.0.0 scientific archive contains the complete seven-body performance,
+all three explorations, the locked transfer experiment, the frozen mechanical
+calculation, exact image inputs to the second notebook, and the captured source
+that produced these records. Extract it into an empty directory and add the
+matching tagged source. Verification of frozen data and generation of new data
+are separate operations: the generators refuse to overwrite their study roots.
+
+The studio grid is 64 by 64 per body, with 96 steps per second and 24 recorded
+field frames per second. The browser uses 32 by 32 at the same timestep. Each
+bridge has sixteen bead masses. The first-act equations remain the underlying
+body model; `choir_material.py` adds reciprocal ports and old-state bridge forces.
+
+```sh
+python -m pytest studio/tests/test_choir.py studio/tests/test_choir_geometry.py studio/tests/test_choir_energy.py -q
+python -m studio.choir_transfer_study
+python -m studio.verify_choir_transfer
+python -m studio.choir_performance
+python -m studio.choir_frozen_analysis
+python -m studio.choir_figures
+```
+
+For a restored scientific record, run the verifier with a new `--output` report
+path instead of rerunning the generation commands into its existing directories.
+The transfer verifier independently reconstructs the interventions and analysis;
+it does not claim an independent implementation of the generating dynamics.
+The frozen calculation explicitly uses thirteen Galerkin coordinates per body,
+plus all 192 beads. It is not a full-grid eigenvalue calculation.
+
+The original sound and its constant-gain master can be reproduced as follows:
+
+```sh
+python -m studio.choir_sound --output artwork/choir-sound-002.wav
+ffmpeg -hide_banner -nostdin -i artwork/choir-sound-002.wav \
+  -af volume=21.49dB -c:a pcm_s24le artwork/masters/choir-soundtrack.wav
+python -m studio.choir_film \
+  --output artwork/masters/choir-of-absences-4k.mp4 \
+  --audio artwork/masters/choir-soundtrack.wav \
+  --width 3840 --height 2160 --fps 24 --samples 32 \
+  --nu 128 --nv 192 --shadow 2048 --bits 10 --preset medium --crf 18
+```
+
+The film has 6,912 frames. The field record has an additional endpoint frame.
+The soundtrack uses continuous synthesis phases, eight partials per voice and
+an authored observer mix. The listening piece deliberately removes that mix:
+it uses identical phases and one common gain for each forty-second comparison.
+E has identical saved synthesis controls and PCM, and both E buttons point to
+the same encoded sound. The comparison metric uses the half-open forty-second
+window, while interpolation retains the saved endpoint.
+
+```sh
+python -m studio.choir_witness --output artwork/choir-witness-002
+python -m studio.choir_plates
+python -m studio.choir_sculpture --state encounter --output artwork/choir-sculptures/encounter-master
+python -m studio.choir_sculpture --state after --output artwork/choir-sculptures/after-master
+python -m studio.choir_sculpture --state source --output artwork/choir-sculptures/source-master
+python -m studio.choir_notebook --output artwork/masters/a-choir-of-absences-notebook.pdf
+```
+
+The sculpture masters use 128 by 192 mesh samples and 256-pixel component
+textures. The encounter and after meshes are scaled to a 600 mm maximum extent;
+the isolated source uses 200 mm. Browser meshes use smaller resolutions recorded
+in their manifests. Exported STL files contain separate closed components;
+they do not include physical supports.
+
+The second notebook uses the exact image paths preserved in the scientific
+archive. Its PDF generation fixes container metadata for deterministic rebuilding
+with the recorded libraries and fonts. The recorded film-source snapshot contains
+an overly broad prose claim about matched cameras: the exact matching intervals
+are `5 <= t < 28` and `248 <= t < 271`, both 23 seconds. The two widenings have
+different durations. The quality record preserves the original source and states
+this correction; camera code and rendered frames are unchanged.
+
+The browser equation comparison is `studio/verify_choir_live.mjs`, with its
+independent Python reference generator in `studio/verify_choir_live.py`.
+`node studio/choir_stress.mjs NEW_REPORT.json` performs the declared 600-second
+stress trajectory. Browser checks use Playwright and axe-core installed under
+`.tools/browser/node_modules`, with Node 24 on the GPU host. The choir, pointer,
+interaction, witness and second-act scripts accept fresh evidence directories;
+read each script's positional arguments before invoking it. They check actual
+playback and signal generation, not perceptual listening.
+
+`studio.prepare_second_installation` freezes both prepared acts and their local
+viewing films into `palimpsest-two-acts.zip`. Its included `serve.py` supports
+byte ranges and binds only to loopback. The separate larger masters and research
+archives remain optional online links. `studio.verify_installation` can restore
+this ZIP with `--manifest two-acts-installation.json --archive palimpsest-two-acts.zip`.
+Every restored file is hashed before browser verification.
+
+## Received histories: the four-token follow-up
+
+`RECEIVED-HISTORIES-PROTOCOL.md` fixes all 24 orders of four source contacts,
+receiver observations, timesteps and the numerical acceptance gate. The failed
+packed-chain admission remains in `received-histories-001`. Read the declared
+`RECEIVED-HISTORIES-REVISION-001.md` before interpreting the successful
+`received-histories-002`: its writing histories run individually. Neither the
+contacts nor the scientific criteria changed. The single-chain admission uses
+the reference saved by the first attempt, so that small failed-run directory is
+also required for reconstruction.
+
+The full archived result can be checked without generating another trajectory:
+
+```sh
+python -m studio.verify_received_histories --output research/received-rechecked.json
+python -m studio.received_history_art --output artwork/received-history-art-rebuilt
+python -m studio.proof_received_history_art \
+  --art artwork/received-history-art-rebuilt --output artwork/received-history-proof-rebuilt
+```
+
+The art generator reads `received-histories-002`, uses one common centering and
+scale, and creates a vector print, a 6000 by 7500 raster print, two evidence
+figures and a four-page companion. It uses the existing NumPy, Matplotlib,
+Pillow, ReportLab, DejaVu and Poppler dependencies. The drawing is an authored
+projection; the independent verifier uses all full saved trajectories.
+
+To generate new data, start with fresh output paths and follow the protocol and
+revision. `studio.received_histories` implements the admitted single-chain
+revision. The originally rejected implementation is preserved in the source
+snapshot inside `received-histories-001`; the second directory also carries its
+own producing snapshot. The separate
+research companion preserves the eighteen-page second-act notebook unchanged.
+Both PDFs and the received-history print are included in the two-act portable
+installation, alongside the first-act notebooks and three-grid print.

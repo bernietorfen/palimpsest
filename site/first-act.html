@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ede8da">
+  <meta name="description" content="PALIMPSEST. An original audiovisual instrument by Codex. A surface remembers a phrase, changes its own tuning, and answers again.">
+  <meta property="og:title" content="PALIMPSEST — An instrument that becomes its own score">
+  <meta property="og:description" content="An original film, material instrument, print series and collection of digital sculptures. Codex, 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/generated/film-poster.jpg">
+  <title>PALIMPSEST — Codex, 2026</title>
+  <link rel="icon" href="/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/exhibition.css">
+  <script type="module" src="/exhibition.js"></script>
+</head>
+<body>
+  <a class="skip" href="#film">Skip to the film</a>
+  <header class="topline">
+    <a class="wordmark" href="#top" aria-label="Palimpsest, back to top">P / 26</a>
+    <a class="edition" href="/">The second act ↗</a>
+    <nav aria-label="Exhibition"><a href="#film">Film</a><a href="/instrument.html" class="live-nav">Play</a><a href="#return" class="return-nav">The return</a><a href="#sculptures">Sculptures</a><a href="/atlas.html">The atlas</a><a href="#notebook">Notebook</a></nav>
+  </header>
+  <main id="top">
+    <section class="opening" aria-labelledby="title">
+      <div class="title-line"><h1 id="title">PALIMPSEST</h1><span class="title-index" aria-hidden="true">I—VI</span></div>
+      <div class="subtitle"><p>An instrument that becomes its own score.</p><p>Codex <span aria-hidden="true">/</span> 2026</p></div>
+      <div id="film" class="film-stage">
+        <video id="main-film" playsinline preload="none" poster="/assets/generated/film-poster.jpg" aria-label="PALIMPSEST, seven minutes and twelve seconds. Original instrumental film." data-src="https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-viewing-1080p.mp4"><track kind="captions" src="/score-notes.vtt" srclang="en" label="Score and movement notes"></video>
+        <button id="enter-film" class="enter-film"><span class="play-symbol" aria-hidden="true">▶</span><span>Enter the film<small>7 minutes · 12 seconds · Sound on</small></span></button>
+        <p id="film-status" class="media-status" role="status"></p>
+      </div>
+      <div class="film-caption"><span>Six movements for a material with memory</span><a href="/instrument.html">Play the instrument ↗</a></div>
+      <ol class="chapters" aria-label="Film chapters">
+        <li><button data-seek="0"><span>I</span>An impression<small>00:00</small></button></li>
+        <li><button data-seek="72"><span>II</span>What is kept<small>01:12</small></button></li>
+        <li><button data-seek="144"><span>III</span>A reply<small>02:24</small></button></li>
+        <li><button data-seek="216"><span>IV</span>Too much to hold<small>03:36</small></button></li>
+        <li><button data-seek="288"><span>V</span>What is lost<small>04:48</small></button></li>
+        <li><button data-seek="360"><span>VI</span>The same question<small>06:00</small></button></li>
+      </ol>
+    </section>
+
+    <section class="statement section-rule" aria-labelledby="statement-title">
+      <p class="eyebrow">The work</p>
+      <h2 id="statement-title">The question returns.<br>The material answers<br><em>from its history.</em></h2>
+      <div class="statement-copy"><p>A phrase presses into an invented material. Its deformation leaves an inscription; its wear changes the tuning. The changed voices send a different force back into the surface.</p><p>For a while, writing and answering become the same act. Then the inscription is allowed to fade. The phrase returns to a surface that has already lived through it.</p><p class="small">An original score, numerical instrument, film and series of sculptural states.</p></div>
+    </section>
+
+    <section id="play" class="live-feature section-rule" aria-labelledby="play-title">
+      <a href="/instrument.html" class="live-feature-image" aria-label="Open the playable instrument"><img src="/assets/generated/live-material.jpg" width="1200" height="531" loading="lazy" alt="A live state of the rolled material, inscribed in deep blue and ochre"><span>Enter the instrument <span aria-hidden="true">↗</span></span></a>
+      <div><p class="eyebrow">The live edition</p><h2 id="play-title">Leave a trace.<br><em>Hear it answer.</em></h2><p>Write your own phrase into the material. Keep its gestures, ask again, and compare the changing replies.</p><p>Take a vector drawing of those answers, save the material to continue later, or make a sculpture from the state you have created.</p><a class="arrow-link" href="/instrument.html">Play PALIMPSEST <span>Twelve voices · Your history ↗</span></a></div>
+    </section>
+
+    <section id="return" class="return-section section-rule" aria-labelledby="return-title">
+      <div class="section-heading"><p class="eyebrow">01 / The returning question</p><h2 id="return-title">Same phrase.<br><em>Changed instrument.</em></h2><p>Five gestures repeat with the same timing and strength. Compare their first appearance with their return, 352 seconds later. The camera repeats too.</p></div>
+      <div class="comparison">
+        <figure><video id="first-phrase" muted playsinline preload="none" poster="/assets/generated/first-poster.jpg" data-src="/assets/generated/phrase-first.mp4" aria-label="The first five-note phrase" aria-describedby="comparison-description"></video><figcaption><span>First question</span><span>00:18—01:04</span></figcaption></figure>
+        <figure><video id="return-phrase" muted playsinline preload="none" poster="/assets/generated/return-poster.jpg" data-src="/assets/generated/phrase-return.mp4" aria-label="The returning five-note phrase" aria-describedby="comparison-description"></video><figcaption><span>Returning question</span><span>06:10—06:56</span></figcaption></figure>
+      </div>
+      <div class="comparison-controls">
+        <button id="compare-play" class="text-button" aria-pressed="false">Play comparison <span aria-hidden="true">▶</span></button>
+        <label class="comparison-scrub"><span class="sr-only">Comparison position, in seconds</span><input id="compare-time" type="range" min="0" max="46" step="0.25" value="0"><output id="compare-clock" for="compare-time" aria-live="off">00:00</output></label>
+        <div class="listen-switch" role="group" aria-label="Choose which phrase to hear"><button data-listen="first" aria-pressed="true">Hear first</button><button data-listen="return" aria-pressed="false">Hear return</button></div>
+      </div>
+      <p id="compare-status" class="small" role="status">Press play, then switch which instrument you hear.</p>
+      <p id="comparison-description" class="sr-only">Both clips contain instrumental synthesized tones without speech. Five gestures occur at the same times in both clips. The returning instrument has accumulated fatigue and a different inscription, changing its tuning. The pale intact sheet in the first clip has become a worn, open sculpture in the return.</p>
+    </section>
+
+    <section id="sculptures" class="sculptures-section section-rule" aria-labelledby="sculptures-title">
+      <div class="section-heading"><p class="eyebrow">02 / Material states</p><h2 id="sculptures-title">A score you can<br><em>walk around.</em></h2><p>The same recorded fields become a twice-rolled sheet. Inscription embosses its surface. Wear opens windows through it. Each state can be turned and examined in three dimensions.</p></div>
+      <div class="specimens">
+        <figure><button class="specimen" data-sculpture="000" aria-label="Explore the unwritten sculpture in 3D"><img src="/assets/generated/state-000.jpg" width="800" height="1000" loading="lazy" alt="An intact ivory sheet curled through two turns"><span>Explore in 3D <span aria-hidden="true">↗</span></span></button><figcaption><span><b>I.</b> Unwritten</span><span>000 seconds</span></figcaption></figure>
+        <figure><button class="specimen" data-sculpture="165" aria-label="Explore the inscription sculpture in 3D"><img src="/assets/generated/state-165.jpg" width="800" height="1000" loading="lazy" alt="A rolled sheet marked with dark ink and fine amber contour lines"><span>Explore in 3D <span aria-hidden="true">↗</span></span></button><figcaption><span><b>II.</b> Inscription</span><span>165 seconds</span></figcaption></figure>
+        <figure><button class="specimen" data-sculpture="358" aria-label="Explore the remnant sculpture in 3D"><img src="/assets/generated/state-358.jpg" width="800" height="1000" loading="lazy" alt="Pale suspended fragments where the worn rolled sheet has opened"><span>Explore in 3D <span aria-hidden="true">↗</span></span></button><figcaption><span><b>III.</b> Remnant</span><span>358 seconds</span></figcaption></figure>
+      </div>
+      <p class="sculpture-note">Digital sculptures from the performance. The openings are an authored image of wear.</p>
+    </section>
+
+    <section id="atlas" class="atlas-feature section-rule" aria-labelledby="atlas-feature-title">
+      <a href="/atlas.html" class="atlas-print-link" aria-label="Explore 120 possible pasts"><img src="/assets/generated/120-possible-pasts.jpg" width="1000" height="1333" loading="lazy" alt="An original print of 120 four-ring glyphs, one for every ordering of five writing gestures"></a>
+      <div><p class="eyebrow">03 / A study of remembered order</p><h2 id="atlas-feature-title">120 possible<br><em>pasts.</em></h2><p>Five gestures can be written in 120 different orders. The same question, asked afterward, leaves 120 different recorded answers.</p><p>Choose the writing order. Hear two histories together, switch between them, and follow the marks each one leaves.</p><a class="arrow-link" href="/atlas.html">Explore the audible atlas <span>Choose a history ↗</span></a><a class="arrow-link" href="/pressure.html">An imperfect hand <span>What survives uneven pressure? ↗</span></a></div>
+    </section>
+
+    <section id="notebook" class="notebook-section section-rule" aria-labelledby="notebook-title">
+      <div class="notebook-image"><img src="/assets/generated/notebook-spread.jpg" width="1200" height="900" loading="lazy" alt="Two kinds of memory: the actual displacement, inscription and fatigue fields at three moments in the performance"></div>
+      <div class="notebook-copy"><p class="eyebrow">04 / Inside the instrument</p><h2 id="notebook-title">The rules.<br>The record.<br><em>The evidence.</em></h2><p>What changes when only the order of writing changes? All 120 histories leave different answers. The later studies ask what survives an uneven hand, and what persists when the grid becomes finer.</p><p>The complete illustrated notebook follows the film, playable material and experiments from their equations to their final images, including the mistakes and limits of the results.</p><a class="arrow-link" href="https://github.com/bernietorfen/palimpsest/releases/download/v1.3.0/palimpsest-complete-notebook.pdf" target="_blank" rel="noopener">Read the complete notebook <span>24 pages ↗</span></a></div>
+    </section>
+
+    <section id="downloads" class="downloads section-rule" aria-labelledby="downloads-title">
+      <div><p class="eyebrow">The edition</p><h2 id="downloads-title">Take a closer look.</h2><p>The film, sound, prints, sculptures and source.<br>Preserved as individual files with checksums.</p></div>
+      <div class="download-list" id="download-list"><a href="https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-viewing-1080p.mp4"><span>Viewing film</span><span>1080p · MP4 ↓</span></a><a href="https://github.com/bernietorfen/palimpsest/releases/download/v1.3.0/palimpsest-complete-notebook.pdf"><span>The complete notebook</span><span>24 pages · PDF ↓</span></a><a href="/assets/generated/state-165.glb" download><span>Inscription sculpture</span><span>glTF ↓</span></a></div>
+    </section>
+  </main>
+  <footer><a class="footer-title" href="#top">PALIMPSEST</a><p>Conceived and authored by Codex<br>3—4 October 2026</p><p>An invented material. An original composition.<br><a href="/credits.html">Authorship &amp; acknowledgments</a></p><a href="#top" class="back-top" aria-label="Back to top">↑</a></footer>
+
+  <dialog id="sculpture-dialog" aria-labelledby="sculpture-title">
+    <div class="viewer-top"><div><p class="eyebrow">Material state</p><h2 id="sculpture-title">Inscription</h2></div><button id="close-sculpture" class="close-button" aria-label="Close sculpture viewer">Close <span aria-hidden="true">×</span></button></div>
+    <div class="viewer-stage"><canvas id="sculpture-canvas" tabindex="0" aria-label="Interactive sculpture. Drag or use arrow keys to rotate. Use plus and minus to zoom. Home resets the view."></canvas><p id="sculpture-status" role="status">Opening the sculpture…</p></div>
+    <div class="viewer-bottom"><span id="sculpture-instructions">Drag to turn · Scroll to approach</span><div><button id="reset-sculpture" class="text-button">Reset view</button><a id="download-sculpture" href="/assets/generated/state-165.glb" download>Download glTF ↓</a></div></div>
+  </dialog>
+  <noscript><p class="noscript">JavaScript enables the film controls and sculpture viewer. You can still <a href="https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-viewing-1080p.mp4">watch the film</a> and <a href="https://github.com/bernietorfen/palimpsest/releases/download/v1.3.0/palimpsest-complete-notebook.pdf">read the complete notebook</a>.</p></noscript>
+</body>
+</html>

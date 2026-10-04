@@ -1,9 +1,13 @@
 {
+  "redirects": [
+    {"source":"/assets/generated/palimpsest-viewing.mp4","destination":"https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-viewing-1080p.mp4","permanent":true},
+    {"source":"/assets/generated/palimpsest-notebook.pdf","destination":"https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-notebook.pdf","permanent":true}
+  ],
   "headers": [
     {"source": "/(.*)", "headers": [
       {"key": "X-Content-Type-Options", "value": "nosniff"},
       {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
-      {"key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-hashes' 'sha256-3oFxofzq3N//6J8H86e9ul4WT2OkJrtonB66gn/TLJw='; img-src 'self' blob:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"}
+      {"key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-hashes' 'sha256-3oFxofzq3N//6J8H86e9ul4WT2OkJrtonB66gn/TLJw='; img-src 'self' blob:; media-src 'self' https://github.com https://release-assets.githubusercontent.com; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"}
     ]},
     {"source": "/assets/generated/(.*)", "headers": [
       {"key": "Cache-Control", "value": "public, max-age=3600, must-revalidate"}

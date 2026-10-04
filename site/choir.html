@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#e9e5dc">
+<meta name="description" content="Touch one body. Change a choir. An original playable sculpture of encounter, separation and retained history.">
+<title>A choir of absences — PALIMPSEST</title>
+<link rel="icon" href="/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="/exhibition.css"><link rel="stylesheet" href="/choir.css"><script type="module" src="/choir.js"></script>
+</head>
+<body class="choir-page">
+<a class="skip" href="#choir">Skip to the choir</a>
+<header class="choir-header"><a class="wordmark" href="/">P / 26</a><span>PALIMPSEST · SECOND ACT</span><nav aria-label="Exhibition"><a href="/">The exhibition</a><a href="/instrument.html">The first instrument</a></nav></header>
+<main>
+<section class="choir-opening" aria-labelledby="title"><div><p class="eyebrow">Seven bodies. Twelve connections. One shared past.</p><h1 id="title">A choir of <em>absences.</em></h1></div><p>Touch one body.<br>Leave something in another.</p></section>
+<section id="choir" aria-label="Playable choir">
+<div class="choir-stage">
+<canvas id="choir-canvas" tabindex="0" aria-label="Seven listening vessels. Drag on a vessel to touch it; drag the empty space to turn. Arrow keys turn, plus and minus zoom, Home restores the view."></canvas>
+<div class="choir-labels" id="body-labels" aria-hidden="true"></div>
+<div class="stage-top"><span id="scene-caption">Seven bodies, unwritten</span><output id="choir-clock" aria-label="Material time">00:00</output></div>
+<div class="stage-bottom"><span id="touch-hint">Touch a vessel · Drag the space to turn</span><div class="view-controls"><button id="mode-touch" aria-pressed="true">Touch</button><button id="mode-turn" aria-pressed="false">Turn</button><button id="view-home" aria-label="Restore the view">↺</button></div></div>
+<div class="choir-entry" id="choir-entry"><p class="eyebrow">An encounter begins with you</p><button id="enter-sound">Enter with sound <span aria-hidden="true">↗</span></button><button id="enter-silent">Enter silently</button></div>
+<p id="preparing" class="preparing" role="status">Preparing the choir…</p>
+</div>
+<div class="choir-transport"><div><button id="pause" disabled>Pause</button><button id="sound" aria-pressed="false" disabled>Sound off</button><label class="volume">Volume <input id="volume" type="range" min="0" max="100" value="62"></label></div><p id="status" role="status">Touch and hold. The surface will remember.</p><button id="demonstration" disabled>A 72-second encounter ↗</button></div>
+<div class="choir-playing"><div class="voice-title"><p class="eyebrow">The seven voices</p><p>Select a voice, then hold <kbd>Space</kbd>.<br>Or touch its surface directly.</p></div><div id="voice-buttons" class="choir-voices" role="group" aria-label="Select a body; keys 1 through 7"></div><div class="touch-pressure"><label for="pressure">Pressure</label><input id="pressure" type="range" min="20" max="140" value="85"><button id="polarity" aria-pressed="false">Press inward</button></div></div>
+<div class="choir-actions"><div><button id="connections" disabled>Cut the connections</button><button id="isolate" disabled>Separate voice B</button><button id="solo" aria-pressed="false" disabled>Listen to B alone</button></div><button id="settle" disabled>Still the motion</button></div>
+<p class="choir-caption">The ribbons carry waves between the vessels. A body can acquire an inscription without being touched. Cut the connections; its altered voice remains. “Still the motion” clears vibration while keeping the inscriptions and wear.</p>
+<div class="encounter-tools"><div><button id="save" disabled>Save this encounter ↓</button><label class="open-file" for="open">Open an encounter ↑<input id="open" type="file" accept=".json,application/json"></label><button id="new" disabled>Begin again</button><button id="undo" hidden>Return to the previous encounter</button></div><p id="recovery">One recent recovery copy stays in this tab. Save a file to keep it.</p></div>
+</section>
+<section class="choir-statement"><p class="eyebrow">An instrument made of encounters</p><h2>What belongs to a voice<br>after it has been heard?</h2><p>Each vessel begins with the same unwritten material. The history comes from what you do, where you touch, and what the connections carry. The pigment and the folds follow the material’s retained fields. The sound follows its changing tuning.</p></section>
+<details class="choir-notes"><summary>Inside the choir <span aria-hidden="true">+</span></summary><div><p>Seven numerical materials run together. Each bridge is a chain of sixteen masses and reciprocal springs. Its endpoints read a spatial patch of each vessel and return force through that same patch. The displayed ribbon follows the chain’s displacement; its colour follows instantaneous motion.</p><p>This playable version uses a 32 × 32 grid for each body and a fixed 1/96-second timestep. A slow device slows the material clock. A worker runs the equations; the scene and sound read its state. The browser calculation was checked against an independent double precision studio calculation at the same resolution.</p><p>The pleated vessels, lighting and spatial arrangement are original artistic interpretations of these fields. Their holes depict accumulated wear; they are not a fracture simulation. The bridges’ drawn lengths are not calibrated physical lengths. Cutting or joining a bridge changes the system externally. Rejoining creates a still bridge between the current endpoints.</p><p>The voices are synthesized from the twelve material modes in each body. Solo changes only what you hear. Separating a voice cuts its actual connections. Saved encounters keep all material fields, delayed feedback, bridge motion and connection strengths. A recent copy stays in this tab; nothing is uploaded.</p><p>The work pauses when this tab is hidden. The guided encounter creates a new choir and preserves your previous state behind “Return to the previous encounter.” It is an authored demonstration, not a scientific control experiment.</p><p><a href="/credits.html">Authorship and acknowledgments</a> · <a href="https://github.com/bernietorfen/palimpsest" target="_blank" rel="noopener">Source and research</a></p></div></details>
+</main>
+<footer><a class="footer-title" href="/">PALIMPSEST</a><p>Conceived and authored by Codex<br>3–4 October 2026</p><p>A choir of absences<br>An original numerical sculpture</p><a href="#title" class="back-top" aria-label="Back to top">↑</a></footer>
+<noscript><p>The live choir needs JavaScript. <a href="/">Visit the recorded exhibition.</a></p></noscript>
+</body></html>

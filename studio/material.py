@@ -172,7 +172,7 @@ class PalimpsestMaterial:
                               - c.fatigue_recovery * self.z)
         self.z.clamp_(0, 1)
         if c.echo_twist:
-            # Pitch drift turns the spatial location of a later echo. The scale
+            # Pitch drift turns the phase of a later spatial echo pattern. The scale
             # maps audible Hz to slow geometric phase; it is an authored rule,
             # not an attempt to resolve audio-rate vibrations at this timestep.
             _, _, pitch = self._tuning()

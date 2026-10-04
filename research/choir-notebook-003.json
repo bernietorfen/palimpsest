@@ -1,0 +1,154 @@
+{
+  "created_utc": "2026-10-04T10:16:27.899880+00:00",
+  "pages": 18,
+  "edition": "Second act / A choir of absences / 4 October 2026",
+  "pdf_sha256": "af4043545761bce1d3dabd60d7f7008cbcaf30505c34cd0e67b8654b140b6d32",
+  "source_sha256": {
+    "studio/choir_notebook.py": "cf811bcace42a8cca4af6913d513518debc411dbc58d71a2b6a3306bb9dda881",
+    "studio/notebook.py": "0d834cab36920bc72efc7c754785239dada0d1596a6d93d420229cee3fb798ec",
+    "studio/choir_figures.py": "77e0d2e5438c0aaae49eb29410e1f0d9c2b6dd3132ad369e02974ae5ac66799b",
+    "research/CHOIR-PROTOCOL.md": "9ed9f32f2932a87bd9edcca7ec4da2dc1d8decce55f45ef73cedadb0bf8f63ad",
+    "research/CHOIR-RESULTS.md": "34caf6ac9eeaeba51452b9074c4b22d8ff7e322c58df537a493fe13dc88cc172",
+    "research/CHOIR-ENERGY.md": "cdbc2fcda84de6326b5efb74c426b10f0d544bbb62f8e36a9770d41f33a270d4"
+  },
+  "embedded_image_sha256": {
+    "artwork/choir-plates-001/the-source-view.jpg": "260f1a6f0a41fe6b3c6cc17b532a6f8d7848a1675651dea2f27ded57681ba4c3",
+    "artwork/choir-plates-001/02-encounter-scene.jpg": "655db0a80a9483cae2adfeec2bd313c26a65d4b686846b490828327cc8fb9281",
+    "artwork/choir-plates-001/01-before-scene.jpg": "49f338e57dc9a08dbf07b02ae1a8f51e330f5df2ff3801b1e86d2c35530ec834",
+    "artwork/choir-plates-001/03-after-scene.jpg": "ca3b0188e9ec83a2b3fd8c0f82d5d0369ae860499070a06804a5522238998946",
+    "artwork/choir-figures-001/the-score.png": "c8f0885d578a95aa7914a8a301c6c873171bed7fedf1be5161895fb47d7b9a70",
+    "site/assets/generated/choir-witness/E-before.jpg": "e64cc0cc39c94d3edb3bc956963cc05dac9d336658ae5b2a1d4ddbab0e8b7449",
+    "site/assets/generated/choir-witness/E-after.jpg": "e64cc0cc39c94d3edb3bc956963cc05dac9d336658ae5b2a1d4ddbab0e8b7449",
+    "site/assets/generated/choir-witness/G-before.jpg": "1135b22642785ad383df03fa9c648f4cd4673ded8a8c59e1ae82627987bfae56",
+    "site/assets/generated/choir-witness/G-after.jpg": "6744aea69d10bbbd8758f2ffc1401a16fd51efde04cbfec9a6ef448aa0f4d217",
+    "artwork/choir-figures-001/the-reciprocal-bridge.png": "3e5cb018231622d7d027f03d4deca4fe7caa15ebb72606e04315b79b7e00b819",
+    "artwork/choir-figures-001/seven-retained-fields.png": "76f17be0495f59c157a9e7be41bfd665290d051a4c867b6ca7b62fbd49d870d2",
+    "artwork/choir-figures-001/controlled-transfer.png": "75aba9bad1be3d5951b4271de914cbab61a6b58b37d5e36607a478bc9349c48a",
+    "artwork/choir-figures-001/what-erasure-removes.png": "635b4c7b4ad074227a2d1ad62f938c447be5d58757ba5f6417addd78ae81c8f4",
+    "artwork/choir-figures-001/where-persistence-lives.png": "9bb43ff9cf9e5cc58316d3bf4ace8ba805e54ab693ba1e9c98cadfd8155c1bad"
+  },
+  "page_inventory": [
+    {
+      "page": 1,
+      "label": "An original work in two acts",
+      "images": [
+        "artwork/choir-plates-001/the-source-view.jpg"
+      ]
+    },
+    {
+      "page": 2,
+      "label": "The proposition",
+      "images": [
+        "artwork/choir-plates-001/02-encounter-scene.jpg"
+      ]
+    },
+    {
+      "page": 3,
+      "label": "A matched installation",
+      "images": [
+        "artwork/choir-plates-001/01-before-scene.jpg",
+        "artwork/choir-plates-001/03-after-scene.jpg"
+      ]
+    },
+    {
+      "page": 4,
+      "label": "The score",
+      "images": [
+        "artwork/choir-figures-001/the-score.png"
+      ]
+    },
+    {
+      "page": 5,
+      "label": "The witness",
+      "images": [
+        "site/assets/generated/choir-witness/E-before.jpg",
+        "site/assets/generated/choir-witness/E-after.jpg"
+      ]
+    },
+    {
+      "page": 6,
+      "label": "Beyond the witness",
+      "images": [
+        "site/assets/generated/choir-witness/G-before.jpg",
+        "site/assets/generated/choir-witness/G-after.jpg"
+      ]
+    },
+    {
+      "page": 7,
+      "label": "The reciprocal interface",
+      "images": [
+        "artwork/choir-figures-001/the-reciprocal-bridge.png"
+      ]
+    },
+    {
+      "page": 8,
+      "label": "The retained material",
+      "images": [
+        "artwork/choir-figures-001/seven-retained-fields.png"
+      ]
+    },
+    {
+      "page": 9,
+      "label": "The controlled question",
+      "images": []
+    },
+    {
+      "page": 10,
+      "label": "The retained transfer",
+      "images": [
+        "artwork/choir-figures-001/controlled-transfer.png"
+      ]
+    },
+    {
+      "page": 11,
+      "label": "The interventions",
+      "images": [
+        "artwork/choir-figures-001/what-erasure-removes.png"
+      ]
+    },
+    {
+      "page": 12,
+      "label": "The playable choir",
+      "images": [
+        "artwork/choir-plates-001/01-before-scene.jpg"
+      ]
+    },
+    {
+      "page": 13,
+      "label": "The sculptural edition",
+      "images": [
+        "artwork/choir-plates-001/02-encounter-scene.jpg"
+      ]
+    },
+    {
+      "page": 14,
+      "label": "The frozen system",
+      "images": []
+    },
+    {
+      "page": 15,
+      "label": "A surviving configuration",
+      "images": []
+    },
+    {
+      "page": 16,
+      "label": "A numerical cross-check",
+      "images": [
+        "artwork/choir-figures-001/where-persistence-lives.png"
+      ]
+    },
+    {
+      "page": 17,
+      "label": "The edition and its evidence",
+      "images": []
+    },
+    {
+      "page": 18,
+      "label": "After the source leaves",
+      "images": [
+        "artwork/choir-plates-001/03-after-scene.jpg"
+      ]
+    }
+  ],
+  "scope": "An original artist notebook with finite-model evidence and an explicitly restricted frozen-system energy argument."
+}

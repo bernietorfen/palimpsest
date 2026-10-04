@@ -1,0 +1,45 @@
+{
+  "verified_utc": "2026-10-04T10:40:52.494244+00:00",
+  "film": "artwork/masters/choir-of-absences-4k.mp4",
+  "bytes": 77821715,
+  "sha256": "db084ef4aa337553bf7b80a622458eae7c9c21a7af29ef409cec6409f08b09b3",
+  "full_decode_passed": true,
+  "frames": 6912,
+  "fps": 24,
+  "duration_seconds": 288,
+  "video": {
+    "codec_name": "hevc",
+    "profile": "Main 10",
+    "width": 3840,
+    "height": 2160,
+    "pix_fmt": "yuv420p10le",
+    "color_space": "bt709",
+    "color_range": "tv",
+    "color_transfer": "bt709",
+    "color_primaries": "bt709",
+    "start_time": "0.000000",
+    "duration": "288.000000"
+  },
+  "audio": {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 2,
+    "start_time": "0.000000",
+    "duration": "288.000000"
+  },
+  "scope": "Complete error-free decode, container/stream timing and encoded color metadata. No perceptual listening claim.",
+  "generation_manifest_sha256": "40affd31c0f51bdc7ed321057bb8820ee2562c66934c08c2c6f7b74b8be7dbf8",
+  "camera_metadata_correction": {
+    "matched_opening_seconds": [
+      5,
+      28
+    ],
+    "matched_return_seconds": [
+      248,
+      271
+    ],
+    "interval_convention": "half-open",
+    "matched_duration_seconds": 23,
+    "reason": "The original manifest prose overstated the exact close-camera interval by one second. The opening starts widening at 28 s; the returning close view lasts until 272 s. Source captures and all frames are preserved unchanged. The two widening transitions have different durations."
+  }
+}

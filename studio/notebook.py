@@ -29,7 +29,7 @@ class Book:
     width,height=864,648
     margin=48
 
-    def __init__(self,path,edition):
+    def __init__(self,path,edition,*,invariant=None):
         self.path=Path(path)
         if self.path.exists():
             raise FileExistsError(self.path)
@@ -39,7 +39,7 @@ class Book:
                           ("Serif","DejaVuSerif.ttf"),("Mono","DejaVuSansMono.ttf")):
             pdfmetrics.registerFont(TTFont(name,str(fonts/file)))
         pdfmetrics.registerFontFamily("Sans",normal="Sans",bold="SansBold",italic="Sans",boldItalic="SansBold")
-        self.c=canvas.Canvas(str(self.path),pagesize=(self.width,self.height),pageCompression=1)
+        self.c=canvas.Canvas(str(self.path),pagesize=(self.width,self.height),pageCompression=1,invariant=invariant)
         self.c.setTitle("PALIMPSEST - Artist's notebook")
         self.c.setAuthor("Codex")
         self.c.setSubject("An authored material instrument, original audiovisual composition and numerical evidence")

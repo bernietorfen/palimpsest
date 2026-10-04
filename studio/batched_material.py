@@ -1,8 +1,10 @@
-"""Independent copies of the original material, evaluated together on RunPod.
+"""Sheets of the original material, evaluated together on RunPod.
 
 This research implementation preserves the scalar update order. It borrows the
 authored patterns from the reference and must pass a scalar comparison before
-being used for an experiment. It is not used by the frozen film or live edition.
+being used for an experiment. Optional external spatial forces support the
+second-act choir; absent those forces, the sheets remain independent. The
+frozen first film and live edition retain their original implementations.
 """
 import math
 import torch
@@ -39,7 +41,7 @@ class BatchedMaterial:
         return memory, fatigue, pitch * torch.exp(self.cfg.memory_tuning * memory)
 
     @torch.no_grad()
-    def step(self, excitation):
+    def step(self, excitation, *, field_force=None):
         if excitation.shape != (self.count, 12):
             raise ValueError('Expected one twelve-voice force per material')
         c, dt = self.cfg, self.cfg.dt
@@ -52,6 +54,10 @@ class BatchedMaterial:
         force = force + c.feedback * (
             torch.einsum('bm,mij->bij', echo * torch.cos(self.echo_phase), self.echo_modes)
             + torch.einsum('bm,mij->bij', echo * torch.sin(self.echo_phase), self.echo_quadratures))
+        if field_force is not None:
+            if field_force.shape != self.u.shape:
+                raise ValueError('External spatial force must match the material fields')
+            force = force + field_force
         acceleration = (c.tension * lap - c.bending * laplacian(lap) * grid
                         - stiffness * difference - c.cubic * difference.pow(3) + force)
         self.v = (self.v + dt * acceleration) / (1 + dt * c.damping)

@@ -1,0 +1,182 @@
+{
+  "created_utc": "2026-10-04T09:23:11.731492+00:00",
+  "source_sha256": {
+    "studio/choir_witness.py": "c6830ece95699cee621189daffc4a6eb30b9fd32a7429a758b0aaece3c0a5cdb",
+    "studio/choir_geometry.py": "5b1462add705d490d52c5daa41de2be4ee09503bdb2fe6104aa868fa081a10cd",
+    "studio/choir_render.py": "560b086ca46d908b86527729a2a3b8b11a5d0ffc5432c40a27356f97f0514da9",
+    "studio/reconstruction.py": "4c59da8fc5b724d37b3dde71a50b2988106ab0745233c990f968e25d79dd8f23",
+    "studio/shaders/choir.frag": "a7784afc51a5ff945295b9acb1374d805d558fdbcfce04bb401dd0216c8fc7fc",
+    "studio/shaders/choir_composite.frag": "349dfc739963f851c38b7b4718e7aada2e4fce071cf9874584774b23a1eaf238"
+  },
+  "performance_manifest_sha256": "c3c67d10daade1eaf42b57b45481ed4fcfb0a137b654f07070c017f1d536b372",
+  "same_initial_listener_controls": true,
+  "E_control_and_PCM_exactly_equal": true,
+  "common_gain": 25.80991858385978,
+  "pre_gain_max_peak": 0.017435157671570778,
+  "audio": {
+    "before": {
+      "source_sha256": "58750190f298e9285c5c0c808e9bcc03f4e21f6c839fd9456dcb3849ce4d06b9",
+      "web_sha256": "353f313987c0b55161ae5f348b39a1e8cdc6b8c65458d72a7c8dcb945bd3fe3f",
+      "peak": 0.39547207951545715,
+      "rms": 0.0985656062213526
+    },
+    "after-A": {
+      "source_sha256": "42dac6a79c336d83b3d16b7763d80677e6cd78f15188e702fda96065d37b167f",
+      "web_sha256": "c6143bce2da9b13161be1babf88ba72a662003a440b8cae71f45a823ee65ed10",
+      "peak": 0.45000001788139343,
+      "rms": 0.11025790407367132
+    },
+    "after-C": {
+      "source_sha256": "fca7758ab35c79074cbb79d25f49a6a6432400e2103a26e7ac1673e80ffab0f6",
+      "web_sha256": "67e1fd7e0f7dfc825da4c01f25c276feeb2459dea5c6d16d14e2246a63da9bb0",
+      "peak": 0.3737214207649231,
+      "rms": 0.10104786058076912
+    },
+    "after-G": {
+      "source_sha256": "d9c02b1464e699efaf4915396ff639b3e7bfec26e056c99f97c4eec0fb95af54",
+      "web_sha256": "57249c26ca6da5b45bca3f4844c578caabb0aded5331d1777b00afda910397c0",
+      "peak": 0.3677366077899933,
+      "rms": 0.09048310865376792
+    }
+  },
+  "figures": {
+    "E-before.jpg": {
+      "performance_time": 21,
+      "sha256": "e64cc0cc39c94d3edb3bc956963cc05dac9d336658ae5b2a1d4ddbab0e8b7449",
+      "display_pose": "isolated, common pose and lighting"
+    },
+    "E-after.jpg": {
+      "performance_time": 264,
+      "sha256": "e64cc0cc39c94d3edb3bc956963cc05dac9d336658ae5b2a1d4ddbab0e8b7449",
+      "display_pose": "isolated, common pose and lighting"
+    },
+    "A-before.jpg": {
+      "performance_time": 21,
+      "sha256": "e64cc0cc39c94d3edb3bc956963cc05dac9d336658ae5b2a1d4ddbab0e8b7449",
+      "display_pose": "isolated, common pose and lighting"
+    },
+    "A-after.jpg": {
+      "performance_time": 264,
+      "sha256": "ba5b81fa377f6d7aa1cf36c097da7587741949501e9da4ffa53bbf9a8024c0fe",
+      "display_pose": "isolated, common pose and lighting"
+    },
+    "C-before.jpg": {
+      "performance_time": 21,
+      "sha256": "e64cc0cc39c94d3edb3bc956963cc05dac9d336658ae5b2a1d4ddbab0e8b7449",
+      "display_pose": "isolated, common pose and lighting"
+    },
+    "C-after.jpg": {
+      "performance_time": 264,
+      "sha256": "618daab6174166c4cfcefa1703f8fa4af38e24ca65e5f853c68247a18d8227eb",
+      "display_pose": "isolated, common pose and lighting"
+    },
+    "G-before.jpg": {
+      "performance_time": 21,
+      "sha256": "1135b22642785ad383df03fa9c648f4cd4673ded8a8c59e1ae82627987bfae56",
+      "display_pose": "isolated, common pose and lighting"
+    },
+    "G-after.jpg": {
+      "performance_time": 264,
+      "sha256": "6744aea69d10bbbd8758f2ffc1401a16fd51efde04cbfec9a6ef448aa0f4d217",
+      "display_pose": "isolated, common pose and lighting"
+    }
+  },
+  "web_files": {
+    "A-after.jpg": {
+      "bytes": 112546,
+      "sha256": "ba5b81fa377f6d7aa1cf36c097da7587741949501e9da4ffa53bbf9a8024c0fe"
+    },
+    "A-before.jpg": {
+      "bytes": 80270,
+      "sha256": "e64cc0cc39c94d3edb3bc956963cc05dac9d336658ae5b2a1d4ddbab0e8b7449"
+    },
+    "C-after.jpg": {
+      "bytes": 119239,
+      "sha256": "618daab6174166c4cfcefa1703f8fa4af38e24ca65e5f853c68247a18d8227eb"
+    },
+    "C-before.jpg": {
+      "bytes": 80270,
+      "sha256": "e64cc0cc39c94d3edb3bc956963cc05dac9d336658ae5b2a1d4ddbab0e8b7449"
+    },
+    "E-after.jpg": {
+      "bytes": 80270,
+      "sha256": "e64cc0cc39c94d3edb3bc956963cc05dac9d336658ae5b2a1d4ddbab0e8b7449"
+    },
+    "E-before.jpg": {
+      "bytes": 80270,
+      "sha256": "e64cc0cc39c94d3edb3bc956963cc05dac9d336658ae5b2a1d4ddbab0e8b7449"
+    },
+    "G-after.jpg": {
+      "bytes": 78152,
+      "sha256": "6744aea69d10bbbd8758f2ffc1401a16fd51efde04cbfec9a6ef448aa0f4d217"
+    },
+    "G-before.jpg": {
+      "bytes": 62596,
+      "sha256": "1135b22642785ad383df03fa9c648f4cd4673ded8a8c59e1ae82627987bfae56"
+    },
+    "after-A.m4a": {
+      "bytes": 383170,
+      "sha256": "c6143bce2da9b13161be1babf88ba72a662003a440b8cae71f45a823ee65ed10"
+    },
+    "after-C.m4a": {
+      "bytes": 384627,
+      "sha256": "67e1fd7e0f7dfc825da4c01f25c276feeb2459dea5c6d16d14e2246a63da9bb0"
+    },
+    "after-G.m4a": {
+      "bytes": 388178,
+      "sha256": "57249c26ca6da5b45bca3f4844c578caabb0aded5331d1777b00afda910397c0"
+    },
+    "before.m4a": {
+      "bytes": 393844,
+      "sha256": "353f313987c0b55161ae5f348b39a1e8cdc6b8c65458d72a7c8dcb945bd3fe3f"
+    },
+    "witness.json": {
+      "bytes": 181404,
+      "sha256": "f76458f2d1ae0f661fe0e7448110094373a74edd50f60342411c112c1707fe88"
+    }
+  },
+  "bodies": [
+    {
+      "id": "E",
+      "index": 4,
+      "before": "before.m4a",
+      "after": "before.m4a",
+      "before_image": "E-before.jpg",
+      "after_image": "E-after.jpg",
+      "pitch_difference_rms_hz": 0.0,
+      "pitch_difference_max_hz": 0.0
+    },
+    {
+      "id": "A",
+      "index": 0,
+      "before": "before.m4a",
+      "after": "after-A.m4a",
+      "before_image": "A-before.jpg",
+      "after_image": "A-after.jpg",
+      "pitch_difference_rms_hz": 3.4109137670839615,
+      "pitch_difference_max_hz": 5.58575439453125
+    },
+    {
+      "id": "C",
+      "index": 2,
+      "before": "before.m4a",
+      "after": "after-C.m4a",
+      "before_image": "C-before.jpg",
+      "after_image": "C-after.jpg",
+      "pitch_difference_rms_hz": 4.052326446723544,
+      "pitch_difference_max_hz": 6.468536376953125
+    },
+    {
+      "id": "G",
+      "index": 6,
+      "before": "before.m4a",
+      "after": "after-G.m4a",
+      "before_image": "G-before.jpg",
+      "after_image": "G-after.jpg",
+      "pitch_difference_rms_hz": 4.694451998781111,
+      "pitch_difference_max_hz": 7.170867919921875
+    }
+  ],
+  "scope": "Matched phase, identical synthesis and one common gain applied to the saved before/after controls. E has identical controls and PCM; both E buttons use the same encoded file. Isolated studio portraits show the recorded fields sixteen seconds into each question. This is a finite comparison within the authored performance; see the separate controlled transfer study.",
+  "listening": "Signal generation and numerical equality checks only; no perceptual audition is claimed."
+}

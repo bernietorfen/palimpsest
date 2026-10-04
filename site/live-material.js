@@ -76,8 +76,9 @@ export class LiveMaterial {
     }
   }
 
-  step(excitation, forgetting = this.config.forgetting) {
+  step(excitation, forgetting = this.config.forgetting, fieldForce = null) {
     if (excitation.length !== 12) throw new Error('Twelve force envelopes are required');
+    if (fieldForce && fieldForce.length !== this.count) throw new Error('External force must match the material grid');
     const c=this.config, dt=c.dt, count=this.count, grid=(c.size/128)**2;
     const {u,v,p,z,lapU,lapP,neighbors,modes,echoModes,echoQuadratures} = this;
     for (let m=0; m<12; m++) {
@@ -93,7 +94,7 @@ export class LiveMaterial {
     for (let k=0; k<count; k++) {
       const j=k*4, offset=k*12, difference=u[k]-p[k];
       const lap2=(lapU[neighbors[j]]+lapU[neighbors[j+1]]+lapU[neighbors[j+2]]+lapU[neighbors[j+3]]-4*lapU[k])*grid;
-      let force=0;
+      let force=fieldForce ? fieldForce[k] : 0;
       for (let m=0; m<12; m++) {
         force+=c.force_scale*excitation[m]*modes[offset+m]
           +this.echoC[m]*echoModes[offset+m]+this.echoS[m]*echoQuadratures[offset+m];

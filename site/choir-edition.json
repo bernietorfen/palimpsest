@@ -1,0 +1,15 @@
+{
+  "downloads": [
+    {"title":"A choir of absences / Film master","detail":"4K · 10-bit HEVC","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/a-choir-of-absences-4k.mp4"},
+    {"title":"Viewing film","detail":"1080p · MP4","url":"/assets/generated/choir-viewing.mp4"},
+    {"title":"Original soundtrack","detail":"48 kHz · 24-bit WAV","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/a-choir-of-absences-soundtrack.wav"},
+    {"title":"The second-act notebook","detail":"Art, score and evidence · PDF","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/a-choir-of-absences-notebook.pdf"},
+    {"title":"Received histories","detail":"Four-page research companion · PDF","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/received-histories-companion.pdf"},
+    {"title":"What arrives / Print","detail":"Twenty-four received orders · Vector PDF","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/received-histories-print.pdf"},
+    {"title":"The sculptural edition","detail":"glTF · STL · Large prints","url":"https://github.com/bernietorfen/palimpsest/releases/tag/v2.0.0"},
+    {"title":"Performance and experiments","detail":"Source data and checksums","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/choir-scientific-record.tar.gz"},
+    {"title":"Source and reproduction guide","detail":"Version 2.0 · ZIP","url":"https://github.com/bernietorfen/palimpsest/archive/refs/tags/v2.0.0.zip"},
+    {"title":"The complete portable installation","detail":"Both acts, local films and books · ZIP","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/palimpsest-two-acts.zip"},
+    {"title":"The preserved first installation","detail":"Film, play and book · ZIP","url":"https://github.com/bernietorfen/palimpsest/releases/download/v1.4.0/palimpsest-installation.zip"}
+  ]
+}

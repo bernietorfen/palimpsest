@@ -14,7 +14,7 @@ def main(args):
     edition, proof, report = Path(args.edition), Path(args.proof), Path(args.report)
     if proof.exists() or report.exists():
         raise FileExistsError('Use new proof and report paths')
-    manifest = json.loads((edition / 'palimpsest-installation-edition.json').read_text())
+    manifest = json.loads((edition / args.manifest).read_text())
     for item in manifest['files']:
         path = edition / item['name']
         if Path(item['name']).name != item['name'] or path.stat().st_size != item['bytes'] or sha256(path) != item['sha256']:
@@ -23,7 +23,7 @@ def main(args):
     if inventory['source_commit'] != manifest['source_commit']:
         raise ValueError('Installation source identities differ')
     proof.mkdir(parents=True)
-    with zipfile.ZipFile(edition / 'palimpsest-installation.zip') as archive:
+    with zipfile.ZipFile(edition / args.archive) as archive:
         names = archive.namelist()
         expected = [item['path'] for item in inventory['files']] + ['installation-content.json']
         if len(names) != len(set(names)) or set(names) != set(expected):
@@ -45,7 +45,7 @@ def main(args):
         (proof / 'installation-content.json').write_bytes(archive.read('installation-content.json'))
     result = {'verified_utc': datetime.now(timezone.utc).isoformat(), 'source_commit': manifest['source_commit'],
               'files': len(inventory['files']) + 1, 'bytes': manifest['uncompressed_bytes'],
-              'archive_sha256': sha256(edition / 'palimpsest-installation.zip'),
+              'archive_sha256': sha256(edition / args.archive),
               'all_file_hashes_match': True, 'proof': str(proof)}
     report.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result), flush=True)
@@ -56,4 +56,6 @@ if __name__ == '__main__':
     parser.add_argument('--edition', default='artwork/installation-edition-001')
     parser.add_argument('--proof', default='artwork/installation-proof-001')
     parser.add_argument('--report', default='research/installation-verification-001.json')
+    parser.add_argument('--manifest', default='palimpsest-installation-edition.json')
+    parser.add_argument('--archive', default='palimpsest-installation.zip')
     main(parser.parse_args())

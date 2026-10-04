@@ -1,0 +1,29 @@
+{
+  "verified_utc": "2026-10-04T09:02:22.224305+00:00",
+  "state": "artifacts/studies/choir-performance-001/state-228.npz",
+  "state_sha256": "50b5b8f98793526fa6c5301cd76c7ce5935220aa9cbcece6bf25eeefc8ac587d",
+  "source_sha256": {
+    "studio/choir_frozen_analysis.py": "fdc36f1754236aaed0fd5b8c660a4663723d30069d5555c53bd885a3857237f9",
+    "studio/material.py": "e971aada7818487a369da0b967b708b51bb3979857c92000a60ebb9fa3c15b5e",
+    "studio/choir_material.py": "804d7bac18449aff8c924d407605e520f1fce53eb4b4e4f958c54dec5e253d50",
+    "studio/choir_scene.py": "17e10b8477bea48ae57327b11a4292a672e584b39778c4eb1fb0bbe9ddba491f",
+    "research/CHOIR-ENERGY.md": "b8bc1198d0d40bfb92cd8640c9052848ecb5da9751ba9aab99dee9085465a7c2",
+    "site/choir-scene.json": "9e8edf4e72e2dbce48f0f34da1df1d436b4b661ee3c64e6c01e3e59c67bfa30e"
+  },
+  "bodies": 7,
+  "body_coordinates_each": 13,
+  "bridge_beads": 192,
+  "position_coordinates": 283,
+  "mechanical_state_dimension": 566,
+  "equilibrium_max_gradient": 1.0891287871572786e-13,
+  "energy_gradient_directional_error": 7.442935157087049e-13,
+  "generalized_stiffness_minimum": 1.6527103327128962,
+  "generalized_stiffness_maximum": 2655.4270266898043,
+  "generator_largest_real_part": -0.12000005472663045,
+  "continuous_energy_identity_max_error": 1.4210854715202004e-14,
+  "step_seconds": 0.010416666666666666,
+  "discrete_spectral_radius": 0.9987523383107441,
+  "discrete_lyapunov_max_residual": 3.748573362827301e-08,
+  "discrete_metric_min_eigenvalue": 79.91986343819778,
+  "scope": "Declared 13-mode-per-body Galerkin reduction at the 228-second retained fields, with every bridge reconnected at full strength, feedback/drive disabled, and p,z frozen. Algebraic continuous-energy identity and independently constructed discrete contraction metric. Not a full-grid spectrum, a claim about active plastic dynamics, or a universal recurrence theorem."
+}

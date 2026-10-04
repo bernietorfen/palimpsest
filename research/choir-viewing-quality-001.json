@@ -1,0 +1,31 @@
+{
+  "verified_utc": "2026-10-04T10:41:50.405869+00:00",
+  "film": "artwork/choir-viewing-001.mp4",
+  "bytes": 19871266,
+  "sha256": "c261130975da742b56214764beda182012f1a3ab2d172a733a9f5450c00aebfc",
+  "full_decode_passed": true,
+  "frames": 6912,
+  "fps": 24,
+  "duration_seconds": 288,
+  "video": {
+    "codec_name": "h264",
+    "profile": "High",
+    "width": 1920,
+    "height": 1080,
+    "pix_fmt": "yuv420p",
+    "color_space": "bt709",
+    "color_range": "tv",
+    "color_transfer": "bt709",
+    "color_primaries": "bt709",
+    "start_time": "0.000000",
+    "duration": "288.000000"
+  },
+  "audio": {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 2,
+    "start_time": "0.000000",
+    "duration": "288.000000"
+  },
+  "scope": "Complete error-free decode, container/stream timing and encoded color metadata. No perceptual listening claim."
+}

@@ -1,0 +1,51 @@
+{
+  "verified_utc": "2026-10-04T08:06:06.763274+00:00",
+  "states": [
+    {
+      "step": 1,
+      "fields": 0.0,
+      "bridge_u": 0.0,
+      "bridge_v": 0.0,
+      "pitch": 0.0
+    },
+    {
+      "step": 480,
+      "fields": 0.0,
+      "bridge_u": 1.1102230246251565e-15,
+      "bridge_v": 3.155115058106617e-14,
+      "pitch": 5.684341886080802e-14
+    },
+    {
+      "step": 960,
+      "fields": 0.0,
+      "bridge_u": 6.938893903907228e-16,
+      "bridge_v": 2.7006175074006933e-14,
+      "pitch": 5.684341886080802e-14
+    },
+    {
+      "step": 1440,
+      "fields": 0.0,
+      "bridge_u": 6.938893903907228e-16,
+      "bridge_v": 1.6708856520608606e-14,
+      "pitch": 5.684341886080802e-14
+    },
+    {
+      "step": 1728,
+      "fields": 0.0,
+      "bridge_u": 3.602673714908633e-14,
+      "bridge_v": 8.134118378855248e-15,
+      "pitch": 5.684341886080802e-14
+    },
+    {
+      "step": 2304,
+      "fields": 0.0,
+      "bridge_u": 6.661338147750939e-16,
+      "bridge_v": 9.835231587485005e-15,
+      "pitch": 1.4210854715202004e-14
+    }
+  ],
+  "scope": "24 seconds, seven bodies, twelve bridges, opposite-polarity contacts, disconnection, new bridge initialization. Same 32-grid double precision equations; rendered field packets are float32. Not a continuum or perceptual comparison.",
+  "javascript_realtime_ratio_on_runpod_cpu": 7.110065954589334,
+  "exact_continuation": true,
+  "atomic_rejection": true
+}

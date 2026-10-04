@@ -1,0 +1,61 @@
+{
+  "created_utc": "2026-10-04T11:10:09.322119+00:00",
+  "art": "artwork/received-history-art-001",
+  "companion_sha256": "14675c9cd913568b59c15e4385e2dbe64fe1560628b9beee410029189bbfad78",
+  "poster_sha256": "dc0684c6fe4ec4bf667b8376b0340d6eb09d97e8eaae7507ee53bcfe476d3496",
+  "companion_bounds": [
+    {
+      "page": 1,
+      "words": 150,
+      "bounds": [
+        48.0,
+        26.541992,
+        816.000044,
+        624.921875
+      ]
+    },
+    {
+      "page": 2,
+      "words": 95,
+      "bounds": [
+        48.0,
+        26.541992,
+        816.000013,
+        624.921875
+      ]
+    },
+    {
+      "page": 3,
+      "words": 147,
+      "bounds": [
+        48.0,
+        26.541992,
+        816.000013,
+        624.921875
+      ]
+    },
+    {
+      "page": 4,
+      "words": 252,
+      "bounds": [
+        48.0,
+        26.541992,
+        816.000013,
+        624.921875
+      ]
+    }
+  ],
+  "poster_bounds": [
+    {
+      "page": 1,
+      "words": 224,
+      "bounds": [
+        72.0,
+        47.642578,
+        1368.000283,
+        1730.402344
+      ]
+    }
+  ],
+  "scope": "All five PDF pages checked for extracted-word margins. Four book pages rendered for visual review; print reviewed from its separate bounded preview."
+}
