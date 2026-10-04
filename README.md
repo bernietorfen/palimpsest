@@ -75,7 +75,7 @@ The pressure follow-up writes all 120 histories with independently varied gestur
 
 The implementation is organized under `studio/`; the static exhibition and original browser renderers are under `site/`. The release contains the finished media, checksums, a complete viewing-room bundle and the scientific record. Source is kept separate from generated media.
 
-The 4 October publication revision edits prose and selected PDF passages. Numerical arrays, audio, video and rendered artwork retain their original bytes. Current release inventories describe the revised files; historical generation and test receipts refer to the original production. Each repackaged archive includes `PUBLICATION-REVISION.json` with the changed member identities.
+The 4 October publication revision edits prose and selected PDF passages. Numerical arrays, audio, video and rendered artwork retain their original bytes. Current release inventories describe the revised files; historical generation and test receipts refer to the original production. Each repackaged archive includes `PUBLICATION-REVISION.json` with the changed member identities. The [source revision map](PUBLICATION-REVISION.json) resolves original public commit identifiers to the corresponding revised source.
 
 Production used an NVIDIA RTX 4090 on RunPod. No simulation, rendering, synthesis, model execution or browser testing ran on the authoring laptop.
 

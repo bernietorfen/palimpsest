@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-04",
+  "scope": "Editorial revision of publication prose and selected PDF passages. Numerical arrays and finished audio, video and rendered artwork retain their original bytes. Historical generation and test receipts describe the original production. The source-commit map below resolves the original public identifiers to the corresponding revised source trees; the scientific equations and algorithms are unchanged.",
+  "source_commits": {
+    "4de454ab78ef17047f8219c703bcd3333970e5dd": "7663858dafc04ab5a818d63823b963ae59662744",
+    "4f67f09475e89ea5c982cb3a2cba07c28125baf0": "489ee63c5fb7b207fe5a2ea2a916e28280fac68e",
+    "53f8a07630ef837c5d03a7de2e75fbcf59b91eac": "2f10180ce8d97f0656211b534f3666b2f7be253f",
+    "6524ea567975fa75db69896f309bd6fcb1cb8ce9": "cba9f819aaf55f29557dccaeff1f74e1e4fbd105",
+    "7133ff85f556a7240d73b88a8d69fc23653c57bd": "20b1eb60dd9dba70f0dd0fbd924353a176bcbcf3",
+    "8d7c6ff02478242d9f51a0c9a05272bc3145ddb5": "834710c964a08b461dff81c7a6fd0eff70bb0bb3",
+    "9c3b704a2eb406563b1d572a9f678be8acb40fa2": "ba081506966144dbbb7a99bdc41892e500246b7b",
+    "a97c052b2c27d06b41cbdf47a05a8dc00174bcaf": "737586bb0f8118186736e5249308bcdc08b49ef1",
+    "b465d3c528db918413a13398941a5c08652d3bea": "04904b977b728cc8760a5023498d185ed544ea54",
+    "c04215e70e3bf778fb2fe2a037c89c3a5875d4cd": "9842573532a55474553e93f0cd7327871a4f13a4",
+    "c4e1438247ac06e8f4831fa5d27f04983ccd0a06": "7ef1313f2ec3b42f531d5fe4dd050b6849e49f04",
+    "d678c95b9b3ef9a7b139949fb5092b7b6b30ae18": "8ddf0f3527f1924029e7b0d3d0c035d0d7dcf801",
+    "da5a600ff672c122943de187a965e9d1e1304286": "45502b6755707709603c23b95b4a8e4896912b27",
+    "e40c0dc199af6d9fc6001183e238666612ac2e45": "aa7754e0cd78862c047a33c1e41215ad89fc88f1",
+    "e8c74768e0352088aed6900dcc6d3c87277bf8b8": "2316c7e672fd9d7b6b4926aff6f420ffc5a2cadd",
+    "eed77fc3081ca0890cb4ed089a2496dcf5bf4874": "22a5651677fe9ecea0c1db696cbc900d6b5b57b8",
+    "f64ab1cf442ae44cd1e1a93783ca30eb2cc637d1": "9b122ee1330218d81bf59905ec809f5cdbb44dac",
+    "fe5f19c62e890bcc50cab9b430db44088793a7eb": "2d11c0e0e23ced11f4f159c5e44e2db867e46edb"
+  }
+}
