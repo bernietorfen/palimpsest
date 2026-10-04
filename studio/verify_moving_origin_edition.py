@@ -27,4 +27,4 @@ def main(args):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--edition',default='artwork/moving-origin-edition-001');p.add_argument('--source',required=True);p.add_argument('--proof',default='artwork/moving-origin-proof-001');p.add_argument('--output',default='research/moving-origin-edition-verification-001.json');main(p.parse_args())
+    p=argparse.ArgumentParser();p.add_argument('--edition',default='artwork/moving-origin-edition-002');p.add_argument('--source',required=True);p.add_argument('--proof',default='artwork/moving-origin-proof-002');p.add_argument('--output',default='research/moving-origin-edition-verification-002.json');main(p.parse_args())

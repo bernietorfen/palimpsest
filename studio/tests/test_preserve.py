@@ -42,3 +42,27 @@ def test_corrupt_part_fails_before_restoring_anything(tmp_path):
     with pytest.raises(ValueError,match="corrupt"):
         restore(manifest,target)
     assert not target.exists()
+
+
+def test_hardlinked_working_paths_restore_as_independent_verified_files(tmp_path):
+    import os
+    import tarfile
+    from studio.preserve import sha256
+
+    project = tmp_path / 'project'
+    project.mkdir()
+    original = project / 'measured.json'
+    alias = project / 'website.json'
+    original.write_text('{"the_same_record": true}\n')
+    os.link(original, alias)
+    manifest = pack(project, tmp_path / 'backups', 'linked', ['measured.json', 'website.json'])
+    records = json.loads(manifest.read_text())
+    assert all(item['sha256'] == sha256(original) for item in records['files'])
+    with tarfile.open(manifest.parent / records['parts'][0]['name'], 'r:gz') as archive:
+        assert all(member.isfile() for member in archive)
+    destination = tmp_path / 'restored'
+    restore(manifest, destination)
+    assert (destination / 'measured.json').read_bytes() == original.read_bytes()
+    assert (destination / 'website.json').read_bytes() == original.read_bytes()
+    (destination / 'website.json').write_text('A later website edit.\n')
+    assert (destination / 'measured.json').read_bytes() == original.read_bytes()

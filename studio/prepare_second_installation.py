@@ -128,4 +128,4 @@ Typeface license: site/assets/generated/font-license.txt.
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--output',default='artwork/two-acts-installation-003');p.add_argument('--source-commit',required=True);main(p.parse_args())
+    p=argparse.ArgumentParser();p.add_argument('--output',default='artwork/two-acts-installation-004');p.add_argument('--source-commit',required=True);main(p.parse_args())

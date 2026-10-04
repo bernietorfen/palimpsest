@@ -134,7 +134,7 @@ def pack(root: Path, output: Path, name: str, includes: list[str],
     writer = ChunkWriter(output, name, chunk_bytes)
     inventory = []
     try:
-        with tarfile.open(fileobj=writer, mode="w|gz", compresslevel=1) as archive:
+        with tarfile.open(fileobj=writer, mode="w|gz", compresslevel=1, dereference=True) as archive:
             for relative in paths:
                 p = root / relative
                 before = p.stat()
