@@ -1,5 +1,7 @@
 # Verification record
 
+This document records the original production checks. A subsequent publication revision on 4 October 2026 edits prose and selected PDF passages while preserving numerical arrays and media. Revised archive inventories and `PUBLICATION-REVISION.json` identify those changes. Historical PDF reproduction results below apply to the original publication, not to the edited PDF containers.
+
 The finished 4K master is 3840 × 2160, HEVC Main 10, limited-range BT.709, 24 fps and 10,368 frames. Its video and audio both begin at zero and last 432 seconds. Complete FFmpeg decoding finishes without errors. The rendered-frame record contains no unchanged interior frames; after excluding all authored cuts, its largest sampled frame difference is 2.0378 on a 0–255 scale.
 
 Master SHA-256: `7b7a6a6bcfab31f96a566223214fde66ec66f416bbf7a1de392b52bfaa75ebe4`.

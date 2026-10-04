@@ -4,6 +4,8 @@ Use an authorized Linux GPU host. Production used Python 3.12.3, PyTorch 2.8.0 w
 
 The release contains the actual scientific record and finished media. Its JSON manifest lists sizes and SHA-256 digests. Verify downloads before extracting the archive into an empty directory. The viewing-room archive expands into `site/`; the scientific record preserves the relative `artifacts/` and `artwork/analysis/` paths used by the production tools.
 
+The publication revision of 4 October 2026 changes editorial text and selected PDF passages. It preserves numerical arrays and finished media. Repackaged archives include `PUBLICATION-REVISION.json`, which maps altered members from their original identities to current digests. Historical generation and test receipts describe the original production; their PDF and source-text hashes can therefore differ from the revised publication. Use the current release checksums and archive inventories to verify downloads.
+
 ## Environment
 
 Install a compatible CUDA build of PyTorch on the GPU host, then install `studio/requirements.txt`. System tools are FFmpeg, Poppler and the DejaVu fonts. ModernGL must create an EGL context backed by the NVIDIA device; software rendering is unsuitable for the full film.

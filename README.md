@@ -75,6 +75,8 @@ The pressure follow-up writes all 120 histories with independently varied gestur
 
 The implementation is organized under `studio/`; the static exhibition and original browser renderers are under `site/`. The release contains the finished media, checksums, a complete viewing-room bundle and the scientific record. Source is kept separate from generated media.
 
+The 4 October publication revision edits prose and selected PDF passages. Numerical arrays, audio, video and rendered artwork retain their original bytes. Current release inventories describe the revised files; historical generation and test receipts refer to the original production. Each repackaged archive includes `PUBLICATION-REVISION.json` with the changed member identities.
+
 Production used an NVIDIA RTX 4090 on RunPod. No simulation, rendering, synthesis, model execution or browser testing ran on the authoring laptop.
 
 The work claims an original construction and composition. It does not claim to be the first artwork about hysteresis, feedback, memory or sound sculpture. Sound was measured for duration, loudness, peak and signal structure; a supported perceptual audition path was unavailable to the authoring assistant.
