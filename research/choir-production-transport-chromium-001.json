@@ -1,0 +1,24 @@
+{
+  "engine": "chromium",
+  "base": "https://site-inky-eight-42.vercel.app",
+  "errors": [],
+  "delayedFrame": {
+    "running": "false",
+    "button": "Resume",
+    "materialRunning": "true"
+  },
+  "openedWhilePlaying": {
+    "audioState": "suspended",
+    "running": "false",
+    "materialRunning": "false",
+    "time": "3.614583"
+  },
+  "soundPreferenceWhilePaused": {
+    "audioState": "suspended",
+    "running": "false"
+  },
+  "soundResumesWithMaterial": true,
+  "pauseIntentSurvivesOldFrame": true,
+  "importSuspendsSound": true,
+  "pausedSoundPreferenceStaysSuspended": true
+}

@@ -1,0 +1,163 @@
+{
+  "engine": "webkit",
+  "base": "https://site-inky-eight-42.vercel.app",
+  "scope": "full",
+  "errors": [],
+  "consoleErrors": [],
+  "failed": [],
+  "screenshotInstrumentationWarnings": [
+    {
+      "capture": 1,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 2,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 3,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 4,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 5,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 6,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 7,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 8,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 9,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 10,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 11,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 12,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 13,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 14,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    },
+    {
+      "capture": 15,
+      "cause": "Playwright WebKit screenshot synchronization stylesheet blocked by deployed CSP",
+      "message": "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+    }
+  ],
+  "sculptures": [
+    {
+      "state": "encounter",
+      "triangles": 197868,
+      "keyboardChangesImage": true
+    },
+    {
+      "state": "after",
+      "triangles": 144888,
+      "keyboardChangesImage": true
+    },
+    {
+      "state": "source",
+      "triangles": 30328,
+      "keyboardChangesImage": true
+    }
+  ],
+  "graphicsRestoration": true,
+  "film": {
+    "duration": 288,
+    "time": 249.020135246,
+    "width": 1920,
+    "height": 1080,
+    "tracks": 1
+  },
+  "overflow": 0,
+  "mobileSculpture": {
+    "width": 393,
+    "scrollWidth": 393,
+    "height": 852,
+    "scrollHeight": 852
+  },
+  "observerOverflow": 0,
+  "images": [
+    {
+      "src": "/assets/generated/choir-after.jpg",
+      "loaded": true
+    },
+    {
+      "src": "/assets/generated/choir-witness/E-after.jpg",
+      "loaded": true
+    },
+    {
+      "src": "/assets/generated/choir-witness/G-after.jpg",
+      "loaded": true
+    },
+    {
+      "src": "/assets/generated/choir-encounter.jpg",
+      "loaded": true
+    },
+    {
+      "src": "/assets/generated/choir-after.jpg",
+      "loaded": true
+    },
+    {
+      "src": "/assets/generated/choir-source.jpg",
+      "loaded": true
+    },
+    {
+      "src": "/assets/generated/received-histories.jpg",
+      "loaded": true
+    },
+    {
+      "src": "/assets/generated/the-origin-moves.jpg",
+      "loaded": true
+    },
+    {
+      "src": "/assets/generated/film-poster.jpg",
+      "loaded": true
+    }
+  ],
+  "accessibility": {
+    "violations": [],
+    "incomplete": [
+      "aria-prohibited-attr",
+      "color-contrast"
+    ]
+  }
+}

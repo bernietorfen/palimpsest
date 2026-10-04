@@ -1,0 +1,9 @@
+{
+  "verified_utc": "2026-10-04T12:20:35.470440+00:00",
+  "source_commit": "b465d3c528db918413a13398941a5c08652d3bea",
+  "files": 221,
+  "bytes": 151328830,
+  "archive_sha256": "65880a3633ff2f969a2ac492d9a6545d59ad251a380d8414d1652a40aac45318",
+  "all_file_hashes_match": true,
+  "proof": "artwork/two-acts-proof-002"
+}

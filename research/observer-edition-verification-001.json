@@ -1,0 +1,163 @@
+{
+  "verified_utc": "2026-10-04T12:20:18.731834+00:00",
+  "source_commit": "b465d3c528db918413a13398941a5c08652d3bea",
+  "asset_files": 14,
+  "restored_record": {
+    "files": 378,
+    "bytes": 37125289,
+    "every_file_restored_and_hashed": true
+  },
+  "archive_sha256": "d613f42078668ff137b0bfb1f5aa24414a87a8ae1cf55a5d4748fea2c8bbccd4",
+  "all_file_hashes_match": true,
+  "independent_analyses": [
+    {
+      "study": "received-histories-002",
+      "rates": [
+        96,
+        192
+      ],
+      "cross_rate": [
+        {
+          "receiver": 1,
+          "own_nearest": 18,
+          "all_unique": true,
+          "misidentified": [
+            {
+              "actual": "BACD",
+              "predicted": "ABCD"
+            },
+            {
+              "actual": "BADC",
+              "predicted": "ABDC"
+            },
+            {
+              "actual": "BDAC",
+              "predicted": "DBAC"
+            },
+            {
+              "actual": "BDCA",
+              "predicted": "DBCA"
+            },
+            {
+              "actual": "DABC",
+              "predicted": "BDAC"
+            },
+            {
+              "actual": "DCBA",
+              "predicted": "BCDA"
+            }
+          ]
+        },
+        {
+          "receiver": 2,
+          "own_nearest": 24,
+          "all_unique": true,
+          "misidentified": []
+        }
+      ],
+      "repeated_rate_admission": null
+    },
+    {
+      "study": "received-refinement-001",
+      "rates": [
+        192,
+        384
+      ],
+      "cross_rate": [
+        {
+          "receiver": 1,
+          "own_nearest": 24,
+          "all_unique": true,
+          "misidentified": []
+        },
+        {
+          "receiver": 2,
+          "own_nearest": 24,
+          "all_unique": true,
+          "misidentified": []
+        }
+      ],
+      "repeated_rate_admission": {
+        "rate": 192,
+        "reference": "artifacts/studies/received-histories-002",
+        "reference_manifest_sha256": "76dcdfcc10e5a7f6728f3b6e15f5b6a95cd34267e895f4adc396f026bb5054ce",
+        "arrays_checked": 488,
+        "every_array_identical": true
+      }
+    },
+    {
+      "study": "observer-offset-001",
+      "rates": [
+        96,
+        192
+      ],
+      "maximum_matrix_error_hz": 1.1102230246251565e-16,
+      "receivers": [
+        {
+          "receiver": 1,
+          "raw_own_matches": 18,
+          "translated_own_matches": 24,
+          "common_fraction": 0.9917532932744678
+        },
+        {
+          "receiver": 2,
+          "raw_own_matches": 24,
+          "translated_own_matches": 24,
+          "common_fraction": 0.9634025750051469
+        }
+      ]
+    },
+    {
+      "study": "observer-offset-002",
+      "rates": [
+        192,
+        384
+      ],
+      "maximum_matrix_error_hz": 1.1102230246251565e-16,
+      "receivers": [
+        {
+          "receiver": 1,
+          "raw_own_matches": 24,
+          "translated_own_matches": 24,
+          "common_fraction": 0.989350546066034
+        },
+        {
+          "receiver": 2,
+          "raw_own_matches": 24,
+          "translated_own_matches": 24,
+          "common_fraction": 0.9644449193128243
+        }
+      ]
+    }
+  ],
+  "artwork_rebuilt": [
+    {
+      "name": "the-observer-companion.pdf",
+      "bytes": 170791,
+      "sha256": "50eb4e6fc4884ea0b6780da15e691d3c86a614e0e8cdf68971bbb9383a51a605"
+    },
+    {
+      "name": "the-origin-moves-print.pdf",
+      "bytes": 66315,
+      "sha256": "b22168bf7f7df203b3d0c67c1fc5d628c10e2b250cf137c883b31f67bf35e45e"
+    },
+    {
+      "name": "the-origin-moves-6000x4500.png",
+      "bytes": 422339,
+      "sha256": "28bc7fe29f87b2e24f0118023d853cee7c610a23d6a95c27ef23f6ad12662bd1"
+    },
+    {
+      "name": "the-origin-moves.jpg",
+      "bytes": 148551,
+      "sha256": "e9617832c3dbf8e9f0551049e90fd20459c7faacf92aa4d4896a58d90b34f524"
+    },
+    {
+      "name": "six-comparisons.png",
+      "bytes": 101480,
+      "sha256": "6a883dc91adb99768b68d64a430a6e22ca3159033f73447c229cf1349be66c2d"
+    }
+  ],
+  "all_artwork_byte_identical": true,
+  "proof": "artwork/observer-proof-restore-001",
+  "scope": "Every release asset and scientific member hashed. Both received-history analyses and both offset diagnostics rerun independently from restored arrays. Three-page companion, vector print, 27-megapixel PNG, preview and evidence PNG rebuilt byte for byte at identical paths. The Matplotlib evidence PDF has ordinary container timestamps and is not asserted byte-identical."
+}

@@ -1,0 +1,53 @@
+{
+  "verified_utc": "2026-10-04T12:24:51.769790+00:00",
+  "tag": "v2.1.0",
+  "receipt_sha256": "0a90f05b888c5246c4e5ac2a7ce5d88d999050a9b0fb5da8308c93ee764cb146",
+  "prior_cold_receipt_sha256": "516ba32c1891712e317badc4a1a3370f0b26e2568a24e54fd71537ecff9b15e9",
+  "previously_verified_assets": 6,
+  "new_public_downloads": [
+    {
+      "name": "DejaVu-LICENSE.txt",
+      "bytes": 3859,
+      "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+    },
+    {
+      "name": "START-HERE.txt",
+      "bytes": 2158,
+      "sha256": "0f2f73f288d9877956bcf64890a459c37db57de604668481c2a2d53e36f2268a"
+    },
+    {
+      "name": "observer-plan.md",
+      "bytes": 3253,
+      "sha256": "a2c456da1b7a0789108305516599339464066dde8bf335dd14b2a78a1598207f"
+    },
+    {
+      "name": "observer-results.md",
+      "bytes": 5528,
+      "sha256": "1deb851f6472486c856cd1eb4cdcf4f91ce073641415f256946369affdd2583d"
+    },
+    {
+      "name": "the-observer-companion.pdf",
+      "bytes": 170791,
+      "sha256": "50eb4e6fc4884ea0b6780da15e691d3c86a614e0e8cdf68971bbb9383a51a605"
+    },
+    {
+      "name": "the-origin-moves-6000x4500.png",
+      "bytes": 422339,
+      "sha256": "28bc7fe29f87b2e24f0118023d853cee7c610a23d6a95c27ef23f6ad12662bd1"
+    },
+    {
+      "name": "the-origin-moves-print.pdf",
+      "bytes": 66315,
+      "sha256": "b22168bf7f7df203b3d0c67c1fc5d628c10e2b250cf137c883b31f67bf35e45e"
+    },
+    {
+      "name": "the-origin-moves.jpg",
+      "bytes": 148551,
+      "sha256": "e9617832c3dbf8e9f0551049e90fd20459c7faacf92aa4d4896a58d90b34f524"
+    }
+  ],
+  "total_public_assets_verified": 14,
+  "all_release_assets_covered": true,
+  "temporary_media_files": 0,
+  "scope": "Unauthenticated streamed verification of the remaining small assets, combined with the exact earlier cold-restore receipt. Large downloads are not repeated."
+}

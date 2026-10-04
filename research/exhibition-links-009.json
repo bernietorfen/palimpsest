@@ -1,0 +1,204 @@
+{
+  "verified_utc": "2026-10-04T12:27:29.732751+00:00",
+  "base": "https://site-inky-eight-42.vercel.app",
+  "catalogs": [
+    {
+      "path": "/choir-edition.json",
+      "entries": 14
+    },
+    {
+      "path": "/edition.json",
+      "entries": 12
+    }
+  ],
+  "observer_links": [
+    "https://github.com/bernietorfen/palimpsest/releases/download/v2.1.0/the-origin-moves-print.pdf",
+    "https://github.com/bernietorfen/palimpsest/releases/download/v2.1.0/the-observer-companion.pdf"
+  ],
+  "links": [
+    {
+      "title": "A choir of absences / Film master",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/a-choir-of-absences-4k.mp4",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "77821715"
+    },
+    {
+      "title": "Viewing film",
+      "url": "https://site-inky-eight-42.vercel.app/assets/generated/choir-viewing.mp4",
+      "status": 200,
+      "content_type": "video/mp4",
+      "content_length": "19871266"
+    },
+    {
+      "title": "Original soundtrack",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/a-choir-of-absences-soundtrack.wav",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "82944102"
+    },
+    {
+      "title": "The second-act notebook",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/a-choir-of-absences-notebook.pdf",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "2035676"
+    },
+    {
+      "title": "Received histories",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/received-histories-companion.pdf",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "1114949"
+    },
+    {
+      "title": "What arrives / Print",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/received-histories-print.pdf",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "954925"
+    },
+    {
+      "title": "The observer",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v2.1.0/the-observer-companion.pdf",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "170791"
+    },
+    {
+      "title": "The origin moves / Print",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v2.1.0/the-origin-moves-print.pdf",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "66315"
+    },
+    {
+      "title": "The observer\u2019s record",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v2.1.0/observer-scientific-record.tar.gz",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "35967880"
+    },
+    {
+      "title": "The sculptural edition",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/tag/v2.0.0",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "title": "Performance and experiments",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/choir-scientific-record.tar.gz",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "1234636529"
+    },
+    {
+      "title": "Source and reproduction guide",
+      "url": "https://github.com/bernietorfen/palimpsest/archive/refs/tags/v2.1.0.zip",
+      "status": 200,
+      "content_type": "application/zip",
+      "content_length": null
+    },
+    {
+      "title": "The complete portable installation",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v2.1.0/palimpsest-two-acts.zip",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "150349510"
+    },
+    {
+      "title": "The preserved first installation",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.4.0/palimpsest-installation.zip",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "109938469"
+    },
+    {
+      "title": "The portable installation",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.4.0/palimpsest-installation.zip",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "109938469"
+    },
+    {
+      "title": "Film master",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-film-4k.mp4",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "175157119"
+    },
+    {
+      "title": "Viewing film",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-viewing-1080p.mp4",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "41147784"
+    },
+    {
+      "title": "Original soundtrack",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-soundtrack-48k24.wav",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "124416102"
+    },
+    {
+      "title": "The complete notebook",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.3.0/palimpsest-complete-notebook.pdf",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "10477076"
+    },
+    {
+      "title": "First-edition notebook",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-notebook.pdf",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "6281382"
+    },
+    {
+      "title": "The portable instrument",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.1.1/palimpsest-live-instrument.zip",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "2254440"
+    },
+    {
+      "title": "120 possible pasts",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/120-possible-pasts-vector.pdf",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "690551"
+    },
+    {
+      "title": "An imperfect hand",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/tag/v1.2.0",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "title": "A mark, at three scales",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.3.0/a-mark-at-three-scales-print.pdf",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "content_length": "371049"
+    },
+    {
+      "title": "Prints, sculptures and film records",
+      "url": "https://github.com/bernietorfen/palimpsest/releases/tag/v1.0.0",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "title": "Source and reproduction guide",
+      "url": "https://github.com/bernietorfen/palimpsest/archive/refs/tags/v1.3.0.zip",
+      "status": 200,
+      "content_type": "application/zip",
+      "content_length": null
+    }
+  ],
+  "large_bodies_downloaded": false,
+  "scope": "Every current catalog destination and both new observer PDFs return HTTP 200. Separate browser and byte-hash checks cover the actual experience and release contents."
+}

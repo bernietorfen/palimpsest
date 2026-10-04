@@ -1,0 +1,143 @@
+{
+  "verified_utc": "2026-10-04T12:26:52.148893+00:00",
+  "tag": "v2.0.0",
+  "receipt_sha256": "76ce1b5b028298b714bac1409f88016cca933d627df1264cf4f12d04d902abd7",
+  "prior_cold_receipt_sha256": "27c01b506839741091762fed63deee0fa369c655ad42ac412b63284201829cff",
+  "previously_verified_assets": 6,
+  "new_public_downloads": [
+    {
+      "name": "DejaVu-LICENSE.txt",
+      "bytes": 3859,
+      "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+    },
+    {
+      "name": "START-HERE.txt",
+      "bytes": 2109,
+      "sha256": "7855db921195108aee7e0d6b96d3276e7d3bf5cc46c75319df1d8b35a628a21b"
+    },
+    {
+      "name": "a-choir-of-absences-1080p.mp4",
+      "bytes": 19871266,
+      "sha256": "c261130975da742b56214764beda182012f1a3ab2d172a733a9f5450c00aebfc"
+    },
+    {
+      "name": "a-choir-of-absences-4k.mp4",
+      "bytes": 77821715,
+      "sha256": "db084ef4aa337553bf7b80a622458eae7c9c21a7af29ef409cec6409f08b09b3"
+    },
+    {
+      "name": "a-choir-of-absences-notebook.pdf",
+      "bytes": 2035676,
+      "sha256": "af4043545761bce1d3dabd60d7f7008cbcaf30505c34cd0e67b8654b140b6d32"
+    },
+    {
+      "name": "a-choir-of-absences-soundtrack.wav",
+      "bytes": 82944102,
+      "sha256": "d349cd367ee03f7743cd4c1e89dc76a328ced7f3f91b878f5e80110ccb2d5a05"
+    },
+    {
+      "name": "choir-01-before-8000x5200.png",
+      "bytes": 5605457,
+      "sha256": "300430065d796897c14cc46f22e92f8e4a9f9df28593f1ff2453ad1b1172efe7"
+    },
+    {
+      "name": "choir-01-before-print.pdf",
+      "bytes": 9023394,
+      "sha256": "5be8cd56c298bbecb152e48fb0e2b4f39c3250a0f344e79df31a3dbb548a3bb6"
+    },
+    {
+      "name": "choir-02-encounter-8000x5200.png",
+      "bytes": 7050757,
+      "sha256": "afecb6497938096cea605897eff08b9df5565bf545103c6ab9831a00851dc7f1"
+    },
+    {
+      "name": "choir-02-encounter-print.pdf",
+      "bytes": 11372991,
+      "sha256": "baf2ceec9742341d7637b026cced4129a61baa55abfd22922d0aa3b3d9d2e21a"
+    },
+    {
+      "name": "choir-03-after-8000x5200.png",
+      "bytes": 5431805,
+      "sha256": "40bd9582afe170bdacd068460096ef7aa33ef3b066d3122cfa9d9e6e7fa736de"
+    },
+    {
+      "name": "choir-03-after-print.pdf",
+      "bytes": 9024479,
+      "sha256": "685eb38091d734e3cb250b3b00c1a386871d0f61e16ba6e80686f9f84779251b"
+    },
+    {
+      "name": "choir-after-mm.stl",
+      "bytes": 28761084,
+      "sha256": "9f8373c83c2445d88acc73d798fc9a30579d59c3942f26824e24f9bcf816d4ad"
+    },
+    {
+      "name": "choir-after.glb",
+      "bytes": 17139592,
+      "sha256": "faed59e1c5664cd1d042cbc32f56785e264a7ec4e8019a25a7ac87a31a2d2c98"
+    },
+    {
+      "name": "choir-encounter-mm.stl",
+      "bytes": 33285684,
+      "sha256": "c3c574df9d15120b940cb0276f34f3cf15ced577ab8af61e95a9abedd54d8ae8"
+    },
+    {
+      "name": "choir-encounter-view.jpg",
+      "bytes": 127397,
+      "sha256": "655db0a80a9483cae2adfeec2bd313c26a65d4b686846b490828327cc8fb9281"
+    },
+    {
+      "name": "choir-encounter.glb",
+      "bytes": 20893956,
+      "sha256": "38045424e2165db8dd66524137995253d2417ae70bb299ea47c1ee68c6ee27ab"
+    },
+    {
+      "name": "choir-energy.md",
+      "bytes": 7336,
+      "sha256": "cdbc2fcda84de6326b5efb74c426b10f0d544bbb62f8e36a9770d41f33a270d4"
+    },
+    {
+      "name": "choir-protocol.md",
+      "bytes": 4142,
+      "sha256": "9ed9f32f2932a87bd9edcca7ec4da2dc1d8decce55f45ef73cedadb0bf8f63ad"
+    },
+    {
+      "name": "choir-results.md",
+      "bytes": 6051,
+      "sha256": "34caf6ac9eeaeba51452b9074c4b22d8ff7e322c58df537a493fe13dc88cc172"
+    },
+    {
+      "name": "choir-source-mm.stl",
+      "bytes": 2593684,
+      "sha256": "209fff2deb32a14dd13f7d7503a158ecd534fd36f89c0bb73aab2c6164c07667"
+    },
+    {
+      "name": "choir-source.glb",
+      "bytes": 1912088,
+      "sha256": "5eb44aed4da4ed6f36a3bd75e6f74ef441128045b85593bf3e99902fa2e048a6"
+    },
+    {
+      "name": "received-histories-6000x7500.png",
+      "bytes": 4078657,
+      "sha256": "e21a80624e6952ba469cf49c6bd535f516b6d3f58c75d80107498d600edfed60"
+    },
+    {
+      "name": "received-histories-companion.pdf",
+      "bytes": 1114949,
+      "sha256": "14675c9cd913568b59c15e4385e2dbe64fe1560628b9beee410029189bbfad78"
+    },
+    {
+      "name": "received-histories-print.pdf",
+      "bytes": 954925,
+      "sha256": "dc0684c6fe4ec4bf667b8376b0340d6eb09d97e8eaae7507ee53bcfe476d3496"
+    },
+    {
+      "name": "received-histories-results.md",
+      "bytes": 5007,
+      "sha256": "f5ac0de0bcb72b18c40dd4e0d727f5a057e2391ce43449df15784fb12d696286"
+    }
+  ],
+  "total_public_assets_verified": 32,
+  "all_release_assets_covered": true,
+  "temporary_media_files": 0,
+  "scope": "Unauthenticated streamed verification of the remaining assets, combined with the exact earlier cold-restore receipt. Already verified downloads are not repeated."
+}

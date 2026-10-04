@@ -1,0 +1,52 @@
+{
+  "verified_utc": "2026-10-04T11:27:28.722704+00:00",
+  "repository": "bernietorfen/palimpsest",
+  "release": "v2.0.0",
+  "source_commit": "c4e1438247ac06e8f4831fa5d27f04983ccd0a06",
+  "receipt_sha256": "76ce1b5b028298b714bac1409f88016cca933d627df1264cf4f12d04d902abd7",
+  "public_downloads": [
+    {
+      "name": "palimpsest-choir-edition.json",
+      "bytes": 5838,
+      "sha256": "72a7f2d99fb60bea046d38caa808e7eec775bb5178e988d2a02a8a00b220a4e8"
+    },
+    {
+      "name": "palimpsest-checksums.sha256",
+      "bytes": 2831,
+      "sha256": "2572b241175d3613ed9b8e6800c336aa1f58cf5835686ff7af525f211dd9d8c8"
+    },
+    {
+      "name": "choir-record-manifest.json",
+      "bytes": 105284,
+      "sha256": "830daa045b4c8f05f4a61c7e8b9f3ff6a19a0b102ac725c06ddf8a7a2e502a1e"
+    },
+    {
+      "name": "installation-content.json",
+      "bytes": 37435,
+      "sha256": "c9e6e557f09becba66b133507430ce8300517c3f933b4bddd1ef88657ba338f1"
+    },
+    {
+      "name": "choir-scientific-record.tar.gz",
+      "bytes": 1234636529,
+      "sha256": "40bc37984e19dd6ff02df078d2a3473155c6a37e34ed0f18c4a295c59e2cee91"
+    },
+    {
+      "name": "palimpsest-two-acts.zip",
+      "bytes": 149962513,
+      "sha256": "2464c351c3d71b0b790d38cdd207be3ff94f3e09c197f5c9c962f0ad368715e4"
+    }
+  ],
+  "scientific_record": {
+    "files": 525,
+    "bytes": 1786766791,
+    "every_file_restored_and_hashed": true
+  },
+  "portable_installation": {
+    "files": 218,
+    "bytes": 150977673,
+    "every_file_restored_and_hashed": true
+  },
+  "temporary_files_removed": true,
+  "execution_host": "RunPod",
+  "scope": "Unauthenticated public delivery, complete byte hashes, fresh extraction and every member hash. Independent analyses and browser checks have separate receipts."
+}

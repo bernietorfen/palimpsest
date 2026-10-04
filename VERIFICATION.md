@@ -196,3 +196,41 @@ hook injects a literal `body {}` stylesheet to synchronize animations, which
 that CSP correctly blocks. A separate diagnostic identifies this test-only
 source; evidence helpers record its warning per screenshot while still failing
 on application console errors. The deployed policy has not been weakened.
+
+## Published two-act recovery
+
+The frozen v2.0.0 and v2.1.0 releases contain 32 and 14 assets respectively.
+Fresh anonymous downloads verify every asset's full byte count and SHA-256.
+Large archives and ZIPs are checked once and reused by the cumulative receipt;
+remaining masters, books, prints and small records are streamed without writing
+temporary media files.
+
+The v2.0.0 cold restore verifies all 525 scientific-record members and all 218
+installation members. The final v2.1.0 restore verifies all 378 observer-record
+members and all 221 installation members. Restored scientific arrays reproduce
+the two received-history analyses and both offset diagnostics. The observer's
+three-page companion, vector print, 27-megapixel image, preview and evidence PNG
+rebuild byte for byte at the same relative paths. Figure PDF container timestamps
+are excluded from the deterministic-art claim.
+
+The final extracted installation passes with external networking blocked: both
+full films seek and play, both instruments produce measured audio signals and
+restore their state, the witness changes listeners, all three second-act meshes
+open, the atlas plays, the pressure explorer exports SVG, and the observer PDFs
+resolve locally. The transport regression also passes against the extracted copy.
+
+Production deployment 009 passes the current second-act browser checks in
+Chromium and WebKit, including actual film seeking, keyboard sculpture orbit,
+graphics recovery and the new observer layout. The final transport cases pass
+in both engines against the production URL. All 26 entries in the two catalogs,
+including both observer PDF links, return HTTP 200. Automated accessibility
+checks find no violations in the checked main exhibition; incomplete rules
+remain listed in the receipts and require human judgment.
+
+Receipts in `research/`: `choir-public-cold-restore-001.json`,
+`choir-public-downloads-complete-001.json`, `observer-public-cold-restore-001.json`,
+`observer-public-downloads-complete-001.json`, `observer-edition-verification-001.json`,
+`two-acts-verification-002.json`, `two-acts-offline-002.json`,
+`choir-portable-transport-001.json`, `observer-production-chromium-001.json`,
+`observer-production-webkit-001.json`, `choir-production-transport-chromium-001.json`,
+`choir-production-transport-webkit-001.json` and `exhibition-links-009.json`.
