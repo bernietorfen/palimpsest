@@ -9,7 +9,7 @@ async (page) => {
     else { external.push(url.href); await route.abort('internetdisconnected'); }
   });
   await page.goto(origin + '/');
-  await page.waitForFunction(() => document.querySelectorAll('#download-list a').length === 11);
+  await page.waitForFunction(() => document.querySelectorAll('#download-list a').length === 12);
   const book = await page.locator('#notebook .arrow-link').getAttribute('href');
   check(book === '/assets/generated/palimpsest-complete-notebook.pdf', 'The notebook still requires an external connection');
   const response = await page.request.head(origin + book);
@@ -38,6 +38,7 @@ async (page) => {
   await page.goto(origin + '/instrument.html');
   await page.waitForFunction(() => document.querySelector('#live-sculpture').dataset.state === 'ready' && document.querySelector('#live-sculpture').dataset.time !== undefined);
   await page.locator('#begin-sound').click();
+  await page.waitForFunction(() => document.body.dataset.running === 'true');
   await page.keyboard.down('q');
   await page.waitForFunction(() => Number(document.querySelector('#live-sculpture').dataset.time) > 4);
   await page.keyboard.up('q');
@@ -46,6 +47,7 @@ async (page) => {
   await page.locator('#pause-material').click();
   await page.waitForFunction(() => document.querySelector('#live-sculpture').dataset.materialRunning === 'false' && document.querySelector('#recovery-note').dataset.saved === 'true');
   const paused = await page.locator('#live-sculpture').evaluate(canvas => ({...canvas.dataset}));
+  await page.waitForFunction(time => Math.abs(Number(document.querySelector('#recovery-note').dataset.time) - Number(time)) < .00001, paused.time);
   await page.reload();
   await page.waitForFunction(() => Number(document.querySelector('#live-sculpture').dataset.time) > 4);
   const recovered = await page.locator('#live-sculpture').evaluate(canvas => ({...canvas.dataset}));

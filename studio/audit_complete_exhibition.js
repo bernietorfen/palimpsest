@@ -8,7 +8,7 @@ async (page) => {
   });
   const base = new URL(page.url()).origin;
   await page.goto(`${base}/?edition-proof=${Date.now()}`, {waitUntil:'domcontentloaded'});
-  await page.waitForFunction(() => document.querySelectorAll('#download-list a').length === 11);
+  await page.waitForFunction(() => document.querySelectorAll('#download-list a').length === 12);
   const notebook = page.locator('#notebook');
   await notebook.scrollIntoViewIfNeeded();
   await notebook.locator('img').evaluate(image => image.decode());

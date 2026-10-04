@@ -1,5 +1,6 @@
 {
   "downloads": [
+    {"title": "The portable installation", "detail": "Film, play and book / ZIP", "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.4.0/palimpsest-installation.zip"},
     {"title": "Film master", "detail": "4K / 10-bit HEVC", "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-film-4k.mp4"},
     {"title": "Viewing film", "detail": "1080p / MP4", "url": "/assets/generated/palimpsest-viewing.mp4"},
     {"title": "Original soundtrack", "detail": "48 kHz / 24-bit WAV", "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-soundtrack-48k24.wav"},

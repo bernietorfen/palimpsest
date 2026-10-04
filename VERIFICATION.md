@@ -53,3 +53,9 @@ The study includes 720 nominal trajectories across three grids and two timesteps
 ## Complete notebook
 
 The six new spreads were rendered and visually inspected at 1200 × 900. All 24 pages pass a text-bounds check. The continuation archive was fully streamed and hashed, restored to a new directory, and used with the curated source to rebuild the complete book. Every page's extracted text, drawing commands and encoded image streams matched the publication candidate, including image decoding parameters and soft masks. PDF container timestamps and identifiers are outside that comparison.
+
+## Portable installation
+
+The extracted installation was exercised in Chromium behind an unavailable external proxy with a loopback exception. The complete 1080p film played; the 120-history atlas played its actual recorded audio; the pressure explorer exported a measured SVG; the live material accumulated inscription and fatigue while producing a nonzero synthesis meter; and a paused state returned exactly after reload. No experience requested an external dependency. A separate external fetch failed as expected. These are playback and signal checks, not a claim of perceptual listening.
+
+The first composite harness pressed its voice key before asynchronous audio startup finished. Its readiness condition was corrected; the fresh-session rerun passed. The application itself did not change for that correction.
