@@ -119,3 +119,16 @@ python -m studio.stage_site artwork/analysis/pressure-reading-003/public
 The first pressure experiment admits the batched solver against the original scalar implementation and canonical atlas before generating varied cases. The second checks that the admitted material source is unchanged and that its separate algebra check matches the exact reader source. Both experiments refuse to overwrite their output directories. Read `research/PRESSURE-STUDY.md`, `PRESSURE-READING.md` and `PRESSURE-RESULTS.md` for the fixed seeds, sampling rules, controls and interpretation.
 
 The separate `palimpsest-imperfect-hand.zip` opens the interactive study without simulation dependencies. Its `START-HERE.txt` describes a loopback-only static server; all case data and fonts are included. The study's external exhibition and release links require a connection. The figure and browser glyph data are display derivatives; full-precision calculations use the raw scientific archive.
+
+## Registered spatial study and complete notebook
+
+The v1.3.0 continuation includes the complete 71-file spatial study and the exact sampled images used in the 24-page notebook. Its record archive also includes the two canonical atlas pitch files used by the spatial admission checks. The published source supplies the generators and independent verifier.
+
+```sh
+OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 python -m studio.spatial_study
+python -m studio.verify_spatial_study
+python -m studio.continuation_figures --output artwork/notebook/continuation-001
+python -m studio.complete_notebook --output artwork/masters/palimpsest-complete-notebook.pdf
+```
+
+Generation refuses to overwrite existing result directories. Run a fresh experiment in a separate checkout, or verify the frozen data without regenerating it. The spatial generator admits the finer grids directly against the scalar implementation and the original grid against the saved canonical atlas. The continuation archive includes `first-dialogue.svg` at `artwork/live-edition-002/` and the pressure display data at `artwork/analysis/pressure-reading-003/public/`, allowing its figures to be regenerated without fetching the earlier releases. It preserves every notebook image at its original path, the required earlier atlas/refinement reports, and the new figure record. These inputs rebuild the book with the matching tagged source. The original film pages and final pages retain the first-edition composition; six new pages connect the playable, pressure and spatial work.

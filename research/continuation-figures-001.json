@@ -1,0 +1,70 @@
+{
+  "created_utc": "2026-10-04T05:18:45.717155+00:00",
+  "source_sha256": {
+    "artifacts/studies/spatial-study-001/grid-128/rate-192/writing-DEABC.npz": "55c3b892611ea61ea2c9a1e30faf6aad292e8f5c2a4575505716b94a858fa144",
+    "artifacts/studies/spatial-study-001/grid-256/rate-192/writing-DEABC.npz": "9834730b2932d786fe17efc431dbdb8c4c4ea50266c622624c65abaf01cca803",
+    "artifacts/studies/spatial-study-001/grid-512/rate-192/writing-DEABC.npz": "6d75d3883669aecd99f2f44d9a82b161afdc75150b94c71b399e6e85f89615b6",
+    "artifacts/studies/spatial-study-001/comparisons/grid-128-256-rate-192.npz": "27b6ced724f6b9cd1b57fec21828aec5efd4645f31471d606bdd3c2169d95b5d",
+    "artifacts/studies/spatial-study-001/comparisons/grid-256-512-rate-192.npz": "0c95a56f7209d01a71dd273f13dd1bd525d08a35e65e17616e97366508a668a8",
+    "artwork/live-edition-002/first-dialogue.svg": "7ccab6e179b89bd3628f9f9ac18b8b72260b28c07eb4e0cc0e033756175365df",
+    "artwork/analysis/pressure-reading-003/public/pressure-glyphs-v1.bin": "62d52af3c3f5956a6f849aac80b39f0523e996a10a0899dab65a52a88d1798d6",
+    "artwork/analysis/pressure-reading-003/public/pressure-study-v1.json": "746e19e2dfbafbf27e72f4c00327893c5c6a3a3d4e395f9d59c716a54970baa1",
+    "artwork/analysis/pressure-reading-003/public/manifest.json": "c7bdd9157bc16a86e30252a611c2948e5fb2f4c481f11d7f55ef006f765a70d9"
+  },
+  "spatial_report_sha256": "b96bd8256875cd06d97de19f6d5d62ca438cc039f7ba95d29aa4086c87f98902",
+  "spatial_field_history": "DEABC",
+  "spatial_field_rate": 192,
+  "difference_map_shared_limit": 0.0018059760332107544,
+  "live_reply_rms_hz": 5.335016261342906,
+  "live_reply_samples": 150,
+  "lost_case": {
+    "history": "ADBEC",
+    "realization": 2,
+    "nearest": "ADBEC",
+    "pressure_corrected": "ADECB",
+    "pressure_factors": [
+      0.901839,
+      0.931866,
+      1.07098,
+      1.060123,
+      1.014957
+    ]
+  },
+  "files": [
+    {
+      "path": "a-lost-reading.png",
+      "bytes": 423010,
+      "sha256": "48a746939198ccc6b45881814f55c752efe469f2a4ebbf6abc6871bef3697b5e"
+    },
+    {
+      "path": "a-mark-at-three-scales.pdf",
+      "bytes": 371049,
+      "sha256": "a328f9a5ee9961b13d09b9897d2f46b4230b711e430c3960bd8d5ea4eca734a1"
+    },
+    {
+      "path": "a-mark-at-three-scales.png",
+      "bytes": 1012136,
+      "sha256": "e9dda0b9d1e87eb4bf3200f1c0dfe905480b4a14707e56a0a608357a728151dd"
+    },
+    {
+      "path": "live-repeated-question.png",
+      "bytes": 142576,
+      "sha256": "26df42c58d0bfefca53cc81b47860dfb76df77d6b0b0f57de738e9935cc6becc"
+    },
+    {
+      "path": "registered-fields.png",
+      "bytes": 411339,
+      "sha256": "878af77184dd460ff6cd25ae64e16194f08d3b948691dde75bd8795b776d863f"
+    },
+    {
+      "path": "spatial-reading-differences.png",
+      "bytes": 458107,
+      "sha256": "278c061dd8d6342453333c45cb28d879921c5bef7c3ea3fff4b6e2bb97377f61"
+    },
+    {
+      "path": "spatial-review.jpg",
+      "bytes": 95153,
+      "sha256": "fd96fa03982b4f319d1f81ba0301050a909836162cb129bd6db2ca2eec06e062"
+    }
+  ]
+}

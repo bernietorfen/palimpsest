@@ -1,0 +1,274 @@
+{
+  "pages": 24,
+  "edition": "Complete notebook / 4 October 2026",
+  "pdf_sha256": "2e0a7e046f0c4fe2999f2853aaffc3ad522267cbd2cc52f7d996a1ac67c91dd8",
+  "source_sha256": {
+    "studio/__init__.py": "5303a656f3cd1835c9d6e5acdc7d9346f657e1ee71d9f98083422c8d03095515",
+    "studio/analyze_performance.py": "f66b3eeea479f5c3c45038e093560960fc46fcb1c5a6e1202d4ad5ec6258a609",
+    "studio/assay.py": "b346c7b88ba7fd8e1a1c0197655b348c56a8782913c1872c6a18f968f9dd7065",
+    "studio/atlas_assets.py": "68946178d4d7564bacfd396cc01fcf9a26b24df980005b85605b76a5945c2d6e",
+    "studio/atlas_compare.py": "612f321ebdb1bdd8f1ad3f559a789d8f5117bae3ae3bf0ddfd53784960865d40",
+    "studio/atlas_figures.py": "2ff91bd47c2a8340cb7782d8ba31f923cb6cf72d75d6b630a1f387e60e7c542b",
+    "studio/batched_material.py": "4930250b1e99315933721c1706109c264c8b594b6f7ca273754df9cb7b338d64",
+    "studio/browser-portable.config.json": "018aef6c0daa5c3c52b1b1f5452570a1620a0eb43c5a746f8eb0740efe9b03c8",
+    "studio/browser-webkit.config.json": "188fbb491c8b4f34fbf9322f4dae99e90f5150dd2b1ea0ec881e418a4755c1d3",
+    "studio/browser.config.json": "8e6f872c3067997aed380bb53dc99babe923287ab2f532779284efff7446dd3d",
+    "studio/buckling_study.py": "ed248966325c1e49054a2212ab9f73dff5f9fb307cc8e4341c5092e35b04d2cf",
+    "studio/check_pressure_reader.py": "d7867c801a230620d1304bebf10b5d46b36ae2e2f5bcaa933a76e396baafb1d5",
+    "studio/cinematography.py": "2ca1ab5c704314a2d46a4517a2bd295d3d4a153e3c2ecb954369af26c1a61061",
+    "studio/complete_notebook.py": "4301033f5666ae5b185e3ef080d33516fe3228bad366b56c04d05b0fbb5af46a",
+    "studio/continuation_figures.py": "cc7318c8bf69c4a3b3afbb44fbfb7b7ebc45aac7294f84175d1c094485b56dfa",
+    "studio/deploy_site.py": "2b1b53aaba1c64b545679e0542befc351854ef70643cbadec23449e578e2d350",
+    "studio/export_sculpture.py": "96241a10323e59865ba771992cedbf50d1f3c7b4de5447bf45bf374734e2333f",
+    "studio/film.py": "a545dd493344e479d75554ab43c0c334bdb8c54380d86a28800e590f1a44bc77",
+    "studio/folio_study.py": "ec16aea1e1df845f481c26954542c72b97795421c7d98bf466070bf7d4cb672e",
+    "studio/history_atlas.py": "3aa40d5ffe62a7e861328ce741f024b32f9612b4a32f1ac9b4d61c3891984eb8",
+    "studio/lighting_study.py": "4eaf1622bc8932f258f5e0f9637760bf99d15303a5d49df5c84e483553c1e47c",
+    "studio/look_direction.py": "f536be85a53c18650def2ec6c1ca3acb0225177502d775403741d9f712890d0b",
+    "studio/master_sound.py": "f25c2a56e43b930d97a4a349fcbb0dc027e0a840b36eef30234d6e082c6d1f91",
+    "studio/material.py": "e971aada7818487a369da0b967b708b51bb3979857c92000a60ebb9fa3c15b5e",
+    "studio/mesh_geometry.py": "3ddb6395c12e735e317867b8095dccdf2b37a2720ec1ba773d7eeabcc164684e",
+    "studio/mesh_render.py": "557e36615e790349b317f74dd540fee03c6a8c95f0f09159f402c6525f0a5623",
+    "studio/mesh_study.py": "793da99ba4896d30ac0930e21a122c6a1b069934e57533927f5e450256726ee9",
+    "studio/notebook.py": "edb895851388d2f6f9268957a45720559bd4f36f09a505fb0c7fcc3f0821ec84",
+    "studio/notebook_figures.py": "2b951cc95b2de1a403b2fd0df050bf1d20782304c347dac34c6a51e8873b74c1",
+    "studio/numerical_assay.py": "2bbf74268edf4735fa321c570f728ad9ec2a8740f2a239901ecb12141ccd1c5d",
+    "studio/plates.py": "57ee89ac3dc84584ed8da2f8c538b122750618edc18298146d7ac1effe6d2788",
+    "studio/prepare_complete_edition.py": "17c5212b03cb565dd53f83e68f8d7e8b054f325b3e275f71fe1c41ac6dc396e7",
+    "studio/prepare_edition.py": "1be42072c565da284672ea3ffbd24e83718e2eaa323b6d8983148bd059525c1e",
+    "studio/prepare_live_edition.py": "6221f1767cc49d49678c7ab65b264974a27b8356b1ee7dd66b657b7dea057e37",
+    "studio/prepare_pressure_edition.py": "b40172f441e88915306ef8e9f81f128e17e951c906775e0ecf0450f8ce00658f",
+    "studio/prepare_public_source.py": "43f09851d3984e04f3884e69806a10cee934a262bd79ea5c5381d6defc281807",
+    "studio/preserve.py": "deb4b13722ca605511602138fbcd40301753041bebd12d79da77eec072c887c5",
+    "studio/pressure_reading.py": "0400e31b71b3615973379648add8ab48bc6e0ceb82865a671bc99a6266869028",
+    "studio/pressure_study.py": "4ddc71430b25ca21dfc4d01dd53251f2bde6fd33ff8b604d3977a7704023cf91",
+    "studio/pressure_summary.py": "e203f850cd8e36aa56d03e3af53f4301cded5766703073225df7554377567830",
+    "studio/pressure_visuals.py": "aef3eeffdacf5780fabc32aae30e6f7567853ad20d265238054a8dd795e12069",
+    "studio/publish_source.py": "cb6387cb016bfc872a801d84a346cdb8fc2ca80b4aa5af4251c16c865b2da310",
+    "studio/reconstruction.py": "4c59da8fc5b724d37b3dde71a50b2988106ab0745233c990f968e25d79dd8f23",
+    "studio/render.py": "1f89440c84e084017702e8bff13f316f9a566a5360154bf17f303e58949285d5",
+    "studio/render_buckling.py": "8e4649b611fb530ca32abcc4424577b7dba436f6d9dda91defeaad802b228ee0",
+    "studio/render_diagnostics.py": "9ea76075b93950beddcd3a9a55d7811d66a8e5c2511d0a962768f7b2ce95aab7",
+    "studio/requirements.txt": "9dce1650ed1a1dc73d6bcf957d7de1f9a6fb0fd60650530ebefff2b287a2bbe1",
+    "studio/score.py": "17dfa2d960f23f947461aec5ddaa13c35d074f5af4fc765cd0fb264b7f8658fa",
+    "studio/serve_site.py": "a21feb92972a12e24f35bc082507425a9746b5e51c7542d63caa6e8e1184cd67",
+    "studio/shaders/fullscreen.vert": "d9801dec3d81bd6bd763e18bd55050329b835165db02f556146593aa2b0e00a6",
+    "studio/shaders/sculpture.frag": "587d607f61790ecbc3ea47588c16023467889c5ff0b548904ed99e070ce78692",
+    "studio/shaders/sheet.frag": "1d386c26bd4f42593dfa4165c9831f5cf20ee9f2eed75196bcde76c0e82522dc",
+    "studio/shaders/sheet.vert": "33f3e52a79fcf55622726f6a9e0fa838622c8975022890aa9f8318f49bab9528",
+    "studio/shaders/sheet_composite.frag": "a8e7940efff9a766d267715a6b4234c4182dd220d67d4a7d8729dc66ed77c2e8",
+    "studio/shaders/sheet_depth.frag": "e5b1c54a86fcb6f0299dd584cb48069b3e5bdda25405b0e6814cb67e2c966831",
+    "studio/shaders/sheet_depth.vert": "806b92787e610296ff2524b68dac352a05e38d8805514a8a45a9a2a93f2ae267",
+    "studio/sheet_direction.py": "3cc9260ce2a982dbfc427f3f1d9e7f23c07bdcd0b70254f1196005fc9c8c439c",
+    "studio/simulate.py": "457c872340ba5bd0f55ab489e5dcec4d6f9bda0c6c0f547974a512b5a5a1d76a",
+    "studio/skin_study.py": "03dd31110f7182eb3e40264004fc9b693eb82bea1d83b9b200df2e541a99a376",
+    "studio/sound.py": "80c124eeee7b63bf610d38eef993fd37adaf722db7ff1b0b99c2e3186ef45313",
+    "studio/spatial_study.py": "3f4a8751080234b80a034736a16c51c6a9d21bb33546a792f368626e67952ab3",
+    "studio/stage_site.py": "5cd0ba14e28123e7c528ede42aaa66849d34df6b625ec820d77986f3204d95de",
+    "studio/studies.py": "1908164a7d0405cfeafd3d80cb351fd54bfcbbea469a30fe9d51dc6a13dc4909",
+    "studio/surface_quality.py": "96339f48f2802b3e68af39bab75eead7f49107c03699815f972ca352e2736496",
+    "studio/tests/conftest.py": "b1ccb972b09f6d332c606ffb7c8681ee9395fc324766658925bd7287d21a951c",
+    "studio/tests/test_cinematography.py": "ad7a4495c329a443fbe4880053639017b5e711a4028556403053694e1f99a887",
+    "studio/tests/test_material.py": "74756ed0b60d491cd4774a5fe5ba2829096740c85b327cbfe94265038c629ad2",
+    "studio/tests/test_mesh_geometry.py": "d543aa62a6123690392c9268eed569a83c562d6dfb13f3b9ce42310483baef73",
+    "studio/tests/test_mesh_render.py": "216c10884ce8415360016c643c8b6c7698ea844a3cbb600b14292d72c59b26a9",
+    "studio/tests/test_preserve.py": "9d77d54c1b28ca24d6fe2ce8f1da547e063ec7f5af5b707f630fa3a1b5e27612",
+    "studio/tests/test_reconstruction.py": "4f94ac0a7d2216fbb02311f6196480acef9eed6c51c9bf5a3765cb35c24b0315",
+    "studio/title_study.py": "78906d9f3aef89321879fe6d49de8718bf93f1c54d8168c59075185932775315",
+    "studio/upload_edition.py": "ed6a13e0466967d655ab47808ddf2bf6dad73f5270363d8a83e47e7e7964b6aa",
+    "studio/upload_release.py": "c4a2d41e975dc630d7b4789afff0db8c7453d9c3d23300d58e9d03b468752878",
+    "studio/verify_complete_edition.py": "c436fba1a25ab09eb64f37c1e20c4f55348a3f1a0ca77be88b9520a150791b53",
+    "studio/verify_live_geometry.py": "589e8c5227669de449aa710c798d8900961e4b3c182d8efd25b062a03dd7284e",
+    "studio/verify_live_material.py": "5bdf8cb20fcd2129405e6a6cd4aa81c45f6ce48659eb287b041a0c86f1db8ae6",
+    "studio/verify_pressure.py": "b67419b6ccfdaa2f789be337b8d5a237bc4b63ef97c76c31c3fbda76dd189026",
+    "studio/verify_pressure_edition.py": "7da8b6517af9f47172d28bfef54fb47a73889cb7f9876b140c4724bec89e74aa",
+    "studio/verify_pressure_exports.py": "2f606e410a554bf4648e21afc679731e48d32a9880d490bcfb3c7057f6a0c5bb",
+    "studio/verify_pressure_reading.py": "a4611b3ef1dea4178fc175856c6e67bc36a7e3278786a80ceaa93f8c0503624c",
+    "studio/verify_public_release.py": "569b9e6dc2ba9c265ec754482a29f919016730295bf111660a95a3b39d316dbe",
+    "studio/verify_spatial_study.py": "5f7df9ee0daaacfe3d4e3045f898007f459d1ff00b75c2b5a927c9ec0aa2654a",
+    "studio/viewing_assets.py": "3c0d475948c9dd2d28dc27a0eed019bf9d3d67dafac438f63b2fcd0257cf3bb2"
+  },
+  "embedded_image_sha256": {
+    "artwork/masters/plates-001/02-inscription-view.jpg": "714a19d3ea474dfee3d5d47df0bbcd87e286c2be9b6f6cf2ee43800efed1feb4",
+    "artwork/masters/plates-001/01-impression-view.jpg": "bf6e51cce4307cf05821e9aeff8633f86ca3c28571202b15b680e87204043053",
+    "artwork/masters/plates-001/03-remnant-view.jpg": "15a67f570fff8d0c6bf0b259fafb093f60562cb73af19b5aba049f470eb81d9e",
+    "artwork/masters/diptych-002/question-first-view.jpg": "1915d402346c423ab60fb7fbfebf61ea7c43e6a504f47b67b712831c05dfac9e",
+    "artwork/masters/diptych-002/question-return-view.jpg": "0d9655ffe16243ab80a704b95fb10f2c6b9a856d6a6fcb0aa1fec5d2634654e4",
+    "artwork/notebook/figures-002/instrument-loop.png": "6bf22ec73091c05c8eda3c1a72ecea1d6d59c66d9c11e977dd45dadca5aafa9e",
+    "artwork/notebook/figures-002/material-fields.png": "40b62246b2356fba97cf1947f6c57f55c399765d7ac79e0c9150dd05ec134ad0",
+    "artwork/analysis/performance-002/performance-atlas.png": "addf919e0b4afa27e697189abd46fbea2c5913a3b7a0976b21e20d362b925016",
+    "artwork/analysis/performance-002/sound-atlas.png": "d2f8b64042f5ae8dde540c234888d6ed211318c948d8c478a766875ac8af4504",
+    "artwork/notebook/figures-002/order-memory.png": "8f2a996c55089de4fd3fffe06c09352b686d1289861bb47e1f378a012b64b40a",
+    "artwork/notebook/figures-002/interventions-and-timestep.png": "485c12421bde54613763fa939c6c3716a538055fc48e760d301708f2fe5ec99a",
+    "artwork/analysis/history-atlas-002/120-possible-pasts-view.jpg": "6c254a3f5492f4d1151141e723b62c2554a2907fecafe008255f369ac1e143ee",
+    "artwork/analysis/history-atlas-002/history-landscape.png": "af574d8444b86d2edfb962820fa11acbafa806c657a096f2ecb6f14ef15ca0f5",
+    "site/assets/generated/live-material.jpg": "cf351a161717bd326b01b966d17256524434dee92b32bc1e3cc2d0efe67d0c23",
+    "artwork/notebook/continuation-001/live-repeated-question.png": "26df42c58d0bfefca53cc81b47860dfb76df77d6b0b0f57de738e9935cc6becc",
+    "artwork/analysis/pressure-reading-003/the-imperfect-hand.png": "e29e84bf61ddec27c8e8245f190855429ac0bfd0ea584fbca8812c73350dfcee",
+    "artwork/notebook/continuation-001/a-lost-reading.png": "48a746939198ccc6b45881814f55c752efe469f2a4ebbf6abc6871bef3697b5e",
+    "artwork/notebook/continuation-001/registered-fields.png": "878af77184dd460ff6cd25ae64e16194f08d3b948691dde75bd8795b776d863f",
+    "artwork/notebook/continuation-001/spatial-reading-differences.png": "278c061dd8d6342453333c45cb28d879921c5bef7c3ea3fff4b6e2bb97377f61"
+  },
+  "page_inventory": [
+    {
+      "page": 1,
+      "label": "An original computational work",
+      "images": [
+        "artwork/masters/plates-001/02-inscription-view.jpg"
+      ]
+    },
+    {
+      "page": 2,
+      "label": "Intention",
+      "images": [
+        "artwork/masters/plates-001/01-impression-view.jpg",
+        "artwork/masters/plates-001/03-remnant-view.jpg"
+      ]
+    },
+    {
+      "page": 3,
+      "label": "The returning question",
+      "images": [
+        "artwork/masters/diptych-002/question-first-view.jpg",
+        "artwork/masters/diptych-002/question-return-view.jpg"
+      ]
+    },
+    {
+      "page": 4,
+      "label": "The instrument",
+      "images": [
+        "artwork/notebook/figures-002/instrument-loop.png"
+      ]
+    },
+    {
+      "page": 5,
+      "label": "The retained state",
+      "images": [
+        "artwork/notebook/figures-002/material-fields.png"
+      ]
+    },
+    {
+      "page": 6,
+      "label": "The composition",
+      "images": [
+        "artwork/analysis/performance-002/performance-atlas.png"
+      ]
+    },
+    {
+      "page": 7,
+      "label": "The sound",
+      "images": [
+        "artwork/analysis/performance-002/sound-atlas.png"
+      ]
+    },
+    {
+      "page": 8,
+      "label": "Controlled history",
+      "images": [
+        "artwork/notebook/figures-002/order-memory.png"
+      ]
+    },
+    {
+      "page": 9,
+      "label": "Intervention and sensitivity",
+      "images": [
+        "artwork/notebook/figures-002/interventions-and-timestep.png"
+      ]
+    },
+    {
+      "page": 10,
+      "label": "The material rule",
+      "images": []
+    },
+    {
+      "page": 11,
+      "label": "Tuning and feedback",
+      "images": []
+    },
+    {
+      "page": 12,
+      "label": "An exhaustive history atlas",
+      "images": [
+        "artwork/analysis/history-atlas-002/120-possible-pasts-view.jpg"
+      ]
+    },
+    {
+      "page": 13,
+      "label": "Earlier order and a common ending",
+      "images": [
+        "artwork/analysis/history-atlas-002/history-landscape.png"
+      ]
+    },
+    {
+      "page": 14,
+      "label": "The playable instrument",
+      "images": [
+        "site/assets/generated/live-material.jpg"
+      ]
+    },
+    {
+      "page": 15,
+      "label": "A kept phrase",
+      "images": [
+        "artwork/notebook/continuation-001/live-repeated-question.png"
+      ]
+    },
+    {
+      "page": 16,
+      "label": "An imperfect hand",
+      "images": [
+        "artwork/analysis/pressure-reading-003/the-imperfect-hand.png"
+      ]
+    },
+    {
+      "page": 17,
+      "label": "A failed correction",
+      "images": [
+        "artwork/notebook/continuation-001/a-lost-reading.png"
+      ]
+    },
+    {
+      "page": 18,
+      "label": "Registered spatial refinement",
+      "images": [
+        "artwork/notebook/continuation-001/registered-fields.png"
+      ]
+    },
+    {
+      "page": 19,
+      "label": "Reading across grids",
+      "images": [
+        "artwork/notebook/continuation-001/spatial-reading-differences.png"
+      ]
+    },
+    {
+      "page": 20,
+      "label": "The sculpture",
+      "images": [
+        "artwork/masters/plates-001/02-inscription-view.jpg"
+      ]
+    },
+    {
+      "page": 21,
+      "label": "Reproduction",
+      "images": []
+    },
+    {
+      "page": 22,
+      "label": "Authorship and context",
+      "images": []
+    },
+    {
+      "page": 23,
+      "label": "Reading the evidence",
+      "images": []
+    },
+    {
+      "page": 24,
+      "label": "What remains",
+      "images": [
+        "artwork/masters/plates-001/03-remnant-view.jpg"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "downloads": [
+    {"title": "Film master", "detail": "4K / 10-bit HEVC", "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-film-4k.mp4"},
+    {"title": "Viewing film", "detail": "1080p / MP4", "url": "/assets/generated/palimpsest-viewing.mp4"},
+    {"title": "Original soundtrack", "detail": "48 kHz / 24-bit WAV", "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/palimpsest-soundtrack-48k24.wav"},
+    {"title": "The complete notebook", "detail": "24 pages / PDF", "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.3.0/palimpsest-complete-notebook.pdf"},
+    {"title": "First-edition notebook", "detail": "18 pages / PDF", "url": "/assets/generated/palimpsest-notebook.pdf"},
+    {"title": "The portable instrument", "detail": "Play offline / ZIP", "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.1.1/palimpsest-live-instrument.zip"},
+    {"title": "120 possible pasts", "detail": "Vector print / PDF", "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.0.0/120-possible-pasts-vector.pdf"},
+    {"title": "An imperfect hand", "detail": "Print, explorer and records", "url": "https://github.com/bernietorfen/palimpsest/releases/tag/v1.2.0"},
+    {"title": "A mark, at three scales", "detail": "Print / PDF", "url": "https://github.com/bernietorfen/palimpsest/releases/download/v1.3.0/a-mark-at-three-scales-print.pdf"},
+    {"title": "Prints, sculptures and film records", "detail": "First edition", "url": "https://github.com/bernietorfen/palimpsest/releases/tag/v1.0.0"},
+    {"title": "Source and reproduction guide", "detail": "Complete source / ZIP", "url": "https://github.com/bernietorfen/palimpsest/archive/refs/tags/v1.3.0.zip"}
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "verified_utc": "2026-10-04T04:57:58.463452+00:00",
+  "study_report_sha256": "b96bd8256875cd06d97de19f6d5d62ca438cc039f7ba95d29aa4086c87f98902",
+  "files_verified": 71,
+  "analytic_registered_geometry": [
+    {
+      "grid": 128,
+      "analytic_double_vs_registered_float32_max_error": {
+        "echo_modes": 1.1900791962199397e-05,
+        "echo_quadratures": 1.2019621250095036e-05
+      },
+      "declared_tolerance": 2e-05
+    },
+    {
+      "grid": 256,
+      "analytic_double_vs_registered_float32_max_error": {
+        "echo_modes": 1.3745457553504536e-05,
+        "echo_quadratures": 1.3122861059144952e-05
+      },
+      "declared_tolerance": 2e-05
+    },
+    {
+      "grid": 512,
+      "analytic_double_vs_registered_float32_max_error": {
+        "echo_modes": 1.4593061302137222e-05,
+        "echo_quadratures": 1.5644829206296063e-05
+      },
+      "declared_tolerance": 2e-05
+    }
+  ],
+  "full_pairwise_and_cross_matrices_recomputed": true,
+  "all_batch_checkpoints_match_combined_records": true,
+  "all_selected_retained_fields_verified": true,
+  "maximum_distance_error_hz": 4.440892098500626e-16,
+  "pairwise": [
+    {
+      "grid": 128,
+      "rate": 96,
+      "pairs": 7140,
+      "above_1e_minus_6_hz": 7140,
+      "minimum_hz": 0.17144421053543296,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "grid": 128,
+      "rate": 192,
+      "pairs": 7140,
+      "above_1e_minus_6_hz": 7140,
+      "minimum_hz": 0.17599452419433434,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "grid": 256,
+      "rate": 96,
+      "pairs": 7140,
+      "above_1e_minus_6_hz": 7140,
+      "minimum_hz": 0.17055987825181207,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "grid": 256,
+      "rate": 192,
+      "pairs": 7140,
+      "above_1e_minus_6_hz": 7140,
+      "minimum_hz": 0.1749853222948759,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "grid": 512,
+      "rate": 96,
+      "pairs": 7140,
+      "above_1e_minus_6_hz": 7140,
+      "minimum_hz": 0.17034242889036497,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "grid": 512,
+      "rate": 192,
+      "pairs": 7140,
+      "above_1e_minus_6_hz": 7140,
+      "minimum_hz": 0.1747411511031263,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    }
+  ],
+  "comparisons": [
+    {
+      "comparison": "grid-128-256-rate-96",
+      "correct": 120,
+      "tested": 120,
+      "maximum_own_distance_hz": 0.005492285620056692,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "comparison": "grid-256-512-rate-96",
+      "correct": 120,
+      "tested": 120,
+      "maximum_own_distance_hz": 0.0013094867122405637,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "comparison": "grid-128-512-rate-96",
+      "correct": 120,
+      "tested": 120,
+      "maximum_own_distance_hz": 0.006796941651023008,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "comparison": "grid-128-256-rate-192",
+      "correct": 120,
+      "tested": 120,
+      "maximum_own_distance_hz": 0.005464315648323449,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "comparison": "grid-256-512-rate-192",
+      "correct": 120,
+      "tested": 120,
+      "maximum_own_distance_hz": 0.0012895736136204503,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "comparison": "grid-128-512-rate-192",
+      "correct": 120,
+      "tested": 120,
+      "maximum_own_distance_hz": 0.006748923317229529,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "comparison": "timestep-grid-128",
+      "correct": 120,
+      "tested": 120,
+      "maximum_own_distance_hz": 0.0547749594453361,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "comparison": "timestep-grid-256",
+      "correct": 120,
+      "tested": 120,
+      "maximum_own_distance_hz": 0.054770488555937996,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    },
+    {
+      "comparison": "timestep-grid-512",
+      "correct": 120,
+      "tested": 120,
+      "maximum_own_distance_hz": 0.05477064954872623,
+      "maximum_distance_error_hz": 4.440892098500626e-16
+    }
+  ]
+}

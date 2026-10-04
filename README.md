@@ -54,3 +54,5 @@ The implementation is organized under `studio/`; the static exhibition and origi
 Production used an NVIDIA RTX 4090 on RunPod. No simulation, rendering, synthesis, model execution or browser testing ran on the authoring laptop.
 
 The work claims an original construction and composition. It does not claim to be the first artwork about hysteresis, feedback, memory or sound sculpture. Sound was measured for duration, loudness, peak and signal structure; a supported perceptual audition path was unavailable to the authoring assistant.
+
+The final continuation follows the same mark through 128, 256 and 512 samples per side. Every one of the 120 histories retains its nearest own label across all tested spatial comparisons. [The three-grid record](research/SPATIAL-RESULTS.md) reports the fixed echo registration, measured differences and limits. The [complete notebook edition](https://github.com/bernietorfen/palimpsest/releases/tag/v1.3.0) brings the film, playable instrument, pressure study and spatial follow-up together in 24 illustrated pages, alongside a new 27-megapixel print and reproducible records. The original 18-page notebook remains in the first edition.

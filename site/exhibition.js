@@ -199,8 +199,8 @@ dialog.addEventListener('click', (event) => {
   if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
 });
 
-// A small, generated edition manifest can add the final lossless deliverables.
-fetch('/assets/generated/edition.json').then((response) => {
+// The catalog points to the separately preserved editions and their final files.
+fetch('/edition.json').then((response) => {
   if (!response.ok) throw new Error('Edition manifest unavailable');
   return response.json();
 }).then((edition) => {
