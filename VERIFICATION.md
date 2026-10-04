@@ -312,3 +312,10 @@ The general method is established damped-gradient analysis. The result applies
 to the frozen, unforced, continuous-time finite model about each retained
 history's own equilibrium. The active artwork and its finite-step update lie
 outside those assumptions.
+
+The published supplement then passed an unauthenticated GitHub download of all
+ten assets. All 21 scientific archive members were extracted into a fresh
+directory and hashed. Every numerical result reproduced exactly apart from
+the verification timestamp, and both the PDF and SVG rebuilt byte for byte.
+`research/quiet-choir-public-cold-restore-001.json` records the complete result.
+The prepared runtime was reused; a fresh dependency installation was not tested.
