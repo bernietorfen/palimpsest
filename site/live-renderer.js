@@ -110,11 +110,32 @@ function perspective(aspect){
 }
 
 export class LiveRenderer {
-  constructor(canvas,onLost){
+  constructor(canvas,onLost,onRestored=()=>{}){
     this.canvas=canvas;
     this.gl=canvas.getContext('webgl2',{alpha:false,antialias:true,powerPreference:'low-power'});
     if(!this.gl) throw new Error('This browser cannot show the live sculpture. The film and atlas remain available.');
     this.resources=[];this.events=new AbortController();this.pointers=new Map();this.frame=0;
+    this.lastFields=new Float32Array(64*64*4);
+    try{this.initializeGraphics();}catch(error){this.dispose();throw error;}
+    this.reset();
+    this.resize=new ResizeObserver(()=>this.requestDraw());this.resize.observe(canvas);
+    this.bindInput();
+    canvas.addEventListener('webglcontextlost',event=>{
+      event.preventDefault();this.lost=true;cancelAnimationFrame(this.frame);this.frame=0;
+      canvas.dataset.state='context-lost';onLost();
+    },{signal:this.events.signal});
+    canvas.addEventListener('webglcontextrestored',()=>{
+      // Context loss invalidates GPU handles, but the material and camera stay.
+      this.resources=[];
+      try{
+        this.initializeGraphics();this.lost=false;canvas.dataset.state='ready';
+        this.requestDraw();onRestored();
+      }catch(error){this.dispose();canvas.dataset.state='graphics-failed';onLost(error);}
+    },{signal:this.events.signal});
+    canvas.dataset.state='ready';
+  }
+
+  initializeGraphics(){
     const gl=this.gl;
     this.program=this.makeProgram(vertex,fragment);
     this.uniforms=Object.fromEntries(['fields','shadowMap','viewProjection','lightProjection','shadowPass','eye'].map(n=>[n,gl.getUniformLocation(this.program,n)]));
@@ -127,7 +148,7 @@ export class LiveRenderer {
     gl.bindBuffer(gl.ARRAY_BUFFER,this.own('Buffer',gl.createBuffer()));gl.bufferData(gl.ARRAY_BUFFER,coords,gl.STATIC_DRAW);
     gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,this.own('Buffer',gl.createBuffer()));gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,indices,gl.STATIC_DRAW);
-    this.fieldTexture=this.texture(64,gl.RGBA32F,gl.RGBA,gl.FLOAT,new Float32Array(64*64*4));
+    this.fieldTexture=this.texture(64,gl.RGBA32F,gl.RGBA,gl.FLOAT,this.lastFields);
     this.shadowSize=1024;
     this.shadowTexture=this.texture(this.shadowSize,gl.DEPTH_COMPONENT24,gl.DEPTH_COMPONENT,gl.UNSIGNED_INT,null);
     this.shadowBuffer=this.own('Framebuffer',gl.createFramebuffer());gl.bindFramebuffer(gl.FRAMEBUFFER,this.shadowBuffer);
@@ -135,11 +156,7 @@ export class LiveRenderer {
     if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw new Error('The live sculpture could not initialize its light');
     const r=1.65,near=.1,far=14;
     this.lightProjection=multiply(new Float32Array([1/r,0,0,0,0,1/r,0,0,0,0,-2/(far-near),0,0,0,-(far+near)/(far-near),1]),lookAt([-3,5,4]));
-    this.shadowDirty=true;this.reset();
-    this.resize=new ResizeObserver(()=>this.requestDraw());this.resize.observe(canvas);
-    this.bindInput();
-    canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();this.lost=true;onLost();},{signal:this.events.signal});
-    canvas.dataset.state='ready';
+    this.shadowDirty=true;
   }
 
   own(kind,value){this.resources.push([kind,value]);return value;}
@@ -160,6 +177,7 @@ export class LiveRenderer {
     return t;
   }
   update(fields){
+    this.lastFields.set(fields);
     if(this.lost)return;
     const gl=this.gl;gl.bindTexture(gl.TEXTURE_2D,this.fieldTexture);
     gl.texSubImage2D(gl.TEXTURE_2D,0,0,0,64,64,gl.RGBA,gl.FLOAT,fields);
@@ -201,5 +219,5 @@ export class LiveRenderer {
     c.addEventListener('wheel',e=>{e.preventDefault();this.distance*=Math.exp(Math.max(-150,Math.min(150,e.deltaY))*.0015);limit();},{...o,passive:false});
     c.addEventListener('keydown',e=>{const actions={ArrowLeft:()=>this.yaw-=.1,ArrowRight:()=>this.yaw+=.1,ArrowUp:()=>this.pitch+=.1,ArrowDown:()=>this.pitch-=.1,'+':()=>this.distance*=.9,'=':()=>this.distance*=.9,'-':()=>this.distance*=1.1,Home:()=>this.reset()};if(actions[e.key]){e.preventDefault();actions[e.key]();limit();}},o);
   }
-  dispose(){this.events.abort();this.resize.disconnect();cancelAnimationFrame(this.frame);for(const [kind,value]of this.resources.reverse())this.gl[`delete${kind}`](value);this.resources=[];this.lost=true;}
+  dispose(){this.events.abort();this.resize?.disconnect();cancelAnimationFrame(this.frame);for(const [kind,value]of this.resources.reverse())this.gl[`delete${kind}`](value);this.resources=[];this.lost=true;}
 }

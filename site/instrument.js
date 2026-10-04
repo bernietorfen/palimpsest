@@ -2,6 +2,7 @@ import {PITCHES} from './live-material.js';
 import {LiveRenderer} from './live-renderer.js';
 import {LiveSound} from './live-sound.js';
 import {drawReplyPair,replyPlate} from './live-glyph.js';
+import {LiveRecovery} from './live-recovery.js';
 
 const $=selector=>document.querySelector(selector),letters='QWERTYUIOPAS'.split('');
 const keys=$('#voice-keys'),status=$('#live-status'),canvas=$('#live-sculpture');
@@ -15,25 +16,40 @@ const voiceButtons=letters.map((letter,index)=>{
   button.append(number,name,pitch,level);keys.append(button);return button;
 });
 const sound=new LiveSound();
+const recovery=new LiveRecovery(),recoveryCopy=recovery.read();
 let renderer,worker,started=false,running=false,soundEnabled=false,starting=false,fading=false;
 let lastFrame=null,lastLabels=-Infinity,lastMaps=-Infinity,snapshotRequest=0,pendingSave=0;
 let score={mode:'idle',hasPhrase:false,duration:0,time:0},lastScoreMode='idle';
 let exporting=false,lastComparison=null;
+let materialFailed=false,graphicsLost=false;
+let pendingRecovery=0,lastRecovery=-Infinity,recovering=Boolean(recoveryCopy);
 const held=new Map(),pulses=new Map();
 const contexts=['inscription-map','wear-map'].map(id=>$(`#${id}`).getContext('2d'));
 const mapImages=contexts.map(context=>context.createImageData(64,64));
 const say=message=>{status.textContent=message;};
 const timeLabel=t=>`${String(Math.floor(t/60)).padStart(2,'0')}:${String(Math.floor(t%60)).padStart(2,'0')}`;
 
+function requestRecovery(force=false){
+  if(!worker||!started||materialFailed||recovering||pendingRecovery||(!force&&performance.now()-lastRecovery<5000))return;
+  pendingRecovery=++snapshotRequest;lastRecovery=performance.now();
+  worker.postMessage({type:'snapshot',request:pendingRecovery,source:'recovery-copy'});
+}
+function recoveryStatus(saved,state){
+  const note=$('#recovery-note');
+  note.dataset.saved=String(saved);
+  if(saved&&state){note.dataset.time=(state.steps*state.config.dt).toFixed(5);}
+  note.textContent=saved?`A recovery copy at ${timeLabel(Number(note.dataset.time||0))} stays in this tab. Save a file to keep your material.`:'This tab could not keep a recovery copy. Save a file to keep your material.';
+}
+
 function controls(){
-  $('#pause-material').disabled=!started||starting;$('#pause-material').textContent=running?'Pause':'Resume';
+  $('#pause-material').disabled=!started||starting||materialFailed||graphicsLost;$('#pause-material').textContent=running?'Pause':'Resume';
   $('#sound-toggle').disabled=!started||starting;$('#sound-toggle').textContent=soundEnabled?'Sound on':'Sound off';
   $('#sound-toggle').setAttribute('aria-pressed',String(soundEnabled));
   $('#fade-material').disabled=!running;$('#fade-material').setAttribute('aria-pressed',String(fading));
   $('#fade-material').textContent=fading?'Keep what remains':'Let the inscription fade';
   const locked=score.mode==='replaying'||score.mode==='releasing';
-  $('#save-material').disabled=!started||score.mode!=='idle';$('#fresh-material').disabled=!started||score.mode!=='idle';
-  $('#export-sculpture').disabled=!started||score.mode!=='idle'||exporting;
+  $('#save-material').disabled=!started||materialFailed||score.mode!=='idle';$('#fresh-material').disabled=!started||score.mode!=='idle';
+  $('#export-sculpture').disabled=!started||materialFailed||score.mode!=='idle'||exporting;
   $('#export-sculpture').textContent=exporting?'Making sculpture…':'Save sculpture ↓';
   for(const button of voiceButtons)button.disabled=!running||locked;
   $('#record-phrase').disabled=!running||locked;
@@ -42,7 +58,7 @@ function controls(){
   $('#replay-phrase').disabled=!running||!score.hasPhrase||score.mode==='recording';
   $('#replay-phrase').textContent=locked?'Stop phrase ◼':'Ask again ↻';
   $('#replay-phrase').dataset.active=String(locked);
-  $('#begin-sound').disabled=starting;$('#begin-silent').disabled=starting;
+  $('#begin-sound').disabled=starting||graphicsLost||recovering;$('#begin-silent').disabled=starting||graphicsLost||recovering;
   document.body.dataset.running=String(running);document.body.dataset.sound=String(soundEnabled);
   document.body.dataset.phrase=score.mode;
 }
@@ -59,12 +75,14 @@ function clearHeld(){
   held.clear();for(const timer of pulses.values())clearTimeout(timer);pulses.clear();sendDrive();
 }
 async function start(withSound=soundEnabled){
-  if(starting||!worker)return;
+  if(starting||!worker||materialFailed||graphicsLost)return;
   starting=true;controls();
   try{
     if(withSound){await sound.start();soundEnabled=true;}
     started=true;$('#begin-panel').hidden=true;
     if(document.hidden)pause('Paused while you were away. Resume to continue.');
+    else if(graphicsLost)pause('The graphics were interrupted. Your material is kept while the sculpture recovers.');
+    else if(materialFailed)pause('Open a saved state or begin a new material before resuming.');
     else{
       running=true;worker.postMessage({type:'run'});say('Hold a voice and watch the material remember.');
       if(matchMedia('(max-width: 640px)').matches)$('#playing').scrollIntoView({block:'start',behavior:'instant'});
@@ -74,7 +92,7 @@ async function start(withSound=soundEnabled){
 }
 function pause(message='Paused. The material keeps its history.'){
   if(!started)return;
-  running=false;fading=false;score={...score,mode:'idle',time:0};clearHeld();worker?.postMessage({type:'pause'});sound.suspend().catch(()=>{});controls();say(message);
+  running=false;fading=false;score={...score,mode:'idle',time:0};clearHeld();worker?.postMessage({type:'pause'});sound.suspend().catch(()=>{});controls();say(message);requestRecovery(true);
 }
 function updateScore(value,comparison=null){
   score=value;
@@ -118,7 +136,13 @@ function maps(fields){
 }
 function frame(data){
   const {fields,readout:r,diagnostics:d}=data;
-  if(!d.finite){pause('The material stopped because its state was no longer finite. Open a saved state or begin a new material.');return;}
+  if(!d.finite){
+    materialFailed=true;
+    const message='The material stopped because its state was no longer finite. Open a saved state or begin a new material.';
+    if(running)pause(message);else{say(message);controls();}
+    worker.postMessage({type:'recycle',fields},[fields.buffer]);return;
+  }
+  if(materialFailed&&data.generation!==lastFrame?.generation){materialFailed=false;controls();}
   const forceLabels=!data.running||data.generation!==lastFrame?.generation;
   renderer.update(fields);sound.control(r,data.drive);
   updateScore(data.score||score);
@@ -139,26 +163,46 @@ function frame(data){
     lastLabels=now;
   }
   worker.postMessage({type:'recycle',fields},[fields.buffer]);
+  requestRecovery(forceLabels);
 }
 
 try{
-  renderer=new LiveRenderer(canvas,()=>{pause('The graphics context was interrupted. Reload to reopen the live sculpture.');canvas.dataset.state='context-lost';});
+  renderer=new LiveRenderer(canvas,error=>{
+    graphicsLost=true;
+    const message=error?'The sculpture could not recover. Save your material before reloading.':'The graphics were interrupted. Your material is kept while the sculpture recovers.';
+    if(started)pause(message);else say(message);controls();
+  },()=>{graphicsLost=false;controls();say(started?'The sculpture is back. Resume to continue the same material.':'The sculpture is ready. Begin when you are ready.');});
   worker=new Worker('/live-worker.js',{type:'module'});
   worker.onmessage=({data})=>{
     if(data.type==='frame')frame(data);
+    else if(data.type==='snapshot'&&data.request===pendingRecovery){pendingRecovery=0;recoveryStatus(recovery.write(data.state),data.state);}
     else if(data.type==='snapshot'&&data.request===pendingSave){pendingSave=0;download(data.state);}
     else if(data.type==='restored'){
       running=false;started=true;fading=false;clearHeld();sound.suspend().catch(()=>{});$('#begin-panel').hidden=true;
-      lastComparison=null;$('#reply-comparison').hidden=true;controls();say('Material opened. Resume to continue its history.');
+      lastComparison=null;$('#reply-comparison').hidden=true;controls();
+      if(data.comparison)updateScore(score,data.comparison);
+      if(data.source==='tab-recovery'){
+        recovering=false;say('The material kept in this tab has been recovered. Resume to continue.');recoveryStatus(true,recoveryCopy.state);
+      }else say('Material opened. Resume to continue its history.');
+      controls();requestRecovery(true);
     }else if(data.type==='score')updateScore(data.score,data.comparison);
     else if(data.type==='sculpture'){
       saveBlob(new Blob([data.buffer],{type:'model/stl'}),`palimpsest-sculpture-${Math.round(data.time)}s-200mm.stl`);
       exporting=false;controls();say('Sculpture saved as an STL, scaled to 200 mm across.');
     }
     else if(data.type==='undo')$('#undo-material').hidden=!data.available;
-    else if(data.type==='error'){exporting=false;controls();say(data.message);}
+    else if(data.type==='fault'){materialFailed=true;exporting=false;pendingRecovery=0;pendingSave=0;canvas.dataset.materialRunning='false';pause(data.message);controls();}
+    else if(data.type==='error'){
+      exporting=false;
+      if(data.request===pendingRecovery)pendingRecovery=0;
+      if(data.source==='tab-recovery'){
+        recovering=false;recovery.clear();say('The old recovery copy could not be opened. Begin a fresh material, or open a saved file.');
+      }else say(data.message);
+      controls();
+    }
   };
   worker.onerror=()=>{pause('The material worker could not continue. Reload to begin again.');};
+  if(recoveryCopy)worker.postMessage({type:'restore',state:recoveryCopy.state,source:'tab-recovery'});
 }catch(error){say(error.message);$('#begin-panel').hidden=true;worker?.terminate();}
 
 $('#begin-sound').addEventListener('click',()=>start(true));

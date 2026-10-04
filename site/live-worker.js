@@ -5,17 +5,25 @@ import {buildLiveSheet,sculptureSTL} from './live-geometry.js';
 let material = new LiveMaterial(), running = false, timer = 0, last = 0, accumulator = 0;
 let targets = new Float64Array(12), drive = new Float64Array(12), fading = false;
 let frames = 0, lastFrame = 0, spare = new Float32Array(material.count*4), inFlight = false;
-let generation = 0;
+let generation = 0, failed = false;
 const score=new LiveScore();
 let undo=null;
 const MAX_CATCHUP = 12;
 
 function publish(force = false) {
+  if (failed) return;
+  const diagnostics=material.diagnostics();
+  if(!diagnostics.finite){
+    running=false;clearTimeout(timer);targets.fill(0);drive.fill(0);fading=false;accumulator=0;
+    score.stop();failed=true;
+    postMessage({type:'fault',message:'The material stopped because its state was no longer finite. Open a saved state or begin a new material.'});
+    return;
+  }
   if (inFlight && !force) return;
   if (!spare || spare.byteLength !== material.count*16) spare = new Float32Array(material.count*4);
   const fields = material.fields(spare);
   postMessage({type:'frame',generation,fields,readout:material.readout(),drive:Array.from(drive),
-    diagnostics:material.diagnostics(),running,fading,targets:Array.from(targets),score:score.describe(material.steps)},[fields.buffer]);
+    diagnostics,running,fading,targets:Array.from(targets),score:score.describe(material.steps)},[fields.buffer]);
   spare = null;
   inFlight = true;
   frames++;
@@ -44,7 +52,7 @@ function tick() {
   // or builds an unbounded backlog. Returning to this tab requires Resume.
   if (steps===MAX_CATCHUP) accumulator=Math.min(accumulator,LIVE_CONFIG.dt);
   if (now-lastFrame>=1000/24) { publish(); lastFrame=now; }
-  timer=setTimeout(tick,Math.max(0,8-(performance.now()-now)));
+  if(running)timer=setTimeout(tick,Math.max(0,8-(performance.now()-now)));
 }
 
 function pause() {
@@ -63,6 +71,7 @@ onmessage = ({data}) => {
       if (data.fields instanceof Float32Array && data.fields.length===material.count*4) spare=data.fields;
       inFlight=false;
     } else if (data.type==='run') {
+      if(failed)throw new Error('Open a saved state or begin a new material before resuming');
       if (!running) { running=true; last=performance.now(); tick(); }
     } else if (data.type==='pause') {
       pause(); publish(true);
@@ -73,12 +82,14 @@ onmessage = ({data}) => {
     } else if (data.type==='fade') {
       fading=Boolean(data.value);
     } else if (data.type==='fresh') {
-      undo=material.snapshot();pause();material=new LiveMaterial();generation++;publish(true);postMessage({type:'undo',available:true});
+      undo=failed||!material.diagnostics().finite?null:material.snapshot();pause();material=new LiveMaterial();failed=false;generation++;publish(true);postMessage({type:'undo',available:Boolean(undo)});
     } else if (data.type==='undo') {
-      if(undo){pause();material.restore(undo);undo=null;generation++;publish(true);postMessage({type:'undo',available:false});}
+      if(undo){pause();material.restore(undo);failed=false;undo=null;generation++;publish(true);postMessage({type:'undo',available:false});}
     } else if (data.type==='snapshot') {
-      postMessage({type:'snapshot',request:data.request,state:{...material.snapshot(),phrase:score.phrase}});
+      if(failed||!material.diagnostics().finite){publish(true);throw new Error('The stopped material cannot be saved. Open a saved state or begin a new material.');}
+      postMessage({type:'snapshot',request:data.request,state:{...material.snapshot(),phrase:score.phrase,replies:score.savedResponses()}});
     } else if (data.type==='sculpture') {
+      if(failed||!material.diagnostics().finite){publish(true);throw new Error('The stopped material cannot be exported. Open a saved state or begin a new material.');}
       pause();
       const time=material.steps*LIVE_CONFIG.dt;
       const result=sculptureSTL(buildLiveSheet(material.fields()),time);
@@ -87,9 +98,12 @@ onmessage = ({data}) => {
     } else if (data.type==='restore') {
       // Validation is atomic. A rejected file preserves the current session.
       const phrase=score.validate(data.state.phrase);
-      material.restore(data.state);pause();score.phrase=phrase;score.clearResponses();undo=null;generation++;publish(true);
+      const replies=score.validateResponses(data.state.replies,phrase);
+      material.restore(data.state);pause();failed=false;score.phrase=phrase;
+      [score.previousResponse,score.lastResponse]=replies;
+      undo=null;generation++;publish(true);
       postMessage({type:'undo',available:false});
-      postMessage({type:'restored'});
+      postMessage({type:'restored',source:data.source,comparison:score.comparison()});
     } else if (data.type==='record') {
       if(!running)throw new Error('Resume the material before recording a phrase');
       if(score.mode==='recording'){score.finish(material.steps);targets.fill(0);}
@@ -104,7 +118,7 @@ onmessage = ({data}) => {
       postMessage({type:'inspection',request:data.request,frames,generation,running,diagnostics:material.diagnostics()});
     }
   } catch (error) {
-    postMessage({type:'error',message:error.message});
+    postMessage({type:'error',message:error.message,source:data.source,request:data.request});
   }
 };
 publish(true);

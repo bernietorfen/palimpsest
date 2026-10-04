@@ -1,0 +1,1 @@
+{"bounded_single_copy":true,"copy_characters":349989,"denied_or_oversized_write_preserves_last_copy":true,"corrupt_copy_removes_only_owned_key":true,"invalid_material_cases_rejected_atomically":9,"valid_material_roundtrip_exact":true,"completed_replies_roundtrip_exact":true,"invalid_reply_cases_rejected":4,"original_material_files_without_replies_accepted":true}

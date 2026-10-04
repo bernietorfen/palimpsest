@@ -96,3 +96,5 @@ The live instrument has no Python or GPU-server dependency at runtime. It uses a
 The film edition and live edition are separate frozen releases. Extract each archive into its own empty directory. Do not unpack an older viewing-room archive over a newer source checkout: it contains the HTML of its own edition.
 
 Node 24 runs the JavaScript equation, phrase-replay, stress and geometry checks. The independent PyTorch and trimesh comparisons run in the studio environment. Complete commands, numeric results and interpretation limits are in [the live edition record](research/LIVE-EDITION.md).
+
+The recovery follow-up adds `node studio/live_recovery_check.mjs` and focused browser functions `audit_live_recovery.js`, `audit_live_storage.js`, `audit_live_storage_denied.js`, `audit_live_navigation.js` and `audit_live_fault.js`. Run each in a fresh browser context unless its instructions explicitly exercise reload or Back. The separate `audit_live_failure_repro.js` records the pre-fix extreme-import defect and is not an expected-to-pass check of the corrected source.

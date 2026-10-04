@@ -50,3 +50,19 @@ python -m studio.verify_live_geometry
 ```
 
 The geometry check writes a new output directory and refuses to overwrite it. Browser audit scripts under `studio/audit_live*.js` run through Playwright against `studio.serve_site` on loopback port 8083. Generated media and test artifacts stay on the compute host and are preserved through verified GitHub release assets.
+
+## Recovery follow-up
+
+The live follow-up keeps a single recovery entry in the browser's session storage. It replaces that entry every five seconds while playing and when paused; it does not retain a growing history or send state to a service. An entry is capped at 1,500,000 JSON characters. A crash or immediate navigation can recover the last completed copy, so an actively played material may return a few seconds behind. File export remains the durable way to keep a material across tabs and browser sessions.
+
+Saved documents now optionally include the last two completed reply trajectories. Their length, sample-step sequence and twelve finite pitch values are validated before any existing material is replaced. Original version-one documents without replies remain accepted. Recovery restores the paired drawing as well as the fields and kept phrase.
+
+A real Chromium Back-navigation check initially returned to a zero state. With recovery enabled, the paused material's time, inscription and wear were restored exactly. A separate reload check compared the complete numerical state, phrase and both reply trajectories and found them identical; its one recovery entry contained 404,354 characters. New material replaced that entry and reload did not resurrect the discarded state. These are specific browser checks, not a guarantee that every browser preserves session storage after a tab is closed.
+
+A forced WebGL context loss now pauses the instrument and rebuilds its graphics resources after restoration. The material remains in its worker. One 64 KB field copy restores the displayed surface without accumulating frames. Chromium and iPhone-sized WebKit checks recovered an identical complete material state and an identical paused camera image, then continued the simulation.
+
+A finite but extreme imported displacement previously produced a non-finite trajectory and repeatedly re-entered the pause handler. The reproduction was stopped by its test harness after eight pause requests. The worker now reports a numerical fault once, stops scheduling frames, and requires a fresh or opened material before continuing. A test-only injection of one NaN at step 42 confirmed a single fault and a single pause, no subsequent message loop, and successful writing after New material. The invalid state is not retained as an undo target or offered for export.
+
+File admission also bounds displacement to ±16, velocity and delayed projection to ±64, and echo phase to [0, 2π). These are broad file-validation limits, separate from the unchanged evolution equations. They are not a stability theorem or clamps applied during simulation. The recorded ordinary trajectories fit inside them.
+
+The subsequent Chromium and WebKit file checks saved a material with two completed replies, cleared the tab's recovery storage, reloaded to an empty instrument, and opened the downloaded JSON. The complete numerical state, phrase, both replies and paired drawing returned exactly. Their one-entry recovery copies contained 408,969 and 404,843 characters respectively. A browser with deliberately denied session-storage access continued to play and offered normal file saving.

@@ -50,6 +50,20 @@ export class LiveScore {
   }
   stop(){this.mode='idle';this.building=null;this.response=[];}
   clearResponses(){this.lastResponse=null;this.previousResponse=null;}
+  savedResponses(){return [this.previousResponse,this.lastResponse];}
+  validateResponses(value,phrase){
+    if(value==null)return [null,null];
+    if(!Array.isArray(value)||value.length!==2||(!phrase&&value.some(x=>x!==null)))throw new Error('Invalid saved replies');
+    if(value[0]&&!value[1])throw new Error('The saved replies are incomplete');
+    return value.map(response=>{
+      if(response===null)return null;
+      if(!Array.isArray(response)||response.length!==Math.floor(phrase.duration_steps/4))throw new Error('Invalid saved reply length');
+      return response.map((sample,index)=>{
+        if(sample.step!==(index+1)*4||!Array.isArray(sample.pitch)||sample.pitch.length!==12||sample.pitch.some(v=>!Number.isFinite(v)||v<=0||v>1e6))throw new Error('Invalid saved reply sample');
+        return {step:sample.step,pitch:[...sample.pitch]};
+      });
+    });
+  }
   describe(step){
     return {mode:this.mode,time:this.mode==='idle'?0:(step-this.begin)*this.dt,
       duration:this.phrase?this.phrase.duration_steps*this.dt:0,hasPhrase:Boolean(this.phrase),
@@ -76,6 +90,7 @@ export class LiveScore {
       prior=event.step;
     }
     if(value.events[0].step!==0||value.events.at(-1).step!==value.duration_steps-this.release||value.events.at(-1).values.some(Boolean))throw new Error('The saved phrase is incomplete');
-    return structuredClone(value);
+    return {version:1,dt:this.dt,initial_drive:[...value.initial_drive],duration_steps:value.duration_steps,
+      events:value.events.map(event=>({step:event.step,values:[...event.values]}))};
   }
 }

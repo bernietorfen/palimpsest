@@ -169,6 +169,10 @@ export class LiveMaterial {
       const a=state[name];
       if (!Array.isArray(a)||a.length!==this[name].length||a.some(v=>!Number.isFinite(v)||Math.abs(v)>1e4)) throw new Error(`Invalid ${name} field`);
     }
+    // Imported files must remain within a broad live operating envelope. These
+    // are file-admission limits, not clamps applied to the material equations.
+    if (state.u.some(v=>Math.abs(v)>16)||state.v.some(v=>Math.abs(v)>64)||state.delay.some(v=>Math.abs(v)>64)) throw new Error('The file exceeds the live material operating range');
+    if (state.phase.some(v=>v<0||v>=TAU)) throw new Error('Invalid echo phase');
     if (state.p.some(v=>Math.abs(v)>this.config.memory_limit)||state.z.some(v=>v<0||v>1)) throw new Error('The retained fields exceed material bounds');
     // Validate the entire document before touching the running material.
     for (const name of names) this[name].set(state[name]);
