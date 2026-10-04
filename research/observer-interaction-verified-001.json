@@ -1,0 +1,76 @@
+{
+  "verified_utc": "2026-10-04T12:42:22.636371+00:00",
+  "data_sha256": "e8010a136443c2bd0b3854965aade4dd7def03d612d1b3f2dab529c962e8e886",
+  "coordinates_per_response": 3468,
+  "direct_probe_positions": 35,
+  "candidate_norms_checked": 20160,
+  "maximum_squared_distance_error_hz2": 8.743006318923108e-16,
+  "all_nearest_sets_match": true,
+  "transition_count": 6,
+  "transitions": [
+    {
+      "history": 18,
+      "alpha": 0.07184506374634762,
+      "before": 10,
+      "after": 18,
+      "at": [
+        10,
+        18
+      ]
+    },
+    {
+      "history": 23,
+      "alpha": 0.09670653824791368,
+      "before": 9,
+      "after": 23,
+      "at": [
+        9,
+        23
+      ]
+    },
+    {
+      "history": 6,
+      "alpha": 0.23704115699143416,
+      "before": 0,
+      "after": 6,
+      "at": [
+        0,
+        6
+      ]
+    },
+    {
+      "history": 11,
+      "alpha": 0.3157843303410602,
+      "before": 21,
+      "after": 11,
+      "at": [
+        11,
+        21
+      ]
+    },
+    {
+      "history": 7,
+      "alpha": 0.3227221441800121,
+      "before": 1,
+      "after": 7,
+      "at": [
+        1,
+        7
+      ]
+    },
+    {
+      "history": 10,
+      "alpha": 0.3557742942086933,
+      "before": 20,
+      "after": 10,
+      "at": [
+        10,
+        20
+      ]
+    }
+  ],
+  "raw_own_matches": 18,
+  "aligned_own_matches": 24,
+  "exact_pair_projections_verified": true,
+  "scope": "Independent direct dot-product norms in the complete recorded space at regular positions and on both sides of every displayed boundary, including tied nearest sets at crossings. No material simulation or unknown-history inference is introduced."
+}

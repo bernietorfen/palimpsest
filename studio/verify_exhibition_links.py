@@ -27,16 +27,17 @@ def main(args):
     output=Path(args.report)
     if output.exists():raise FileExistsError(output)
     base=args.base.rstrip('/');entries=[];catalogs=[]
-    for path,count in (('/choir-edition.json',14),('/edition.json',12)):
+    for path,count in (('/choir-edition.json',15),('/edition.json',12)):
         with request(base+path) as response:catalog=json.load(response)
         assert len(catalog['downloads'])==count,path
         catalogs.append({'path':path,'entries':count})
         for entry in catalog['downloads']:entries.append({'title':entry['title'],'url':urljoin(base,entry['url'])})
     with request(base+'/') as response:markup=response.read().decode()
-    observer=ObserverLinks();observer.feed(markup);assert len(observer.links)==2
-    assert all('/v2.1.0/' in href and href.endswith('.pdf') for href in observer.links)
+    observer=ObserverLinks();observer.feed(markup);assert len(observer.links)==3 and '/observer.html' in observer.links
+    assert all('/v2.1.0/' in href and href.endswith('.pdf') for href in observer.links if href!='/observer.html')
     known={item['url'] for item in entries}
     for href in observer.links:
+        href=urljoin(base,href)
         if href not in known:entries.append({'title':'Observer artwork link','url':href})
     def check(item):
         assert urlparse(item['url']).scheme in ('https','http')

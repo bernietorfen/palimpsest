@@ -15,7 +15,8 @@ from studio.verify_pressure_edition import safe
 
 BASE='https://github.com/bernietorfen/palimpsest/releases/download/'
 EDITIONS={'v2.0.0':('palimpsest-choir-edition.json','choir-record-manifest.json','choir-scientific-record.tar.gz'),
-          'v2.1.0':('palimpsest-observer-edition.json','observer-record-manifest.json','observer-scientific-record.tar.gz')}
+          'v2.1.0':('palimpsest-observer-edition.json','observer-record-manifest.json','observer-scientific-record.tar.gz'),
+          'v2.2.0':('palimpsest-moving-observer-edition.json','moving-observer-record-manifest.json','moving-observer-record.tar.gz')}
 ALLOWED={'github.com','release-assets.githubusercontent.com','objects.githubusercontent.com'}
 
 

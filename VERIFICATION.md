@@ -234,3 +234,25 @@ Receipts in `research/`: `choir-public-cold-restore-001.json`,
 `choir-portable-transport-001.json`, `observer-production-chromium-001.json`,
 `observer-production-webkit-001.json`, `choir-production-transport-chromium-001.json`,
 `choir-production-transport-webkit-001.json` and `exhibition-links-009.json`.
+
+## The moving geometric work
+
+`observer-interaction-verified-001.json` records independent direct-vector
+checks at 35 positions, including both sides of all six crossings and each
+crossing itself. All 20,160 candidate comparisons preserve the compact reader's
+nearest sets. The largest squared-distance discrepancy is 8.743e-16 Hz-squared.
+The six displayed pair projections are checked independently as well.
+
+Chromium and WebKit exercise every exact crossing, tied table entry, keyboard
+range movement, the complete 24-second passage, pause, data-hash rejection and
+retry. Their 393-pixel layouts have no horizontal overflow or automated
+accessibility violations; color contrast retains an incomplete manual-check
+item. The exported drawing remains frozen at the clicked position while fonts
+are deliberately delayed and the visitor moves the live control. Both exports
+are byte-identical, including embedded fonts and license, and open as vector
+images. Rendered desktop, narrow-screen and exported-artwork proofs were reviewed.
+
+Receipts: `origin-chromium-003.json`, `origin-webkit-001.json` and
+`observer-interaction-verified-001.json`. The original failed screenshot attempt
+and native-SVG probe remain in the private production evidence; the successful
+review renders the exported SVG as an image in an ordinary document.

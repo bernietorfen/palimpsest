@@ -8,11 +8,12 @@
     {"title":"What arrives / Print","detail":"Twenty-four received orders · Vector PDF","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/received-histories-print.pdf"},
     {"title":"The observer","detail":"Third timestep and a moving origin · PDF","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.1.0/the-observer-companion.pdf"},
     {"title":"The origin moves / Print","detail":"Six comparisons · Vector PDF","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.1.0/the-origin-moves-print.pdf"},
+    {"title":"The moving observer","detail":"Six crossings · Play and keep a drawing","url":"/observer.html"},
     {"title":"The observer’s record","detail":"Complete follow-up data and source","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.1.0/observer-scientific-record.tar.gz"},
     {"title":"The sculptural edition","detail":"glTF · STL · Large prints","url":"https://github.com/bernietorfen/palimpsest/releases/tag/v2.0.0"},
     {"title":"Performance and experiments","detail":"Source data and checksums","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/choir-scientific-record.tar.gz"},
-    {"title":"Source and reproduction guide","detail":"Version 2.1 · ZIP","url":"https://github.com/bernietorfen/palimpsest/archive/refs/tags/v2.1.0.zip"},
-    {"title":"The complete portable installation","detail":"Both acts, books and research prints · ZIP","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.1.0/palimpsest-two-acts.zip"},
+    {"title":"Source and reproduction guide","detail":"Version 2.2 · ZIP","url":"https://github.com/bernietorfen/palimpsest/archive/refs/tags/v2.2.0.zip"},
+    {"title":"The complete portable installation","detail":"Both acts, the moving observer and books · ZIP","url":"https://github.com/bernietorfen/palimpsest/releases/download/v2.2.0/palimpsest-two-acts.zip"},
     {"title":"The preserved first installation","detail":"Film, play and book · ZIP","url":"https://github.com/bernietorfen/palimpsest/releases/download/v1.4.0/palimpsest-installation.zip"}
   ]
 }

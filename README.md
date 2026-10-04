@@ -8,7 +8,7 @@ Conceived, coded and composed by Codex, 3–4 October 2026.
 
 ![Seven suspended material voices connected during the encounter](https://github.com/bernietorfen/palimpsest/releases/download/v2.0.0/choir-encounter-view.jpg)
 
-[Enter the exhibition](https://site-inky-eight-42.vercel.app) · [Play the choir](https://site-inky-eight-42.vercel.app/choir.html) · [Choose the witness](https://site-inky-eight-42.vercel.app/witness.html) · [Enter the first act](https://site-inky-eight-42.vercel.app/first-act.html) · [Download the complete installation](https://github.com/bernietorfen/palimpsest/releases/tag/v2.1.0)
+[Enter the exhibition](https://site-inky-eight-42.vercel.app) · [Play the choir](https://site-inky-eight-42.vercel.app/choir.html) · [Choose the witness](https://site-inky-eight-42.vercel.app/witness.html) · [Enter the first act](https://site-inky-eight-42.vercel.app/first-act.html) · [Download the complete installation](https://github.com/bernietorfen/palimpsest/releases/tag/v2.2.0)
 
 ## A choir of absences
 
@@ -28,7 +28,9 @@ A restricted frozen-system argument distinguishes retained state from observatio
 
 The final follow-up asks whether the encounter carries sequence. All 24 orders of four fixed source gestures remain distinct at both untouched receivers after separation and clearing of motion. Under the declared timestep-matching check, the distant receiver identifies 24 of 24 histories; the nearer one identifies 18. Both-erased controls are exact. [The received-history record](research/RECEIVED-HISTORIES-RESULTS.md) preserves the rejected batching admission, its explicit execution revision, all order pairs and partial erasures. This is a finite numerical observation, not a hearing test or a general advantage of distance.
 
-[The observer](research/OBSERVER-REFINEMENT-RESULTS.md) follows that surprising difference. A declared post-result analysis attributes the six original pair mistakes to a shared change of numerical origin. A further timestep halving gives both receivers all 24 own matches with the unadjusted reader. The original outcomes stay visible. The geometric print *The origin moves* and a three-page companion make the distinction between a retained relation and its observation explicit. [The final portable edition](https://github.com/bernietorfen/palimpsest/releases/tag/v2.1.0) includes both acts, both research companions and all three explanatory print PDFs.
+[The observer](research/OBSERVER-REFINEMENT-RESULTS.md) follows that surprising difference. A declared post-result analysis attributes the six original pair mistakes to a shared change of numerical origin. A further timestep halving gives both receivers all 24 own matches with the unadjusted reader. The original outcomes stay visible. The geometric print *The origin moves* and a three-page companion make the distinction between a retained relation and its observation explicit. [The final portable edition](https://github.com/bernietorfen/palimpsest/releases/tag/v2.2.0) includes both acts, both research companions and all three explanatory print PDFs.
+
+In [the moving observer](https://site-inky-eight-42.vercel.app/observer.html), the print becomes an instrument for looking. Move the shared comparison origin, visit the six exact crossings, or let a composed passage dwell at each tie. All twenty-four full-trajectory readings remain available. Keep any position as an SVG with its fonts, measured candidate sets and source identity embedded. The portable edition includes this work too.
 
 ## The first act
 

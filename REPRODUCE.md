@@ -303,3 +303,28 @@ Its choir keeps the user's transport intent separate from delayed worker frames,
 and importing a saved encounter suspends active sound. Changing the sound
 preference while paused leaves the audio context suspended until Resume. The material equations
 and saved-state format are unchanged.
+
+## The moving observer
+
+The v2.2.0 moving-observer record contains the original 96/192 near-receiver
+trajectories, their offset diagnostic, the compact interaction dataset and a
+self-contained copy of the moving-print page. After restoring it beside the
+matching source:
+
+```sh
+python -m studio.observer_interaction --output artwork/origin-rebuilt
+python -m studio.verify_observer_interaction \
+  --data artwork/origin-rebuilt/observer-origin-v1.json \
+  --output research/origin-rebuilt-verification.json
+python -m studio.serve_site --port 8080
+```
+
+Open `/observer.html` on the loopback server. The work has no model or rendering
+service dependency. Its continuous control evaluates the complete candidate
+quadratics; the passage's dwell timing is authored. The displayed six strips
+are exact pair-direction projections. All counts use the full trajectories.
+The exported SVG embeds fonts, license, current fraction, candidate sets and
+source hashes. The supplied specimen is an actual export at the fourth crossing.
+
+The complete two-act portable ZIP includes this work, its fonts and coefficients.
+Earlier frozen editions retain their own source identities and files.
