@@ -1,0 +1,70 @@
+{
+  "verified_utc": "2026-10-04T03:55:04.785681+00:00",
+  "study_report_sha256": "010aa9da09bd8a90f8500952f154d0da74d2c2736f47465d293eac11207c92c3",
+  "files_verified": 116,
+  "exact_seed_factors_labels_and_derivatives": true,
+  "all_residuals_reconstructed_with_direct_least_squares": true,
+  "all_predictions_confusions_and_refinement_verified": true,
+  "cases": [
+    {
+      "rate": 96,
+      "severity": 0.01,
+      "tested": 960,
+      "nearest_correct": 960,
+      "pressure_corrected": 960,
+      "full_residual_matrix_max_error_hz": 2.0298240491862726e-10,
+      "winning_adjustment_max_error": 1.0744443529331349e-13,
+      "baseline_distance_max_error_hz": 1.3322676295501878e-15
+    },
+    {
+      "rate": 96,
+      "severity": 0.03,
+      "tested": 960,
+      "nearest_correct": 904,
+      "pressure_corrected": 960,
+      "full_residual_matrix_max_error_hz": 9.797369767685846e-11,
+      "winning_adjustment_max_error": 1.0563425134613169e-13,
+      "baseline_distance_max_error_hz": 9.992007221626409e-16
+    },
+    {
+      "rate": 96,
+      "severity": 0.1,
+      "tested": 960,
+      "nearest_correct": 374,
+      "pressure_corrected": 881,
+      "full_residual_matrix_max_error_hz": 2.3668407511667766e-11,
+      "winning_adjustment_max_error": 1.0505485370515544e-13,
+      "baseline_distance_max_error_hz": 1.1102230246251565e-15
+    },
+    {
+      "rate": 192,
+      "severity": 0.01,
+      "tested": 120,
+      "nearest_correct": 120,
+      "pressure_corrected": 120,
+      "full_residual_matrix_max_error_hz": 2.1610030090249768e-10,
+      "winning_adjustment_max_error": 1.0160101926448561e-13,
+      "baseline_distance_max_error_hz": 8.465450562766819e-16
+    },
+    {
+      "rate": 192,
+      "severity": 0.03,
+      "tested": 120,
+      "nearest_correct": 112,
+      "pressure_corrected": 120,
+      "full_residual_matrix_max_error_hz": 7.422732979482649e-11,
+      "winning_adjustment_max_error": 1.0418402252021508e-13,
+      "baseline_distance_max_error_hz": 8.326672684688674e-16
+    },
+    {
+      "rate": 192,
+      "severity": 0.1,
+      "tested": 120,
+      "nearest_correct": 46,
+      "pressure_corrected": 108,
+      "full_residual_matrix_max_error_hz": 3.0824603286516705e-11,
+      "winning_adjustment_max_error": 1.0315359677548486e-13,
+      "baseline_distance_max_error_hz": 9.992007221626409e-16
+    }
+  ]
+}

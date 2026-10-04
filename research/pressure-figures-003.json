@@ -1,0 +1,41 @@
+{
+  "created_utc": "2026-10-04T04:05:17.663964+00:00",
+  "source_report_sha256": "010aa9da09bd8a90f8500952f154d0da74d2c2736f47465d293eac11207c92c3",
+  "atlas_sha256": "28f135212e9b3a7098ccff2c7c4019167d89465632aa5de3d67ed6a9bda7bcc0",
+  "web_data_bytes": 561862,
+  "glyph_maximum_display_error_hz": 0.00010605466107427297,
+  "glyph_quantization_half_step_hz": 0.00010605644225841399,
+  "projection_variance_fraction": 0.6551960284533752,
+  "files": [
+    {
+      "path": "public/manifest.json",
+      "bytes": 338,
+      "sha256": "c7bdd9157bc16a86e30252a611c2948e5fb2f4c481f11d7f55ef006f765a70d9"
+    },
+    {
+      "path": "public/pressure-glyphs-v1.bin",
+      "bytes": 288000,
+      "sha256": "62d52af3c3f5956a6f849aac80b39f0523e996a10a0899dab65a52a88d1798d6"
+    },
+    {
+      "path": "public/pressure-study-v1.json",
+      "bytes": 273862,
+      "sha256": "746e19e2dfbafbf27e72f4c00327893c5c6a3a3d4e395f9d59c716a54970baa1"
+    },
+    {
+      "path": "the-imperfect-hand-review.jpg",
+      "bytes": 136762,
+      "sha256": "15798886474c43e2ba1c55ce5f4d46e0dfd3e4fb982c1b7277dcdbf9412133cd"
+    },
+    {
+      "path": "the-imperfect-hand.pdf",
+      "bytes": 226503,
+      "sha256": "2fffe1f9c541188dd81b8ea270786e1167373cb9838c7afd1e00f9c99846ed61"
+    },
+    {
+      "path": "the-imperfect-hand.png",
+      "bytes": 2930519,
+      "sha256": "e29e84bf61ddec27c8e8245f190855429ac0bfd0ea584fbca8812c73350dfcee"
+    }
+  ]
+}

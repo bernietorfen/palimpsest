@@ -1,0 +1,80 @@
+{
+  "created_utc": "2026-10-04T04:09:39.512668+00:00",
+  "study_report_sha256": "010aa9da09bd8a90f8500952f154d0da74d2c2736f47465d293eac11207c92c3",
+  "seed": 2026100404,
+  "cases": [
+    {
+      "rate": 96,
+      "pressure_limit": 0.01,
+      "tested": 960,
+      "both_correct": 960,
+      "recovered_by_correction": 0,
+      "lost_by_correction": 0,
+      "both_wrong": 0,
+      "winning_adjustment_outside_actual_severity": 32,
+      "maximum_absolute_winning_adjustment": 0.01050043537319302,
+      "source_sha256": "dd69714e944e59a6bc81a2d4701f569ecd2993d90e06596b0186c375ee704e44"
+    },
+    {
+      "rate": 96,
+      "pressure_limit": 0.03,
+      "tested": 960,
+      "both_correct": 904,
+      "recovered_by_correction": 56,
+      "lost_by_correction": 0,
+      "both_wrong": 0,
+      "winning_adjustment_outside_actual_severity": 84,
+      "maximum_absolute_winning_adjustment": 0.036444043853416944,
+      "source_sha256": "ceb0388b44949a18d045b0a66651ab75737124771b3b6d343016996d205c04d6"
+    },
+    {
+      "rate": 96,
+      "pressure_limit": 0.1,
+      "tested": 960,
+      "both_correct": 365,
+      "recovered_by_correction": 516,
+      "lost_by_correction": 9,
+      "both_wrong": 70,
+      "winning_adjustment_outside_actual_severity": 209,
+      "maximum_absolute_winning_adjustment": 0.3611271865942668,
+      "source_sha256": "6f3a74e788c8ed33bcc24ab01176e3a01e6e12aee8fa6cdbca0263a60f1eb0a3"
+    },
+    {
+      "rate": 192,
+      "pressure_limit": 0.01,
+      "tested": 120,
+      "both_correct": 120,
+      "recovered_by_correction": 0,
+      "lost_by_correction": 0,
+      "both_wrong": 0,
+      "winning_adjustment_outside_actual_severity": 2,
+      "maximum_absolute_winning_adjustment": 0.010252136581111179,
+      "source_sha256": "0fda6933542b26fd49758839c60c3d18e4ae7fa1ba87ab98226cd8650f0695ff"
+    },
+    {
+      "rate": 192,
+      "pressure_limit": 0.03,
+      "tested": 120,
+      "both_correct": 112,
+      "recovered_by_correction": 8,
+      "lost_by_correction": 0,
+      "both_wrong": 0,
+      "winning_adjustment_outside_actual_severity": 8,
+      "maximum_absolute_winning_adjustment": 0.03650290701542297,
+      "source_sha256": "cff9ab2b9b32afd7547170119cdb1d3c16c304a46f9e367f9d2633d9d43b1d49"
+    },
+    {
+      "rate": 192,
+      "pressure_limit": 0.1,
+      "tested": 120,
+      "both_correct": 44,
+      "recovered_by_correction": 64,
+      "lost_by_correction": 2,
+      "both_wrong": 10,
+      "winning_adjustment_outside_actual_severity": 20,
+      "maximum_absolute_winning_adjustment": 0.27237276956912176,
+      "source_sha256": "c363d3aa8d6c70a0cad5d84e3347629f4c1a8e34008f8934b609edd5e797a795"
+    }
+  ],
+  "interpretation": "Paired counts for exactly the same finite cases. The local linear adjustment is unconstrained and is not a recovered physical pressure. No statistical-population or perceptual claim."
+}

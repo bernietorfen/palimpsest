@@ -1,0 +1,53 @@
+{
+  "verified_utc": "2026-10-04T03:26:31.445386+00:00",
+  "study_report_sha256": "2956c785fe9d11c810e2a3b0f2cebb3ba723deb2cb34384d7dfba434eebe1973",
+  "files_verified": 79,
+  "exact_seed_and_pressure_factors": true,
+  "all_case_labels_and_realizations_verified": true,
+  "all_predictions_and_confusions_recomputed": true,
+  "independent_rms_max_difference_hz": 4.440892098500626e-16,
+  "cases": [
+    {
+      "rate": 96,
+      "severity": 0.01,
+      "correct": 960,
+      "tested": 960,
+      "independent_rms_max_difference_hz": 2.7755575615628914e-17
+    },
+    {
+      "rate": 96,
+      "severity": 0.03,
+      "correct": 906,
+      "tested": 960,
+      "independent_rms_max_difference_hz": 1.1102230246251565e-16
+    },
+    {
+      "rate": 96,
+      "severity": 0.1,
+      "correct": 343,
+      "tested": 960,
+      "independent_rms_max_difference_hz": 4.440892098500626e-16
+    },
+    {
+      "rate": 192,
+      "severity": 0.01,
+      "correct": 120,
+      "tested": 120,
+      "independent_rms_max_difference_hz": 2.7755575615628914e-17
+    },
+    {
+      "rate": 192,
+      "severity": 0.03,
+      "correct": 112,
+      "tested": 120,
+      "independent_rms_max_difference_hz": 5.551115123125783e-17
+    },
+    {
+      "rate": 192,
+      "severity": 0.1,
+      "correct": 43,
+      "tested": 120,
+      "independent_rms_max_difference_hz": 2.220446049250313e-16
+    }
+  ]
+}

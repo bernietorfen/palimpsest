@@ -1,0 +1,10 @@
+{
+  "source_sha256": "0400e31b71b3615973379648add8ab48bc6e0ceb82865a671bc99a6266869028",
+  "synthetic_queries": 5,
+  "candidate_histories_per_query": 120,
+  "rank_deficient_and_full_rank_cases": true,
+  "expected_labels_exact": true,
+  "injected_pressure_adjustments_recovered_max_error": 7.587160066879761e-14,
+  "direct_least_squares_max_residual_difference_hz": 3.640505652344434e-08,
+  "scope": "Algebra check on constructed affine responses; not evidence about the real material or evaluation accuracy."
+}

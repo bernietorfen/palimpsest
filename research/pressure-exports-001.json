@@ -1,0 +1,27 @@
+{
+  "verified_utc": "2026-10-04T04:16:33.853830+00:00",
+  "exports": [
+    {
+      "path": "output/playwright/pressure-chromium.svg",
+      "bytes": 12338,
+      "sha256": "643d4973bb2bda4093b0c770247f64c338814f56cec597aed5bc83ab1fdc5bc6",
+      "case": "ABCDE",
+      "realization": 1,
+      "reader": "corrected",
+      "chosen": "ABCED",
+      "metadata_values_exact": true,
+      "maximum_anchor_rounding_error_px": 0.00048026978363679973
+    },
+    {
+      "path": "output/playwright/pressure-webkit.svg",
+      "bytes": 12338,
+      "sha256": "643d4973bb2bda4093b0c770247f64c338814f56cec597aed5bc83ab1fdc5bc6",
+      "case": "ABCDE",
+      "realization": 1,
+      "reader": "corrected",
+      "chosen": "ABCED",
+      "metadata_values_exact": true,
+      "maximum_anchor_rounding_error_px": 0.00048026978363679973
+    }
+  ]
+}

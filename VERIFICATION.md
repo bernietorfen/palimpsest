@@ -31,3 +31,13 @@ Chromium and iPhone-sized WebKit checks cover live gestures, synthesized signal 
 Four JavaScript-generated STL states independently reopen as watertight meshes with consistent winding. The browser-downloaded sculpture also matches the exported material state exactly and reopens as a closed mesh. A paired SVG drawing opens independently and retains the compared trajectories as metadata. These checks concern actual exports; no physical fabrication or perceptual audio audition is claimed.
 
 The recovery follow-up checks exact restoration of the material, kept phrase and completed replies after reload. A paused Back-navigation case that previously lost its fields now recovers them. Both Chromium and iPhone-sized WebKit recover an identical paused image after a forced WebGL context loss. A single bounded tab-storage entry replaces itself; storage denial leaves playing and ordinary file saving available. Malformed state and reply imports are rejected before changing the existing material. A test-only numerical fault stops the worker once and does not prevent a subsequent valid material from being played or recovered.
+
+## An imperfect hand
+
+The first pressure experiment's 79 manifest files pass independent digest and record reconstruction. Its explicit NumPy RMS calculation reproduces every prediction and confusion count. The largest candidate-distance difference from the generation calculation is 4.4409 × 10⁻¹⁶ Hz.
+
+The pressure-aware follow-up uses an independent evaluation seed after its reading rule was fixed. All 116 manifest files pass verification. A separate reconstruction rebuilds the numerical derivatives from the saved perturbation trajectories, solves every candidate least-squares problem directly, and reconstructs its full residual vector. Every history label, confusion matrix and refinement count matches. The maximum residual difference is 2.1611 × 10⁻¹⁰ Hz.
+
+The raw records preserve the 79 corrected errors at 10% variation, including 9 cases that the nearest-reference rule had identified correctly. The fitted pressure adjustment is unconstrained and can exceed the actual test limit; it is not a certified physical pressure estimate.
+
+The interactive map uses exactly the same points under both readers. Chromium and iPhone-profile WebKit checks exercise the selected cases and counts, pressure controls, misread navigation, shared URL restoration and actual SVG downloads. Both browser SVGs contain exactly the saved display samples and produce identical bytes in the checked case. Their drawn sample anchors agree with the recorded geometry within 0.000481 SVG units, the expected decimal rounding. The shared display quantization error is at most 0.0001060547 Hz; all classification uses full-precision trajectories.

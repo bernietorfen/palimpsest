@@ -6,7 +6,7 @@ A phrase presses into an invented material. The impression it leaves changes the
 
 Conceived, coded and composed by Codex, 3–4 October 2026.
 
-[Enter the exhibition](https://site-inky-eight-42.vercel.app) · [Play the material](https://site-inky-eight-42.vercel.app/instrument.html) · [Explore 120 possible pasts](https://site-inky-eight-42.vercel.app/atlas.html) · [Download the film edition](https://github.com/bernietorfen/palimpsest/releases/tag/v1.0.0)
+[Enter the exhibition](https://site-inky-eight-42.vercel.app) · [Play the material](https://site-inky-eight-42.vercel.app/instrument.html) · [Explore 120 possible pasts](https://site-inky-eight-42.vercel.app/atlas.html) · [An imperfect hand](https://site-inky-eight-42.vercel.app/pressure.html) · [Download the film edition](https://github.com/bernietorfen/palimpsest/releases/tag/v1.0.0)
 
 ## The work
 
@@ -39,6 +39,8 @@ All 120 permutations of five writing gestures receive the same later 14-second p
 The metric spans all twelve pitch readouts and 336 times, including voices not currently excited. These numeric results do not establish that every pair can be distinguished by ear. The refinement comparison holds the spatial grid fixed; it is not a continuum convergence proof or a noise-robust memory-capacity estimate.
 
 The audible atlas renders the actual recorded controls with the original synthesizer. Every history uses the same gain, room, seed and boundary fades. The fresh and erased PCM sound masters match byte for byte.
+
+The pressure follow-up writes all 120 histories with independently varied gesture pressure. A declared local linear reading rule is evaluated on 2,880 fresh cases. At the 10% level it identifies 881 of 960 histories, compared with 374 for the nearest ideal answer; it recovers 516 cases and loses 9. The [interactive study](https://site-inky-eight-42.vercel.app/pressure.html) exposes every case and exports measured vector pairs. Its [study edition](https://github.com/bernietorfen/palimpsest/releases/tag/v1.2.0) includes a 48-megapixel/vector print, complete data and a portable explorer. [Results, checks and limits](research/PRESSURE-RESULTS.md) distinguish this finite experiment from audibility or physical memory capacity.
 
 ## Source and reproduction
 

@@ -98,3 +98,24 @@ The film edition and live edition are separate frozen releases. Extract each arc
 Node 24 runs the JavaScript equation, phrase-replay, stress and geometry checks. The independent PyTorch and trimesh comparisons run in the studio environment. Complete commands, numeric results and interpretation limits are in [the live edition record](research/LIVE-EDITION.md).
 
 The recovery follow-up adds `node studio/live_recovery_check.mjs` and focused browser functions `audit_live_recovery.js`, `audit_live_storage.js`, `audit_live_storage_denied.js`, `audit_live_navigation.js` and `audit_live_fault.js`. Run each in a fresh browser context unless its instructions explicitly exercise reload or Back. The separate `audit_live_failure_repro.js` records the pre-fix extreme-import defect and is not an expected-to-pass check of the corrected source.
+
+## An imperfect hand
+
+The pressure edition contains both complete experiments, including their original generation-source snapshots, and the two original canonical atlas pitch files needed by their verifiers. Its archive includes a per-file SHA-256 manifest. Extract into an empty directory and add the matching tagged source; avoid overwriting records with a new generation run.
+
+To reproduce from the canonical atlas on the GPU host:
+
+```sh
+python -m studio.pressure_study
+python -m studio.verify_pressure
+python -m studio.check_pressure_reader
+python -m studio.pressure_reading
+python -m studio.verify_pressure_reading
+python -m studio.pressure_summary
+python -m studio.pressure_visuals --output artwork/analysis/pressure-reading-003
+python -m studio.stage_site artwork/analysis/pressure-reading-003/public
+```
+
+The first pressure experiment admits the batched solver against the original scalar implementation and canonical atlas before generating varied cases. The second checks that the admitted material source is unchanged and that its separate algebra check matches the exact reader source. Both experiments refuse to overwrite their output directories. Read `research/PRESSURE-STUDY.md`, `PRESSURE-READING.md` and `PRESSURE-RESULTS.md` for the fixed seeds, sampling rules, controls and interpretation.
+
+The separate `palimpsest-imperfect-hand.zip` opens the interactive study without simulation dependencies. Its `START-HERE.txt` describes a loopback-only static server; all case data and fonts are included. The study's external exhibition and release links require a connection. The figure and browser glyph data are display derivatives; full-precision calculations use the raw scientific archive.

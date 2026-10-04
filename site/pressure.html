@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ede8da">
+  <meta name="description" content="An original experiment in imperfect writing: 120 material histories, 2,880 pressure variations, and two ways of reading what remains.">
+  <title>An imperfect hand — PALIMPSEST</title>
+  <link rel="icon" href="/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/exhibition.css">
+  <link rel="stylesheet" href="/pressure.css">
+  <script type="module" src="/pressure.js"></script>
+</head>
+<body>
+  <a class="skip" href="#experiment">Skip to the experiment</a>
+  <header class="topline"><a class="wordmark" href="/" aria-label="Return to PALIMPSEST">P / 26</a><span class="edition">A study of imperfect writing</span><nav aria-label="Pressure study"><a href="/instrument.html">Play</a><a href="/atlas.html">The atlas</a><a href="#method">The experiment</a></nav></header>
+  <main class="pressure-main">
+    <section class="pressure-opening" aria-labelledby="pressure-title">
+      <p class="eyebrow">PALIMPSEST / Study III</p>
+      <h1 id="pressure-title">An imperfect<br><em>hand.</em></h1>
+      <div class="pressure-introduction"><p>What survives<br>an uneven touch?</p><p>The material remembers the order of five gestures. But a hand seldom presses with exactly the same force twice. Here, the pressure varies. The question afterward stays the same.</p><p class="small">Every point below is a measured answer. Change the reading rule to see what can still be recognized.</p></div>
+    </section>
+
+    <section id="experiment" class="pressure-experiment section-rule" aria-label="Explore the recorded pressure experiment">
+      <p id="pressure-status" role="status">Opening the measured replies…</p>
+      <div class="experiment-controls">
+        <fieldset disabled id="pressure-levels"><legend>How uneven is the writing?</legend><div class="segmented"><button data-level="0" aria-pressed="false">Up to 1%</button><button data-level="1" aria-pressed="false">Up to 3%</button><button data-level="2" aria-pressed="true">Up to 10%</button></div></fieldset>
+        <fieldset disabled id="pressure-readers"><legend>How should the answer be read?</legend><div class="segmented"><button data-reader="nearest" aria-pressed="true">Nearest ideal answer</button><button data-reader="corrected" aria-pressed="false">Allow for pressure</button></div></fieldset>
+      </div>
+      <div class="pressure-workspace">
+        <div class="pressure-map-panel">
+          <div class="map-heading"><h2>The same 960 answers</h2><p><strong id="identified-count">—</strong><span>histories identified</span></p></div>
+          <canvas id="pressure-map" width="800" height="700" role="img" aria-label="A map of recorded replies, colored by whether the chosen reading rule identifies the written history" aria-describedby="map-description"></canvas>
+          <p id="map-description" class="map-description">Choose a point, or use the history and trial controls. Open circles mark the ideal histories. The map shows two components; the reader uses the complete answer.</p>
+          <div class="map-legend"><span><i class="legend-correct"></i>History identified</span><span><i class="legend-misread"></i>Different label</span><span><i class="legend-reference"></i>Ideal history</span></div>
+        </div>
+        <div class="pressure-detail">
+          <div class="case-controls"><label>Written order<select id="written-order" disabled aria-label="Written gesture order"></select></label><fieldset disabled id="trial-controls"><legend>Pressure realization</legend><div id="trial-buttons" class="trial-buttons"></div></fieldset></div>
+          <div class="case-heading"><p class="eyebrow">One imperfect answer</p><p id="case-result" class="case-result">Waiting for the measured record</p></div>
+          <div class="pressure-glyphs"><figure><svg id="measured-glyph" viewBox="0 0 280 280" role="img" aria-label="Four moments of the measured reply"></svg><figcaption><span>Written</span><strong id="written-label">—</strong></figcaption></figure><figure><svg id="chosen-glyph" viewBox="0 0 280 280" role="img" aria-label="Four moments of the ideal history chosen by the reader"></svg><figcaption><span>Read as</span><strong id="chosen-label">—</strong></figcaption></figure></div>
+          <div class="pressure-values"><p class="eyebrow">Actual pressure change, in writing order</p><ol id="pressure-factors"></ol></div>
+          <p id="case-distances" class="case-distances"></p>
+          <div class="case-actions"><button id="next-misread" disabled>Find a misread history ↗</button><button id="export-pressure" disabled>Keep this pair as SVG ↓</button></div>
+          <a id="share-pressure" class="share-pressure" href="#10-ABCDE-1-nearest">Link to this exact case ↗</a>
+        </div>
+      </div>
+      <p class="reader-explanation" id="reader-explanation"></p>
+    </section>
+
+    <section id="method" class="pressure-method section-rule" aria-labelledby="method-title">
+      <div><p class="eyebrow">The experiment</p><h2 id="method-title">The hand changes.<br><em>The material stays.</em></h2><p>Five gestures, A–E, are written into fresh material in each of their 120 possible orders. Each gesture receives its own random pressure multiplier. The timing is fixed. After writing, the moving fields are reset; the retained shape and wear remain. Then every material receives the same fourteen-second probe.</p><p>Each answer contains 336 samples of twelve voice pitches: 4,032 numbers, including voices not being directly excited. The first reader chooses the nearest ideal answer by the root mean square difference across that whole record.</p><p>The second reader has five extra pieces of information for each possible history: how its ideal answer changes when each gesture is pressed a little harder or softer. It allows a local linear adjustment along those five directions, then chooses the history with the smallest remaining difference. That adjustment is unbounded; it is a reading rule, not a measurement of the original pressure.</p></div>
+      <div class="pressure-evidence"><p class="eyebrow">Independent cases, declared rules</p><p>The reading rule was fixed before these cases were generated. Its pressure directions came from separate controlled writes. It receives the answer alone, with no true history, actual pressure or severity supplied.</p><div class="result-table-wrap"><table><caption>Correct histories / 960 fresh cases</caption><thead><tr><th scope="col">Pressure</th><th scope="col">Nearest</th><th scope="col">Allow pressure</th></tr></thead><tbody><tr><th scope="row">Up to 1%</th><td>960</td><td>960</td></tr><tr><th scope="row">Up to 3%</th><td>904</td><td>960</td></tr><tr><th scope="row">Up to 10%</th><td>374</td><td>881</td></tr></tbody></table></div><p>At the largest variation, the correction recovers 516 histories and loses 9 that the first reader got right. Its remaining 79 errors are available to inspect above. Halving the timestep on the first trial of every history changes one of the 120 labels for each reader; the corrected reader identifies 108 of those 120 finer-step cases.</p><p class="small">This is a finite numerical experiment in an invented material. Timing errors, listening judgments and physical memory capacity were not tested. The pressure correction uses established least-squares geometry; the material, gestures, measurements and presentation were authored for this work.</p><a class="arrow-link" href="https://github.com/bernietorfen/palimpsest/releases/tag/v1.2.0">Keep the print and scientific record <span>Study edition ↗</span></a></div>
+    </section>
+    <section class="pressure-reading section-rule" aria-label="Reading the visual record"><div><p class="eyebrow">A map is a partial view</p><p>The two plotted components retain 65.5% of the variation among the ideal histories. Points that look close here can differ elsewhere in the answer. Both reading rules use all 4,032 values. Switching readers changes labels, never the plotted measurements.</p></div><div><p class="eyebrow">Four moments, twelve directions</p><p>The rings show the start of the probe, then 4, 8 and 12 seconds. Each direction is one voice. Outward means a pitch above the ideal histories’ average at that moment; inward means below it. All cases and references share one scale. The smooth curves connect measured values.</p><p id="glyph-precision" class="small"></p></div></section>
+  </main>
+  <footer><a class="footer-title" href="/">PALIMPSEST</a><p>Conceived and authored by Codex<br>3—4 October 2026</p><p>An invented material. An original composition.<br><a href="/credits.html">Authorship &amp; acknowledgments</a></p><a href="#pressure-title" class="back-top" aria-label="Back to top">↑</a></footer>
+  <noscript><p class="noscript">The interactive record uses JavaScript. The table above gives the measured results; the <a href="https://github.com/bernietorfen/palimpsest/releases/tag/v1.2.0">study edition</a> includes the print and complete data.</p></noscript>
+</body>
+</html>
