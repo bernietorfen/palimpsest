@@ -9,7 +9,7 @@ import {createHash} from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {chromium,webkit} from '../.tools/browser/node_modules/playwright/index.mjs';
 import {screenshotEvidence} from './browser_screenshot.mjs';
-import {checkQualityPlayback,checkListeningPlayback} from './river_media_checks.mjs';
+import {checkQualityPlayback,checkListeningPlayback,seekPresentedFrame} from './river_media_checks.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const args=process.argv.slice(2);
@@ -329,11 +329,7 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     if(draftDirectory||finalMedia){
       const seeks=[];
       for(const moment of [104,120.9,123.25,208]){
-        await page.locator('#river-film').evaluate((video,time)=>new Promise((resolve,reject)=>{
-          const timeout=setTimeout(()=>reject(new Error(`Seek to ${time} did not complete`)),15000);
-          video.addEventListener('seeked',()=>{clearTimeout(timeout);requestAnimationFrame(()=>requestAnimationFrame(resolve));},{once:true});
-          video.pause();video.currentTime=time;
-        }),moment);
+        const presentation=await seekPresentedFrame(page,moment);
         const frame=await page.locator('#river-film').evaluate(video=>{
           const canvas=document.createElement('canvas');canvas.width=32;canvas.height=18;
           const context=canvas.getContext('2d',{willReadFrequently:true});context.drawImage(video,0,0,32,18);
@@ -345,7 +341,7 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
         if(moment===120.9)assert.ok(frame.maximumRgb<=2,'The actual decoded draft is black inside the composed silence');
         else assert.ok(frame.meanRgb>1,'The actual decoded image is visible at return and after silence');
         if(moment!==123.25)await capture(evidence,page.locator('#river-film'),`${engine}-draft-${String(moment).replace('.','-')}.jpg`);
-        seeks.push(frame);
+        seeks.push({...frame,presentation});
       }
       check(`${engine}: actual draft seeks at both returns, central blackout and reappearance`,{seeks,scope:'Browser frame decoding and active captions; no listening claim'});
     }
@@ -355,8 +351,7 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     check(`${engine}: keyboard sound consent and native media`,{...playing,source:report.media});
     if(compactControl||finalMedia)check(`${engine}: manual quality switches preserve time, pause/play, volume and captions`,await checkQualityPlayback(page,{finalDimensions:finalMedia}));
     check(`${engine}: approved native listening excerpts and mutual media pause`,await checkListeningPlayback(page));
-    await page.locator('#river-film').evaluate(video=>{video.pause();video.currentTime=208;});
-    await page.waitForFunction(()=>!document.querySelector('#river-film').seeking&&document.querySelector('#river-film').readyState>=2);
+    const baselinePresentation=await seekPresentedFrame(page,208);
 
     // Deterministically exercise the visibility handler. Headless tabs do not
     // consistently emit the OS-driven visibility transition across engines.
@@ -369,7 +364,7 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
       for(let i=0;i<before.length;i+=4)for(let channel=0;channel<3;channel++)difference+=Math.abs(after[i+channel]-before[i+channel]);
       return {timeBefore,timeAfter:video.currentTime,meanPixelDifference:difference/(64*36*3),framesBefore,framesAfter:video.getVideoPlaybackQuality?.().totalVideoFrames??null,playPromise:window.__riverResumePromise,readyState:video.readyState,paused:video.paused,ended:video.ended,stage:document.querySelector('.film-stage').dataset.videoState,presentedFrameCallback:typeof video.requestVideoFrameCallback==='function'};
     });
-    check(`${engine}: native resume progresses without relying on play-promise timing`,resume);
+    check(`${engine}: native resume progresses without relying on play-promise timing`,{...resume,baselinePresentation});
     assert.ok(resume.timeAfter>resume.timeBefore+.2&&!resume.paused&&!resume.ended);
     if(draftDirectory)assert.ok(resume.meanPixelDifference>1,'Actual moving draft frames continue after a paused seek');
     assert.equal(resume.stage,'playing','Moving video must not retain a stale buffering overlay');

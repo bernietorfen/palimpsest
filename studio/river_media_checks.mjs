@@ -2,6 +2,32 @@
 // Successful decoding and transport are not perceptual listening evidence.
 import assert from 'node:assert/strict';
 
+export async function seekPresentedFrame(page,time){
+  // A completed native seek can precede presentation. On the tested WebKit
+  // backend, callback mediaTime also leads the requested position by ~83 ms.
+  // This is a bounded browser-presentation check, not exact encoded-frame PTS.
+  await page.waitForFunction(()=>{const video=document.querySelector('#river-film');return !video.seeking&&video.readyState>=2&&['playing','paused'].includes(document.querySelector('.film-stage').dataset.videoState);});
+  return page.locator('#river-film').evaluate((video,time)=>new Promise((resolve,reject)=>{
+    const toleranceSeconds=3/24,started=performance.now(),events=[];
+    let seeked=false,presented=null,callback;
+    const cleanup=()=>{clearTimeout(timer);video.removeEventListener('seeked',onSeeked);video.cancelVideoFrameCallback(callback);};
+    const complete=()=>{
+      if(!seeked||!presented||video.seeking||Math.abs(video.currentTime-time)>.06)return;
+      cleanup();resolve({requestedTime:time,currentTime:video.currentTime,presentedMediaTime:presented.mediaTime,signedOffsetSeconds:presented.mediaTime-time,toleranceSeconds,elapsedMilliseconds:performance.now()-started,events,scope:'New browser presentation within 125 ms of requested paused time; callback mediaTime is not asserted to be exact encoded PTS.'});
+    };
+    const onSeeked=()=>{seeked=true;events.push({event:'seeked',elapsedMilliseconds:performance.now()-started,currentTime:video.currentTime});complete();};
+    const timer=setTimeout(()=>{cleanup();reject(new Error(`No matching paused presentation at ${time}: ${JSON.stringify(events)}`));},15000);
+    const onFrame=(now,metadata)=>{
+      events.push({event:'presented',elapsedMilliseconds:performance.now()-started,mediaTime:metadata.mediaTime,presentedFrames:metadata.presentedFrames,seeking:video.seeking});
+      if(Math.abs(metadata.mediaTime-time)<=toleranceSeconds)presented=metadata;
+      else callback=video.requestVideoFrameCallback(onFrame);
+      complete();
+    };
+    video.pause();video.addEventListener('seeked',onSeeked);
+    callback=video.requestVideoFrameCallback(onFrame);video.currentTime=time;
+  }),time);
+}
+
 async function filmState(page){
   return page.locator('#river-film').evaluate(video=>({time:video.currentTime,paused:video.paused,source:new URL(video.currentSrc).pathname,width:video.videoWidth,height:video.videoHeight,volume:video.volume,muted:video.muted,captions:video.textTracks[0]?.mode,stage:document.querySelector('.film-stage').dataset.videoState}));
 }

@@ -7,7 +7,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {chromium,webkit} from '../.tools/browser/node_modules/playwright/index.mjs';
-import {checkQualityPlayback,checkListeningPlayback} from './river_media_checks.mjs';
+import {checkQualityPlayback,checkListeningPlayback,seekPresentedFrame} from './river_media_checks.mjs';
 
 const args=process.argv.slice(2);
 function argument(name,fallback=null){const at=args.indexOf(name);return at<0?fallback:args[at+1];}
@@ -71,18 +71,15 @@ async function film(selector,button,seconds,duration){
   assert.ok(Math.abs(state.duration-duration)<.06);assert.equal(state.height,1080);return state;
 }
 async function seekFrame(seconds){
-  await page.locator('#river-film').evaluate((video,time)=>new Promise((resolve,reject)=>{
-    const timer=setTimeout(()=>reject(new Error('Seek did not complete')),15000);
-    video.addEventListener('seeked',()=>{clearTimeout(timer);requestAnimationFrame(()=>requestAnimationFrame(resolve));},{once:true});
-    video.pause();video.currentTime=time;
-  }),seconds);
-  return page.locator('#river-film').evaluate(video=>{
+  const presentation=await seekPresentedFrame(page,seconds);
+  const frame=await page.locator('#river-film').evaluate(video=>{
     const canvas=document.createElement('canvas');canvas.width=32;canvas.height=18;
     const context=canvas.getContext('2d');context.drawImage(video,0,0,32,18);
     const data=context.getImageData(0,0,32,18).data;let maximum=0,total=0;
     for(let i=0;i<data.length;i+=4)for(let c=0;c<3;c++){maximum=Math.max(maximum,data[i+c]);total+=data[i+c];}
     return {time:video.currentTime,maximumRgb:maximum,meanRgb:total/(32*18*3)};
   });
+  return {...frame,presentation};
 }
 async function download(button,name){
   const [item]=await Promise.all([page.waitForEvent('download'),page.locator(button).click()]);
