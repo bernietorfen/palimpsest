@@ -29,7 +29,7 @@ export OPENBLAS_NUM_THREADS=2
 python -m pytest studio/tests/test_relational_clock.py \
   studio/tests/test_time_ambiguity.py studio/tests/test_operational_time.py \
   studio/tests/test_clock_environment.py \
-  studio/tests/test_river_camera.py -q
+  studio/tests/test_river_camera.py studio/tests/test_river_pickups.py -q
 ```
 
 The renderer and encoded film are not expected to be byte-identical across GPU,
@@ -41,6 +41,18 @@ production; numerical checks use the stated tolerances.
 Read each protocol before interpreting its results. In a fresh workspace, these
 commands generate new records at the canonical paths. They do not replace
 verification of the published files.
+
+The release's [complete finite-time study archive](https://github.com/bernietorfen/palimpsest/releases/download/a-river-twice-1/palimpsest-finite-time-studies-001.tar.gz)
+retains the raw arrays, failed operational run, frozen producing sources,
+tests, protocols and independent reviews. The unchanged result reports and
+review JSON files are also retained under `records/river/` in the source
+repository, separate from fresh computation outputs. To restore the complete
+archive, create an empty `artifacts/` directory in the project and extract the
+archive into it. Its `studies/` and `reviews/` members then occupy the canonical
+paths used below. Those restored study directories already exist: skip their generation
+commands below rather than trying to write over them. To recompute all
+studies, use a separate fresh workspace. A new environment-study run can use
+restored prerequisite records and its own fresh output directory.
 
 ```sh
 python -m studio.relational_clock --output artifacts/studies/relational-clock-001
@@ -86,17 +98,28 @@ The output retains the original score, role stems, float mix and a common-gain
 spans 119.6–122.2 seconds; the source role stays absent after 118 seconds.
 No limiter or compressor supplies the final gain.
 
+The exhibition's listening pair uses two short windows of that same master,
+keeping its common gain and stereo. Generate them with the explicit source
+receipt; the output records the boundary fades, codec checks and public hashes:
+
+```sh
+python -m studio.river_listening_pair \
+  --master artwork/river-audio-new/river-full.wav \
+  --receipt artwork/river-audio-new/manifest.json \
+  --output artwork/river-listening-pair-new
+```
+
 ## Film
 
-Run the following with Blender 4.5.1 on the rendering host. This is the full
-production command, so it entails thousands of GPU-rendered frames.
+Run the following with Blender 4.5.1 on the rendering host to render the
+complete camera edition. It entails thousands of GPU-rendered frames.
 
 ```sh
 blender -b -t 6 --python-exit-code 1 --python studio/river_sequence.py -- \
   --output artwork/river-master-new --start 0 --duration 240 \
   --fps 24 --width 3840 --height 2160 --samples 24 --detail-sampling \
   --ten-bit --frame-format tiff --full-frame --crf 16 \
-  --encode-preset fast --encode-threads 8 --segmented --titles
+  --encode-preset fast --encode-threads 8 --segmented --titles --camera-revision
 ```
 
 The frame sample limits are 24 for the broader views, 32 for declared intimate
@@ -106,6 +129,16 @@ reference selection and sample limit. The renderer streams one temporary
 16-bit image and keeps sparse checkpoints instead of thousands of previews.
 Closed-GOP twelve-second segments preserve finished sections during production;
 the final silent film concatenates those encoded segments without re-encoding.
+
+The camera revision follows connecting fibres during three passages between
+136 and 180 seconds. Every other camera interval, the geometry, phase time,
+lighting and music retain their original definitions. The production uses a
+complete original render plus replacement sections covering 132–180 seconds;
+the surrounding unchanged seconds align the replacement to twelve-second
+section boundaries. `river_picture_assembly.py` checks both renders and their
+absolute model/light records before joining the selected sections. Rendering
+the complete edition with `--camera-revision` applies the same camera choices
+directly. The published receipts identify the actual production inputs.
 
 The isolated reference geometry returns at film times 0, 104 and 208 seconds.
 The controlled comparison uses equal camera and light settings and separately
@@ -118,6 +151,7 @@ no title overlay.
 
 The delivery builder copies the 4K picture into a screening MP4, adds the
 stereo soundtrack, and creates a 1080p H.264 viewing edition, poster and captions.
+The optional compact edition supplies 720p playback for slower connections.
 Pass the exact rendered and synthesized inputs, with their receipts:
 
 ```sh
@@ -127,18 +161,80 @@ python -m studio.river_delivery \
   --render-receipt artwork/river-master-new/render.json \
   --audio-receipt artwork/river-audio-new/manifest.json \
   --captions research/RIVER-CAPTIONS.vtt \
-  --output artwork/river-delivery-new --edition final
+  --output artwork/river-delivery-new --edition final --crf 20 --compact
 ```
 
 The builder checks the stream durations, audio format, complete viewing decode
-and encoded silence. `river_film_review.py` provides a compact all-frame image
-review with declared dark intervals. Browser checks then exercise actual media
+and encoded silence. Independently verify the finished delivery:
+
+```sh
+python -m studio.verify_river_delivery \
+  --delivery artwork/river-delivery-new \
+  --audio artwork/river-audio-new/river-full.wav \
+  --output artifacts/reviews/river-delivery-new.json --compact
+```
+
+This checks all 5,760 decoded frames in each edition, their 24-fps timestamps
+and twelve-second joins, retained AAC packets, source-aligned audio and
+caption timing. `river_film_review.py` provides a compact all-frame image
+review with declared dark intervals. Browser checks exercise actual media
 playback, seeking, native captions, fullscreen, recovery and the observer.
 Signal and playback checks are not perceptual listening tests.
 
 `river_notebook.py` builds the illustrated companion from explicitly supplied
-plates and scientific records. Supply `--wide`, `--macro`, the controlled return
-pair and the actual media receipts. `--artwork-status final` is appropriate only
-for accepted final artwork. The package retains the document source, font
-licenses, inputs, layout checks and dependency identities. The public release
-manifest identifies the actual finished files and their SHA-256 digests.
+plates and admitted scientific records. Generate the controlled reference
+and whole views with the same completed geometry. This produces seven 4K
+stills, then checks that the camera agrees within each comparison, that the
+reference returns within the declared raster tolerance, and that the wider
+views differ. These controlled views have their own fixed camera and light;
+they are not extracted frames from the moving film.
+
+```sh
+blender -b -t 6 --python-exit-code 1 --python studio/river_proofs.py -- \
+  --output artwork/river-matched-new --matched --camera-revision \
+  --width 3840 --height 2160 --samples 64
+python -m studio.river_match_check \
+  --proof artwork/river-matched-new --output artwork/river-matched-check-new
+```
+
+For the cover, extract the wide view at 03:08 from the completed film. The
+comparison inside the book uses the full, equally sized reference images
+at 00:00 and 01:44. No separate crop is applied to either comparison image.
+Inspect these supplied plates before admitting a final book.
+
+```sh
+mkdir artwork/river-book-plates-new
+ffmpeg -hide_banner -loglevel error -nostdin -n -ss 188 \
+  -i artwork/river-master-new/river-silent-10bit.mp4 \
+  -frames:v 1 artwork/river-book-plates-new/wide.png
+```
+
+The first three study paths below match the canonical prerequisite records.
+The environment-study and review overrides point to the new outputs in the
+scientific example above; the notebook's production defaults are different.
+
+```sh
+python -m studio.river_notebook \
+  --wide artwork/river-book-plates-new/wide.png \
+  --macro artwork/river-matched-new/00-local-000.000.png \
+  --return-before artwork/river-matched-new/00-local-000.000.png \
+  --return-after artwork/river-matched-new/01-local-104.000.png \
+  --visual-receipt artwork/river-matched-check-new/comparison.json \
+  --film-receipt artifacts/reviews/river-delivery-new.json \
+  --audio-receipt artwork/river-audio-new/manifest.json \
+  --clock-study artifacts/studies/relational-clock-001 \
+  --time-study artifacts/studies/time-ambiguity-001 \
+  --operational-study artifacts/studies/operational-time-001/run-002 \
+  --environment-study artifacts/studies/clock-environment-new \
+  --environment-review artifacts/reviews/clock-environment-new.json \
+  --artwork-status final --output artwork/river-notebook-new
+```
+
+Use `--artwork-status draft` for unfinished plates. The final setting is
+appropriate only for accepted artwork and supplied receipts; it does not
+assert a perceptual listening result. The package retains document source,
+inputs, layout checks and dependency identities. It copies the installed
+DejaVu and Liberation license texts into its `licenses/` directory, covered
+by the package manifest. These are separate source-package files, not license
+attachments embedded inside the PDF. The public release manifest identifies
+the actual finished files and their SHA-256 digests.

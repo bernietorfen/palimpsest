@@ -12,6 +12,7 @@ from studio.river_blender import build_scene, set_camera
 from studio.river_sequence import frame_state, source_snapshot
 from studio.river_geometry import validate_embedding
 from studio.river_cinematography import SHOTS, manifest
+from studio.river_camera_pickups import pickup_manifest
 
 
 def main(args):
@@ -22,7 +23,9 @@ def main(args):
     own=Path(__file__).read_bytes()
     (folder/'source/river_proofs.py').write_bytes(own)
     hashes['river_proofs.py']=hashlib.sha256(own).hexdigest()
-    (folder/'camera-score.json').write_text(json.dumps(manifest(),indent=2)+'\n')
+    camera_score=manifest()
+    if args.camera_revision: camera_score['revision']=pickup_manifest()
+    (folder/'camera-score.json').write_text(json.dumps(camera_score,indent=2)+'\n')
     args.shape,args.shot,args.group,args.choreography,args.time='weave','wide',None,False,0.
     args.ten_bit=False
     scene,camera,dynamic,fibres=build_scene(args)
@@ -30,7 +33,9 @@ def main(args):
     scene.cycles.use_animated_seed=False
     scene.render.image_settings.compression=15
     lights=[(obj,obj.data.energy) for obj in bpy.data.objects if obj.type=='LIGHT']
-    if args.matched:
+    if args.times:
+        cases=[('shot',float(value)) for value in args.times.split(',')]
+    elif args.matched:
         cases=[('local',t) for t in (0.,104.,208.)]+[('wide',t) for t in (0.,104.,208.)]+[('local',120.)]
     else:
         cases=[('shot',(shot.start+shot.end)/2) for shot in SHOTS]+[('shot',0.),('shot',104.),('shot',208.)]
@@ -72,6 +77,8 @@ if __name__=='__main__':
     p=argparse.ArgumentParser()
     p.add_argument('--output',required=True)
     p.add_argument('--matched',action='store_true')
+    p.add_argument('--times',help='Comma-separated film times for a bounded review')
+    p.add_argument('--camera-revision',action='store_true')
     p.add_argument('--width',type=int,default=1280)
     p.add_argument('--height',type=int,default=720)
     p.add_argument('--samples',type=int,default=48)

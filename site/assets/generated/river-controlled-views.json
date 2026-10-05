@@ -1,0 +1,95 @@
+{
+  "format": "palimpsest-controlled-views-v1",
+  "files": [
+    {
+      "name": "river-local-000.jpg",
+      "bytes": 120410,
+      "sha256": "c674e824a9ba6e9ff88c055260f85cb34e1f96ca56c466fa61e79197baf989e5",
+      "view": "local",
+      "film_seconds": 0,
+      "source": {
+        "path": "artwork/river-matched-006/00-local-000.000.png",
+        "bytes": 751993,
+        "sha256": "fc7ffab9b86012d721d4ee2d92d825b1c5e0dc2df4c5e9e5c5683a074d3bc5aa"
+      }
+    },
+    {
+      "name": "river-local-104.jpg",
+      "bytes": 120459,
+      "sha256": "f0337b2ea03c6e8f0140bc085b409cbd673425caa7c4df19f8fe2b0d6b7e635f",
+      "view": "local",
+      "film_seconds": 104,
+      "source": {
+        "path": "artwork/river-matched-006/01-local-104.000.png",
+        "bytes": 751924,
+        "sha256": "1e5bf263de442e018fba6f2a644c5cad4eacb9cabe7f1c7f929d3e16110a4b31"
+      }
+    },
+    {
+      "name": "river-local-208.jpg",
+      "bytes": 120463,
+      "sha256": "ce1e9630adaffabd6f0cdea3295b8cbd716c8676ae9d3756fb399e78a567a7b2",
+      "view": "local",
+      "film_seconds": 208,
+      "source": {
+        "path": "artwork/river-matched-006/02-local-208.000.png",
+        "bytes": 751784,
+        "sha256": "e9ed4f14226b998eb5ce4300a086408539b04f0784c720646c7a2cf5532c7e13"
+      }
+    },
+    {
+      "name": "river-wide-000.jpg",
+      "bytes": 85944,
+      "sha256": "f26b614060a7ba90903ec47f071b47a81ad4d9820f64e2306630235ab2b985ad",
+      "view": "wide",
+      "film_seconds": 0,
+      "source": {
+        "path": "artwork/river-matched-006/03-wide-000.000.png",
+        "bytes": 625236,
+        "sha256": "9b6c905b5ab2fba51b1b6d476a4109f1fae3c137a0a4b131547a03e7da492c5c"
+      }
+    },
+    {
+      "name": "river-wide-104.jpg",
+      "bytes": 107569,
+      "sha256": "fc3ff95787ab5eff1b648e8c31b430b0cf24186b658978393e08798b195f0e93",
+      "view": "wide",
+      "film_seconds": 104,
+      "source": {
+        "path": "artwork/river-matched-006/04-wide-104.000.png",
+        "bytes": 722580,
+        "sha256": "6d763b8ecf92bbca333f8c190860b26379b870bf4e42df4e717ba8d3538cf243"
+      }
+    },
+    {
+      "name": "river-wide-208.jpg",
+      "bytes": 106335,
+      "sha256": "dfaa3bebf90810d4246f24c6baf35cf4b553c698f504da2c38b407ef832d8a57",
+      "view": "wide",
+      "film_seconds": 208,
+      "source": {
+        "path": "artwork/river-matched-006/05-wide-208.000.png",
+        "bytes": 721319,
+        "sha256": "a8d7e4926383282fc9ee522a43c63992d4d669a781225bc466fa81f5c7d2814b"
+      }
+    }
+  ],
+  "dimensions": [
+    960,
+    540
+  ],
+  "derivation": {
+    "resize": "Pillow LANCZOS, 1280x720 to 960x540",
+    "encoding": "JPEG quality 91, RGB, no chroma subsampling, optimize true",
+    "build_script_sha256": "bc6dbe6cc9406c4140538c41054a903bf36c51c3c266413cdb21b9dd20b57ba6"
+  },
+  "source_proof": {
+    "path": "artwork/river-matched-006/proof.json",
+    "sha256": "a8bb157ba15b0280e6ba4e63db392d76fd9bd0b4d35ff39e26cda81531f9cc0e"
+  },
+  "comparison_receipt": {
+    "path": "artwork/river-matched-006-check/comparison.json",
+    "sha256": "bec4f3f962ec51e71109e3c83f23b958c8c56d2105ac555308a79a72228d3777"
+  },
+  "scope": "Controlled renders of the authored film geometry. Each local pair isolates the same reference family with a matched camera and light; each wide pair includes the full embedding with a matched camera and canonical light. These are not moving-film frame grabs. Pixel or image differences do not measure full-state distance or imply a physical interaction."
+}

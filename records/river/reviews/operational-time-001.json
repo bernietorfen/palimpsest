@@ -1,0 +1,26 @@
+{
+  "scope": "Independent decimal residuals, integer enclosures, stable variance and saved-record identity checks; no repeat search.",
+  "n": 4109,
+  "Q": 128,
+  "distance": 0.017388884873856536,
+  "success": 0.5086944424369283,
+  "certificate": [
+    {
+      "radicand": 2,
+      "integer": 5811,
+      "squared_enclosure_passed": true
+    },
+    {
+      "radicand": 3,
+      "integer": 7117,
+      "squared_enclosure_passed": true
+    },
+    {
+      "radicand": 5,
+      "integer": 9188,
+      "squared_enclosure_passed": true
+    }
+  ],
+  "saved_checks": 169,
+  "report_sha256": "df9c3ce82d6bdfc4dd61b35f3de6638cf18b495541bbfd035f6932831157f903"
+}

@@ -1,0 +1,1678 @@
+{
+  "schema": "operational-time-1",
+  "started_utc": "2026-10-04T19:17:04.184573+00:00",
+  "source_sha256": {
+    "studio/relational_clock.py": "328452cd7c1ee56a5747e547bd3034c7415fd73886994f71a4c27c75caf7b7f4",
+    "studio/operational_time.py": "92f700a6c287ddd5553c3c4210789b2e048f13a87d046296a2f8d537ad032803",
+    "studio/tests/test_operational_time.py": "07b526e31b595daaa14a56e5193090112c936e6ea06bd0d20713be929e204302",
+    "research/OPERATIONAL-TIME-PROPOSAL.md": "eed319fa322d61b2c2661d0471733fa89ab6ae626ef053cfa26ecf9a67306c60"
+  },
+  "q": 128,
+  "target_D": 0.05,
+  "scope": "known snapshot preparations; equal priors; one copy; no external cycle count",
+  "versions": {
+    "python": "3.12.3",
+    "numpy": "2.5.3",
+    "mpmath": "1.3.0"
+  },
+  "checks": [
+    {
+      "name": "exact_integer_collision_certificate",
+      "passed": true
+    },
+    {
+      "name": "beyond_previous_grid_within_declared_endpoint",
+      "passed": true,
+      "n": 4109,
+      "minimum_exclusive": 4096,
+      "maximum": 2097152
+    },
+    {
+      "name": "search_time",
+      "passed": true,
+      "value": 0.06980946194380522,
+      "maximum": 120.0
+    },
+    {
+      "name": "exact_analytic_D_bound_below_one_twentieth",
+      "passed": true,
+      "integer_left": 580800,
+      "integer_right": 802816
+    },
+    {
+      "name": "first_return_80_digit_original_reduced_state_agreement",
+      "passed": true,
+      "value": "9.6521940069778632925151540202307486718948818674220201992501079964236329406561807e-81",
+      "maximum": "1e-60"
+    },
+    {
+      "name": "first_return_80_digit_distance_agreement",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 1e-60
+    },
+    {
+      "name": "first_return_energy_restricted_effect_in_algebra",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_full_success_error",
+      "passed": true,
+      "value": 2.220446049250313e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_full_positivity_violation",
+      "passed": true,
+      "value": 1.438009412995354e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_full_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_full_idempotence_error",
+      "passed": true,
+      "value": 2.7809732887839817e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_full_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_restricted_success_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_restricted_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_restricted_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_restricted_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_restricted_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_independent_pure_distance",
+      "passed": true,
+      "value": 1.1102230246251565e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_restricted_effect_in_algebra",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_full_success_error",
+      "passed": true,
+      "value": 2.220446049250313e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_full_positivity_violation",
+      "passed": true,
+      "value": 2.220446049250313e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_full_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_full_idempotence_error",
+      "passed": true,
+      "value": 1.1102230246251565e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_full_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_restricted_success_error",
+      "passed": true,
+      "value": 2.220446049250313e-15,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_restricted_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_restricted_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_restricted_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_restricted_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_independent_pure_distance",
+      "passed": true,
+      "value": 5.551115123125783e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_full_basis_distance",
+      "passed": true,
+      "value": 4.440892098500626e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_full_basis_success",
+      "passed": true,
+      "value": 6.661338147750939e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_restricted_basis_distance",
+      "passed": true,
+      "value": 6.202075527429429e-15,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_restricted_basis_success",
+      "passed": true,
+      "value": 8.881784197001252e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_state_array_unchanged",
+      "passed": true
+    },
+    {
+      "name": "first_return_energy_restricted_state_identity",
+      "passed": true,
+      "value": 1.3877787807814457e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_energy_restricted_chance_success",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_restricted_state_identity",
+      "passed": true,
+      "value": 6.942015703916954e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_fourier_restricted_chance_success",
+      "passed": true,
+      "value": 8.881784197001252e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "first_return_globally_far",
+      "passed": true,
+      "value": 0.9912216532462547,
+      "minimum_exclusive": 0.9
+    },
+    {
+      "name": "constructed_return_80_digit_original_reduced_state_agreement",
+      "passed": true,
+      "value": "4.336665731416613203659067634440391556497092929863543466347754345509186163061698e-77",
+      "maximum": "1e-60"
+    },
+    {
+      "name": "constructed_return_80_digit_distance_agreement",
+      "passed": true,
+      "value": 2.2339741050919794e-77,
+      "maximum": 1e-60
+    },
+    {
+      "name": "constructed_return_energy_restricted_effect_in_algebra",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_full_success_error",
+      "passed": true,
+      "value": 1.1102230246251565e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_full_positivity_violation",
+      "passed": true,
+      "value": 1.4418139226702083e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_full_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_full_idempotence_error",
+      "passed": true,
+      "value": 2.0816681711721685e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_full_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_restricted_success_error",
+      "passed": true,
+      "value": 1.1102230246251565e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_restricted_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_restricted_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_restricted_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_restricted_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_independent_pure_distance",
+      "passed": true,
+      "value": 1.0408340855860843e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_restricted_effect_in_algebra",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_full_success_error",
+      "passed": true,
+      "value": 1.1102230246251565e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_full_positivity_violation",
+      "passed": true,
+      "value": 1.2847886581614709e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_full_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_full_idempotence_error",
+      "passed": true,
+      "value": 1.7010907505015192e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_full_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_restricted_success_error",
+      "passed": true,
+      "value": 3.885780586188048e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_restricted_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_restricted_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_restricted_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_restricted_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_independent_pure_distance",
+      "passed": true,
+      "value": 1.734723475976807e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_full_basis_distance",
+      "passed": true,
+      "value": 6.938893903907228e-18,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_full_basis_success",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_restricted_basis_distance",
+      "passed": true,
+      "value": 1.7926745766240722e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_restricted_basis_success",
+      "passed": true,
+      "value": 2.7755575615628914e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_state_array_unchanged",
+      "passed": true
+    },
+    {
+      "name": "constructed_return_energy_restricted_state_identity",
+      "passed": true,
+      "value": 1.3877787807814457e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_energy_restricted_chance_success",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_restricted_state_identity",
+      "passed": true,
+      "value": 1.1131968918979275e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_fourier_restricted_chance_success",
+      "passed": true,
+      "value": 2.7755575615628914e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "constructed_return_is_near_and_nonzero",
+      "passed": true,
+      "value": 0.01738888487385654,
+      "minimum_exclusive": 0,
+      "maximum": 0.05
+    },
+    {
+      "name": "constructed_return_optimal_success_at_most_52_5_percent",
+      "passed": true,
+      "value": 0.5086944424369283,
+      "maximum": 0.525
+    },
+    {
+      "name": "independent_residual_values_obey_exact_certificate",
+      "passed": true,
+      "values": [
+        0.003527791047555526,
+        0.0032316994832008957,
+        0.0033195466358625454
+      ],
+      "maximum_exclusive": 0.0078125
+    },
+    {
+      "name": "identical_energy_restricted_effect_in_algebra",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_full_success_error",
+      "passed": true,
+      "value": 5.551115123125783e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_full_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_full_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_full_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_full_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_restricted_success_error",
+      "passed": true,
+      "value": 5.551115123125783e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_restricted_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_restricted_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_restricted_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_restricted_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_energy_independent_pure_distance",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_restricted_effect_in_algebra",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_full_success_error",
+      "passed": true,
+      "value": 1.1102230246251565e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_full_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_full_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_full_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_full_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_restricted_success_error",
+      "passed": true,
+      "value": 3.3306690738754696e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_restricted_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_restricted_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_restricted_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_restricted_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_fourier_independent_pure_distance",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_full_basis_distance",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_full_basis_success",
+      "passed": true,
+      "value": 5.551115123125783e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_restricted_basis_distance",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_restricted_basis_success",
+      "passed": true,
+      "value": 2.7755575615628914e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "identical_state_array_unchanged",
+      "passed": true
+    },
+    {
+      "name": "identical_control_success_half",
+      "passed": true,
+      "value": 5.551115123125783e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_restricted_effect_in_algebra",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_full_success_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_full_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_full_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_full_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_full_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_restricted_success_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_restricted_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_restricted_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_restricted_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_restricted_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_energy_independent_pure_distance",
+      "passed": true,
+      "value": 2.3498143292529584e-81,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_restricted_effect_in_algebra",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_full_success_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_full_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_full_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_full_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_full_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_restricted_success_error",
+      "passed": true,
+      "value": 5.551115123125783e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_restricted_positivity_violation",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_restricted_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_restricted_idempotence_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_restricted_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_fourier_independent_pure_distance",
+      "passed": true,
+      "value": 4.48660926174208e-97,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_full_basis_distance",
+      "passed": true,
+      "value": 2.349814329252958e-81,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_full_basis_success",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_restricted_basis_distance",
+      "passed": true,
+      "value": 2.1084395886461046e-81,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_restricted_basis_success",
+      "passed": true,
+      "value": 5.551115123125783e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "commensurate_state_array_unchanged",
+      "passed": true
+    },
+    {
+      "name": "commensurate_control_success_half",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_restricted_effect_in_algebra",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_full_success_error",
+      "passed": true,
+      "value": 2.220446049250313e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_full_positivity_violation",
+      "passed": true,
+      "value": 4.440892098500626e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_full_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_full_idempotence_error",
+      "passed": true,
+      "value": 2.0978681678024108e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_full_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_restricted_success_error",
+      "passed": true,
+      "value": 1.1102230246251565e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_restricted_positivity_violation",
+      "passed": true,
+      "value": 1.3322676295501878e-15,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_restricted_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_restricted_idempotence_error",
+      "passed": true,
+      "value": 2.0026854743534788e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_energy_restricted_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_restricted_effect_in_algebra",
+      "passed": true,
+      "value": 1.8226355779165197e-15,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_full_success_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_full_positivity_violation",
+      "passed": true,
+      "value": 1.2565389975417464e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_full_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_full_idempotence_error",
+      "passed": true,
+      "value": 6.206335383118183e-17,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_full_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_restricted_success_error",
+      "passed": true,
+      "value": 1.1102230246251565e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_restricted_positivity_violation",
+      "passed": true,
+      "value": 3.6577136326841607e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_restricted_completeness_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_restricted_idempotence_error",
+      "passed": true,
+      "value": 5.551115123125783e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_fourier_restricted_hermiticity_error",
+      "passed": true,
+      "value": 0.0,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_full_basis_distance",
+      "passed": true,
+      "value": 2.220446049250313e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_full_basis_success",
+      "passed": true,
+      "value": 1.1102230246251565e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_restricted_basis_distance",
+      "passed": true,
+      "value": 4.996003610813204e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_restricted_basis_success",
+      "passed": true,
+      "value": 4.440892098500626e-16,
+      "maximum": 2e-12
+    },
+    {
+      "name": "local_change_state_array_unchanged",
+      "passed": true
+    },
+    {
+      "name": "restricted_algebra_sees_local_change",
+      "passed": true,
+      "value": 0.7198023527956946,
+      "minimum_exclusive": 0.501
+    },
+    {
+      "name": "total_calculation_time",
+      "passed": true,
+      "value": 0.09018436772748828,
+      "maximum": 300.0
+    },
+    {
+      "name": "peak_process_memory",
+      "passed": true,
+      "value": 44900352.0,
+      "maximum": 268435456
+    },
+    {
+      "name": "retained_record_size",
+      "value": 303112,
+      "maximum": 1048576,
+      "passed": true
+    }
+  ],
+  "cases": {
+    "first_return": {
+      "energy": {
+        "full": {
+          "distance": 0.9912216532462548,
+          "success": 0.9956108266231272,
+          "optimal_success": 0.9956108266231274,
+          "success_error": 2.220446049250313e-16,
+          "positivity_violation": 1.438009412995354e-16,
+          "completeness_error": 0.0,
+          "idempotence_error": 2.7809732887839817e-17,
+          "hermiticity_error": 0.0
+        },
+        "restricted": {
+          "distance": 1.1102230246251565e-16,
+          "success": 0.5,
+          "optimal_success": 0.5,
+          "success_error": 0.0,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "visible_state_difference": 1.3877787807814457e-17,
+        "restricted_algebra_error": 0.0
+      },
+      "fourier": {
+        "full": {
+          "distance": 0.9912216532462552,
+          "success": 0.9956108266231278,
+          "optimal_success": 0.9956108266231276,
+          "success_error": 2.220446049250313e-16,
+          "positivity_violation": 2.220446049250313e-16,
+          "completeness_error": 0.0,
+          "idempotence_error": 1.1102230246251565e-16,
+          "hermiticity_error": 0.0
+        },
+        "restricted": {
+          "distance": 6.3130978298919446e-15,
+          "success": 0.5000000000000009,
+          "optimal_success": 0.5000000000000031,
+          "success_error": 2.220446049250313e-15,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "visible_state_difference": 6.942015703916954e-16,
+        "restricted_algebra_error": 0.0
+      }
+    },
+    "constructed_return": {
+      "energy": {
+        "full": {
+          "distance": 0.01738888487385655,
+          "success": 0.5086944424369282,
+          "optimal_success": 0.5086944424369283,
+          "success_error": 1.1102230246251565e-16,
+          "positivity_violation": 1.4418139226702083e-16,
+          "completeness_error": 0.0,
+          "idempotence_error": 2.0816681711721685e-17,
+          "hermiticity_error": 0.0
+        },
+        "restricted": {
+          "distance": 1.387778780781446e-16,
+          "success": 0.5,
+          "optimal_success": 0.5000000000000001,
+          "success_error": 1.1102230246251565e-16,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "visible_state_difference": 1.3877787807814457e-17,
+        "restricted_algebra_error": 0.0
+      },
+      "fourier": {
+        "full": {
+          "distance": 0.017388884873856557,
+          "success": 0.5086944424369282,
+          "optimal_success": 0.5086944424369283,
+          "success_error": 1.1102230246251565e-16,
+          "positivity_violation": 1.2847886581614709e-16,
+          "completeness_error": 0.0,
+          "idempotence_error": 1.7010907505015192e-16,
+          "hermiticity_error": 0.0
+        },
+        "restricted": {
+          "distance": 3.180453357405518e-16,
+          "success": 0.4999999999999997,
+          "optimal_success": 0.5000000000000001,
+          "success_error": 3.885780586188048e-16,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "visible_state_difference": 1.1131968918979275e-16,
+        "restricted_algebra_error": 0.0
+      }
+    },
+    "identical": {
+      "energy": {
+        "full": {
+          "distance": 0.0,
+          "success": 0.49999999999999994,
+          "optimal_success": 0.5,
+          "success_error": 5.551115123125783e-17,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "restricted": {
+          "distance": 0.0,
+          "success": 0.49999999999999994,
+          "optimal_success": 0.5,
+          "success_error": 5.551115123125783e-17,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "visible_state_difference": 0.0,
+        "restricted_algebra_error": 0.0
+      },
+      "fourier": {
+        "full": {
+          "distance": 0.0,
+          "success": 0.4999999999999999,
+          "optimal_success": 0.5,
+          "success_error": 1.1102230246251565e-16,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "restricted": {
+          "distance": 0.0,
+          "success": 0.49999999999999967,
+          "optimal_success": 0.5,
+          "success_error": 3.3306690738754696e-16,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "visible_state_difference": 0.0,
+        "restricted_algebra_error": 0.0
+      }
+    },
+    "commensurate": {
+      "energy": {
+        "full": {
+          "distance": 2.3498143292529584e-81,
+          "success": 0.5,
+          "optimal_success": 0.5,
+          "success_error": 0.0,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "restricted": {
+          "distance": 2.1084395886461046e-81,
+          "success": 0.5,
+          "optimal_success": 0.5,
+          "success_error": 0.0,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "visible_state_difference": 1.5726047604039022e-81,
+        "restricted_algebra_error": 0.0
+      },
+      "fourier": {
+        "full": {
+          "distance": 4.48660926174208e-97,
+          "success": 0.5,
+          "optimal_success": 0.5,
+          "success_error": 0.0,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "restricted": {
+          "distance": 0.0,
+          "success": 0.49999999999999994,
+          "optimal_success": 0.5,
+          "success_error": 5.551115123125783e-17,
+          "positivity_violation": 0.0,
+          "completeness_error": 0.0,
+          "idempotence_error": 0.0,
+          "hermiticity_error": 0.0
+        },
+        "visible_state_difference": 0.0,
+        "restricted_algebra_error": 0.0
+      }
+    },
+    "local_change": {
+      "energy": {
+        "full": {
+          "distance": 0.4639415515973795,
+          "success": 0.7319707757986895,
+          "optimal_success": 0.7319707757986897,
+          "success_error": 2.220446049250313e-16,
+          "positivity_violation": 4.440892098500626e-16,
+          "completeness_error": 0.0,
+          "idempotence_error": 2.0978681678024108e-17,
+          "hermiticity_error": 0.0
+        },
+        "restricted": {
+          "distance": 0.4396047055913891,
+          "success": 0.7198023527956946,
+          "optimal_success": 0.7198023527956945,
+          "success_error": 1.1102230246251565e-16,
+          "positivity_violation": 1.3322676295501878e-15,
+          "completeness_error": 0.0,
+          "idempotence_error": 2.0026854743534788e-16,
+          "hermiticity_error": 0.0
+        },
+        "visible_state_difference": 0.04026360545235569,
+        "restricted_algebra_error": 0.0
+      },
+      "fourier": {
+        "full": {
+          "distance": 0.46394155159737926,
+          "success": 0.7319707757986896,
+          "optimal_success": 0.7319707757986896,
+          "success_error": 0.0,
+          "positivity_violation": 1.2565389975417464e-16,
+          "completeness_error": 0.0,
+          "idempotence_error": 6.206335383118183e-17,
+          "hermiticity_error": 0.0
+        },
+        "restricted": {
+          "distance": 0.4396047055913886,
+          "success": 0.7198023527956942,
+          "optimal_success": 0.7198023527956943,
+          "success_error": 1.1102230246251565e-16,
+          "positivity_violation": 3.6577136326841607e-16,
+          "completeness_error": 0.0,
+          "idempotence_error": 5.551115123125783e-16,
+          "hermiticity_error": 0.0
+        },
+        "visible_state_difference": 0.1025403747994449,
+        "restricted_algebra_error": 1.8226355779165197e-15
+      }
+    }
+  },
+  "calculation_completed": true,
+  "witness": {
+    "q": 128,
+    "k": 4110,
+    "l": 1,
+    "n": 4109,
+    "roots": [
+      {
+        "index": 4110,
+        "radicand": 2,
+        "f": 5812,
+        "h": 743989
+      },
+      {
+        "index": 4110,
+        "radicand": 3,
+        "f": 7118,
+        "h": 911197
+      },
+      {
+        "index": 4110,
+        "radicand": 5,
+        "f": 9190,
+        "h": 1176350
+      },
+      {
+        "index": 1,
+        "radicand": 2,
+        "f": 1,
+        "h": 181
+      },
+      {
+        "index": 1,
+        "radicand": 3,
+        "f": 1,
+        "h": 221
+      },
+      {
+        "index": 1,
+        "radicand": 5,
+        "f": 2,
+        "h": 286
+      }
+    ],
+    "box_k": [
+      53,
+      93,
+      30
+    ],
+    "box_l": [
+      53,
+      93,
+      30
+    ],
+    "m": [
+      5811,
+      7117,
+      9188
+    ],
+    "candidate_count": 4111,
+    "search_wall_seconds": 0.06980946194380522,
+    "search_table_bytes": 8388608
+  },
+  "high_precision": {
+    "first_return": {
+      "n": 1,
+      "time": "6.283185307179586476925286766559005768394338798750211641949889184615632812572418",
+      "decimal_digits": 80,
+      "state_agreement_error": "9.6521940069778632925151540202307486718948818674220201992501079964236329406561807e-81",
+      "distance": "0.99122165324625470752741133655385684260984767710510048795688771860956740975290071",
+      "reduced_distance": "0.99122165324625470752741133655385684260984767710510048795688771860956740975290071",
+      "distance_agreement_error": "0.0",
+      "residuals": [
+        "0.41421356237309504880168872420969807856967187537694807317667973799073247846210704",
+        "0.73205080756887729352744634150587236694280525381038062805580697945193301690880004",
+        "0.2360679774997896964091736687312762354406183596115257242708972454105209256378049"
+      ],
+      "original_amplitudes": [
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "0.0"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "3.7889244064599029131040380429334734640453043367333796229716675800767867540516945e-82"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "7.577848812919805826208076085866946928090608673466759245943335160153573508103389e-82"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "-3.5421460891586451530242624667949510711324007082617004246696298382645675080326915e-82"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "1.5155697625839611652416152171733893856181217346933518491886670320307147016206778e-81"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "3.3853541340837868457856566810262738783494835402128737408442970478878861540446248e-81"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "-7.0842921783172903060485249335899021422648014165234008493392596765291350160653831e-82"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "1.1613551536680966499391889704938942785048816638671818067217040482042579508174086e-81"
+        ],
+        [
+          "-0.15171262115261852871603673685217237903317330331319057657550517345198723537808266",
+          "-0.090737426583533021020727444432437449095491835037257556722513005308343728683548765"
+        ],
+        [
+          "-0.15171262115261852871603673685217237903317330331319057657550517345198723537808266",
+          "-0.090737426583533021020727444432437449095491835037257556722513005308343728683548767"
+        ],
+        [
+          "-0.15171262115261852871603673685217237903317330331319057657550517345198723537808266",
+          "-0.090737426583533021020727444432437449095491835037257556722513005308343728683548769"
+        ],
+        [
+          "-0.15171262115261852871603673685217237903317330331319057657550517345198723537808266",
+          "-0.090737426583533021020727444432437449095491835037257556722513005308343728683548765"
+        ],
+        [
+          "-0.15171262115261852871603673685217237903317330331319057657550517345198723537808266",
+          "-0.090737426583533021020727444432437449095491835037257556722513005308343728683548767"
+        ],
+        [
+          "-0.15171262115261852871603673685217237903317330331319057657550517345198723537808266",
+          "-0.090737426583533021020727444432437449095491835037257556722513005308343728683548768"
+        ],
+        [
+          "-0.15171262115261852871603673685217237903317330331319057657550517345198723537808266",
+          "-0.09073742658353302102072744443243744909549183503725755672251300530834372868354877"
+        ],
+        [
+          "-0.15171262115261852871603673685217237903317330331319057657550517345198723537808266",
+          "-0.090737426583533021020727444432437449095491835037257556722513005308343728683548772"
+        ],
+        [
+          "-0.019894305258259921123706763454484585540799417920675672268901281597715430894762321",
+          "0.17565368375952487166523531504213278015691203590211263204506536955368848755550831"
+        ],
+        [
+          "-0.019894305258259921123706763454484585540799417920675672268901281597715430894762322",
+          "0.17565368375952487166523531504213278015691203590211263204506536955368848755550831"
+        ],
+        [
+          "-0.019894305258259921123706763454484585540799417920675672268901281597715430894762324",
+          "0.17565368375952487166523531504213278015691203590211263204506536955368848755550831"
+        ],
+        [
+          "-0.019894305258259921123706763454484585540799417920675672268901281597715430894762326",
+          "0.17565368375952487166523531504213278015691203590211263204506536955368848755550831"
+        ],
+        [
+          "-0.019894305258259921123706763454484585540799417920675672268901281597715430894762328",
+          "0.17565368375952487166523531504213278015691203590211263204506536955368848755550831"
+        ],
+        [
+          "-0.01989430525825992112370676345448458554079941792067567226890128159771543089476233",
+          "0.17565368375952487166523531504213278015691203590211263204506536955368848755550831"
+        ],
+        [
+          "-0.01989430525825992112370676345448458554079941792067567226890128159771543089476232",
+          "0.17565368375952487166523531504213278015691203590211263204506536955368848755550831"
+        ],
+        [
+          "-0.019894305258259921123706763454484585540799417920675672268901281597715430894762322",
+          "0.17565368375952487166523531504213278015691203590211263204506536955368848755550831"
+        ],
+        [
+          "0.015454830699377764202657410252235274202268144964160410050269990626154369318164981",
+          "-0.17609982455429525670781817386350419136591366911648893825181200130067119743154316"
+        ],
+        [
+          "0.01545483069937776420265741025223527420226814496416041005026999062615436931816498",
+          "-0.17609982455429525670781817386350419136591366911648893825181200130067119743154316"
+        ],
+        [
+          "0.015454830699377764202657410252235274202268144964160410050269990626154369318164981",
+          "-0.17609982455429525670781817386350419136591366911648893825181200130067119743154316"
+        ],
+        [
+          "0.015454830699377764202657410252235274202268144964160410050269990626154369318164977",
+          "-0.17609982455429525670781817386350419136591366911648893825181200130067119743154316"
+        ],
+        [
+          "0.015454830699377764202657410252235274202268144964160410050269990626154369318164979",
+          "-0.17609982455429525670781817386350419136591366911648893825181200130067119743154316"
+        ],
+        [
+          "0.015454830699377764202657410252235274202268144964160410050269990626154369318164981",
+          "-0.17609982455429525670781817386350419136591366911648893825181200130067119743154316"
+        ],
+        [
+          "0.015454830699377764202657410252235274202268144964160410050269990626154369318164971",
+          "-0.17609982455429525670781817386350419136591366911648893825181200130067119743154316"
+        ],
+        [
+          "0.015454830699377764202657410252235274202268144964160410050269990626154369318164973",
+          "-0.17609982455429525670781817386350419136591366911648893825181200130067119743154316"
+        ]
+      ],
+      "reduced_group_phases": [
+        [
+          "1.0",
+          "0.0"
+        ],
+        [
+          "-0.85821618566881769166189569256767389996692907821982734151817135047881958763712831",
+          "-0.51328839715706163520666694106036591658344988960943087656110007100127991413960551"
+        ],
+        [
+          "-0.11253918524088623906161024983246537461545584006637174897478540360847043598409855",
+          "0.99364728741405895959896654616387538435693015580093988956463382498290431469498286"
+        ],
+        [
+          "0.087425724716960399642569640120372597908520581905309154224971924214565278802935333",
+          "-0.9961710408648277200980861759836077429649203560950870878553821164009994098739728"
+        ]
+      ],
+      "variance_bound": "0.042510922599239480873298709163488024975407802689673607239919178173159137057648919",
+      "state_agreement_passed": true
+    },
+    "constructed_return": {
+      "n": 4109,
+      "time": "25817.608427200920833686003323790954702332338124064619636772094659585635226860066",
+      "decimal_digits": 80,
+      "state_agreement_error": "4.336665731416613203659067634440391556497092929863543466347754345509186163061698e-77",
+      "distance": "0.017388884873856537856400828965498654971541243746989951459538816933964286472943769",
+      "reduced_distance": "0.017388884873856537856400828965498654971541243746989951459538816933964286472921429",
+      "distance_agreement_error": "2.2339741050919793597021530646988925747572385509971865038267129675440494326337653e-77",
+      "residuals": [
+        "0.0035277910475555261389677776494048427817359238796326829770434039197540007978297198",
+        "-0.0032316994832008957229827523704442320132120931459993186891214320072335217406428631",
+        "0.0033195466358625452946048168140514255008396437592010291167813918304834457403231034"
+      ],
+      "original_amplitudes": [
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "0.0"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "3.1148511063566320887436005860810805642877543355430078932586523131062716292244638e-78"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "6.2297022127132641774872011721621611285755086710860157865173046262125432584489275e-78"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "3.2378599702925865119298219046873775415085617075470543051236914351672924730044786e-78"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "1.2459404425426528354974402344324322257151017342172031573034609252425086516897855e-77"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "2.1680948880560470198018982783961266972793472976797008840945527069682880560791231e-77"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "6.4757199405851730238596438093747550830171234150941086102473828703345849460089573e-78"
+        ],
+        [
+          "0.17677669529663688110021109052621225982120898442211850914708496724884155980776338",
+          "4.0124037790828353884108143663235156404078384246046963376767362704198468648577984e-77"
+        ],
+        [
+          "0.17673327001158769790389777531000280515668336222327779681218253807707828762366437",
+          "-0.0039180698068355692850343168099480532888818557711900898139678134343247022664867547"
+        ],
+        [
+          "0.17673327001158769790389777531000280515668336222327779681218253807707828762366431",
+          "-0.0039180698068355692850343168099480532888818557711900898139678134343247022664897458"
+        ],
+        [
+          "0.17673327001158769790389777531000280515668336222327779681218253807707828762366424",
+          "-0.0039180698068355692850343168099480532888818557711900898139678134343247022664927369"
+        ],
+        [
+          "0.17673327001158769790389777531000280515668336222327779681218253807707828762366444",
+          "-0.0039180698068355692850343168099480532888818557711900898139678134343247022664835176"
+        ],
+        [
+          "0.17673327001158769790389777531000280515668336222327779681218253807707828762366465",
+          "-0.0039180698068355692850343168099480532888818557711900898139678134343247022664742983"
+        ],
+        [
+          "0.17673327001158769790389777531000280515668336222327779681218253807707828762366431",
+          "-0.0039180698068355692850343168099480532888818557711900898139678134343247022664894998"
+        ],
+        [
+          "0.17673327001158769790389777531000280515668336222327779681218253807707828762366506",
+          "-0.0039180698068355692850343168099480532888818557711900898139678134343247022664558598"
+        ],
+        [
+          "0.17673327001158769790389777531000280515668336222327779681218253807707828762366472",
+          "-0.0039180698068355692850343168099480532888818557711900898139678134343247022664710612"
+        ],
+        [
+          "0.17674025333324555482168623444955537843217348775683891820432258885603410280053084",
+          "0.0035892689645920307273272046631928411836990362020552478115416018873011784110438243"
+        ],
+        [
+          "0.17674025333324555482168623444955537843217348775683891820432258885603410280053065",
+          "0.0035892689645920307273272046631928411836990362020552478115416018873011784110530439"
+        ],
+        [
+          "0.17674025333324555482168623444955537843217348775683891820432258885603410280053047",
+          "0.0035892689645920307273272046631928411836990362020552478115416018873011784110622636"
+        ],
+        [
+          "0.17674025333324555482168623444955537843217348775683891820432258885603410280053078",
+          "0.0035892689645920307273272046631928411836990362020552478115416018873011784110470615"
+        ],
+        [
+          "0.17674025333324555482168623444955537843217348775683891820432258885603410280053059",
+          "0.0035892689645920307273272046631928411836990362020552478115416018873011784110562811"
+        ],
+        [
+          "0.1767402533332455548216862344495553784321734877568389182043225888560341028005309",
+          "0.003589268964592030727327204663192841183699036202055247811541601887301178411041079"
+        ],
+        [
+          "0.17674025333324555482168623444955537843217348775683891820432258885603410280053021",
+          "0.0035892689645920307273272046631928411836990362020552478115416018873011784110747204"
+        ],
+        [
+          "0.17674025333324555482168623444955537843217348775683891820432258885603410280053052",
+          "0.0035892689645920307273272046631928411836990362020552478115416018873011784110595183"
+        ],
+        [
+          "0.1767382452778456789667190077744559203145697935664079727023104712752233357264046",
+          "-0.0036868219523133416401849085201029288952043154270644017211757980483376650611264829"
+        ],
+        [
+          "0.17673824527784567896671900777445592031456979356640797270231047127522333572640479",
+          "-0.0036868219523133416401849085201029288952043154270644017211757980483376650611172634"
+        ],
+        [
+          "0.17673824527784567896671900777445592031456979356640797270231047127522333572640448",
+          "-0.0036868219523133416401849085201029288952043154270644017211757980483376650611324653"
+        ],
+        [
+          "0.17673824527784567896671900777445592031456979356640797270231047127522333572640467",
+          "-0.0036868219523133416401849085201029288952043154270644017211757980483376650611232457"
+        ],
+        [
+          "0.17673824527784567896671900777445592031456979356640797270231047127522333572640435",
+          "-0.0036868219523133416401849085201029288952043154270644017211757980483376650611384477"
+        ],
+        [
+          "0.17673824527784567896671900777445592031456979356640797270231047127522333572640505",
+          "-0.0036868219523133416401849085201029288952043154270644017211757980483376650611048067"
+        ],
+        [
+          "0.17673824527784567896671900777445592031456979356640797270231047127522333572640372",
+          "-0.0036868219523133416401849085201029288952043154270644017211757980483376650611688515"
+        ],
+        [
+          "0.17673824527784567896671900777445592031456979356640797270231047127522333572640442",
+          "-0.0036868219523133416401849085201029288952043154270644017211757980483376650611352105"
+        ]
+      ],
+      "reduced_group_phases": [
+        [
+          "1.0",
+          "0.0"
+        ],
+        [
+          "0.99975434949173411011162619588678718025776836291437562230863419736154591425116046",
+          "-0.022163949836605579330703657213387453266472872488285115689143124297087413973694431"
+        ],
+        [
+          "0.99979385312452993019053297180193978114114593504279804526437121469925739764411024",
+          "0.020303971394923544524854829231743302634094041419259466968003698810466067261933397"
+        ],
+        [
+          "0.99978249384780792633957933097742566628984454131296051283950462510957511029784726",
+          "-0.020855814428065520149241221257929960159310125863898281769003545977037925753162201"
+        ]
+      ],
+      "variance_bound": "0.042510922599239480873298709163488024975407802689673607239919178173159137057648919",
+      "state_agreement_passed": true
+    }
+  },
+  "calculation_wall_seconds": 0.09018436772748828,
+  "calculation_cpu_seconds": 0.14426413999999999,
+  "peak_process_bytes": 44900352,
+  "record_sha256": "5038c3c748e72766efb4e078d4874eec88d4ea3567f004dcb9b8ce47ddc505fd",
+  "all_passed": true
+}

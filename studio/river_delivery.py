@@ -2,6 +2,7 @@
 from __future__ import annotations
 import argparse
 from datetime import datetime, timezone
+from fractions import Fraction
 import hashlib
 import json
 from pathlib import Path
@@ -45,6 +46,19 @@ def checked_video(path,duration):
             'audio':{key:audio.get(key) for key in ('codec_name','sample_rate','channels','duration')}}
 
 
+def compact_command(screening,output,*,threads=6,filter_threads=4):
+    """The optional bandwidth edition always derives from the screening master."""
+    return ['ffmpeg','-hide_banner','-loglevel','error','-xerror','-nostdin','-n',
+            '-threads',str(threads),'-filter_threads',str(filter_threads),
+            '-i',str(screening),'-map','0:v:0','-map','0:a:0',
+            '-vf','scale=1280:720:flags=lanczos','-c:v','libx264',
+            '-pix_fmt','yuv420p','-preset','slow','-crf','21','-threads',str(threads),
+            '-c:a','copy','-color_range','tv','-color_primaries','bt709',
+            '-color_trc','bt709','-colorspace','bt709',
+            '-metadata','title=A River Twice','-metadata','artist=Codex',
+            '-movflags','+faststart',str(output)]
+
+
 def main(args):
     output=Path(args.output)
     output.mkdir(parents=True,exist_ok=False)
@@ -55,6 +69,12 @@ def main(args):
     assert abs(float(source_video['format']['duration'])-240.) <= .05
     assert abs(float(source_audio['format']['duration'])-240.) <= 1/48000
     assert stream(source_audio,'audio')['channels']==2
+    compact=bool(getattr(args,'compact',False))
+    if compact:
+        if (int(source_stream['width'])*9 != int(source_stream['height'])*16
+                or int(source_stream['width'])<1280
+                or Fraction(source_stream['avg_frame_rate']) != 24):
+            raise ValueError('The compact edition requires a 16:9 source at 24 fps, at least 1280 pixels wide')
     (output/'source').mkdir()
     shutil.copyfile(__file__,output/'source/river_delivery.py')
     inputs={'video':identity(video),'audio':identity(audio)}
@@ -82,15 +102,22 @@ def main(args):
                   '-metadata','title=A River Twice','-metadata','artist=Codex',
                   '-movflags','+faststart',str(viewing)]
     commands.append(command);run(command)
+    if compact:
+        command=compact_command(screening,output/'river-compact.mp4')
+        commands.append(command);run(command)
     command=base+['-ss',str(args.poster_time),'-i',str(viewing),'-frames:v','1',
                   '-q:v','2',str(output/'river-poster.jpg')]
     commands.append(command);run(command)
     if args.captions:
         captions=Path(args.captions)
-        command=base+['-i',str(captions),'-map','0:s:0','-c:s','webvtt',str(output/'river-notes.vtt')]
+        frozen_captions=output/'source/captions-source.vtt'
+        shutil.copyfile(captions,frozen_captions)
+        inputs['captions']={**identity(frozen_captions),'name':captions.name}
+        command=base+['-i',str(frozen_captions),'-map','0:s:0','-c:s','webvtt',str(output/'river-notes.vtt')]
         commands.append(command);run(command)
-        inputs['captions']=identity(captions)
-    editions={name:checked_video(output/name,240.) for name in ('river-screening.mp4','river-viewing.mp4')}
+    names=['river-screening.mp4','river-viewing.mp4']
+    if compact: names.append('river-compact.mp4')
+    editions={name:checked_video(output/name,240.) for name in names}
     # Decode every frame/sample in the lightweight edition, once.
     run(base+['-i',str(viewing),'-f','null','-'])
     loudness=run(['ffmpeg','-hide_banner','-nostdin','-i',str(viewing),'-vn',
@@ -111,6 +138,11 @@ def main(args):
             'source_sha256':identity(Path(__file__))['sha256'],
             'scope':'Measured encoding and playback-file integrity. No perceptual listening or emotional-quality verdict.',
             'files':{str(p.relative_to(output)):identity(p) for p in sorted(output.rglob('*')) if p.is_file()}}
+    if compact:
+        report['compact']={'source':report['files']['river-screening.mp4'],
+                           'resolution':[1280,720],'fps':24,'video_encoder':'libx264',
+                           'pixel_format':'yuv420p','preset':'slow','crf':21,
+                           'scale_filter':'lanczos','audio':'packet copy'}
     (output/'delivery.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({'output':str(output),'edition':args.edition,'editions':editions,
                       'elapsed_seconds':report['elapsed_seconds']}),flush=True)
@@ -125,7 +157,9 @@ if __name__=='__main__':
     parser.add_argument('--audio-receipt')
     parser.add_argument('--captions')
     parser.add_argument('--width',type=int,default=1920)
-    parser.add_argument('--crf',type=int,default=22)
+    parser.add_argument('--crf',type=int,default=20)
+    parser.add_argument('--compact',action='store_true',
+                        help='Also make the 1280x720 H.264 CRF-21 edition from the screening master')
     parser.add_argument('--poster-time',type=float,default=188.)
     parser.add_argument('--edition',choices=('draft','final'),default='draft')
     main(parser.parse_args())

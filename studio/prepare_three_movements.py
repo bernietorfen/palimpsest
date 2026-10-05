@@ -26,14 +26,20 @@ ARCHIVE = "palimpsest-three-movements.zip"
 ALLOWED = {".html", ".css", ".js", ".json", ".svg", ".jpg", ".jpeg", ".png",
            ".webp", ".woff2", ".txt", ".mp4", ".m4a", ".glb", ".pdf", ".vtt",
            ".bin", ".vert", ".frag"}
-FILMS = {"river-viewing.mp4", "choir-viewing.mp4", "palimpsest-viewing.mp4",
+FILMS = {"river-viewing.mp4", "river-compact.mp4", "choir-viewing.mp4", "palimpsest-viewing.mp4",
          "phrase-first.mp4", "phrase-return.mp4"}
 REQUIRED = {"site/" + name for name in (
     "index.html", "river.html", "movements.html", "first-act.html", "instrument.html",
     "choir.html", "witness.html", "observer.html", "atlas.html", "pressure.html",
     "credits.html", "river.css", "river.js", "assets/relational-clock-core.js",
     "assets/data/relational-clock.json", "assets/generated/river-viewing.mp4",
+    "assets/generated/river-compact.mp4", "assets/generated/river-opening.m4a",
+    "assets/generated/river-return.m4a", "assets/generated/river-listening-pair.json",
     "assets/generated/river-poster.jpg", "assets/generated/river-notes.vtt",
+    "assets/generated/river-local-000.jpg", "assets/generated/river-local-104.jpg",
+    "assets/generated/river-local-208.jpg", "assets/generated/river-wide-000.jpg",
+    "assets/generated/river-wide-104.jpg", "assets/generated/river-wide-208.jpg",
+    "assets/generated/river-controlled-views.json",
     "assets/generated/river-companion.pdf", "assets/generated/choir-viewing.mp4",
     "assets/generated/palimpsest-viewing.mp4", "assets/generated/palimpsest-complete-notebook.pdf",
     "assets/generated/a-choir-of-absences-notebook.pdf", "assets/generated/font-license.txt")}
@@ -117,6 +123,33 @@ class Input:
                         or viewing["video"]["width"] != 1920 or viewing["video"]["height"] != 1080
                         or abs(float(viewing["duration"]) - 240) > .05):
                     raise ValueError("A verified final 1080p river delivery is required")
+                if not spec.get("verification") or not spec.get("verification_sha256"):
+                    raise ValueError("The independent final delivery verification is required")
+                review_path = base / spec["verification"]
+                if review_path.stat().st_size > TEXT_LIMIT:
+                    raise ValueError("Delivery verification exceeds the bounded text budget")
+                review_raw = review_path.read_bytes()
+                if digest_bytes(review_raw) != spec["verification_sha256"]:
+                    raise ValueError("Delivery verification digest differs")
+                review = json.loads(review_raw)
+                if (review.get("format") != "palimpsest-river-delivery-review-v1"
+                        or review.get("all_passed") is not True
+                        or review["delivery_receipt"]["sha256"] != spec["receipt_sha256"]
+                        or review["delivery_receipt"]["bytes"] != len(raw)):
+                    raise ValueError("Delivery verification does not bind the approved final receipt")
+                for name, width, height in (("river-viewing.mp4", 1920, 1080),
+                                             ("river-compact.mp4", 1280, 720)):
+                    edition = data["editions"].get(name)
+                    verified = review["editions"].get(name)
+                    if (not edition or not verified
+                            or edition["video"]["width"] != width or edition["video"]["height"] != height
+                            or abs(float(edition["duration"]) - 240) > .05
+                            or verified["identity"] != data["files"][name]
+                            or verified["picture"]["decoded_frames"] != 5760
+                            or verified["picture"]["exact_integer_pts_cadence"] is not True
+                            or verified["audio"] != review["editions"]["river-screening.mp4"]["audio"]):
+                        raise ValueError("Both final playback editions need matching decoded timing and soundtrack verification")
+                self.public["verification_sha256"] = spec["verification_sha256"]
         else:
             raise ValueError("Unsupported publication receipt kind")
         self.files = {}
@@ -241,8 +274,10 @@ The server listens only on loopback and supports seeking with byte ranges.
 Direct file: opening is unsupported by browser origin rules.
 
 A RIVER TWICE / 4:00
-The 1080p viewing film, optional captions, companion and calculated phase-clock
-experiment. Return the fragment, then reveal connections at the same moment.
+The 1080p viewing film and smaller 720p option share the same soundtrack and
+native controls. Optional captions, two short listening excerpts, companion
+and calculated phase-clock experiment are included. Return the fragment,
+then open its surroundings at the same moment.
 
 EARLIER MOVEMENTS / movements.html
 A choir of absences (4:48), its playable choir, matched listening piece,
@@ -309,10 +344,20 @@ def prepare(plan, base, stack):
     if set(rewrites) - set(selected):
         raise ValueError("Portable rewrites refer to unselected files")
     river_input, _ = selected["site/assets/generated/river-viewing.mp4"]
-    for name in ("river-viewing.mp4", "river-poster.jpg", "river-notes.vtt"):
+    for name in ("river-viewing.mp4", "river-compact.mp4", "river-poster.jpg", "river-notes.vtt"):
         source, source_name = selected["site/assets/generated/" + name]
         if source is not river_input or source.public["kind"] != "delivery" or source_name != name:
-            raise ValueError("The new film, poster and captions must share the final delivery receipt")
+            raise ValueError("The new playback editions, poster and captions must share the final delivery receipt")
+    pair_source, pair_name = selected["site/assets/generated/river-listening-pair.json"]
+    with pair_source.open(pair_name) as stream:
+        pair = json.load(stream)
+    if (pair.get("format") != "palimpsest-river-listening-pair-v1"
+            or [item["file"] for item in pair["excerpts"]] != ["river-opening.m4a", "river-return.m4a"]):
+        raise ValueError("The approved listening-pair record is required")
+    for item in pair["excerpts"]:
+        source, name = selected["site/assets/generated/" + item["file"]]
+        if source.files[name] != record(item["bytes"], item["sha256"]):
+            raise ValueError("A listening excerpt differs from its provenance record")
     prepared["START-HERE.txt"] = startup(plan["source_commit"])
     server = Path(__file__).with_name("serve_site.py").read_bytes()
     prepared["serve.py"] = server.replace(b"Viewing room on RunPod loopback port", b"Viewing room on loopback port")

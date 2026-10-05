@@ -1,0 +1,49 @@
+{
+  "format": "palimpsest-river-listening-pair-v1",
+  "version": 1,
+  "title": "A phrase changes hands",
+  "source_master": {
+    "file": "river-full.wav",
+    "name": "river-full.wav",
+    "bytes": 69120044,
+    "sha256": "154d08fd94950f4c483e64a8e2dc83d9a440649c86c4080fc7727fa15a6bb262"
+  },
+  "source_audio_receipt": {
+    "name": "manifest.json",
+    "bytes": 61335,
+    "sha256": "250a81c0900ad82851c34ca0025047717b47e35bce5139f0247aff9444cd0a72"
+  },
+  "excerpts": [
+    {
+      "file": "river-opening.m4a",
+      "name": "river-opening.m4a",
+      "bytes": 335077,
+      "sha256": "fabf93a21451f4bbfa7ac652512a4d8114cd501dbd1a90f76bb894c696b70efa",
+      "title": "The opening",
+      "description": "The close plucked voice introduces the call.",
+      "film_start": 0.0,
+      "film_end": 12.0,
+      "seconds": 12.0
+    },
+    {
+      "file": "river-return.m4a",
+      "name": "river-return.m4a",
+      "bytes": 415894,
+      "sha256": "dc0f2f83dead6b95c87708e494589c422ab90a125b7d305f10c885de9c3915a8",
+      "title": "The changed return",
+      "description": "The bowed voice carries the call; its original plucked voice remains absent.",
+      "film_start": 208.0,
+      "film_end": 220.0,
+      "seconds": 12.0
+    }
+  ],
+  "edit": {
+    "gain_change_db": 0.0,
+    "fade_in_seconds": 0.025,
+    "fade_out_seconds": 0.18,
+    "closing_silence_seconds": 0.064,
+    "fade_shape": "smoothstep",
+    "encoding": "320 kbit/s stereo AAC in M4A"
+  },
+  "scope": "Two contextual excerpts from the same original score. Common gain and stereo retained; only boundary fades, a short closing silence and AAC compression are added. No isolated-instrument, sonification or perceptual-test claim."
+}

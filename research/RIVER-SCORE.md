@@ -111,3 +111,30 @@ The second 240-second master measures -17.7 LUFS integrated, 9.9 LU loudness ran
 Compared with the reference, the 180–208-second window's left/right correlation changes from 0.972 to 0.874 and side-to-mid energy from -18.23 to -11.67 dB, while its RMS rises by 0.41 dB. The opening becomes drier and more correlated. Side energy also includes stable lateral placement, so it must not be read as a pure measure of room size. The second rise's isolated thread share increases from about 16% to 29%; these fractions omit inter-stem cross terms and do not prove auditory masking or emotional clarity. Whole-program mono energy loss is 0.172 dB; the tested section windows remain within 0.286 dB.
 
 Both masters are preserved. Their score JSON and score source are byte-identical. The original master hashes are unchanged. The new delivered stems reproduce its float master within 1.20e-7. The PCM24 master, float master and all delivered stems retain exact zero samples from 119.6 to 122.2 seconds, and felt remains zero from 118 seconds. Dry stems precede the new role gains and room; processed stems include the common master gain. Approximately level-matched excerpts apply one fixed -0.3 dB adjustment to the second mix, preserving relative section dynamics. No listening judgment is claimed.
+
+## Listening pair
+
+The exhibition offers two twelve-second windows from the chosen spatial mix:
+0–12 seconds and 208–220 seconds. They retain the full musical context, original
+common gain and stereo image. They are excerpts of the composition, not
+isolated instruments or measured sonification.
+
+The preparation applies a 25 ms entry fade and a 180 ms closing fade followed
+by 64 ms of silence. The short silent ending contains AAC's transform tail.
+Outside those boundaries, the PCM samples match the source master exactly.
+The 48 kHz stereo AAC files retain native twelve-second timelines; their decoded
+RMS ratios to the edited PCM are 0.999681 and 0.999601, with signal-to-codec-error
+ratios of 50.75 and 47.96 dB. The extra decoded half-frame of AAC padding is
+exactly silent. These checks concern delivery fidelity, not a listening verdict.
+
+The first MP3 attempt was rejected because its encoder reduced the excerpt's
+RMS to approximately 0.97004 of the source. An initial AAC attempt exposed a
+small transform tail beyond the presentation interval. Both attempts remain
+in the production record; the accepted excerpts use the explicit silent
+boundary guard. The original full score and its mix were never changed.
+
+`studio/river_listening_pair.py` captures the exact source master, edit recipe,
+producer, helper source and codec environment. Its public provenance record
+identifies both small listening files. Native controls let a visitor compare
+them at their own pace; their original balance is kept rather than normalized
+separately.

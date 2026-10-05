@@ -2,9 +2,10 @@
 
 The fixed integer construction found a full-state near return at cycle
 **n=4109**, beyond the earlier candidate grid ending at 4096. This is a
-constructed witness, not the first recurrence. The result gives a concrete
-contrast between two kinds of time ambiguity: missing relationships and
-states that are close even when all quantum measurements are permitted.
+constructed witness, without a claim to the earliest qualifying return.
+The result gives a concrete contrast between two kinds of time ambiguity:
+missing relationships and states that are close even when all quantum
+measurements are permitted.
 
 All 169 recorded admission checks and 11 focused tests pass. The model,
 Q=128, target D<=0.05 and resource limits were declared before execution.

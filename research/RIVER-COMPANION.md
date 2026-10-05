@@ -150,7 +150,7 @@ simultaneous approximation, not a new recurrence theorem. [6]
 
 An independent 80-digit calculation gives `D=0.017388884873856538` and
 unrestricted optimal success 50.8694442437%. Restricted success remains
-exactly 50%. This is one constructed witness, not the first recurrence.
+exactly 50%. This is one constructed witness; the earliest qualifying return is not established.
 More independent copies or an external record can add information. This
 single-copy task is separate from the earlier ensemble-readout error balls.
 The exact witness and full proof are in `OPERATIONAL-TIME-RESULTS.md` and

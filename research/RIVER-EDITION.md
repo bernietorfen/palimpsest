@@ -25,7 +25,7 @@ The original score has 312 note events and six synthesized roles: felt, breath,
 bow, glass, pulse and thread. A D–F–E–A–D phrase is its recurring question.
 Its close source gives way to wider answering voices. The final incomplete
 source gesture disappears before the central silence; a bowed thread later
-carries the phrase into a warmer register. There are no sampled instruments,
+carries the phrase in a changed harmonic setting. There are no sampled instruments,
 recorded performances, imported music or trained-model outputs.
 
 The picture and soundtrack are authored together, but the soundtrack is not a

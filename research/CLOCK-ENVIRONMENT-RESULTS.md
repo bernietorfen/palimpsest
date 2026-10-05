@@ -152,7 +152,7 @@ The earlier three studies' 26 retained files were hashed before and after
 this calculation and were unchanged.
 
 The complete admission record is
-[run-001/report.json](../artifacts/studies/clock-environment-001/run-001/report.json),
+[run-001/report.json](../records/river/studies/clock-environment-001/run-001/report.json),
 with full state and marginal arrays, compressed measurement projectors,
 spectra, exact-control residuals, all gates, source copies and a file
 manifest. There were no failed admission gates in this run. The focused
@@ -229,7 +229,7 @@ comparisons passed; the largest difference from the admitted binary64
 record was 2.463e-14. The review took 0.415598986 seconds.
 
 The saved receipt is
-[clock-environment-001.json](../artifacts/reviews/clock-environment-001.json),
+[clock-environment-001.json](../records/river/reviews/clock-environment-001.json),
 14,356 bytes, SHA-256
 `ba645c85b6bba5438b697ce461a7c88fc270b09432bd53cf4b9e0b535656f285`.
 Its independent source, `studio/verify_clock_environment.py`, has SHA-256

@@ -56,6 +56,23 @@ def fonts():
     return {name: {'filename': Path(path).name, 'sha256': digest(path)} for name, path in paths.items()}
 
 
+def copy_font_licenses(output):
+    """Retain installed font notices in the package, separately from the PDF."""
+    folder = output / 'licenses'
+    folder.mkdir()
+    receipt = {}
+    for family, source in (
+        ('dejavu', Path('/usr/share/doc/fonts-dejavu-core/copyright')),
+        ('liberation', Path('/usr/share/doc/fonts-liberation/copyright')),
+    ):
+        target = folder / f'{family}-fonts-copyright.txt'
+        shutil.copy2(source, target)
+        receipt[family] = {'file': str(target.relative_to(output)),
+                           'bytes': target.stat().st_size, 'sha256': digest(target),
+                           'scope': 'Installed font license text copied into the source package; not a PDF attachment.'}
+    return receipt
+
+
 class Book:
     def __init__(self, output, art_status):
         self.output = output
@@ -193,15 +210,22 @@ def opening(book, wide):
     book.paragraph('What does it mean to recognize something<br/>when its relationships have changed?',
                    MARGIN, 692, CONTENT, 16, 22, 'Serif')
     book.image(wide, MARGIN, 605, CONTENT, 283)
-    caption = 'Visual development plate. Final film images are supplied separately.' if book.status == 'draft' else 'Authored geometry from the supplied artwork plate.'
+    caption = 'Visual development plate. Final film images are supplied separately.' if book.status == 'draft' else 'From the film’s authored, phase-driven geometry.'
     book.paragraph(caption, MARGIN, 308, CONTENT, 8.6, 12, color=MUTED)
     book.paragraph('A part can return.<br/>The whole can remain different.',
                    MARGIN, 264, CONTENT, 26, 31, 'Serif')
-    book.paragraph('The film gives this tension a form and a voice. The experiment asks a narrower question: '
-                   'when do returning observations certify a returning state?', MARGIN, 174, CONTENT, 11.7, 17.4)
+    book.rule(187)
+    for question, pages, x, top, width in (
+        ('Which relationships can we see?', 'Pages 2 and 5', MARGIN, 172, 231),
+        ('How much difference can we resolve?', 'Pages 3–4', 310, 172, 239),
+        ('What can one snapshot tell us?', 'Page 7', MARGIN, 128, 231),
+        ('What changes when the clock is not alone?', 'Page 8', 310, 128, 239),
+    ):
+        book.paragraph(f'<b>{question}</b><br/><font size="8.8" color="{MUTED}">{pages}</font>',
+                       x, top, width, 10, 14)
     book.paragraph('Original composition, code and visual interpretation by Codex.<br/>'
-                   'Finite models and recorded evidence; no claim of a new law of time.',
-                   MARGIN, 107, CONTENT, 9.2, 14, color=MUTED)
+                   'An artwork and four finite studies of what a clock can reveal.',
+                   MARGIN, 84, CONTENT, 8.7, 13, color=MUTED)
 
 
 def returning_fragment(book, data):
@@ -328,13 +352,19 @@ def interpretation(book, macro, receipt_count, comparison=None):
                    MARGIN, 718, CONTENT, 12, 17.5)
     if comparison:
         half = (CONTENT - 12) / 2
-        book.image(comparison[0], MARGIN, 665, half, 225)
-        book.image(comparison[1], MARGIN + half + 12, 665, half, 225)
-        label = 'Supplied initial and returning views. Authored geometry, not images of physical quantum matter.'
+        book.line('INITIAL VIEW', MARGIN, 661, 8.5, color=MUTED)
+        book.line('RETURNING VIEW', MARGIN + half + 12, 661, 8.5, color=MUTED)
+        book.image(comparison[0], MARGIN, 646, half, half * 9 / 16)
+        book.image(comparison[1], MARGIN + half + 12, 646, half, half * 9 / 16)
+        book.paragraph('The reference fragment under matched camera and light. Controlled renders '
+                       'of the film’s geometry, with the same framing in both views.',
+                       MARGIN, 493, CONTENT, 8.6, 12, color=MUTED)
+        book.paragraph('We can recognize what returns before we know what has changed around it.',
+                       MARGIN, 449, CONTENT, 15, 21, 'Serif')
     else:
         book.image(macro, MARGIN, 665, CONTENT, 225)
         label = 'Visual development detail; not an image of physical quantum matter.' if book.status == 'draft' else 'Detail from the supplied authored artwork; not physical quantum matter.'
-    book.paragraph(label, MARGIN, 427, CONTENT, 8.6, 12, color=MUTED)
+        book.paragraph(label, MARGIN, 427, CONTENT, 8.6, 12, color=MUTED)
     book.line('D   F   E   A   D', MARGIN, 369, 25, 'Serif', AMBER)
     book.line('One authored call, changing carriers.', 279, 375, 10.4, 'Sans', MUTED)
     book.rule(345)
@@ -351,8 +381,11 @@ def interpretation(book, macro, receipt_count, comparison=None):
     book.paragraph('These are authored mappings and score contracts. Recognition, time, absence and return '
                    'are interpretive invitations, not results about human memory or emotional response.',
                    MARGIN, 145, CONTENT, 10.4, 15.4)
-    status = f'{receipt_count} supplied production receipt(s) are identified by hash in the package.' if receipt_count else 'Final production receipts have not been supplied to this draft.'
-    book.paragraph(status + ' No finished-film or listening verdict is inferred.',
+    status = (f'{receipt_count} production records identify the supplied picture and score by hash. '
+              'They document the making of the work.' if receipt_count else
+              'Final production receipts have not been supplied to this draft. '
+              'No finished-film or listening verdict is inferred.')
+    book.paragraph(status,
                    MARGIN, 82, CONTENT, 8.7, 12.4, color=MUTED)
 
 
@@ -382,7 +415,7 @@ def operational_clock(book, data):
     book.line('D ≤ π√3 / 128 < 0.05', MARGIN, 220, 17, 'Sans', TEAL)
     book.paragraph('Integer square-root enclosures certify the shared box and the bound. '
                    f'The independent 80-digit value is <b>D = {float(data["discrimination"]["high_precision_D"]):.9f}</b>. '
-                   'This witness is beyond the earlier 4096-cycle grid; it is not the first recurrence. [6]',
+                   'This witness is beyond the earlier 4096-cycle grid; no earliest return is established. [6]',
                    MARGIN, 196, CONTENT, 10.2, 15)
     book.paragraph('Saved record: operational-time-001/run-002; report and hashes included. Full proof: '
                    'OPERATIONAL-TIME-RESULTS.md. This single-copy task is separate from the ensemble '
@@ -439,7 +472,7 @@ def closing(book, clock_report, time_report, operational_report, environment_rep
                    'The original graph bound applies to its fixed pure family; the environment extension '
                    'uses density-matrix distances. No general mixed-state tomography, backaction-free '
                    'monitoring or irreversible arrow is claimed. Exact joint return also returns every '
-                   'included record. [2] The witness is not the first recurrence.',
+                   'included record. [2] An earliest return is not established.',
                    MARGIN, 570, CONTENT, 10.2, 15)
     book.line('Reproduce the evidence', MARGIN, 461, 14, 'Serif')
     book.paragraph('Restore or generate prerequisite records at their canonical paths first. '
@@ -514,6 +547,7 @@ def main(args):
     if bool(args.return_before) != bool(args.return_after):
         raise ValueError('A return comparison needs both supplied images')
     font_receipt = fonts()
+    font_license_receipt = copy_font_licenses(output)
     for name in SOURCES:
         source = Path(name)
         target = output / 'source' / name
@@ -533,6 +567,9 @@ def main(args):
     macro, macro_receipt = prepare_plate(args.macro, output, 'detail')
     comparison, comparison_receipts = None, []
     if args.return_before:
+        with Image.open(args.return_before) as before, Image.open(args.return_after) as after:
+            if before.size != after.size or before.width * 9 != before.height * 16:
+                raise ValueError('The controlled return pair needs equally sized 16:9 images; no comparison crop is applied')
         initial, initial_receipt = prepare_plate(args.return_before, output, 'return-before')
         returning, returning_receipt = prepare_plate(args.return_after, output, 'return-after')
         comparison = (initial, returning)
@@ -561,6 +598,7 @@ def main(args):
               'artwork_status': args.artwork_status, 'pages': PAGE_COUNT,
               'pdf_sha256': digest(pdf), 'artwork_inputs': [wide_receipt, macro_receipt] + comparison_receipts,
               'production_receipts': receipts, 'fonts': font_receipt,
+              'font_licenses': font_license_receipt,
               'source_sha256': {name: digest(output / 'source' / name) for name in SOURCES},
               'study_record_sha256': summary['source_studies'],
               'environment_review_sha256': digest(review_path),
@@ -590,7 +628,7 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', default='artwork/river-notebook-001/draft-004')
+    parser.add_argument('--output', default='artwork/river-notebook-001/draft-005')
     parser.add_argument('--wide', required=True, help='Supplied artwork plate; never guessed from a render path')
     parser.add_argument('--macro', required=True, help='Supplied artwork detail')
     parser.add_argument('--return-before', help='Optional supplied initial comparison image; requires --return-after')

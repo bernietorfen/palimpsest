@@ -23,11 +23,16 @@ def fixture(tmp_path):
     selection = []
     for target in sorted(package.REQUIRED):
         name = target.removeprefix("site/")
-        if name in ("assets/generated/river-viewing.mp4", "assets/generated/river-poster.jpg", "assets/generated/river-notes.vtt"):
+        if name in ("assets/generated/river-viewing.mp4", "assets/generated/river-compact.mp4", "assets/generated/river-poster.jpg", "assets/generated/river-notes.vtt"):
             continue
         content = b"synthetic fixture\n"
         if name.endswith(".html"):
             content = b'<p><a href="https://example.org/book.pdf">Book</a></p>'
+        if name == "assets/generated/river-listening-pair.json":
+            content = package.encoded({"format": "palimpsest-river-listening-pair-v1",
+                "excerpts": [{"file": name, "bytes": len(b"synthetic fixture\n"),
+                              "sha256": package.digest_bytes(b"synthetic fixture\n")}
+                             for name in ("river-opening.m4a", "river-return.m4a")]})
         file = source / name
         file.parent.mkdir(parents=True, exist_ok=True)
         file.write_bytes(content)
@@ -37,18 +42,27 @@ def fixture(tmp_path):
     site_sha = put_json(tmp_path / "site.json", {"files": files})
     movie = tmp_path / "river"
     movie.mkdir()
-    for name in ("river-viewing.mp4", "river-poster.jpg", "river-notes.vtt"):
+    for name in ("river-viewing.mp4", "river-compact.mp4", "river-poster.jpg", "river-notes.vtt"):
         (movie / name).write_bytes(b"synthetic delivery bytes, not playable media")
     delivery = {"edition": "final", "viewing_decoded_without_error": True,
-                "editions": {"river-viewing.mp4": {"duration": "240", "video": {"width": 1920, "height": 1080}}},
+                "editions": {"river-viewing.mp4": {"duration": "240", "video": {"width": 1920, "height": 1080}},
+                             "river-compact.mp4": {"duration": "240", "video": {"width": 1280, "height": 720}}},
                 "files": {name: {"bytes": (movie / name).stat().st_size, "sha256": package.file_digest(movie / name)}
-                          for name in ("river-viewing.mp4", "river-poster.jpg", "river-notes.vtt")}}
+                          for name in ("river-viewing.mp4", "river-compact.mp4", "river-poster.jpg", "river-notes.vtt")}}
     delivery_sha = put_json(tmp_path / "delivery.json", delivery)
-    for name in ("river-viewing.mp4", "river-poster.jpg", "river-notes.vtt"):
+    review = {"format": "palimpsest-river-delivery-review-v1", "all_passed": True,
+              "delivery_receipt": {"bytes": (tmp_path / "delivery.json").stat().st_size, "sha256": delivery_sha},
+              "editions": {"river-screening.mp4": {"audio": {"adts_bytes": 100, "adts_sha256": "b" * 64}}}}
+    for name in ("river-viewing.mp4", "river-compact.mp4"):
+        review["editions"][name] = {"identity": delivery["files"][name],
+            "picture": {"decoded_frames": 5760, "exact_integer_pts_cadence": True},
+            "audio": review["editions"]["river-screening.mp4"]["audio"]}
+    review_sha = put_json(tmp_path / "review.json", review)
+    for name in ("river-viewing.mp4", "river-compact.mp4", "river-poster.jpg", "river-notes.vtt"):
         selection.append({"path": "site/assets/generated/" + name, "input": "river", "source": name})
     plan = {"format": package.FORMAT, "source_commit": "a" * 40,
             "inputs": [{"id": "site", "kind": "site", "receipt": "site.json", "receipt_sha256": site_sha, "directory": "inputs"},
-                       {"id": "river", "kind": "delivery", "receipt": "delivery.json", "receipt_sha256": delivery_sha, "directory": "river"}],
+                       {"id": "river", "kind": "delivery", "receipt": "delivery.json", "receipt_sha256": delivery_sha, "directory": "river", "verification": "review.json", "verification_sha256": review_sha}],
             "files": selection,
             "rewrites": {"site/index.html": [{"before": "https://example.org/book.pdf", "after": "/assets/generated/river-companion.pdf", "count": 1}]}}
     path = tmp_path / "plan.json"
@@ -222,3 +236,58 @@ def test_failed_extraction_cleans_only_new_scratch(fixture, monkeypatch):
         package.main(args)
     assert not Path(args.output).exists() and not Path(args.proof).exists()
     assert (root / "inputs/index.html").is_file() and (root / "delivery.json").is_file()
+
+
+@pytest.mark.parametrize("name", ["river-local-104.jpg", "river-controlled-views.json", "river-compact.mp4", "river-opening.m4a", "river-return.m4a", "river-listening-pair.json"])
+def test_required_view_media_or_provenance_omission_rejected(fixture, name):
+    root, plan, path, args = fixture
+    target = "site/assets/generated/" + name
+    plan["files"] = [item for item in plan["files"] if item["path"] != target]
+    put_json(path, plan)
+    with pytest.raises(ValueError, match="Required three-movement content is missing"):
+        package.main(args)
+    assert not Path(args.output).exists() and not Path(args.proof).exists()
+
+
+def test_final_media_requires_pinned_independent_verifier(fixture):
+    root, plan, path, args = fixture
+    del plan["inputs"][1]["verification"]
+    put_json(path, plan)
+    with pytest.raises(ValueError, match="independent final delivery"):
+        package.main(args)
+    assert not Path(args.output).exists()
+
+
+@pytest.mark.parametrize("defect", ["receipt", "frames", "cadence", "audio"])
+def test_compact_proof_cannot_be_replaced_by_metadata_or_another_delivery(fixture, defect):
+    root, plan, path, args = fixture
+    review = json.loads((root / "review.json").read_text())
+    if defect == "receipt":
+        review["delivery_receipt"]["sha256"] = "0" * 64
+    elif defect == "frames":
+        review["editions"]["river-compact.mp4"]["picture"]["decoded_frames"] = 5759
+    elif defect == "cadence":
+        review["editions"]["river-compact.mp4"]["picture"]["exact_integer_pts_cadence"] = False
+    else:
+        review["editions"]["river-compact.mp4"]["audio"]["adts_sha256"] = "c" * 64
+    plan["inputs"][1]["verification_sha256"] = put_json(root / "review.json", review)
+    put_json(path, plan)
+    with pytest.raises(ValueError, match="bind|decoded timing"):
+        package.main(args)
+    assert not Path(args.output).exists()
+
+
+def test_listening_provenance_must_match_the_selected_audio(fixture):
+    root, plan, path, args = fixture
+    file = root / "inputs/assets/generated/river-listening-pair.json"
+    pair = json.loads(file.read_text())
+    pair["excerpts"][0]["sha256"] = "0" * 64
+    put_json(file, pair)
+    receipt = json.loads((root / "site.json").read_text())
+    entry = next(item for item in receipt["files"] if item["file"] == "assets/generated/river-listening-pair.json")
+    entry.update(size=file.stat().st_size, sha256=package.file_digest(file))
+    plan["inputs"][0]["receipt_sha256"] = put_json(root / "site.json", receipt)
+    put_json(path, plan)
+    with pytest.raises(ValueError, match="listening excerpt"):
+        package.main(args)
+    assert not Path(args.output).exists()

@@ -7,6 +7,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {chromium,webkit} from '../.tools/browser/node_modules/playwright/index.mjs';
+import {checkQualityPlayback,checkListeningPlayback} from './river_media_checks.mjs';
 
 const args=process.argv.slice(2);
 function argument(name,fallback=null){const at=args.indexOf(name);return at<0?fallback:args[at+1];}
@@ -31,8 +32,36 @@ async function checkedFiles(){
     assert.equal(hash.digest('hex'),item.sha256,`Changed extraction: ${item.path}`);
   }
   check('Every extracted file still matches the exact package inventory',{files:inventory.files.length});
+  const views=JSON.parse(await fs.readFile(path.join(proof,'site/assets/generated/river-controlled-views.json'),'utf8'));
+  assert.equal(views.format,'palimpsest-controlled-views-v1');
+  assert.equal(views.files.length,6);
+  assert.deepEqual(views.files.map(item=>item.name).sort(),['river-local-000.jpg','river-local-104.jpg','river-local-208.jpg','river-wide-000.jpg','river-wide-104.jpg','river-wide-208.jpg']);
+  for(const item of views.files){
+    const entry=inventory.files.find(record=>record.path==='site/assets/generated/'+item.name);
+    assert.ok(entry,`Controlled image omitted from offline inventory: ${item.name}`);
+    assert.equal(entry.bytes,item.bytes);assert.equal(entry.sha256,item.sha256);
+  }
+  check('All six offline controlled views agree with their published derivation record');
+  const pair=JSON.parse(await fs.readFile(path.join(proof,'site/assets/generated/river-listening-pair.json'),'utf8'));
+  assert.equal(pair.format,'palimpsest-river-listening-pair-v1');
+  assert.deepEqual(pair.excerpts.map(item=>item.file),['river-opening.m4a','river-return.m4a']);
+  for(const item of pair.excerpts){
+    const entry=inventory.files.find(record=>record.path==='site/assets/generated/'+item.file);
+    assert.ok(entry);assert.equal(entry.bytes,item.bytes);assert.equal(entry.sha256,item.sha256);
+  }
+  check('Both offline listening excerpts agree with their approved source record');
 }
 async function open(route){await page.goto(origin+route,{waitUntil:'networkidle'});}
+async function controlledViews(moment,view){
+  await page.waitForFunction(({moment,view})=>{
+    const pair=document.querySelector('#controlled-views');
+    return pair.dataset.viewState==='ready'&&Number(pair.dataset.moment)===moment&&pair.dataset.view===view&&[...pair.querySelectorAll('img')].every(image=>image.complete&&image.naturalWidth===960&&image.naturalHeight===540);
+  },{moment,view});
+  const result=await page.locator('#controlled-views img').evaluateAll(images=>images.map(image=>({source:new URL(image.currentSrc).pathname,width:image.naturalWidth,height:image.naturalHeight,visible:getComputedStyle(image).visibility})));
+  assert.deepEqual(result.map(image=>image.source),[`/assets/generated/river-${view}-000.jpg`,`/assets/generated/river-${view}-${String(moment).padStart(3,'0')}.jpg`]);
+  assert.ok(result.every(image=>image.visible==='visible'));
+  return result;
+}
 async function film(selector,button,seconds,duration){
   await page.locator(button).click();
   await page.waitForFunction(selector=>document.querySelector(selector).readyState>=1,selector);
@@ -101,8 +130,11 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(handler,directory=sys.argv[2]))
   page.on('response',response=>{if(response.url().startsWith(origin)&&response.status()>=400)report.failedLocalRequests.push({path:new URL(response.url()).pathname,status:response.status()});});
   const requests=[];page.on('request',request=>requests.push(new URL(request.url()).pathname));
   await open('/');await page.waitForFunction(()=>document.querySelector('#clock-work').dataset.ready==='true');
+  await controlledViews(0,'local');
   assert.equal(await page.locator('#river-film').getAttribute('src'),null);
   assert.ok(!requests.includes('/assets/generated/river-viewing.mp4'));
+  assert.ok(!requests.includes('/assets/generated/river-compact.mp4'));
+  assert.ok((await page.locator('.listening-excerpt audio').evaluateAll(nodes=>nodes.map(audio=>audio.paused&&audio.currentTime===0&&!audio.autoplay))).every(Boolean));
   await page.screenshot({path:path.join(output,'entry.jpg'),type:'jpeg',quality:80});
   check('The new film waits for sound consent');
   check('New viewing film plays and seeks locally',await film('#river-film','#watch-film',102,240));
@@ -116,14 +148,30 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(handler,directory=sys.argv[2]))
   await page.waitForFunction(()=>document.querySelector('#river-film').textTracks[0].cues?.length>=15);
   const cues=await page.locator('#river-film').evaluate(video=>video.textTracks[0].cues.length);
   check('Both returns, central blackout, reappearance and native captions survive offline',{frames,cues});
+  check('Both actual final picture qualities preserve time and native playback state offline',await checkQualityPlayback(page,{finalDimensions:true}));
+  check('Approved listening excerpts play, mutually pause and end offline',await checkListeningPlayback(page));
   await page.locator('#return-fragment').click();
+  const local=await controlledViews(104,'local');
   const held=await page.locator('#clock-state-record').textContent();
+  const revision=await page.locator('#clock-work').getAttribute('data-state-revision');
   assert.equal(await page.locator('#clock-work').getAttribute('data-within-returned'),'28');
   await page.locator('#reveal-connections').click();
+  const wide=await controlledViews(104,'wide');
   assert.equal(await page.locator('#clock-state-record').textContent(),held);
+  assert.equal(await page.locator('#clock-work').getAttribute('data-state-revision'),revision);
   assert.equal(await page.locator('#clock-work').getAttribute('data-changed-bridges'),'3');
   assert.equal(Number(await page.locator('#clock-work').getAttribute('data-time')),2*Math.PI);
-  check('Changing the offline observer preserves the exact calculated state and time');
+  await page.locator('#science-note summary').click();
+  assert.equal(await page.locator('#clock-current path').count(),31);
+  await page.locator('button[data-moment="208"]').focus();await page.keyboard.press('Enter');
+  const second=await controlledViews(208,'wide'),secondState=await page.locator('#clock-state-record').textContent();
+  assert.equal(Number(await page.locator('#clock-work').getAttribute('data-time')),4*Math.PI);
+  await page.locator('#reveal-connections').click();await controlledViews(208,'local');
+  assert.equal(await page.locator('#clock-state-record').textContent(),secondState);
+  await page.locator('#clock-reset').click();await controlledViews(0,'local');
+  assert.equal(Number(await page.locator('#clock-work').getAttribute('data-time')),0);
+  assert.equal(await page.locator('#reveal-connections').isDisabled(),true);
+  check('Offline paired images, exact moments and observer undo preserve the calculated state and time',{local,wide,second});
   await localPdf('/assets/generated/river-companion.pdf');
   const external=await page.locator('a[href^="https://"],a[href^="http://"]').evaluateAll(nodes=>nodes.map(node=>node.textContent));
   assert.ok(external.every(text=>text.includes('Online')));check('External screening/source/science links are visibly marked Online');

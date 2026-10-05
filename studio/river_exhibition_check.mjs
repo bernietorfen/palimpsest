@@ -9,6 +9,7 @@ import {createHash} from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {chromium,webkit} from '../.tools/browser/node_modules/playwright/index.mjs';
 import {screenshotEvidence} from './browser_screenshot.mjs';
+import {checkQualityPlayback,checkListeningPlayback} from './river_media_checks.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const args=process.argv.slice(2);
@@ -18,19 +19,50 @@ const routePath=argument('--route','/');
 const out=path.resolve(argument('--out',path.join(root,'artwork/river-exhibition-001')));
 const mediaFixture=argument('--media-fixture',null);
 const draftDirectory=argument('--draft-dir',null);
+const compactControl=args.includes('--compact-control');
+const finalMedia=args.includes('--final-media');
 const structureOnly=args.includes('--structure-only');
 const engines=argument('--engines','chromium,webkit').split(',');
 const captureBaseline=args.includes('--baseline');
 assert.ok(routePath.startsWith('/')&&!routePath.startsWith('//'),'Use a same-origin route path');
 assert.ok(!(structureOnly&&(mediaFixture||draftDirectory)),'Structural checks do not need a media mapping');
 assert.ok(!(mediaFixture&&draftDirectory),'Choose a control fixture or an actual draft');
+assert.ok(!compactControl||draftDirectory,'Compact controls require an explicit actual draft mapping');
+assert.ok(!finalMedia||(!draftDirectory&&!mediaFixture&&!structureOnly),'Final media checks use actual final route files');
 const report={route:routePath,base,media:structureOnly?'Actual film playback pending; this run checks structure and navigation':draftDirectory?'Actual audiovisual draft, isolated browser mapping; not the final master':mediaFixture?'Explicit test-only media fixture; actual film not evaluated':'Actual route media',checks:[],engines:{},screenshots:[],pending:structureOnly?['Actual new-film playback, seek, captions, fullscreen, end state and media recovery','Published release redirect and public source links','Final companion PDF and poster delivery']:draftDirectory?['Final master and typography/captions revision','Published release redirect and public source links','Final companion PDF and poster delivery']:[]};
 const source=JSON.parse(await fs.readFile(path.join(root,'site/assets/data/relational-clock.json'),'utf8'));
 const reference=source.models.thirtyTwo.references.find(value=>value.time===2*Math.PI);
 const configuration=JSON.parse(await fs.readFile(path.join(root,'site/vercel.json'),'utf8'));
 const csp=configuration.headers.flatMap(rule=>rule.headers).find(header=>header.key==='Content-Security-Policy').value;
 await fs.mkdir(out,{recursive:true});
+await fs.mkdir(path.join(out,'source'),{recursive:true});
+report.sourceFiles=[];
+for(const name of ['site/index.html','site/river.html','site/river.css','site/river.js','site/vercel.json','studio/river_exhibition_check.mjs','studio/river_media_checks.mjs']){
+  const raw=await fs.readFile(path.join(root,name));
+  const snapshot=path.join('source',name.replaceAll('/','--'));
+  await fs.writeFile(path.join(out,snapshot),raw);
+  report.sourceFiles.push({path:name,bytes:raw.length,sha256:createHash('sha256').update(raw).digest('hex'),snapshot});
+}
 const bytes=mediaFixture?await fs.readFile(mediaFixture):null;
+const viewManifest=JSON.parse(await fs.readFile(path.join(root,'site/assets/generated/river-controlled-views.json'),'utf8'));
+assert.equal(viewManifest.format,'palimpsest-controlled-views-v1');
+assert.equal(viewManifest.files.length,6);
+for(const item of viewManifest.files){
+  const raw=await fs.readFile(path.join(root,'site/assets/generated',item.name));
+  assert.equal(raw.length,item.bytes);
+  assert.equal(createHash('sha256').update(raw).digest('hex'),item.sha256);
+}
+report.controlledViews={manifestSha256:createHash('sha256').update(await fs.readFile(path.join(root,'site/assets/generated/river-controlled-views.json'))).digest('hex'),files:viewManifest.files.map(({name,bytes,sha256,view,film_seconds})=>({name,bytes,sha256,view,film_seconds})),scope:viewManifest.scope};
+const listeningRaw=await fs.readFile(path.join(root,'site/assets/generated/river-listening-pair.json'));
+const listening=JSON.parse(listeningRaw);
+assert.equal(listening.format,'palimpsest-river-listening-pair-v1');
+assert.deepEqual(listening.excerpts.map(item=>item.file),['river-opening.m4a','river-return.m4a']);
+for(const item of listening.excerpts){
+  const raw=await fs.readFile(path.join(root,'site/assets/generated',item.file));
+  assert.equal(raw.length,item.bytes);assert.equal(createHash('sha256').update(raw).digest('hex'),item.sha256);
+}
+report.listening={manifestSha256:createHash('sha256').update(listeningRaw).digest('hex'),excerpts:listening.excerpts,scope:listening.scope};
+report.compact=compactControl?'Control-only alias of actual 240-second draft; no final Compact encode claim':'Production route, final compact playback pending unless independently supplied';
 if(draftDirectory){
   const delivery=JSON.parse(await fs.readFile(path.join(draftDirectory,'delivery.json'),'utf8'));
   assert.equal(delivery.edition,'draft');
@@ -68,8 +100,26 @@ async function ready(page){
   await page.goto(`${base}${routePath}`,{waitUntil:'networkidle'});
   await page.waitForFunction(()=>document.querySelector('#clock-work').dataset.ready==='true');
   await page.evaluate(()=>document.fonts.ready);
+  await views(page,0,'local');
 }
 async function state(page){return page.locator('#clock-work').evaluate(node=>({...node.dataset,state:document.querySelector('#clock-state-record').textContent,paths:[...document.querySelectorAll('#clock-current path')].map(path=>({edge:path.dataset.edge,d:path.getAttribute('d'),reading:path.dataset.reading}))}));}
+async function views(page,moment,view){
+  await page.waitForFunction(({moment,view})=>{
+    const pair=document.querySelector('#controlled-views');
+    return pair.dataset.viewState==='ready'&&Number(pair.dataset.moment)===moment&&pair.dataset.view===view&&[...pair.querySelectorAll('img')].every(image=>image.complete&&image.naturalWidth===960&&image.naturalHeight===540);
+  },{moment,view});
+  const proof=await page.locator('#controlled-views').evaluate(async pair=>{
+    const frames=[...pair.querySelectorAll('img')].map(image=>{const canvas=document.createElement('canvas');canvas.width=64;canvas.height=36;const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.drawImage(image,0,0,64,36);return ctx.getImageData(0,0,64,36).data;});
+    const hashes=await Promise.all(frames.map(async frame=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',frame))).map(byte=>byte.toString(16).padStart(2,'0')).join('')));
+    let difference=0;for(let i=0;i<frames[0].length;i+=4)for(let c=0;c<3;c++)difference+=Math.abs(frames[0][i+c]-frames[1][i+c]);
+    return {...pair.dataset,images:[...pair.querySelectorAll('img')].map((image,i)=>({source:new URL(image.currentSrc).pathname,width:image.naturalWidth,height:image.naturalHeight,visible:getComputedStyle(image).visibility,sampleSha256:hashes[i]})),meanRgbDifference:difference/(64*36*3)};
+  });
+  assert.deepEqual(proof.images.map(image=>image.source),[`/assets/generated/river-${view}-000.jpg`,`/assets/generated/river-${view}-${String(moment).padStart(3,'0')}.jpg`]);
+  assert.ok(proof.images.every(image=>image.visible==='visible'));
+  if(view==='local')assert.ok(proof.meanRgbDifference<1,'Controlled local views remain visually matched after their JPEG derivation');
+  else if(moment!==0)assert.ok(proof.meanRgbDifference>2,'Actual decoded wide views differ from the beginning');
+  return proof;
+}
 async function overflow(page){return page.evaluate(()=>({viewport:innerWidth,width:document.documentElement.scrollWidth}));}
 async function capture(evidence,page,name,options={}){const target=path.join(out,name);await evidence.capture(page,{path:target,type:'jpeg',quality:84,...options});report.screenshots.push(target);}
 
@@ -85,14 +135,15 @@ async function integration(page,evidence,engine){
   const archive=documents['/movements.html'];
   assert.ok(archive.includes('id="ensemble-film"')&&archive.includes('src="/second-act.js"'));
   for(const target of ['/first-act.html','/choir.html','/witness.html','/observer.html'])assert.ok(archive.includes(`href="${target}"`),`Archive reaches ${target}`);
-  const sourceLinks=await page.locator('.science-body a').evaluateAll(nodes=>nodes.map(node=>node.href));
+  const sourceLinks=await page.locator('.science-body a[href^="https://"]').evaluateAll(nodes=>nodes.map(node=>node.href));
   assert.deepEqual(sourceLinks,[
     'https://github.com/bernietorfen/palimpsest/blob/main/research/RELATIONAL-CLOCK-RESULTS.md',
     'https://github.com/bernietorfen/palimpsest/blob/main/research/TIME-AMBIGUITY-RESULTS.md',
-    'https://github.com/bernietorfen/palimpsest/blob/main/research/OPERATIONAL-TIME-RESULTS.md'
+    'https://github.com/bernietorfen/palimpsest/blob/main/research/OPERATIONAL-TIME-RESULTS.md',
+    'https://github.com/bernietorfen/palimpsest/blob/main/research/CLOCK-ENVIRONMENT-RESULTS.md'
   ]);
   const continuation=await page.locator('.work-links a').evaluateAll(nodes=>nodes.map(node=>node.getAttribute('href')));
-  assert.deepEqual(continuation,['/assets/generated/river-viewing.mp4','https://github.com/bernietorfen/palimpsest/releases/download/a-river-twice-1/river-screening.mp4','/assets/generated/river-companion.pdf','https://github.com/bernietorfen/palimpsest','/movements.html','/credits.html']);
+  assert.deepEqual(continuation,['/assets/generated/river-viewing.mp4','https://github.com/bernietorfen/palimpsest/releases/download/a-river-twice-1/river-screening.mp4','https://github.com/bernietorfen/palimpsest/releases/download/a-river-twice-1/river-score.wav','/assets/generated/river-companion.pdf','https://github.com/bernietorfen/palimpsest','/movements.html','/credits.html']);
   assert.ok(documents['/first-act.html'].includes('href="/movements.html">The second act'));
   for(const target of ['/instrument.html','/atlas.html'])assert.ok(documents[target].includes('href="/first-act.html#film">The film'));
   for(const target of ['/choir.html','/witness.html','/observer.html'])assert.ok(documents[target].includes('href="/movements.html">The second act'));
@@ -131,6 +182,7 @@ import json,sys
 from studio.serve_site import Handler
 site=Path(sys.argv[1]);draft=Path(sys.argv[2])
 mapping={"/assets/generated/"+name:draft/name for name in ("river-viewing.mp4","river-poster.jpg","river-notes.vtt")}
+if sys.argv[3]=="compact-control": mapping["/assets/generated/river-compact.mp4"]=draft/"river-viewing.mp4"
 class DraftHandler(Handler):
  def translate_path(self,path):
   selected=mapping.get(urlsplit(path).path)
@@ -139,7 +191,7 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
  print(json.dumps({"port":server.server_address[1]}),flush=True)
  server.serve_forever()
 `;
-    draftServer=spawn('python3',['-u','-c',serverCode,path.join(root,'site'),path.resolve(draftDirectory)],{cwd:root,stdio:['ignore','pipe','pipe']});
+    draftServer=spawn('python3',['-u','-c',serverCode,path.join(root,'site'),path.resolve(draftDirectory),compactControl?'compact-control':'draft'],{cwd:root,stdio:['ignore','pipe','pipe']});
     draftServer.stderr.on('data',chunk=>{draftServerErrors=(draftServerErrors+chunk.toString()).slice(-8192);});
     const port=await new Promise((resolve,reject)=>{
       const timer=setTimeout(()=>reject(new Error(`Draft server did not start: ${draftServerErrors}`)),10000);
@@ -151,7 +203,7 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
   }
   for(const engine of engines){
     assert.ok(['chromium','webkit'].includes(engine),'Supported engines: chromium, webkit');
-    browser=await({chromium,webkit}[engine]).launch({headless:true});
+    browser=await({chromium,webkit}[engine]).launch({headless:true,args:engine==='chromium'?['--disable-gpu']:[],env:{...process.env,LIBGL_ALWAYS_SOFTWARE:'1'}});
     const context=await browser.newContext({viewport:{width:1440,height:1080},reducedMotion:'reduce'});
     await routes(context);
     const page=await context.newPage(),errors=[],pageErrors=[],failedResources=[];
@@ -160,18 +212,26 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     page.on('pageerror',error=>pageErrors.push(error.message));
     page.on('response',response=>{if(response.status()>=400)failedResources.push({url:response.url(),status:response.status()});});
     const mediaRequests=[];
-    page.on('request',request=>{if(request.url().includes('river-viewing.mp4'))mediaRequests.push(request.url());});
+    page.on('request',request=>{if(/river-(viewing|compact)\.mp4|river-(opening|return)\.m4a/.test(request.url()))mediaRequests.push(request.url());});
     await ready(page);
-    assert.equal(mediaRequests.length,0,'No video request before explicit consent');
+    assert.equal(mediaRequests.filter(url=>url.endsWith('.mp4')).length,0,'No video request before explicit consent');
+    const excerptConsent=await page.locator('.listening-excerpt audio').evaluateAll(nodes=>nodes.map(audio=>({paused:audio.paused,time:audio.currentTime,autoplay:audio.autoplay,preload:audio.preload})));
+    assert.ok(excerptConsent.every(audio=>audio.paused&&audio.time===0&&!audio.autoplay&&audio.preload==='none'));
     assert.equal(await page.locator('#river-film').getAttribute('src'),null);
     assert.equal(await page.locator('#river-film').evaluate(video=>video.paused),true);
+    await page.locator('[data-film-quality="compact"]').focus();await page.keyboard.press('Enter');
+    assert.equal(await page.locator('#river-film').getAttribute('src'),null);
+    assert.equal(await page.locator('[data-film-quality="compact"]').getAttribute('aria-pressed'),'true');
+    await page.locator('[data-film-quality="full"]').click();
+    assert.equal(mediaRequests.filter(url=>url.endsWith('.mp4')).length,0,'Idle quality choices do not request the film');
     assert.equal(await page.locator('#reveal-connections').isDisabled(),true);
     assert.equal(await page.locator('#clock-current path').count(),28);
     near(Number((await state(page)).distance),0);
     assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),'auto');
     assert.deepEqual(await overflow(page),{viewport:1440,width:1440});
+    await page.evaluate(()=>window.scrollTo({top:0,left:0,behavior:'instant'}));
     await capture(evidence,page,`${engine}-entry.jpg`);
-    check(`${engine}: explicit media consent, stable initial clock, reduced motion, desktop width`);
+    check(`${engine}: explicit film/excerpt sound consent, idle keyboard quality choices, stable clock, reduced motion, desktop width`,{excerptConsent,initialExcerptRequests:mediaRequests.filter(url=>url.endsWith('.m4a')).length,scope:'Native preload=none is a hint; some engines request excerpt metadata. No excerpt starts sound, and neither movie URL is requested before Watch.'});
     await page.setViewportSize({width:1366,height:768});
     const playBounds=await page.locator('#watch-film').boundingBox();
     assert.ok(playBounds.y>=0&&playBounds.y+playBounds.height<=768,'Watch control remains in the first laptop viewport');
@@ -182,6 +242,7 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     await page.locator('#return-fragment').focus();
     await page.keyboard.press('Enter');
     const fragment=await state(page);
+    const localViews=await views(page,104,'local');
     assert.equal(Number(fragment.time),2*Math.PI);
     assert.equal(fragment.withinReturned,'28');
     assert.ok(Number(fragment.discrepancy)<1e-24);
@@ -192,6 +253,7 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     assert.equal(await page.evaluate(()=>document.activeElement.id),'reveal-connections');
     await page.keyboard.press('Space');
     const connected=await state(page);
+    const wideViews=await views(page,104,'wide');
     assert.equal(connected.observer,'connected');
     assert.equal(connected.paths.length,31);
     assert.equal(connected.changedBridges,'3');
@@ -206,29 +268,37 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     await page.locator('#clock-work').scrollIntoViewIfNeeded();
     await capture(evidence,page,`${engine}-connections.jpg`);
     await page.keyboard.press('Space');
+    const restoredViews=await views(page,104,'local');
     assert.equal((await state(page)).state,fragment.state);
     assert.equal(await page.locator('#clock-current path').count(),28);
-    check(`${engine}: keyboard return and observer switch`,{localR:Number(fragment.discrepancy),globalD:Number(fragment.distance),connectedR:Number(connected.discrepancy),stateByteIdentical:true,withinGeometryIdentical:true});
+    assert.deepEqual(restoredViews.images,localViews.images);
+    check(`${engine}: keyboard return, decoded matched views, wider view and exact undo`,{localR:Number(fragment.discrepancy),globalD:Number(fragment.distance),connectedR:Number(connected.discrepancy),stateByteIdentical:true,withinGeometryIdentical:true,localViews,wideViews});
 
-    await page.locator('#clock-time').focus();
-    await page.keyboard.press('End');
+    assert.equal(await page.locator('#science-note').getAttribute('open'),null);
+    await page.locator('#science-note summary').focus();await page.keyboard.press('Enter');
+    assert.equal(await page.locator('#clock-drawing').isVisible(),true);
+    await page.locator('button[data-moment="208"]').focus();await page.keyboard.press('Space');
     near(Number((await state(page)).time),4*Math.PI);
     assert.equal((await state(page)).withinReturned,'28');
-    await page.keyboard.press('Home');
+    const secondLocal=await views(page,208,'local'),secondState=await state(page);
+    await page.locator('#reveal-connections').click();
+    const secondWide=await views(page,208,'wide');
+    assert.equal((await state(page)).state,secondState.state);
+    assert.equal((await state(page)).stateRevision,secondState.stateRevision);
+    assert.equal(await page.locator('button[data-moment="208"]').getAttribute('aria-pressed'),'true');
+    await page.locator('button[data-moment="104"]').focus();await page.keyboard.press('Enter');
+    near(Number((await state(page)).time),2*Math.PI);
+    await views(page,104,'wide');
+    await page.locator('button[data-moment="0"]').click();
+    await views(page,0,'local');
     assert.equal(Number((await state(page)).time),0);
-    await page.keyboard.press('ArrowRight');
-    near(Number((await state(page)).time),.5*2*Math.PI/104);
+    await page.locator('#return-fragment').click();await views(page,104,'local');
     await page.locator('#clock-reset').click();
+    await views(page,0,'local');
     assert.equal(Number((await state(page)).time),0);
     assert.equal(await page.locator('#reveal-connections').isDisabled(),true);
-    check(`${engine}: range keyboard access, second local return, deterministic reset`);
-    const zeroPath=(await state(page)).paths[0].d;
-    async function setFilmMoment(seconds){await page.locator('#clock-time').evaluate((input,value)=>{input.value=String(value);input.dispatchEvent(new Event('input',{bubbles:true}));},seconds);return(await state(page)).paths[0].d;}
-    const realOpposite=await setFilmMoment(52),positiveImaginary=await setFilmMoment(26),negativeImaginary=await setFilmMoment(78);
-    assert.notEqual(realOpposite,zeroPath,'Changing real coherence with zero imaginary part changes the curve');
-    assert.notEqual(positiveImaginary,negativeImaginary,'Opposite imaginary coherences with the same real part produce distinct curves');
-    await page.locator('#clock-reset').click();
-    check(`${engine}: both coherence quadratures affect visible curves despite constant coherence magnitude`);
+    await page.locator('#science-note summary').click();
+    check(`${engine}: exact moment keyboard choices, second matched return and deterministic reset`,{secondLocal,secondWide});
 
     if(!structureOnly){
     await page.locator('#river-film').evaluate(video=>{
@@ -256,7 +326,7 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     const fullscreen=await page.evaluate(()=>document.fullscreenElement?'native document fullscreen':document.querySelector('#river-film').webkitDisplayingFullscreen?'native media fullscreen':'visible platform fallback');
     await page.evaluate(async()=>{if(document.fullscreenElement)await document.exitFullscreen();else if(document.querySelector('#river-film').webkitDisplayingFullscreen)document.querySelector('#river-film').webkitExitFullscreen();});
     check(`${engine}: native captions and fullscreen path`,{cueCount,fullscreen,source:report.media});
-    if(draftDirectory){
+    if(draftDirectory||finalMedia){
       const seeks=[];
       for(const moment of [104,120.9,123.25,208]){
         await page.locator('#river-film').evaluate((video,time)=>new Promise((resolve,reject)=>{
@@ -283,6 +353,10 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     await page.waitForFunction(()=>document.querySelector('.film-stage').dataset.videoState==='paused');
     assert.equal(await page.locator('.film-stage').getAttribute('data-video-state'),'paused');
     check(`${engine}: keyboard sound consent and native media`,{...playing,source:report.media});
+    if(compactControl||finalMedia)check(`${engine}: manual quality switches preserve time, pause/play, volume and captions`,await checkQualityPlayback(page,{finalDimensions:finalMedia}));
+    check(`${engine}: approved native listening excerpts and mutual media pause`,await checkListeningPlayback(page));
+    await page.locator('#river-film').evaluate(video=>{video.pause();video.currentTime=208;});
+    await page.waitForFunction(()=>!document.querySelector('#river-film').seeking&&document.querySelector('#river-film').readyState>=2);
 
     // Deterministically exercise the visibility handler. Headless tabs do not
     // consistently emit the OS-driven visibility transition across engines.
@@ -321,15 +395,23 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     await mobile.setViewportSize({width:393,height:852});
     await ready(mobile);
     assert.deepEqual(await overflow(mobile),{viewport:393,width:393});
-    const heights=await mobile.locator('#watch-film,#return-fragment,#reveal-connections,#clock-time,#clock-reset,.river-header nav a:not(:last-child)').evaluateAll(nodes=>nodes.map(node=>({id:node.id||node.textContent,height:node.getBoundingClientRect().height})));
+    const heights=await mobile.locator('#watch-film,[data-film-quality],#return-fragment,#reveal-connections,#clock-reset,#science-note summary,.river-header nav a:not(:last-child),.excerpt-feedback a').evaluateAll(nodes=>nodes.map(node=>({id:node.id||node.textContent,height:node.getBoundingClientRect().height})));
     assert.ok(heights.every(item=>item.height>=44),JSON.stringify(heights));
     await capture(mobileEvidence,mobile,`${engine}-mobile-entry.jpg`);
-    await mobile.locator('#return-fragment').click();await mobile.locator('#reveal-connections').click();
+    await mobile.locator('#return-fragment').click();await views(mobile,104,'local');await mobile.locator('#reveal-connections').click();
+    await views(mobile,104,'wide');
     await mobile.locator('#observation').scrollIntoViewIfNeeded();
     await capture(mobileEvidence,mobile,`${engine}-mobile-observer.jpg`);
+    await capture(mobileEvidence,mobile.locator('#controlled-views'),`${engine}-mobile-paired-views.jpg`);
+    await mobile.locator('#listening').scrollIntoViewIfNeeded();
+    await capture(mobileEvidence,mobile.locator('#listening'),`${engine}-mobile-listening.jpg`);
+    await mobile.locator('#science-note summary').click();
+    const momentHeights=await mobile.locator('button[data-moment]').evaluateAll(nodes=>nodes.map(node=>node.getBoundingClientRect().height));
+    assert.ok(momentHeights.every(height=>height>=44));
+    assert.deepEqual(await overflow(mobile),{viewport:393,width:393});
     assert.deepEqual(mobileErrors,[]);
     report.engines[engine].mobileScreenshotWarnings=mobileEvidence.warnings;
-    check(`${engine}: 393 px responsive layout and touch targets`,{heights});
+    check(`${engine}: 393 px responsive paired views and touch targets`,{heights,momentHeights});
     await mobile.close();
 
     const dataPage=await context.newPage();
@@ -346,6 +428,30 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     check(`${engine}: malformed clock recovery leaves film usable`);
     await dataPage.close();
 
+    const imagePage=await context.newPage();
+    let brokenImage=true;
+    await imagePage.route('**/assets/generated/river-wide-104.jpg',route=>brokenImage?route.fulfill({status:404,body:'Unavailable controlled view'}):route.continue());
+    await ready(imagePage);
+    await imagePage.locator('#return-fragment').click();await views(imagePage,104,'local');
+    const beforeImageError=await state(imagePage);
+    await imagePage.locator('#reveal-connections').click();
+    await imagePage.waitForFunction(()=>document.querySelector('#controlled-views').dataset.viewState==='error');
+    assert.equal((await state(imagePage)).state,beforeImageError.state);
+    assert.equal((await state(imagePage)).stateRevision,beforeImageError.stateRevision);
+    assert.equal(await imagePage.locator('#view-retry').isVisible(),true);
+    assert.equal(await imagePage.locator('#watch-film').isEnabled(),true);
+    assert.equal(await imagePage.locator('#return-fragment').isEnabled(),true);
+    assert.ok((await imagePage.locator('#controlled-views img').evaluateAll(images=>images.map(image=>getComputedStyle(image).visibility))).every(value=>value==='hidden'),'Stale local pictures must not appear under wider-view labels after a failed load');
+    await imagePage.locator('#science-note summary').click();
+    assert.equal(await imagePage.locator('#clock-current path').count(),31);
+    assert.equal(await imagePage.locator('#clock-drawing').isVisible(),true);
+    brokenImage=false;
+    await imagePage.locator('#view-retry').focus();await imagePage.keyboard.press('Enter');
+    await views(imagePage,104,'wide');
+    assert.equal((await state(imagePage)).state,beforeImageError.state);
+    check(`${engine}: failed view conceals stale images, preserves exact state and supports keyboard retry`);
+    await imagePage.close();
+
     if(!structureOnly){
     const mediaPage=await context.newPage();
     let brokenMedia=true;
@@ -361,26 +467,69 @@ with ThreadingHTTPServer(("127.0.0.1",0),partial(DraftHandler,directory=str(site
     await mediaPage.locator('#river-film').evaluate(video=>video.pause());
     check(`${engine}: media failure and retry leave experiment usable`);
     await mediaPage.close();
+
+    const excerptPage=await context.newPage();let brokenExcerpt=true;
+    await excerptPage.route('**/assets/generated/river-opening.m4a',route=>brokenExcerpt?route.fulfill({status:404,body:'Unavailable excerpt'}):route.fallback());
+    await ready(excerptPage);
+    await excerptPage.locator('#return-fragment').click();
+    await excerptPage.locator('#listen-opening').evaluate(audio=>audio.play().catch(()=>{}));
+    await excerptPage.waitForFunction(()=>document.querySelector('#listen-opening').closest('figure').dataset.audioState==='error');
+    assert.match(await excerptPage.locator('#listen-opening + .excerpt-feedback [role=status]').textContent(),/download link/);
+    brokenExcerpt=false;
+    await excerptPage.locator('#listen-opening + .excerpt-feedback .excerpt-retry').click();
+    await excerptPage.waitForFunction(()=>document.querySelector('#listen-opening').currentTime>.25);
+    await excerptPage.locator('#listen-opening').evaluate(audio=>audio.pause());
+    check(`${engine}: actual excerpt failure, download fallback and retry`);
+    await excerptPage.close();
+
+    if(compactControl||finalMedia){
+      const bufferPage=await context.newPage();let releaseVideo;
+      const videoGate=new Promise(resolve=>{releaseVideo=resolve;});
+      await bufferPage.route('**/assets/generated/river-viewing.mp4',async route=>{await videoGate;await route.fallback().catch(()=>{});});
+      await ready(bufferPage);
+      await bufferPage.locator('#watch-film').click();
+      await bufferPage.locator('#film-compact').waitFor({state:'visible',timeout:10000});
+      assert.equal(await bufferPage.locator('#river-film').getAttribute('data-quality'),'full','A delayed transfer never switches quality automatically');
+      await bufferPage.locator('#film-compact').click();releaseVideo();
+      await bufferPage.waitForFunction(()=>{const video=document.querySelector('#river-film');return video.currentSrc.endsWith('/river-compact.mp4')&&video.currentTime>.25&&!video.paused;});
+      assert.equal(await bufferPage.locator('#film-compact').isVisible(),false);
+      await bufferPage.locator('#river-film').evaluate(video=>video.pause());
+      check(`${engine}: sustained real response delay offers manual Compact recovery without automatic switching`,{delay:'The Full HD HTTP response is held until the user chooses Compact; Compact serves the declared actual media mapping'});
+      await bufferPage.close();
+    }
     }
 
     const motionPage=await context.newPage();
     await motionPage.emulateMedia({reducedMotion:'no-preference'});
+    let releaseSlowView,startedSlowView;
+    const slowViewStarted=new Promise(resolve=>{startedSlowView=resolve;});
+    const slowViewGate=new Promise(resolve=>{releaseSlowView=resolve;});
+    await motionPage.route('**/assets/generated/river-wide-104.jpg',async route=>{startedSlowView();await slowViewGate;await route.continue();});
     await ready(motionPage);
-    const still=await state(motionPage);
     await motionPage.locator('#return-fragment').click();
-    await motionPage.waitForFunction(()=>{const work=document.querySelector('#clock-work');return work.dataset.returning==='true'&&Number(work.dataset.time)>1;});
-    const travelling=await state(motionPage);
-    assert.notEqual(travelling.paths[0].d,still.paths[0].d);
-    assert.equal(await motionPage.locator('#reveal-connections').isDisabled(),true);
-    await motionPage.waitForFunction(()=>document.querySelector('#clock-work').dataset.returning==='false');
+    await views(motionPage,104,'local');
     const held=await state(motionPage);
     assert.equal(Number(held.time),2*Math.PI);
     assert.equal(held.withinReturned,'28');
     await motionPage.waitForTimeout(120);
-    assert.equal((await state(motionPage)).stateRevision,held.stateRevision,'The user-triggered return stops computing at its exact endpoint');
+    assert.equal((await state(motionPage)).stateRevision,held.stateRevision,'An exact held moment does not keep advancing in normal-motion mode');
     await motionPage.locator('#reveal-connections').click();
     assert.equal((await state(motionPage)).state,held.state);
-    check(`${engine}: user-triggered cycle travels, returns exactly, then stops; observer remains immutable`);
+    await slowViewStarted;
+    assert.equal(await motionPage.locator('#controlled-views').getAttribute('data-view-state'),'loading');
+    assert.ok((await motionPage.locator('#controlled-views img').evaluateAll(images=>images.map(image=>getComputedStyle(image).visibility))).every(value=>value==='hidden'));
+    await motionPage.locator('#science-note summary').click();
+    await motionPage.locator('button[data-moment="208"]').click();
+    const latestViews=await views(motionPage,208,'wide'),latestState=await state(motionPage);
+    const earlierResponse=motionPage.waitForResponse(response=>response.url().endsWith('/river-wide-104.jpg'));
+    releaseSlowView();
+    await earlierResponse;
+    await motionPage.waitForTimeout(120);
+    const afterSlowViews=await views(motionPage,208,'wide');
+    assert.deepEqual(afterSlowViews,latestViews,'Late earlier image responses cannot replace the currently selected exact pair');
+    assert.equal((await state(motionPage)).state,latestState.state);
+    assert.equal((await state(motionPage)).stateRevision,latestState.stateRevision);
+    check(`${engine}: normal motion holds exact time; stale delayed image response cannot relabel a newer moment`,{latestMoment:208});
     await motionPage.close();
 
     if(routePath==='/'){

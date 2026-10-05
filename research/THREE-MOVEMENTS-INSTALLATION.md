@@ -1,7 +1,8 @@
 # The three-movement offline edition
 
 The portable edition contains the three viewing films and their browser
-experiences. The 4K screening editions, lossless audio, source and complete
+experiences, including Full HD and Compact playback of A River Twice and
+its two short listening excerpts. The 4K screening editions, lossless audio, source and complete
 scientific archives remain optional online downloads. It is a viewing and
 interaction package, not a duplicate of the production workspace.
 
@@ -33,12 +34,15 @@ Its entry set must agree with that receipt and its complete ZIP digest must
 match the supplied published digest. Entries are streamed directly from the
 ZIP; a second legacy extraction is unnecessary.
 
-The new film, poster and captions must all come from the same `delivery`
-input. That receipt must declare `edition: final`, a fully decoded viewing
-file, 1920 by 1080 dimensions and a 240-second duration. A draft receipt is
-rejected. The builder does not repeat the delivery encoder's full audiovisual
-decoding; it verifies the exact approved bytes and runs a separate offline
-browser check afterward.
+The new Full HD and Compact files, poster and captions must all come from the
+same `delivery` input. That receipt must declare `edition: final`, 1920 by 1080
+and 1280 by 720 dimensions respectively, and 240-second durations. The input
+also supplies `verification` and `verification_sha256` for the independent
+`verify_river_delivery.py` receipt. Its digest, binding to the exact delivery
+receipt, matching output identities, 5,760 decoded frames, exact 24 fps
+cadence and shared screening soundtrack must all agree. A draft or producer
+metadata alone is rejected. The builder does not repeat that full audiovisual
+decode; it verifies the approved bytes and runs an offline browser check.
 
 Every selected archive entry has this shape:
 
@@ -148,3 +152,45 @@ Successful source/fixture checks do not mean a final installation exists.
 Final packaging waits for the pinned final site, companion and film receipts;
 the fresh package must then pass the actual offline workflow. Playback and
 signal checks remain separate from perceptual listening or emotional effect.
+
+## Controlled views in the final exhibition
+
+The explicit input plan also selects all six `river-local-{000,104,208}.jpg`
+and `river-wide-{000,104,208}.jpg` display images and
+`river-controlled-views.json` under `site/assets/generated/`. Their combined
+JPEG size is 661,180 bytes. The approved derivation manifest has SHA256
+`80f93dc20a8968e242ce4ef0feb63f35fbb1dcc3f98793b2182887fd4de4286b`.
+The builder rejects an omitted image or provenance record before packaging.
+Select these seven entries from the final approved site inventory; do not
+substitute similarly named draft images.
+
+The browser experiment uses only the exact moments 0, 104 and 208 seconds.
+The offline workflow checks all six actual image decodes, both return times,
+keyboard moment selection, the readout disclosure and reset. Changing the
+observer or undoing the wider view preserves the serialized model state and
+time. The controlled artwork images show the geometric embedding; the SVG
+shows selected calculated readings. The images do not measure full-state
+distance or represent only the three added map edges.
+
+## Playback choices and contextual listening
+
+The package also selects `river-compact.mp4` from the same final delivery as
+`river-viewing.mp4`, plus `river-opening.m4a`, `river-return.m4a` and
+`river-listening-pair.json` from the approved final site inventory. The builder
+checks the excerpt identities against that pair record. The excerpts retain
+the chosen score's common gain and stereo; they are contextual mixes, with
+only boundary fades, a short closing silence and AAC compression.
+
+The same explicit Full HD / Compact choice works offline. Changing it keeps
+position, play/pause state, volume and captions; there is no automatic switch.
+Native audio controls let the opening and changed return be compared, with
+mutual pause across all three media elements and pause when the page is
+hidden. `preload="none"` is a browser hint: WebKit may fetch excerpt metadata,
+but does not start sound. Movie requests remain lazy until Watch.
+
+The shared `studio/river_media_checks.mjs` exercises actual media in both the
+exhibition and fresh offline extraction. It checks paused and playing quality
+changes, rapid changed choices, the two native twelve-second excerpts, their
+mutual pause, completion and download paths. These checks do not substitute
+for final-media identities, independent frame/audio verification or perceptual
+listening. The final offline test must use the actual 1080p and 720p files.

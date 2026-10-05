@@ -22,11 +22,13 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from studio.river_blender import build_scene, aim
 from studio.river_geometry import membrane, phases, woven_relations, woven_internal_relations, validate_embedding
 from studio.river_cinematography import camera_at, model_time, observation_light, reference_focus, manifest, smooth
+from studio.river_camera_pickups import pickup_camera_at, pickup_manifest
 from studio.river_typography import filter_chain as typography_filters, manifest as typography_manifest, SERIF, SANS
 
 
 DETAIL_SHOTS={'The crossing','Inside the current','An ascending line','The space between',
-              'A returning edge','A remaining strand','The answer elsewhere','Along what remains'}
+              'A returning edge','A remaining strand','The answer elsewhere','Along what remains',
+              'An answer held between','The thread takes the phrase','A relation opens outward'}
 
 
 def update_curve(obj, paths):
@@ -56,7 +58,8 @@ def frame_state(scene,camera,dynamic,fibres,args,seconds,light_energy):
         obj.hide_render=kind=='between' and alpha < 1e-8
         # Reference stitches keep a separate shared material from outer fibres.
         obj.data.materials[0].node_tree.nodes['Principled BSDF'].inputs['Alpha'].default_value=(1. if kind=='within' else alpha)
-    camera_state=camera_at(seconds)
+    camera_state=(pickup_camera_at(seconds) if getattr(args,'camera_revision',False)
+                  else camera_at(seconds))
     scene.cycles.samples=args.samples
     if getattr(args,'detail_sampling',False):
         if focus>=1.-1e-8:
@@ -86,7 +89,7 @@ def source_snapshot(folder):
     target=folder/'source'
     target.mkdir()
     hashes={}
-    for name in ('river_geometry.py','river_blender.py','river_cinematography.py','river_sequence.py','river_typography.py'):
+    for name in ('river_geometry.py','river_blender.py','river_cinematography.py','river_camera_pickups.py','river_sequence.py','river_typography.py'):
         data=Path(__file__).with_name(name).read_bytes()
         (target/name).write_bytes(data)
         hashes[name]=hashlib.sha256(data).hexdigest()
@@ -108,7 +111,9 @@ def main(args):
         for package in ('fonts-liberation','fonts-dejavu-core'):
             shutil.copyfile(f'/usr/share/doc/{package}/copyright',font_folder/f'{package}-copyright.txt')
         (folder/'typography.json').write_text(json.dumps(titles,indent=2)+'\n')
-    (folder/'camera-score.json').write_text(json.dumps(manifest(),indent=2)+'\n')
+    camera_score=manifest()
+    if getattr(args,'camera_revision',False): camera_score['revision']=pickup_manifest()
+    (folder/'camera-score.json').write_text(json.dumps(camera_score,indent=2)+'\n')
     (folder/'embedding-check.json').write_text(json.dumps(validate_embedding(),indent=2)+'\n')
     args.time=model_time(args.start)
     args.shape='weave'
@@ -254,6 +259,7 @@ def main(args):
             'encode_preset':args.encode_preset,'encode_threads':args.encode_threads,
             'full_frame':args.full_frame,'encoder_command':command,
             'typography':titles,
+            'camera_revision':pickup_manifest() if getattr(args,'camera_revision',False) else None,
             'encoded_timeline':{key:video_stream.get(key) for key in
                                 ('codec_name','pix_fmt','nb_frames','avg_frame_rate','start_time','duration')},
             'chunks':chunks,'chunk_policy':'Complete twelve-second chunks remain playable if a later render is interrupted.' if args.segmented else None,
@@ -286,6 +292,7 @@ if __name__=='__main__':
     p.add_argument('--segmented',action='store_true')
     p.add_argument('--titles',action='store_true')
     p.add_argument('--detail-sampling',action='store_true')
+    p.add_argument('--camera-revision',action='store_true')
     argv=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
     a=p.parse_args(argv)
     if a.start<0 or a.duration<=0 or a.start+a.duration>240+1e-8:
