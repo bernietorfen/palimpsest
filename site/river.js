@@ -53,17 +53,20 @@ function completeQualityChange(){
   const change=pendingSwitch;
   if(!change||change.request!==filmRequest||film.seeking||film.readyState<1||change.phase!=='seeking')return;
   pendingSwitch=null;lastPosition=film.currentTime;
-  if(film.textTracks[0]&&change.captions)film.textTracks[0].mode=change.captions;
   if(change.resume&&!document.hidden&&!film.paused){suggestCompactAfterWait();watchPresentedFrame();}
   else filmState('paused',pausedAway?'Paused while this page was away. Use Play to continue.':'');
 }
 
 function loadFilmSource({time=0,resume=false}={}){
   stopFrameWatch();stopBufferSuggestion();
-  pendingSwitch={request:++filmRequest,time,resume,captions:film.textTracks[0]?.mode,phase:'metadata'};
+  const captions=film.getAttribute('src')?film.textTracks[0]?.mode:undefined;
+  pendingSwitch={request:++filmRequest,time,resume,phase:'metadata'};
   filmState('loading',time>0?'Changing playback. Your place is kept.':'Opening the film. Sound begins when it is ready.');
   $('#film-fullscreen').disabled=true;
   film.src=film.dataset.src;film.load();
+  // Restore an existing setting before returning to the event loop. A later
+  // native caption choice must win, including during metadata/seek completion.
+  if(film.textTracks[0]&&captions)film.textTracks[0].mode=captions;
   // Keep the native play request in the user gesture. Metadata/seek events
   // restore the held position before presentation; they do not grant sound consent.
   if(resume&&!document.hidden)resumeFilm(pendingSwitch.request);
